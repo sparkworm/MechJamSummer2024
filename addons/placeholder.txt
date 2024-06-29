@@ -1,0 +1,1 @@
+The folder for holding addons from Godot Asset Library and Similar
