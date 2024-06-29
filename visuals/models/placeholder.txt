@@ -1,0 +1,2 @@
+The folder for the main meshes of the mechs.  Individual parts and weapons 
+should go in mech_parts.
