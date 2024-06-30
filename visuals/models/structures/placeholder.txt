@@ -1,0 +1,1 @@
+The folder for meshes relating to buildings/structures in the world.
