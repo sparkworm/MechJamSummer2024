@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6t78coplqwm"]
+
+[ext_resource type="Script" path="res://scripts/autoload/AudioManager.gd" id="1_lw1mu"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("_music_1", "_hit1", "_hit2")]
+script = ExtResource("1_lw1mu")
+_music_1 = NodePath("music_1")
+_hit1 = NodePath("hit_1")
+_hit2 = NodePath("hit_2")
+
+[node name="music_1" type="AudioStreamPlayer" parent="."]
+
+[node name="hit_1" type="AudioStreamPlayer" parent="."]
+
+[node name="hit_2" type="AudioStreamPlayer" parent="."]

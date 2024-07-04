@@ -1,1 +1,0 @@
-The folder for holding things such as main.tscn/main.gd and level.tscn/level.gd.
