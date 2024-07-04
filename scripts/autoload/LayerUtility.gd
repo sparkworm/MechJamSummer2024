@@ -21,9 +21,9 @@ var bit_to_layer_name = {
 
 var layer_name_to_bit = {}
 
-func _ready():
-	for key in bit_to_layer_name:
-		var value = bit_to_layer_name[key]
+func _ready() -> void:
+	for key: Layer in bit_to_layer_name:
+		var value: String = bit_to_layer_name[key]
 		layer_name_to_bit[value] = key
 
 	#debug
@@ -70,23 +70,23 @@ func get_layer_name_from_bit(bit: int) -> String:
 		return "None"
 
 #Returns the bit from a layer
-func get_bit_from_layer_name(name: String) -> int:
-	if layer_name_to_bit.has(name):
-		return layer_name_to_bit[name]
+func get_bit_from_layer_name(layer_name: String) -> int:
+	if layer_name_to_bit.has(layer_name):
+		return layer_name_to_bit[layer_name]
 	else:
 		return 0
 
 func get_bitmask_from_layer_names(layer_names_to_combine: Array) -> int:
-	var combined_bitmask = 0
-	for layer_name in layer_names_to_combine:
+	var combined_bitmask: int = 0
+	for layer_name: String in layer_names_to_combine:
 		if layer_name_to_bit.has(layer_name):
 			combined_bitmask |= layer_name_to_bit.get(layer_name)
 	return combined_bitmask
 
 #If all bits are set return true, else return false
-func check_all_bits_from_bitmask(bits_to_compare: int, bitmask_to_check) -> bool:
+func check_all_bits_from_bitmask(bits_to_compare: int, bitmask_to_check: int) -> bool:
 	return (bits_to_compare & bitmask_to_check) == bitmask_to_check
 
 #If any bits are set return true, else return false
-func check_any_bits_from_bitmask(bits_to_compare: int, bitmask_to_check) -> bool:
+func check_any_bits_from_bitmask(bits_to_compare: int, bitmask_to_check: int) -> bool:
 	return (bits_to_compare & bitmask_to_check) != 0
