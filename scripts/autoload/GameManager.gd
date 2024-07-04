@@ -14,20 +14,23 @@ enum GameState {
 @export var _game_scene: PackedScene
 
 var _game_state: GameState = GameState.Load
-var _scene_paths = {}
+var _scene_paths: = {}
 var _current_scene: Node
 
-func _ready():
+func _ready() -> void:
 	_scene_paths[GameState.Load] = _load_scene
 	_scene_paths[GameState.Intro] = _intro_scene
 	_scene_paths[GameState.Game] = _game_scene
 
-func _change_state(state: GameState):
-	call_deferred(_state_clean_up())
-	_game_state = state
-	call_deferred(_state_initialization())
+func change_state(state: GameState) -> void:
+	call_deferred("_change_state", state)
 
-func _state_clean_up():
+func _change_state(state: GameState) -> void:
+	_state_clean_up()
+	_game_state = state
+	_state_initialization()
+
+func _state_clean_up() -> void:
 	if(_game_state == GameState.Load):
 		pass
 	elif(_game_state == GameState.Intro):
@@ -37,7 +40,7 @@ func _state_clean_up():
 
 	_current_scene.free()
 
-func _state_initialization():
+func _state_initialization() -> void:
 	if(_game_state == GameState.Load):
 		pass
 	elif(_game_state == GameState.Intro):
