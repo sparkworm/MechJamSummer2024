@@ -11,7 +11,7 @@ enum Layer {
 	Switch = 1 << 3,
 }
 
-var bit_to_layer_name = {
+var bit_to_layer_name_dict: Dictionary = {
 	Layer.None: "None",
 	Layer.Terrain: "Terrain",
 	Layer.Player: "Player",
@@ -19,12 +19,12 @@ var bit_to_layer_name = {
 	Layer.Switch: "Switch",
 }
 
-var layer_name_to_bit = {}
+var layer_name_to_bit_dict: Dictionary = {}
 
 func _ready() -> void:
-	for key: Layer in bit_to_layer_name:
-		var value: String = bit_to_layer_name[key]
-		layer_name_to_bit[value] = key
+	for key: Layer in bit_to_layer_name_dict:
+		var value: String = bit_to_layer_name_dict[key]
+		layer_name_to_bit_dict[value] = key
 
 	#debug
 	"""
@@ -64,23 +64,30 @@ func _ready() -> void:
 
 #Returns the layer from a single set bit
 func get_layer_name_from_bit(bit: int) -> String:
-	if bit_to_layer_name.has(bit):
-		return bit_to_layer_name[bit]
+	if bit_to_layer_name_dict.has(bit):
+		return bit_to_layer_name_dict[bit]
 	else:
 		return "None"
 
 #Returns the bit from a layer
 func get_bit_from_layer_name(layer_name: String) -> int:
-	if layer_name_to_bit.has(layer_name):
-		return layer_name_to_bit[layer_name]
+	if layer_name_to_bit_dict.has(layer_name):
+		return layer_name_to_bit_dict[layer_name]
 	else:
 		return 0
 
 func get_bitmask_from_layer_names(layer_names_to_combine: Array) -> int:
 	var combined_bitmask: int = 0
 	for layer_name: String in layer_names_to_combine:
-		if layer_name_to_bit.has(layer_name):
-			combined_bitmask |= layer_name_to_bit.get(layer_name)
+		if layer_name_to_bit_dict.has(layer_name):
+			combined_bitmask |= layer_name_to_bit_dict.get(layer_name)
+	return combined_bitmask
+
+func get_bitmask_from_bits(bits_to_combine: Array) -> int:
+	var combined_bitmask: int = 0
+	for bit: int in bits_to_combine:
+		if bit_to_layer_name_dict.has(bit):
+			combined_bitmask |= bit
 	return combined_bitmask
 
 #If all bits are set return true, else return false

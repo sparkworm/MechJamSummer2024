@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhg30arf462b2"]
+
+[ext_resource type="Script" path="res://scenes/ecs/entities/player.gd" id="1_cybs5"]
+[ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/entities/projectile.tscn" id="2_rmky7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yfg4t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7n0x"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_fire_point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.23595)
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("1_cybs5")
+_fire_point = NodePath("FirePoint")
+_attack_projectile = ExtResource("2_rmky7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0403, 0)
+shape = SubResource("CapsuleShape3D_2dksx")
+
+[node name="FirePoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 1.25)
+mesh = SubResource("SphereMesh_yfg4t")
+skeleton = NodePath("../..")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
+mesh = SubResource("CapsuleMesh_t7n0x")
