@@ -1,4 +1,5 @@
 This file is for writing down important reminders
 
 	- Create collision layers. (I think that Mao is doing this, but am not sure)
-	This will be very import
+
+	- Create weapon logic. (Sparkworm is currently working on this)
