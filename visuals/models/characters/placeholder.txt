@@ -1,0 +1,1 @@
+This folder holds models for characters, which I have defined as entities that can move around, but are not mechs.
