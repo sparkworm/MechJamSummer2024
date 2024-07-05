@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cafpthlu61kgp"
-path="res://.godot/imported/CombatMech.glb-c1734deba8442302c51c91e682f5be76.scn"
+path="res://.godot/imported/CombatMech.glb-6deadc983963286e220b838e8648175a.scn"
 
 [deps]
 
-source_file="res://visuals/models/mechs/CombatMech.glb"
-dest_files=["res://.godot/imported/CombatMech.glb-c1734deba8442302c51c91e682f5be76.scn"]
+source_file="res://visuals/models/mechs/combat_mech/CombatMech.glb"
+dest_files=["res://.godot/imported/CombatMech.glb-6deadc983963286e220b838e8648175a.scn"]
 
 [params]
 

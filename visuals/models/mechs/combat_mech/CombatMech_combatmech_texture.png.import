@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p03yqpstliyf"
-path.s3tc="res://.godot/imported/combatmech_texture.png-ba2e483c25f08544aec92c9bb026112f.s3tc.ctex"
+uid="uid://cy21uoyrvfnsj"
+path.s3tc="res://.godot/imported/CombatMech_combatmech_texture.png-d92465c89cfae11b571fa5900821dff4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "86f95b11bbd6b41e40bbb3f996357530"
+}
 
 [deps]
 
-source_file="res://visuals/models/mechs/combatmech_texture.png"
-dest_files=["res://.godot/imported/combatmech_texture.png-ba2e483c25f08544aec92c9bb026112f.s3tc.ctex"]
+source_file="res://visuals/models/mechs/combat_mech/CombatMech_combatmech_texture.png"
+dest_files=["res://.godot/imported/CombatMech_combatmech_texture.png-d92465c89cfae11b571fa5900821dff4.s3tc.ctex"]
 
 [params]
 
