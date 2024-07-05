@@ -1,4 +1,5 @@
 extends NavigationRegion3D
+class_name NavRegion
 
 func _ready() -> void:
 	var cellHeight: float = navigation_mesh.cell_height

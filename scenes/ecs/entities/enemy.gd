@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name Whelp
+class_name Enemy
 
 @export var _movement_speed: float = 5.0
 @export var _rotation_speed: float = 2
