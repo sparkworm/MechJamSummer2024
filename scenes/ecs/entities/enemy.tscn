@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://c24uux7pvmbng"]
+
+[ext_resource type="Script" path="res://scenes/ecs/entities/enemy.gd" id="1_benro"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
+[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yfg4t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7n0x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36otd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_brd60"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jgbnc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf3pd"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.896635, 0, 0.0937623, 0.317647)
+albedo_texture = ExtResource("3_6e1wk")
+uv1_scale = Vector3(10, 10, 10)
+uv2_scale = Vector3(10, 10, 10)
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31448, 0, -8.12289)
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_benro")
+_movement_speed = 2.0
+_rotation_speed = 5.0
+_chase_targets = Array[int]([2])
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0403, 0)
+shape = SubResource("CapsuleShape3D_2dksx")
+
+[node name="FirePoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 1.25)
+mesh = SubResource("SphereMesh_yfg4t")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_8uji8")
+
+[node name="EnemyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
+material_override = ExtResource("2_8uji8")
+mesh = SubResource("CapsuleMesh_t7n0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_36otd")
+
+[node name="Detection" type="Area3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 1.2348, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+shape = SubResource("SphereShape3D_brd60")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Detection"]
+mesh = SubResource("SphereMesh_jgbnc")
+surface_material_override/0 = SubResource("StandardMaterial3D_uf3pd")

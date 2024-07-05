@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhg30arf462b2"]
+[gd_scene load_steps=7 format=3 uid="uid://bhg30arf462b2"]
 
 [ext_resource type="Script" path="res://scenes/ecs/entities/player.gd" id="1_cybs5"]
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/entities/projectile.tscn" id="2_rmky7"]
+[ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
 
@@ -25,7 +26,9 @@ shape = SubResource("CapsuleShape3D_2dksx")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 1.25)
 mesh = SubResource("SphereMesh_yfg4t")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_c3sv7")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
 mesh = SubResource("CapsuleMesh_t7n0x")
+surface_material_override/0 = ExtResource("3_c3sv7")

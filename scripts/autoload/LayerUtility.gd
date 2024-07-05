@@ -9,6 +9,7 @@ enum Layer {
 	Player = 1 << 1,
 	Enemy = 1 << 2,
 	Switch = 1 << 3,
+	Wall = 1 << 4,
 }
 
 var bit_to_layer_name_dict: Dictionary = {
@@ -17,6 +18,7 @@ var bit_to_layer_name_dict: Dictionary = {
 	Layer.Player: "Player",
 	Layer.Enemy: "Enemy",
 	Layer.Switch: "Switch",
+	Layer.Wall: "Wall",
 }
 
 var layer_name_to_bit_dict: Dictionary = {}

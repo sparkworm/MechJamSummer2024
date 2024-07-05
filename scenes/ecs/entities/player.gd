@@ -7,14 +7,12 @@ class_name PlayerCharacter
 @export var _attack_projectile: PackedScene
 
 var _attack_cooldown_timer: float = 1
-var delta_time: float = 0
 var _velocity: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	delta_time = delta
 	_attack_cooldown_timer -= delta
 
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
@@ -46,8 +44,6 @@ func _physics_process(delta: float) -> void:
 		_attack_cooldown_timer = _attack_cooldown;
 		var attack_particle: Projectile = _attack_projectile.instantiate() as Projectile
 		get_tree().root.get_child(0).add_child(attack_particle)
-		#var forward = to_local(Vector3.FORWARD)
-		#attack_particle.look_at_dir(forward)
 
 		var dir: Vector3 = _fire_point.global_transform.basis.z
 
