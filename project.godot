@@ -61,7 +61,17 @@ Fire={
 [layer_names]
 
 3d_physics/layer_1="Terrain"
-3d_physics/layer_2="Player"
-3d_physics/layer_3="Enemy"
-3d_physics/layer_4="Switch"
-3d_physics/layer_5="Wall"
+3d_physics/layer_2="Bounds"
+3d_physics/layer_3="Wall"
+3d_physics/layer_4="Prop"
+3d_physics/layer_5="Interactable"
+3d_physics/layer_6="Player"
+3d_physics/layer_7="Enemy"
+3d_physics/layer_8="Neutral"
+3d_physics/layer_9="Ability"
+3d_physics/layer_10="LineOfSight"
+3d_physics/layer_11="Hidden"
+
+[navigation]
+
+3d/default_cell_height=0.05

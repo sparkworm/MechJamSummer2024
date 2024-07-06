@@ -4,21 +4,33 @@ extends Node
 
 #TODO: Figure out what layers we're using
 enum Layer {
-	None = 0,
-	Terrain = 1 << 0,
-	Player = 1 << 1,
-	Enemy = 1 << 2,
-	Switch = 1 << 3,
-	Wall = 1 << 4,
+	None = 0, #none layers defined
+	Terrain = 1 << 0, #Static navigational zones
+	Bounds = 1 << 1, #Static bounds (OOB)
+	Wall = 1 << 2, #Static and dynamic bounds also platforms
+	Prop = 1 << 3, #Rocks, Misc
+	Interactable = 1 << 4, #Containers and switches
+	Player = 1 << 5, #Player character(s)
+	Enemy = 1 << 6, #Enemy character(s)
+	Neutral = 1 << 7, #Neutral character(s)
+	Ability = 1 << 8, #For ability to ability detection
+	LineOfSight = 1 << 9, #Useful for discreet raycasting queries
+	Hidden = 1 << 10, #Removed from detecting
 }
 
 var bit_to_layer_name_dict: Dictionary = {
 	Layer.None: "None",
 	Layer.Terrain: "Terrain",
+	Layer.Bounds: "Bounds",
+	Layer.Wall: "Wall",
+	Layer.Prop: "Prop",
+	Layer.Interactable: "Interactable",
 	Layer.Player: "Player",
 	Layer.Enemy: "Enemy",
-	Layer.Switch: "Switch",
-	Layer.Wall: "Wall",
+	Layer.Neutral: "Neutral",
+	Layer.Ability: "Ability",
+	Layer.LineOfSight: "LineOfSight",
+	Layer.Hidden: "Hidden",
 }
 
 var layer_name_to_bit_dict: Dictionary = {}
