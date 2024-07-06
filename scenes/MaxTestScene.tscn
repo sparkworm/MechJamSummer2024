@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnwg1juupoewm"]
-
-[ext_resource type="PackedScene" uid="uid://c3t1ypvnetaja" path="res://resources/level/MarsValley/marsvalleyEdited.tscn" id="1_vflhu"]
-
-[node name="MaxTestScene" type="Node3D"]
-
-[node name="marsvalley" parent="." instance=ExtResource("1_vflhu")]

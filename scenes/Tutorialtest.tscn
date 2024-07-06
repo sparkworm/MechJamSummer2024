@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b05iq2d65rvc2"]
+
+[ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="1_o3hip"]
+[ext_resource type="PackedScene" uid="uid://bhg30arf462b2" path="res://scenes/ecs/entities/player.tscn" id="2_gumkb"]
+
+[node name="Tutorialtest" type="Node3D"]
+
+[node name="Inheritedmarsvalley" parent="." instance=ExtResource("1_o3hip")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_gumkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -423, 2, -44.764)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0.122788, 0.696364, 0, 0.984808, -0.173648, -0.707107, 0.122788, 0.696364, -423, 7, -44.764)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 75, 75)
+projection = 1
+fov = 5.3
+size = 24.759
+near = 0.001
+far = 129.82
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
