@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c37tymt6stv32"]
+
+[ext_resource type="PackedScene" uid="uid://b32pkaxsqqokd" path="res://visuals/models/level/mars_valley/marsvalley.glb" id="1_sad38"]
+[ext_resource type="Texture2D" uid="uid://dwb3esv8sm6q7" path="res://visuals/models/level/mars_valley/colormap-8k.jpg" id="2_svdl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt5w6"]
+albedo_texture = ExtResource("2_svdl4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfa3h"]
+albedo_texture = ExtResource("2_svdl4")
+
+[node name="marsvalley" instance=ExtResource("1_sad38")]
+
+[node name="VMarineris3" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_qt5w6")
+surface_material_override/0 = SubResource("StandardMaterial3D_cfa3h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VMarineris3" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VMarineris3/StaticBody3D" index="0"]
