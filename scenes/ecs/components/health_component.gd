@@ -13,7 +13,7 @@ func on_ready() -> void:
 	# set the actual health to the max_health
 	health = max_health
 
-## subtracts a specified number from health, and if health reaches 0, killed is 
+## subtracts a specified number from health, and if health reaches 0, killed is
 ## emitted
 func damage(amnt: int) -> void:
 	health -= amnt

@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		_velocity.z = isometric_dir.z * _movement_speed
 
 		# Calculate the target rotation
-		var target_rotation: Quaternion = Quaternion(Vector3.UP, atan2(isometric_dir.x, isometric_dir.z))
+		var target_rotation: Quaternion = Quaternion(Vector3.UP, atan2(-isometric_dir.x, -isometric_dir.z))
 
 		# Smoothly interpolate the current rotation towards the target rotation
 		var current_rotation: Quaternion = global_transform.basis.get_rotation_quaternion()
