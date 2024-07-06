@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://di7p2kp0eiq7a"]
+
+[ext_resource type="PackedScene" uid="uid://cq8iux47kari1" path="res://scenes/ecs/parent/weapon.tscn" id="1_6rpxr"]
+[ext_resource type="Script" path="res://scenes/ecs/parent/ranged_weapon.gd" id="2_eijgc"]
+
+[node name="RangedWeapon" instance=ExtResource("1_6rpxr")]
+script = ExtResource("2_eijgc")
+projectile = null
+projectile_speed = 0.0

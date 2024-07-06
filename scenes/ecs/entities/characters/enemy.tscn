@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c24uux7pvmbng"]
 
-[ext_resource type="Script" path="res://scenes/ecs/entities/enemy.gd" id="1_benro"]
-[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
+[ext_resource type="Script" path="res://scenes/ecs/entities/characters/enemy.gd" id="1_benro"]
+[ext_resource type="Material" path="res://visuals/materials/red.tres" id="2_8uji8"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]

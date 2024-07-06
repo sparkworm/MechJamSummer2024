@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhg30arf462b2"]
 
-[ext_resource type="Script" path="res://scenes/ecs/entities/player.gd" id="1_cybs5"]
-[ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/entities/projectile.tscn" id="2_rmky7"]
-[ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
+[ext_resource type="Script" path="res://scenes/ecs/entities/characters/player.gd" id="1_cybs5"]
+[ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="2_rmky7"]
+[ext_resource type="Material" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
 
