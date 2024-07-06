@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		var attack_particle: Projectile = _attack_projectile.instantiate() as Projectile
 		get_tree().root.get_child(0).add_child(attack_particle)
 
-		var dir: Vector3 = _fire_point.global_transform.basis.z
+		var dir: Vector3 = -_fire_point.global_transform.basis.z
 
 		attack_particle.init_with_world_direction(_fire_point.global_position, dir)
 

@@ -69,7 +69,10 @@ func _on_overlapping_body(collider: CollisionObject3D) -> bool:
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	var nextPos: Vector3 = global_position + safe_velocity
-	smooth_look_at(nextPos)
+
+	if(safe_velocity != Vector3.ZERO):
+		smooth_look_at(nextPos)
+
 	velocity = safe_velocity
 	move_and_slide()
 
