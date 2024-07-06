@@ -2,7 +2,7 @@ extends Weapon
 class_name RangedWeapon
 
 ## The projectile that the weapon will fire
-@export var projectile: Projectile
+@export var projectile: PackedScene
 ## The speed at which the projectile travels (the length of the velocity)
 @export var projectile_speed: float
 
@@ -23,11 +23,10 @@ func spawn_projectile() -> void:
 	# add the projectile to the designated node up the SceneTree
 	var projectile_parent: Node3D = \
 			get_tree().get_nodes_in_group("projectile_parent")[0]
-	projectile_parent.add_child(projectile)
+	projectile_parent.add_child(projectile.instantiate())
 	# make the projectile face the same way as the weapon
 	projectile.global_rotation = get_weapon_direction()
 
-# TODO
 ## The function responsible for getting the global rotation of the weapon
 func get_weapon_direction() -> Vector3:
 	# WARNING: untested; may need to be tweaked to get the correct rotation
