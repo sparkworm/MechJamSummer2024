@@ -71,15 +71,14 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	var nextPos: Vector3 = global_position + safe_velocity
 
 	if(safe_velocity != Vector3.ZERO):
-		smooth_look_at(nextPos)
+		_smooth_look_at(nextPos)
 
 	velocity = safe_velocity
 	move_and_slide()
 
-func smooth_look_at(target_position: Vector3) -> void:
+func _smooth_look_at(target_position: Vector3) -> void:
 		var direction: Vector3 = (target_position - global_transform.origin).normalized()
 		direction.y = 0
-		direction = direction.normalized()
 
 		var current_rotation: Quaternion = global_transform.basis.get_rotation_quaternion()
 		var target_rotation: Quaternion = Quaternion(Vector3.FORWARD, direction).normalized()

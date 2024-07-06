@@ -23,11 +23,14 @@ rim_tint = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_krunk"]
 material = SubResource("StandardMaterial3D_56a5r")
+radius = 0.35
+height = 0.75
 
 [node name="Projectile" type="CharacterBody3D"]
 collision_layer = 256
 collision_mask = 2047
 script = ExtResource("1_aikhv")
+_speed = 15.0
 _collisional_layers = Array[int]([64, 4])
 _hit_layers = Array[int]([64, 8])
 
@@ -39,8 +42,9 @@ collision_mask = 255
 shape = SubResource("SphereShape3D_4byjp")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 30
-lifetime = 0.25
+amount = 10
+lifetime = 0.15
 preprocess = 0.02
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_yhxg5")
 draw_pass_1 = SubResource("SphereMesh_krunk")
