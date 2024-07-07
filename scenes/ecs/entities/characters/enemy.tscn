@@ -1,9 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://c24uux7pvmbng"]
 
-[ext_resource type="Script" path="res://scenes/ecs/entities/enemy.gd" id="1_benro"]
+[ext_resource type="Script" path="res://scenes/ecs/entities/characters/enemy.gd" id="1_454w4"]
 [ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
 [ext_resource type="PackedScene" uid="uid://dqgx3u00vr4rd" path="res://scenes/ecs/components/collider_component.tscn" id="2_vx22x"]
-
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
 [ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
 [ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="4_ae3hl"]
@@ -32,14 +31,11 @@ uv1_scale = Vector3(10, 10, 10)
 uv2_scale = Vector3(10, 10, 10)
 
 [node name="Enemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31448, 0, -8.12289)
 collision_layer = 64
 collision_mask = 255
-script = ExtResource("1_benro")
-_movement_speed = 2.0
-_rotation_speed = 5.0
-_chase_targets = Array[int]([32])
-_target_obstructions = Array[int]([4])
+script = ExtResource("1_454w4")
+_movement_speed = 3.0
+_rotation_speed = 20.0
 
 [node name="Components" type="Node" parent="."]
 

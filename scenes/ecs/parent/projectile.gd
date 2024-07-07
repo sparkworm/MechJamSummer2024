@@ -8,12 +8,12 @@ class_name Projectile
 @export var _linger_time: float = 0.25
 
 @export_subgroup("Layer Properties")
-@export var _collisional_layers: Array[LayerUtility.Layer]
-@export var _hit_layers: Array[LayerUtility.Layer]
+@export var _collisional_layers: Array[LayerUtility.Layer] #Layers that this projectile can collide with
+@export var _hit_layers: Array[LayerUtility.Layer] #Layers that this projectile can hit
 
 var _collisional_layers_mask: int = 0
 var _hit_layers_mask: int = 0
-var _source : Node3D = null
+var _source : Node3D = null #Source would be that who emitted the projectile
 
 @onready var _area_3D: Area3D = $Area3D
 
@@ -64,11 +64,16 @@ func _physics_process(_delta: float) -> void:
 	#Area3D Collision func
 	for collider: CollisionObject3D in _area_3D.get_overlapping_bodies():
 		var collisionLayer: int = collider.get_collision_layer()
+
+		#If the projectile can hit: damage, knockback, on hit effect, ect
 		if(LayerUtility.check_any_bits_from_bitmask(collisionLayer, _hit_layers_mask)):
 			_on_hit(collider)
+
+		#If the projectile can collide: projectile expires and on collision effects
 		if(LayerUtility.check_any_bits_from_bitmask(collisionLayer, _collisional_layers_mask)):
 			_on_collision(collider)
 
+	#If has collided this frame, expire the projectile
 	if(hasCollided):
 		_expire()
 
@@ -80,6 +85,8 @@ func _on_hit(collider: CollisionObject3D) -> void:
 	hit_targets.append(collider)
 	var collisionLayer: int = collider.get_collision_layer()
 	print("Has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+
+	#If the target has health, do damage
 	var health_component: HealthComponent = collider.get_node_or_null("Components/HealthComponent") as HealthComponent
 	if(health_component != null):
 		health_component.damage(_source, 1)
@@ -96,5 +103,7 @@ func _expire() -> void:
 		return
 
 	isEnabled = !isEnabled
+
+	#We let the projectile linger for particle system purposes
 	await get_tree().create_timer(_linger_time).timeout
 	queue_free()

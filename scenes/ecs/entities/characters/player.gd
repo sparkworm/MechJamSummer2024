@@ -3,8 +3,8 @@ class_name PlayerCharacter
 
 @export var _movement_speed: float = 5
 @export var _rotation_speed: float = 20
-@export var _fire_point: Node3D
 
+@onready var _fire_point: Node3D = $FirePoint
 @onready var _attack_component: AttackComponent = $Components/AttackComponent
 
 var _delta_time: float = 0
