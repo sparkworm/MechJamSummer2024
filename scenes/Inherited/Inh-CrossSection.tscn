@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc1evn3i401q5"]
+
+[ext_resource type="PackedScene" uid="uid://dm18ox1fpv3tp" path="res://visuals/models/level/free_space_colony_3D_models/fbx/Cross_section.fbx" id="1_t3r61"]
+[ext_resource type="Texture2D" uid="uid://cseclwu8a2jr2" path="res://visuals/models/level/free_space_colony_3D_models/texture/T_Spase.png" id="2_6f2jw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w7vs"]
+albedo_texture = ExtResource("2_6f2jw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aj8ry"]
+
+[node name="Cross-Section" instance=ExtResource("1_t3r61")]
+
+[node name="Cross_section" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8w7vs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Cross_section" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Cross_section/StaticBody3D" index="0"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2, 0)
+shape = SubResource("BoxShape3D_aj8ry")

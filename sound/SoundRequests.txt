@@ -1,0 +1,42 @@
+//Sounds Required
+SoundScape
+Martian Barren World
+Martian Wind
+Martian Silent (but not quite)
+Terraformed Area
+Facility Sounds
+Facility Radar Dish rotating
+
+MECH SFX
+Footsteps (x4)
+Metal Motor Movement (x2)
+Jump "Thud"
+Communciation Signals (start/end communication)
+
+ENEMY SFX
+Target Sighted Beep
+Scanning Sound
+Airplane Engine
+
+WEAPONS SFX
+Missile Launched
+Missile In Flight
+Missile Hits (x3)
+Machine Gun Fire
+AutoCannon Fire
+Laser Fire
+Bullet Hit (x5)
+Bullet Ricochet (Bounce off Shield)
+Laser Hit
+Laser Absorb
+Melee Hit - Metal on Metal
+Melee Hit - Metal on Dirt
+Melee Hit - Metal on Energy Shield
+Melee "Woosh"
+Energy Shield Hum
+Energy Shield Start-up
+Energy Shield Shutdown
+Energy Shield "Wobble"
+
+MISC SFX
+Plenty of Explosions :)

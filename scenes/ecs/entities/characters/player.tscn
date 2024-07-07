@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
 [ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="5_80nyr"]
 
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yfg4t"]

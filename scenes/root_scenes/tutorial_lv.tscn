@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://df843im1s3h03"]
+[gd_scene load_steps=16 format=3 uid="uid://dcd80c7ah0c75"]
 
-[ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="1_8080i"]
-[ext_resource type="Material" path="res://visuals/materials/blue.tres" id="1_hn1xh"]
-[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="1_myvwf"]
-[ext_resource type="Material" path="res://visuals/materials/red.tres" id="2_a2xts"]
-[ext_resource type="PackedScene" uid="uid://bhg30arf462b2" path="res://scenes/ecs/entities/characters/player.tscn" id="2_w3pyj"]
-[ext_resource type="PackedScene" uid="uid://c24uux7pvmbng" path="res://scenes/ecs/entities/characters/enemy.tscn" id="6_yttyi"]
+[ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="1_qqci1"]
+[ext_resource type="PackedScene" uid="uid://cekb1owqw877d" path="res://scenes/Inherited/Inh-CornerSection.tscn" id="3_8ci1h"]
+[ext_resource type="PackedScene" uid="uid://dc1evn3i401q5" path="res://scenes/Inherited/Inh-CrossSection.tscn" id="3_mk0ma"]
+[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="4_fb84w"]
+[ext_resource type="PackedScene" uid="uid://bhg30arf462b2" path="res://scenes/ecs/entities/player.tscn" id="5_bq5o7"]
+[ext_resource type="PackedScene" uid="uid://c24uux7pvmbng" path="res://scenes/ecs/entities/enemy.tscn" id="6_n6xxf"]
+[ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="7_i48ic"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_poyci"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,21 +28,14 @@ cell_height = 0.05
 agent_radius = 1.0
 region_min_size = 9.01
 
-[sub_resource type="BoxMesh" id="BoxMesh_k7g7g"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nxojo"]
-
-[sub_resource type="GDScript" id="GDScript_h4tts"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vym0a"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.26572, 1, 0.675717, 1)
-albedo_texture = ExtResource("1_myvwf")
+albedo_texture = ExtResource("4_fb84w")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_arict"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f35mc"]
+size = Vector2(3, 3)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t2vxo"]
 
@@ -59,134 +53,83 @@ shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vf04y")
-script = ExtResource("1_8080i")
+script = ExtResource("1_qqci1")
 
 [node name="Blocks" type="Node" parent="NavigationRegion3D"]
 
-[node name="BlueBlock1" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.144929, 1.05583, -1.07989)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("1_hn1xh")
+[node name="Wall" type="Node" parent="NavigationRegion3D/Blocks"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/BlueBlock1"]
-collision_layer = 8
-collision_mask = 0
+[node name="Cross-Section" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/BlueBlock1/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section15" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46823, 0, -14.425)
 
-[node name="RedBlock1" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.68715, 1.05583, -5.32348)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section16" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46823, 0, -14.425)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock1"]
-collision_layer = 4
-collision_mask = 0
-script = SubResource("GDScript_h4tts")
+[node name="Cross-Section17" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53177, 0, -14.425)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock1/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section18" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53177, 0, -14.425)
 
-[node name="RedBlock2" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.37157, 1.05583, -5.32348)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section10" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 8)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock2"]
-collision_layer = 4
-collision_mask = 0
+[node name="Cross-Section11" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 4)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock2/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section12" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="RedBlock3" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.19613, 1.05583, 3.67657)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section13" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -4)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock3"]
-collision_layer = 4
-collision_mask = 0
+[node name="Cross-Section14" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock3/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section6" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 14.253)
 
-[node name="RedBlock4" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.53122, 1.05583, 3.68812)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section7" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 14.253)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock4"]
-collision_layer = 4
-collision_mask = 0
+[node name="Cross-Section8" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 14.253)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock4/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section9" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 14.253)
 
-[node name="RedBlock5" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 0.0753117, 1.05583, 9.91125)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section4" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock5"]
-collision_layer = 4
-collision_mask = 0
+[node name="Cross-Section5" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock5/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Cross-Section2" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
 
-[node name="RedBlock6" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 0.060215, 1.05583, -10.7475)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Cross-Section3" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_mk0ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock6"]
-collision_layer = 4
-collision_mask = 0
+[node name="Corner" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_8ci1h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.75, 0, -13)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock6/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Corner4" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_8ci1h")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 11.6, 0, -13.2643)
 
-[node name="RedBlock7" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(-8.74228e-07, 0, -2, 0, 2, 0, 20, 0, -8.74228e-08, 10.9807, 1.05583, -0.0113902)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
+[node name="Corner2" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_8ci1h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.6, 0, 13)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock7"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock7/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
-
-[node name="RedBlock8" type="MeshInstance3D" parent="NavigationRegion3D/Blocks"]
-transform = Transform3D(-8.74228e-07, 0, -2, 0, 2, 0, 20, 0, -8.74228e-08, -10.7025, 1.05583, 0.0965614)
-mesh = SubResource("BoxMesh_k7g7g")
-skeleton = NodePath("../../Floor")
-surface_material_override/0 = ExtResource("2_a2xts")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock8"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock8/StaticBody3D"]
-shape = SubResource("BoxShape3D_nxojo")
+[node name="Corner3" parent="NavigationRegion3D/Blocks/Wall" instance=ExtResource("3_8ci1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7, 0, 12.852)
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_vym0a")
 mesh = SubResource("PlaneMesh_arict")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_f35mc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
 collision_mask = 0
@@ -203,10 +146,13 @@ transform = Transform3D(0.707107, 0.122788, 0.696364, 0, 0.984808, -0.173648, -0
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707106, 0, -0.707107, 0.707107, 0, 75, 75)
 projection = 1
 fov = 5.3
-size = 24.759
+size = 32.657
 near = 0.001
-far = 129.82
+far = 146.7
 
-[node name="Player" parent="." instance=ExtResource("2_w3pyj")]
+[node name="Player" parent="." instance=ExtResource("5_bq5o7")]
 
-[node name="Enemy" parent="." instance=ExtResource("6_yttyi")]
+[node name="Enemy" parent="." instance=ExtResource("6_n6xxf")]
+
+[node name="marsvalley" parent="." instance=ExtResource("7_i48ic")]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 100, -5, 250)
