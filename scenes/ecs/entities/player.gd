@@ -3,9 +3,9 @@ class_name PlayerCharacter
 
 @export var _movement_speed: float = 5
 @export var _rotation_speed: float = 20
-@export var _attack_cooldown: float = 0.25
 @export var _fire_point: Node3D
-@export var _attack_projectile: PackedScene
+
+@onready var _attack_component: AttackComponent = $Components/AttackComponent
 
 var _delta_time: float = 0
 var _attack_cooldown_timer: float = 1
@@ -52,14 +52,8 @@ func _physics_process(delta: float) -> void:
 		#mouse_dir = (mouse_pos_3d - global_position).normalized()
 
 
-	if Input.is_action_pressed("Fire") && _attack_cooldown_timer <= 0:
-		_attack_cooldown_timer = _attack_cooldown;
-		var attack_particle: Projectile = _attack_projectile.instantiate() as Projectile
-		get_tree().root.get_child(0).add_child(attack_particle)
-
-		var dir: Vector3 = -_fire_point.global_transform.basis.z
-
-		attack_particle.init_with_world_direction(_fire_point.global_position, dir)
+	if Input.is_action_pressed("Fire"):
+		_attack_component.use_primary_attack(self, _fire_point)
 
 func _get_mouse_pos_3d(ray_length:float = 1000) -> Vector3:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
@@ -75,9 +69,3 @@ func _smooth_look_at(target_position: Vector3) -> void:
 		var target_rotation: Quaternion = Quaternion(Vector3.FORWARD, direction).normalized()
 		var new_rotation: Quaternion = current_rotation.slerp(target_rotation, _rotation_speed * _delta_time)
 		global_transform.basis = Basis(new_rotation)
-
-func take_damage(_damage: float) -> void:
-	pass
-
-func _die() -> void:
-	pass

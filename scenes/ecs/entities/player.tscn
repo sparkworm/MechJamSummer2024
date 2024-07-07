@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhg30arf462b2"]
+[gd_scene load_steps=10 format=3 uid="uid://bhg30arf462b2"]
 
 [ext_resource type="Script" path="res://scenes/ecs/entities/player.gd" id="1_cybs5"]
+[ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="2_phyxr"]
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/entities/projectile.tscn" id="2_rmky7"]
+[ext_resource type="PackedScene" uid="uid://dqgx3u00vr4rd" path="res://scenes/ecs/components/collider_component.tscn" id="3_b8rte"]
 [ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
+[ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="5_80nyr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
 
@@ -15,10 +18,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.23595)
 collision_layer = 32
 collision_mask = 31
 script = ExtResource("1_cybs5")
+_movement_speed = null
+_rotation_speed = null
 _fire_point = NodePath("FirePoint")
-_attack_projectile = ExtResource("2_rmky7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Components" type="Node" parent="."]
+
+[node name="AttackComponent" parent="Components" instance=ExtResource("2_phyxr")]
+_primary_attack_scene = ExtResource("2_rmky7")
+
+[node name="ColliderComponent" parent="Components" node_paths=PackedStringArray("_collision_shape") instance=ExtResource("3_b8rte")]
+_collision_shape = NodePath("../../PrimaryCollider")
+
+[node name="HealthComponent" parent="Components" instance=ExtResource("5_80nyr")]
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0403, 0)
 shape = SubResource("CapsuleShape3D_2dksx")
 
