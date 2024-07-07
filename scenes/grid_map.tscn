@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://p0wwpcxlkjp3"]
+
+[ext_resource type="PackedScene" uid="uid://cekb1owqw877d" path="res://scenes/Inherited/Inh-CornerSection.tscn" id="1_n3d2q"]
+[ext_resource type="PackedScene" uid="uid://dc1evn3i401q5" path="res://scenes/Inherited/Inh-CrossSection.tscn" id="2_hhqrq"]
+[ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="3_pexld"]
+
+[node name="GridMapAssetList" type="Node3D"]
+
+[node name="Corner" parent="." instance=ExtResource("1_n3d2q")]
+
+[node name="Cross-Section" parent="." instance=ExtResource("2_hhqrq")]
+
+[node name="Inh-SciFiShip" parent="." instance=ExtResource("3_pexld")]

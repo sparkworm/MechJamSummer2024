@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dni1ayv6wl75x"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxxfbvdyr28" path="res://visuals/models/characters/LowPoly_Bomber/Sci-Fi Ship.fbx" id="1_yncmn"]
+[ext_resource type="Texture2D" uid="uid://wp0yfhue13jh" path="res://visuals/models/characters/LowPoly_Bomber/Textures/Sci-Fi Ship_Textures_01.png" id="2_q5g2k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ish48"]
+albedo_texture = ExtResource("2_q5g2k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc3qa"]
+albedo_texture = ExtResource("2_q5g2k")
+
+[node name="Inh-SciFiShip" instance=ExtResource("1_yncmn")]
+
+[node name="Sci-Fi Ship" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ish48")
+
+[node name="Sci-Fi Ship_Gun" parent="RootNode/Sci-Fi Ship" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jc3qa")
