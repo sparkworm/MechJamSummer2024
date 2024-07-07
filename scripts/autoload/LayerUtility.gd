@@ -114,8 +114,8 @@ func get_bitmask_from_layer_names(layer_names_to_combine: Array) -> int:
 func get_bitmask_from_bits(bits_to_combine: Array) -> int:
 	var combined_bitmask: int = 0
 	for bit: int in bits_to_combine:
-		if bit_to_layer_name_dict.has(bit):
-			combined_bitmask |= bit
+		#if bit_to_layer_name_dict.has(bit):
+		combined_bitmask |= bit
 	return combined_bitmask
 
 #If all bits are set return true, else return false
