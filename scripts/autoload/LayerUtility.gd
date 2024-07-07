@@ -2,35 +2,49 @@
 #Autoload
 extends Node
 
-#TODO: Figure out what layers we're using
+#Layers and Behaviours
 enum Layer {
-	None = 0, #none layers defined
+	None = 0, # No layers defined
 	Terrain = 1 << 0, #Static navigational zones
-	Bounds = 1 << 1, #Static bounds (OOB)
-	Wall = 1 << 2, #Static and dynamic bounds also platforms
-	Prop = 1 << 3, #Rocks, Misc
-	Interactable = 1 << 4, #Containers and switches
-	Player = 1 << 5, #Player character(s)
-	Enemy = 1 << 6, #Enemy character(s)
-	Neutral = 1 << 7, #Neutral character(s)
-	Ability = 1 << 8, #For ability to ability detection
-	LineOfSight = 1 << 9, #Useful for discreet raycasting queries
-	Hidden = 1 << 10, #Removed from detecting
+	Bounds = 1 << 1, #Static field bounds (OOB)
+	Platform = 1 << 2, #Static and dynamic navigational zones
+	Wall = 1 << 3, #Blocks characters, Blocks vision, blocks projectiles
+	Divider = 1 << 4, #Blocks characters, Does not block vision, does not block projectiles
+	Permeable = 1 << 5, #Blocks characters, Blocks vision, does not block projectiles
+	Transparent = 1 << 6, #Blocks characters, Does not block vision, blocks projectiles
+	Shroud = 1 << 7, #Does not block characters, Blocks vision, does not block projectiles
+	Barrier = 1 << 8, #Does not block characters, Does not block vision, blocks projectiles
+	Impenetrable = 1 << 9, #Does not block characters, Blocks vision, blocks projectiles
+	Intangible = 1 << 10, #Does not block characters, Does not block vision, does not block projectiles
+	Prop = 1 << 11, #Doodads and interactables, blocks everything
+	Player = 1 << 12, #Player character(s)
+	Enemy = 1 << 13, #Enemy character(s)
+	Neutral = 1 << 14, #Neutral character(s)
+	Ability = 1 << 15, #For ability to ability detection
+	LineOfSight = 1 << 16, #Useful for discreet raycasting queries
+	Hidden = 1 << 17, #Removed from detecting
 }
 
 var bit_to_layer_name_dict: Dictionary = {
 	Layer.None: "None",
 	Layer.Terrain: "Terrain",
 	Layer.Bounds: "Bounds",
+	Layer.Platform: "Platform",
 	Layer.Wall: "Wall",
+	Layer.Divider: "Divider",
+	Layer.Permeable: "Permeable",
+	Layer.Transparent: "Transparent",
+	Layer.Shroud: "Shroud",
+	Layer.Barrier: "Barrier",
+	Layer.Impenetrable: "Impenetrable",
+	Layer.Intangible: "Intangible",
 	Layer.Prop: "Prop",
-	Layer.Interactable: "Interactable",
 	Layer.Player: "Player",
 	Layer.Enemy: "Enemy",
 	Layer.Neutral: "Neutral",
 	Layer.Ability: "Ability",
 	Layer.LineOfSight: "LineOfSight",
-	Layer.Hidden: "Hidden",
+	Layer.Hidden: "Hidden"
 }
 
 var layer_name_to_bit_dict: Dictionary = {}
