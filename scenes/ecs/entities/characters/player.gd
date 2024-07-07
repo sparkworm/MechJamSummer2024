@@ -19,9 +19,9 @@ func _physics_process(delta: float) -> void:
 		_velocity.x = move_toward(_velocity.x, 0, _movement_speed)
 		_velocity.z = move_toward(_velocity.z, 0, _movement_speed)
 
-	_character_body.velocity = _velocity
+	velocity = _velocity
 
-	_character_body.move_and_slide()
+	move_and_slide()
 
 	var mouse_pos_3d: Vector3 = MouseUtility.get_mouse_pos_3d()
 	_smooth_look_at(mouse_pos_3d)

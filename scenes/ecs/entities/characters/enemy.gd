@@ -60,17 +60,13 @@ func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 	if(!LayerUtility.check_any_bits_from_bitmask(collisionLayer, _chase_targets_mask)):
 		return false
 
-	var collider_component: ColliderComponent = collision_body.get_node_or_null("Components/ColliderComponent") as ColliderComponent
-
-	if(collider_component == null):
-		print("Enemy: ColliderComponent was not found on: ", collision_body)
+	var body: Body
+	if(collision_body is Body):
+		body = collision_body as Body
+	else:
 		return false
 
-	var collision_shape: CollisionShape3D = collider_component.try_get_collison_shape() as CollisionShape3D
-	if(collision_shape == null):
-		print("Enemy: CollisionShape3D was not found on: ", collision_body)
-		return false
-
+	var collision_shape: CollisionShape3D = body.primary_collider
 	if(!_is_collider_in_vision_cone(collision_shape)):
 		return false
 
@@ -86,8 +82,8 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	if(safe_velocity != Vector3.ZERO):
 		RotationUtility.smooth_look_at(self, nextPos, _rotation_speed)
 
-	_character_body.velocity = safe_velocity
-	_character_body.move_and_slide()
+	velocity = safe_velocity
+	move_and_slide()
 
 func _is_collider_in_line_of_sight(collision_body: CollisionObject3D, collider: CollisionShape3D) -> bool:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state

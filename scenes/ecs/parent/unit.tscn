@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw5uxo2rjn8be"]
+[gd_scene load_steps=3 format=3 uid="uid://cw5uxo2rjn8be"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/unit.gd" id="1_ji3fa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
 
-[node name="Unit" type="StaticBody3D"]
+[node name="Unit" type="Area3D"]
+script = ExtResource("1_ji3fa")
 
 [node name="Components" type="Node" parent="."]
 

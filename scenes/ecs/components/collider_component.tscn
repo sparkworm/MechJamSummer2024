@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgx3u00vr4rd"]
+[gd_scene load_steps=2 format=3 uid="uid://cybfw5eajfev3"]
 
-[ext_resource type="Script" path="res://scenes/ecs/components/collider_component.gd" id="1_1g68n"]
+[sub_resource type="GDScript" id="GDScript_4fryh"]
+script/source = "class_name ColliderComponent
+extends Node
+
+#Area3D overlapping_bodies() returns the body and not the colliders, but
+#for raycasting purposes, we need to return that primary collider and position
+@export var _collision_shape: CollisionShape3D
+
+func try_get_collison_shape() -> CollisionShape3D:
+	if(_collision_shape != null):
+		return _collision_shape
+	else:
+		return null
+"
 
 [node name="ColliderComponent" type="Node"]
-script = ExtResource("1_1g68n")
+script = SubResource("GDScript_4fryh")

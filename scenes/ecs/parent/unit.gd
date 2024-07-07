@@ -1,8 +1,12 @@
 #Abstract class for objects with a primary collider that can be interacted with
 class_name Unit
-extends Node3D
+extends Area3D
 
 @onready var _primary_collider: CollisionShape3D = $PrimaryCollider
+
+var primary_collider: CollisionShape3D:
+	get:
+		return _primary_collider
 
 #Virtual
 func _ready() -> void:
