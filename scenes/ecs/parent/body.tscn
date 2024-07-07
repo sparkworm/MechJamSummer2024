@@ -7,7 +7,7 @@
 [node name="Body" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 collision_layer = 16384
-collision_mask = 2175
+collision_mask = 30847
 script = ExtResource("1_b3e4n")
 _rotation_speed = 30.0
 

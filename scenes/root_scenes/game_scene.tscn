@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://df843im1s3h03"]
 
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="1_8080i"]
-[ext_resource type="Material" path="res://visuals/materials/blue.tres" id="1_hn1xh"]
+[ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="1_hn1xh"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="1_myvwf"]
-[ext_resource type="Material" path="res://visuals/materials/red.tres" id="2_a2xts"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_a2xts"]
 [ext_resource type="PackedScene" uid="uid://bhg30arf462b2" path="res://scenes/ecs/entities/characters/player.tscn" id="2_w3pyj"]
 [ext_resource type="PackedScene" uid="uid://c24uux7pvmbng" path="res://scenes/ecs/entities/characters/enemy.tscn" id="6_yttyi"]
 
@@ -70,7 +70,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("1_hn1xh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/BlueBlock1"]
-collision_layer = 8
+collision_layer = 2048
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/BlueBlock1/StaticBody3D"]
@@ -83,7 +83,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock1"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 script = SubResource("GDScript_h4tts")
 
@@ -97,7 +97,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock2"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock2/StaticBody3D"]
@@ -110,7 +110,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock3"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock3/StaticBody3D"]
@@ -123,7 +123,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock4"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock4/StaticBody3D"]
@@ -136,7 +136,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock5"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock5/StaticBody3D"]
@@ -149,7 +149,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock6"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock6/StaticBody3D"]
@@ -162,7 +162,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock7"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock7/StaticBody3D"]
@@ -175,7 +175,7 @@ skeleton = NodePath("../../Floor")
 surface_material_override/0 = ExtResource("2_a2xts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Blocks/RedBlock8"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Blocks/RedBlock8/StaticBody3D"]
@@ -208,5 +208,7 @@ near = 0.001
 far = 129.82
 
 [node name="Player" parent="." instance=ExtResource("2_w3pyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.42013)
 
 [node name="Enemy" parent="." instance=ExtResource("6_yttyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.22625)
