@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4mu6oeflp1t0"]
+[gd_scene load_steps=5 format=3 uid="uid://d4mu6oeflp1t0"]
 
 [ext_resource type="Script" path="res://scenes/ecs/entities/characters/pickup.gd" id="1_8ie1o"]
+[ext_resource type="Material" uid="uid://b310kbsn86eik" path="res://visuals/materials/pink.tres" id="2_7vmjy"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_3fdfd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_k1g7b"]
+material = ExtResource("2_7vmjy")
 
 [node name="Pickup" type="StaticBody3D"]
 collision_layer = 1024
 script = ExtResource("1_8ie1o")
+_homing_speed = 3.0
+_homing_duration = 3.0
 
 [node name="Components" type="Node" parent="."]
 
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_0bjiq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3fdfd")
 
 [node name="PickupMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_k1g7b")

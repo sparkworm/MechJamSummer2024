@@ -15,7 +15,7 @@ enum Layer {
 	Shroud = 1 << 7, #Does not block characters, Blocks vision, does not block projectiles
 	Barrier = 1 << 8, #Does not block characters, Does not block vision, blocks projectiles
 	Impenetrable = 1 << 9, #Does not block characters, Blocks vision, blocks projectiles
-	Accessible = 1 << 10, #Does not block characters, Does not block vision, does not block projectiles
+	Accessible = 1 << 10, #Does not block characters, Does not block vision, does not block projectiles. Pickup Item Layer
 	Prop = 1 << 11, #Doodads and interactables, blocks everything by default. Can be used for dynamic collisional objects
 	Player = 1 << 12, #Player character(s)
 	Enemy = 1 << 13, #Enemy character(s)
