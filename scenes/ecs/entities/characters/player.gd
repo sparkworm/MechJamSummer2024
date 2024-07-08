@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 	var mouse_pos_3d: Vector3 = MouseUtility.get_mouse_pos_3d()
 	_smooth_look_at(mouse_pos_3d)
-	RotationUtility.smooth_look_at(self, mouse_pos_3d, _rotation_speed)
+	TransformUtility.smooth_look_at(self, mouse_pos_3d, _rotation_speed)
 	#var mouse_dir: Vector3 = Vector3.FORWARD
 	#if mouse_pos_3d:
 		#mouse_pos_3d.y = global_position.y

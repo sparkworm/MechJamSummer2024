@@ -1,6 +1,6 @@
 #Abstract class for objects with a primary collider that can be interacted with
 class_name Unit
-extends Area3D
+extends StaticBody3D
 
 @onready var _primary_collider: CollisionShape3D = $PrimaryCollider
 

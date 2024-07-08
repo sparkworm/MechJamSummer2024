@@ -3,6 +3,22 @@ class_name EnemyCharacter
 
 const RANDOM_SAMPLES: float = 10
 
+#TODO: AI Variance
+enum EnemyBehaviour
+{
+	Berserker, #Closes the gap between the chased target
+	Sentinal, #Keeps weapon distance from the chased target
+	Opportunist, #Retreats after attacking
+}
+
+enum NavState
+{
+	Patrolling,
+	Chasing,
+	Sweeping,
+}
+
+
 @export_subgroup("Detection Layers")
 @export var _chase_targets: Array[LayerUtility.Layer] #Targets the enemy will chase
 @export var _target_obstructions: Array[LayerUtility.Layer] #Targets that block the enemy's vision
@@ -43,12 +59,6 @@ var _chase_time_remaining: float = 0
 var _sweep_time_remaining: float = 0
 var _last_detection_point: Vector3 = Vector3.ZERO
 
-enum NavState
-{
-	Patrolling,
-	Chasing,
-	Sweeping,
-}
 
 func _ready() -> void:
 	_chase_targets_mask = LayerUtility.get_bitmask_from_bits(_chase_targets)
@@ -109,7 +119,7 @@ func _chase_target() -> void:
 
 func _sweep_area() -> void:
 	if(_nav_agent.is_navigation_finished()):
-		for i in range(RANDOM_SAMPLES):
+		for i: int in range(RANDOM_SAMPLES):
 			var random_point: Vector3 = _get_random_point_in_radius(_sweep_radius)
 			_set_movement_target(_last_detection_point + random_point)
 			if(_nav_agent.is_target_reachable()):
@@ -151,20 +161,14 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	var nextPos: Vector3 = global_position + safe_velocity
 
 	if(safe_velocity != Vector3.ZERO):
-		RotationUtility.smooth_look_at(self, nextPos, _rotation_speed)
+		TransformUtility.smooth_look_at(self, nextPos, _rotation_speed)
 
 	velocity = safe_velocity
 	move_and_slide()
 
 func _is_body_in_line_of_sight(collision_body: Body, collider: CollisionShape3D) -> bool:
-	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var direction: Vector3 = (collider.global_position - _vision_point.global_position).normalized()
-	var endPoint: Vector3 = collider.global_position + direction * 2
-	var ray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(_vision_point.global_position, endPoint)
-	ray_query.exclude = [self]
 	var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
-	ray_query.collision_mask = combined_mask
-	var result: Dictionary = space_state.intersect_ray(ray_query)
+	var result: Dictionary = TransformUtility.point_to_transform_raycast(_vision_point.global_position, collider, combined_mask)
 	if result.size() > 0 && result.collider == collision_body:
 		return true
 	else:
@@ -179,7 +183,7 @@ func _is_collider_in_vision_cone(collider: CollisionShape3D) -> bool:
 	return angle <= (_current_cone_degree_detection / 2)
 
 
-func _on_before_state_change():
+func _on_before_state_change() -> void:
 	_current_chase_target = null
 	_chase_time_remaining = -1
 	_sweep_time_remaining = -1

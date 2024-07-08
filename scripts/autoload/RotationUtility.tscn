@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct2st41bccm7i"]
-
-[ext_resource type="Script" path="res://scripts/autoload/RotationUtility.gd" id="1_hfq4e"]
-
-[node name="RotationUtility" type="Node"]
-script = ExtResource("1_hfq4e")

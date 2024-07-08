@@ -1,4 +1,4 @@
-#RotationUtility
+#TransformUtility
 #Autoload
 extends Node
 
@@ -13,3 +13,10 @@ func smooth_look_at(node3D: Node3D, target_position: Vector3, rot_speed: float) 
 	#print(delta_time)
 	var new_rotation: Quaternion = current_rotation.slerp(target_rotation, rot_speed * delta_time)
 	node3D.global_transform.basis = Basis(new_rotation)
+
+func point_to_transform_raycast(point_start: Vector3, node_target: Node3D, bitmask: int) -> Dictionary:
+	var space_state: PhysicsDirectSpaceState3D = node_target.get_world_3d().direct_space_state
+	var ray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+		point_start, node_target.global_position)
+	ray_query.collision_mask = bitmask
+	return space_state.intersect_ray(ray_query)

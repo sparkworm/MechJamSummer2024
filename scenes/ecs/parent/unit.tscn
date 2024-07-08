@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
 
-[node name="Unit" type="Area3D"]
+[node name="Unit" type="StaticBody3D"]
 script = ExtResource("1_ji3fa")
 
 [node name="Components" type="Node" parent="."]

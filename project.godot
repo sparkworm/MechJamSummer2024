@@ -21,7 +21,7 @@ GameManager="*res://scripts/autoload/GameManager.tscn"
 AudioManager="*res://scripts/autoload/AudioManager.tscn"
 LayerUtility="*res://scripts/autoload/LayerUtility.gd"
 MouseUtility="*res://scripts/autoload/MouseUtility.tscn"
-RotationUtility="*res://scripts/autoload/RotationUtility.gd"
+TransformUtility="*res://scripts/autoload/TransformUtility.gd"
 
 [debug]
 
