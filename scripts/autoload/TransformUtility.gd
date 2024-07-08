@@ -29,9 +29,9 @@ func lerp_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) 
 	return
 
 func move_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) -> void:
-	var direction = (point - node3D.global_transform.origin).normalized()
-	var distance_to_target = (point - node3D.global_transform.origin).length()
+	var direction: Vector3 = (point - node3D.global_transform.origin).normalized()
+	var distance_to_target: float = (point - node3D.global_transform.origin).length()
 
 	if distance_to_target > 0.001:
-		var distance_to_move = min(speed * GameManager.get_current_delta_time(), distance_to_target)
+		var distance_to_move: float = min(speed * GameManager.get_current_delta_time(), distance_to_target)
 		node3D.global_transform.origin += direction * distance_to_move

@@ -1,22 +1,22 @@
-class_name SupplyData
+class_name AmmoData
 extends PickupData
 
-#Supplies are PickUp objects which are numerous and used in conjunction with other objects such as weapons
-enum SupplyType
+enum AmmoType
 {
-	Energy,
-	Health,
 	LightAmmo,
 	HeavyAmmo,
 	Missiles,
 }
 
-@export var _supply_type: SupplyType = SupplyType.Energy
-var supply_type: SupplyType:
-	get:
-		return _supply_type
+func get_pickup_type() -> PickupType:
+	return PickupType.Ammo
 
-@export var _supply_amount: float = 100
-var supply_ammount: float:
+@export var _ammo_type: AmmoType = AmmoType.LightAmmo
+var ammo_type: AmmoType:
 	get:
-		return _supply_amount
+		return _ammo_type
+
+@export var _ammo_amount: float = 100
+var ammo_amount: float:
+	get:
+		return _ammo_amount

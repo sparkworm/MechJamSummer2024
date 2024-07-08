@@ -218,19 +218,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.22625)
 [node name="Pickup" parent="." instance=ExtResource("7_g4uy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40613, 0.324042, -0.820308)
 _pickup_data = ExtResource("8_7hwan")
-_homing_speed = 2.0
 
 [node name="Pickup2" parent="." instance=ExtResource("7_g4uy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.662, 0.324042, -0.820308)
 _pickup_data = ExtResource("8_7hwan")
-_homing_speed = 2.0
 
 [node name="Pickup3" parent="." instance=ExtResource("7_g4uy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95783, 0.324042, -8.54693)
 _pickup_data = ExtResource("8_7hwan")
-_homing_speed = 2.0
 
 [node name="Pickup4" parent="." instance=ExtResource("7_g4uy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12314, 0.324042, -8.53596)
 _pickup_data = ExtResource("8_7hwan")
-_homing_speed = 2.0

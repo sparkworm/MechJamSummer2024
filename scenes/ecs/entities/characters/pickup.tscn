@@ -11,8 +11,6 @@ material = ExtResource("2_7vmjy")
 [node name="Pickup" type="StaticBody3D"]
 collision_layer = 1024
 script = ExtResource("1_8ie1o")
-_homing_speed = 3.0
-_homing_duration = 3.0
 
 [node name="Components" type="Node" parent="."]
 

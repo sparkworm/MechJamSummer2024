@@ -16,11 +16,11 @@ func _physics_process(delta: float) -> void:
 	for collision_body: CollisionObject3D in _detection_area.get_overlapping_bodies():
 		_on_overlapping_body(collision_body)
 
-func _on_overlapping_body(collision_body) -> void:
+func _on_overlapping_body(collision_body: CollisionObject3D) -> void:
 
 	if(collision_body is Pickup):
 		var pickup_item: Pickup = collision_body as Pickup
-		pickup_item.assign_current_target(self)
+		pickup_item.assign_attract_target(self)
 
 func _handle_movement_input() -> void:
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
