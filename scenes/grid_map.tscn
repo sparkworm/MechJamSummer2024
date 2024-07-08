@@ -1,13 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://p0wwpcxlkjp3"]
+[gd_scene load_steps=18 format=3 uid="uid://p0wwpcxlkjp3"]
 
 [ext_resource type="PackedScene" uid="uid://cekb1owqw877d" path="res://scenes/Inherited/Inh-CornerSection.tscn" id="1_n3d2q"]
 [ext_resource type="PackedScene" uid="uid://dc1evn3i401q5" path="res://scenes/Inherited/Inh-CrossSection.tscn" id="2_hhqrq"]
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="3_pexld"]
+[ext_resource type="PackedScene" uid="uid://bx00x8ifb1742" path="res://scenes/Inherited/inh_balcony_floor_2.tscn" id="4_nqe8t"]
+[ext_resource type="PackedScene" uid="uid://ylbfptducik3" path="res://scenes/Inherited/inh_balcony_floor_center_2.tscn" id="5_ri1j6"]
+[ext_resource type="PackedScene" uid="uid://cxlh62ur6eg7t" path="res://scenes/Inherited/inh_turret_base_.tscn" id="6_t5j0s"]
+[ext_resource type="PackedScene" uid="uid://bbxab45ckoxu7" path="res://scenes/Inherited/inh_balcony_floor_corner_2.tscn" id="7_ta4co"]
+[ext_resource type="PackedScene" uid="uid://dqu0c7m7b87kl" path="res://scenes/Inherited/inh_pico_core_2.tscn" id="8_qim8c"]
+[ext_resource type="PackedScene" uid="uid://cd58xmqpfp3rk" path="res://scenes/Inherited/inh_rocks_2.tscn" id="8_tw4oi"]
+[ext_resource type="PackedScene" uid="uid://detv1sjw6nkj6" path="res://scenes/Inherited/inh_computer_system_2.tscn" id="9_0siky"]
+[ext_resource type="PackedScene" uid="uid://bomie600py1g0" path="res://scenes/Inherited/inh_stairs_handrail_single_2.tscn" id="10_5eldd"]
+[ext_resource type="PackedScene" uid="uid://dga82j8gux4dh" path="res://scenes/Inherited/inh_structure_barrier.tscn" id="11_f85q3"]
+[ext_resource type="PackedScene" uid="uid://dj45a5myar7d4" path="res://scenes/Inherited/inh_wall_2.tscn" id="13_w436h"]
+[ext_resource type="PackedScene" uid="uid://c4pe87umwfs81" path="res://scenes/Inherited/inh_wall_window_2.tscn" id="14_whbml"]
+[ext_resource type="PackedScene" uid="uid://bek4a88y2vns7" path="res://scenes/Inherited/inh_floor_detail_2.tscn" id="15_w7i7k"]
+[ext_resource type="PackedScene" uid="uid://dqwt8k5f8kyj4" path="res://scenes/Inherited/inh_floor_corner_2.tscn" id="16_6fqlq"]
+[ext_resource type="PackedScene" uid="uid://b3n0mlhonjg31" path="res://scenes/Inherited/inh_floor_2.tscn" id="17_42jf0"]
 
 [node name="GridMapAssetList" type="Node3D"]
 
 [node name="Corner" parent="." instance=ExtResource("1_n3d2q")]
+visible = false
 
 [node name="Cross-Section" parent="." instance=ExtResource("2_hhqrq")]
+visible = false
+
+[node name="balcony-floor2" parent="." instance=ExtResource("4_nqe8t")]
+visible = false
+
+[node name="balcony-floor-center2" parent="." instance=ExtResource("5_ri1j6")]
+visible = false
+
+[node name="balcony-floor-corner2" parent="." instance=ExtResource("7_ta4co")]
+visible = false
+
+[node name="computer-system2" parent="." instance=ExtResource("9_0siky")]
+visible = false
+
+[node name="Pico_Core2" parent="." instance=ExtResource("8_qim8c")]
+visible = false
+
+[node name="rocks2" parent="." instance=ExtResource("8_tw4oi")]
+visible = false
 
 [node name="Inh-SciFiShip" parent="." instance=ExtResource("3_pexld")]
+visible = false
+
+[node name="stairs-handrail-single2" parent="." instance=ExtResource("10_5eldd")]
+visible = false
+
+[node name="structure-barrier" parent="." instance=ExtResource("11_f85q3")]
+visible = false
+
+[node name="turret_base2" parent="." instance=ExtResource("6_t5j0s")]
+visible = false
+
+[node name="wall2" parent="." instance=ExtResource("13_w436h")]
+visible = false
+
+[node name="wall-window2" parent="." instance=ExtResource("14_whbml")]
+visible = false
+
+[node name="floor-detail2" parent="." instance=ExtResource("15_w7i7k")]
+visible = false
+
+[node name="floor-corner2" parent="." instance=ExtResource("16_6fqlq")]
+visible = false
+
+[node name="floor2" parent="." instance=ExtResource("17_42jf0")]

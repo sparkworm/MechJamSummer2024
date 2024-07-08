@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bomie600py1g0"]
+
+[ext_resource type="PackedScene" uid="uid://blrmwwiv7qc2s" path="res://visuals/models/level/stairs-handrail-single.glb" id="1_okq4i"]
+
+[node name="stairs-handrail-single2" instance=ExtResource("1_okq4i")]

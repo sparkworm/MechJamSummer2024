@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ylbfptducik3"]
+
+[ext_resource type="PackedScene" uid="uid://blkonq6nyw4ye" path="res://visuals/models/level/balcony-floor-center.glb" id="1_egki6"]
+
+[node name="balcony-floor-center2" instance=ExtResource("1_egki6")]
