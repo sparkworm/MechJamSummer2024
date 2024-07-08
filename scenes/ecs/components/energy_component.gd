@@ -1,4 +1,13 @@
 class_name EnergyComponent
 extends Node
 
-var _current_energy: float = 0;
+@export var max_energy: int
+var _energy: int
+var energy: int:
+	get:
+		return _energy
+	set(value):
+		_energy = value
+
+func on_ready() -> void:
+	energy = max_energy

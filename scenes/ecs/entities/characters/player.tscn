@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="2_rmky7"]
 [ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="3_c3sv7"]
 [ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="5_80nyr"]
-[ext_resource type="Script" path="res://scenes/ecs/components/energy_component.gd" id="5_nw0du"]
-[ext_resource type="Script" path="res://scenes/ecs/components/ammo_component.gd" id="6_8i21f"]
+[ext_resource type="PackedScene" uid="uid://dl2pd45xbhiap" path="res://scenes/ecs/components/energy_component.tscn" id="5_kdei1"]
+[ext_resource type="PackedScene" uid="uid://brmcbnglv7fkd" path="res://scenes/ecs/components/ammo_component.tscn" id="6_5ch5c"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="6_gy0be"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
@@ -39,11 +39,9 @@ _primary_attack_scene = ExtResource("2_rmky7")
 
 [node name="HealthComponent" parent="Components" instance=ExtResource("5_80nyr")]
 
-[node name="EnergyComponent" type="Node" parent="Components"]
-script = ExtResource("5_nw0du")
+[node name="EnergyComponent" parent="Components" instance=ExtResource("5_kdei1")]
 
-[node name="AmmoComponent" type="Node" parent="Components"]
-script = ExtResource("6_8i21f")
+[node name="AmmoComponent" parent="Components" instance=ExtResource("6_5ch5c")]
 
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0403, 0)

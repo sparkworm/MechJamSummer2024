@@ -35,3 +35,4 @@ func move_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) 
 	if distance_to_target > 0.001:
 		var distance_to_move: float = min(speed * GameManager.get_current_delta_time(), distance_to_target)
 		node3D.global_transform.origin += direction * distance_to_move
+

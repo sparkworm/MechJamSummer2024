@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl2pd45xbhiap"]
+
+[ext_resource type="Script" path="res://scenes/ecs/components/energy_component.gd" id="1_vjv56"]
+
+[node name="EnergyComponent" type="Node"]
+script = ExtResource("1_vjv56")
