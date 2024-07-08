@@ -1,1 +1,0 @@
-The folder for holding custom resources (.tres/.res ending).

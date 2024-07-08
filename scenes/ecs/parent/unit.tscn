@@ -11,3 +11,5 @@ script = ExtResource("1_ji3fa")
 
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0bjiq")
+
+[node name="UnitMesh" type="MeshInstance3D" parent="."]

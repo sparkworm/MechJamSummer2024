@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4mu6oeflp1t0"]
+
+[ext_resource type="Script" path="res://scenes/ecs/entities/characters/pickup.gd" id="1_8ie1o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
+
+[node name="Pickup" type="StaticBody3D"]
+collision_layer = 1024
+script = ExtResource("1_8ie1o")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0bjiq")
+
+[node name="PickupMesh" type="MeshInstance3D" parent="."]
