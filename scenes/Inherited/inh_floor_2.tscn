@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3n0mlhonjg31"]
+[gd_scene load_steps=3 format=3 uid="uid://b3n0mlhonjg31"]
 
 [ext_resource type="PackedScene" uid="uid://dsw72o0cbk0mr" path="res://visuals/models/level/floor.glb" id="1_xh5fy"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_inxk6"]
+points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0.3, -0.5, 0.499995, 0, -0.5, -0.5, 0, 0.499995, -0.5, 0.3, 0.499995, 0.499995, 0.3, -0.5, 0.499995, 0, 0.499995, 0.499995, 0.3, 0.499995)
+
 [node name="floor2" instance=ExtResource("1_xh5fy")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_inxk6")
