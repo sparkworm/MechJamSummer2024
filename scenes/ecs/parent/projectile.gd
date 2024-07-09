@@ -1,10 +1,18 @@
 extends CharacterBody3D
 class_name Projectile
 
+enum ProjectileState
+{
+	Inactive,
+	Active,
+	Lingering,
+	Expire,
+}
+
 @export_subgroup("Basic Properties")
 @export var _cooldown_time: float = 0.25
 @export var _speed: float = 8
-@export var _life_time: float = 5
+@export var _life_time: float = 2
 @export var _linger_time: float = 0.25
 
 @export_subgroup("Layer Properties")
@@ -15,11 +23,12 @@ var _collisional_layers_mask: int = 0
 var _hit_layers_mask: int = 0
 var _source : Node3D = null #Source would be that who emitted the projectile
 
-@onready var _area_3D: Area3D = $Area3D
+@onready var _detection_area: Area3D = $Area3D
+@onready var _timer: Timer = $Timer
 
-var isEnabled: bool = true
 var hasCollided: bool = false
 var hit_targets: Array[Node3D] = []
+var state: ProjectileState = ProjectileState.Inactive
 
 var cooldown_time: float:
 	get:
@@ -47,8 +56,7 @@ func _ready() -> void:
 	_collisional_layers_mask = LayerUtility.get_bitmask_from_bits(_collisional_layers)
 	_hit_layers_mask = LayerUtility.get_bitmask_from_bits(_hit_layers)
 
-	await get_tree().create_timer(_life_time).timeout
-	_expire()
+	_change_to_active_state()
 
 func init_with_world_direction(source: Node3D, world_start_pos: Vector3, world_direction: Vector3) -> void:
 	_source = source
@@ -56,12 +64,31 @@ func init_with_world_direction(source: Node3D, world_start_pos: Vector3, world_d
 	change_velocity(world_direction, _speed)
 
 func _physics_process(_delta: float) -> void:
-	if(!isEnabled):
-		return
+	if(state == ProjectileState.Active):
+		_handle_active_projectile()
 
-	move_and_slide()
+	elif(state == ProjectileState.Lingering):
+		_handle_lingering_projectile()
 
-	for node3D: Node3D in _area_3D.get_overlapping_bodies():
+	elif(state == ProjectileState.Expire):
+		_handle_expired_projectile()
+
+func _change_to_active_state() -> void:
+	state = ProjectileState.Active
+	_timer.set_wait_time(_life_time)
+	_timer.start()
+
+func _change_to_lingering_state() -> void:
+	state = ProjectileState.Lingering
+	_timer.set_wait_time(_linger_time)
+	_timer.start()
+
+func _change_to_expire_state() -> void:
+	state = ProjectileState.Expire
+
+func _handle_active_projectile() -> void:
+
+	for node3D: Node3D in _detection_area.get_overlapping_bodies():
 		var collision_Layer: int
 
 		if(node3D is CollisionObject3D):
@@ -80,10 +107,20 @@ func _physics_process(_delta: float) -> void:
 		if(LayerUtility.check_any_bits_from_bitmask(collision_Layer, _collisional_layers_mask)):
 			_on_collision(node3D)
 
-	#If has collided this frame, expire the projectile
-	if(hasCollided):
-		_expire()
+	#If has collided or timed out this frame, change state to lingering
+	if(hasCollided || _timer.is_stopped()):
+		_change_to_lingering_state()
 
+	move_and_slide()
+	return
+
+func _handle_lingering_projectile() -> void:
+	if(_timer.is_stopped()):
+		_change_to_expire_state()
+
+func _handle_expired_projectile() -> void:
+	queue_free()
+	state = ProjectileState.Inactive
 
 func _on_hit(collider: CollisionObject3D) -> void:
 	for hit_target: Node3D in hit_targets:
@@ -109,13 +146,3 @@ func _on_collision(collider: Node3D) -> void:
 	print("Projectile has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
 	hasCollided = true
-
-func _expire() -> void:
-	if(!isEnabled):
-		return
-
-	isEnabled = !isEnabled
-
-	#We let the projectile linger for particle system purposes
-	await get_tree().create_timer(_linger_time).timeout
-	queue_free()

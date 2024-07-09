@@ -36,6 +36,10 @@ _speed = 15.0
 _collisional_layers = Array[int]([8, 64, 256, 512, 2048, 8192, 16384])
 _hit_layers = Array[int]([8192])
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_yjg4k")
 
