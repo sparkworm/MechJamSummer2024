@@ -4,7 +4,7 @@ extends Node
 
 #Usually I keep track the player references through other means, but this should be fine
 
-@export var _player: PlayerCharacter = null
+@onready var _player: PlayerCharacter = $Player
 var player: PlayerCharacter:
 	get:
 		return _player
