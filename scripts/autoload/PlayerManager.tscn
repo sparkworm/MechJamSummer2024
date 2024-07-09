@@ -5,5 +5,4 @@
 
 [node name="PlayerManager" type="Node"]
 script = ExtResource("1_ubrfy")
-
-[node name="Player" parent="." instance=ExtResource("2_n2ueq")]
+_player_scene = ExtResource("2_n2ueq")
