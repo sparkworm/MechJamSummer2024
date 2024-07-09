@@ -62,12 +62,19 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 	for node3D: Node3D in _area_3D.get_overlapping_bodies():
-		var collision_Layer: int = node3D.get_collision_layer()
+		var collision_Layer: int
 
 		if(node3D is CollisionObject3D):
+			var collision_object: CollisionObject3D = node3D as CollisionObject3D
+			collision_Layer = collision_object.get_collision_layer()
+
 			#If the projectile can hit: damage, knockback, on hit effect, ect
 			if(LayerUtility.check_any_bits_from_bitmask(collision_Layer, _hit_layers_mask)):
 				_on_hit(node3D as CollisionObject3D)
+
+		elif(node3D is GridMap):
+			var grid_map: GridMap = node3D as GridMap
+			collision_Layer = grid_map.get_collision_layer()
 
 		#If the projectile can collide: projectile expires and on collision effects
 		if(LayerUtility.check_any_bits_from_bitmask(collision_Layer, _collisional_layers_mask)):
@@ -84,8 +91,9 @@ func _on_hit(collider: CollisionObject3D) -> void:
 			return
 	hit_targets.append(collider)
 
+	#Debug
 	var collisionLayer: int = collider.get_collision_layer()
-	print("Has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+	print("Projectile has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
 	#If the target has health, do damage
 	var health_component: HealthComponent = collider.get_node_or_null("Components/HealthComponent") as HealthComponent
@@ -95,8 +103,10 @@ func _on_hit(collider: CollisionObject3D) -> void:
 	pass
 
 func _on_collision(collider: Node3D) -> void:
+
+	#Debug
 	var collisionLayer: int = collider.get_collision_layer()
-	print("Has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+	print("Projectile has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
 	hasCollided = true
 

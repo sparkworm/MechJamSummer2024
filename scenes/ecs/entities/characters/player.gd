@@ -29,10 +29,10 @@ func _physics_process(delta: float) -> void:
 		if(node3D is CollisionObject3D):
 			_on_overlapping_body(node3D)
 
-func _on_overlapping_body(collision_body: CollisionObject3D) -> void:
+func _on_overlapping_body(node3D: Node3D) -> void:
 
-	if(collision_body is Pickup):
-		_handle_pickup(collision_body as Pickup)
+	if(node3D is Pickup):
+		_handle_pickup(node3D as Pickup)
 
 func _handle_movement_input() -> void:
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
