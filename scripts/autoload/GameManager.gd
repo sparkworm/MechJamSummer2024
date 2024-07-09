@@ -71,7 +71,7 @@ func change_level(level_index: int) -> void:
 	call_deferred("_on_change_level_deffered", next_level)
 	_current_level_index = level_index
 
-func change_to_next_level():
+func change_to_next_level() -> void:
 	change_level(_current_level_index + 1)
 
 func _on_change_level_deffered(next_level: PackedScene) -> void:
