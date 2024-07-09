@@ -84,8 +84,8 @@ func _physics_process(delta: float) -> void:
 	_chase_time_remaining -= delta
 	_sweep_time_remaining -= delta
 
-	for collision_body: CollisionObject3D in _detection_area.get_overlapping_bodies():
-		if _on_overlapping_body(collision_body):
+	for node3D: CollisionObject3D in _detection_area.get_overlapping_bodies():
+		if (node3D is CollisionObject3D && _on_overlapping_body(node3D)):
 			break
 
 	if _agent_nav_state == NavState.Chasing:

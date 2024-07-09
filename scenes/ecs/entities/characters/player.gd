@@ -25,8 +25,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Fire"):
 		_attack_component.use_primary_attack(self, _fire_point)
 
-	for collision_body: CollisionObject3D in _detection_area.get_overlapping_bodies():
-		_on_overlapping_body(collision_body)
+	for node3D: Node3D in _detection_area.get_overlapping_bodies():
+		if(node3D is CollisionObject3D):
+			_on_overlapping_body(node3D)
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> void:
 

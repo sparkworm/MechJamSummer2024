@@ -61,17 +61,17 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-	#Area3D Collision func
-	for collider: CollisionObject3D in _area_3D.get_overlapping_bodies():
-		var collisionLayer: int = collider.get_collision_layer()
+	for node3D: Node3D in _area_3D.get_overlapping_bodies():
+		var collision_Layer: int = node3D.get_collision_layer()
 
-		#If the projectile can hit: damage, knockback, on hit effect, ect
-		if(LayerUtility.check_any_bits_from_bitmask(collisionLayer, _hit_layers_mask)):
-			_on_hit(collider)
+		if(node3D is CollisionObject3D):
+			#If the projectile can hit: damage, knockback, on hit effect, ect
+			if(LayerUtility.check_any_bits_from_bitmask(collision_Layer, _hit_layers_mask)):
+				_on_hit(node3D as CollisionObject3D)
 
 		#If the projectile can collide: projectile expires and on collision effects
-		if(LayerUtility.check_any_bits_from_bitmask(collisionLayer, _collisional_layers_mask)):
-			_on_collision(collider)
+		if(LayerUtility.check_any_bits_from_bitmask(collision_Layer, _collisional_layers_mask)):
+			_on_collision(node3D)
 
 	#If has collided this frame, expire the projectile
 	if(hasCollided):
@@ -83,6 +83,7 @@ func _on_hit(collider: CollisionObject3D) -> void:
 		if hit_target == collider:
 			return
 	hit_targets.append(collider)
+
 	var collisionLayer: int = collider.get_collision_layer()
 	print("Has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
@@ -93,9 +94,10 @@ func _on_hit(collider: CollisionObject3D) -> void:
 
 	pass
 
-func _on_collision(collider: CollisionObject3D) -> void:
+func _on_collision(collider: Node3D) -> void:
 	var collisionLayer: int = collider.get_collision_layer()
 	print("Has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+
 	hasCollided = true
 
 func _expire() -> void:
