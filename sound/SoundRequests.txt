@@ -1,5 +1,5 @@
 //Sounds Required
-SoundScape
+SoundScapes
 Martian Barren World
 Martian Wind
 Martian Silent (but not quite)
