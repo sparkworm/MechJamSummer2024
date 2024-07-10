@@ -1,7 +1,7 @@
 class_name InteractComponent
 extends Node
-#Abstract
 
-#Virtual
-func interact():
-	pass
+signal interact
+
+func emit_interact():
+	emit_signal("interact")

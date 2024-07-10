@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kvkeephj0imo"]
+
+[ext_resource type="Script" path="res://scenes/ecs/components/trigger_component.gd" id="1_0txya"]
+
+[node name="TriggerComponent" type="Node"]
+script = ExtResource("1_0txya")

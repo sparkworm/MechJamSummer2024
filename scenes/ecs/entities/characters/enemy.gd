@@ -63,6 +63,7 @@ var _last_detection_point: Vector3 = Vector3.ZERO
 func _ready() -> void:
 	_chase_targets_mask = LayerUtility.get_bitmask_from_bits(_chase_targets)
 	_target_obstructions_mask = LayerUtility.get_bitmask_from_bits(_target_obstructions)
+	_detection_area.collision_mask = _chase_targets_mask
 	_nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	_nav_agent.target_desired_distance = 1
 	_health_component.connect("hit", _is_hit)
@@ -98,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		_move_agent()
 
 func _move_agent() -> void:
-	_movement_delta = _movement_speed * GameManager.get_current_delta_time()
+	_movement_delta = _movement_speed * GameUtility.get_current_delta_time()
 	var next_path_position: Vector3 = _nav_agent.get_next_path_position()
 	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * _movement_speed
 	if _nav_agent.avoidance_enabled:

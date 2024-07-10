@@ -9,7 +9,7 @@ func smooth_look_at(node3D: Node3D, target_position: Vector3, rot_speed: float) 
 	var current_rotation: Quaternion = node3D.global_transform.basis.get_rotation_quaternion()
 	var target_rotation: Quaternion = Quaternion(Vector3.FORWARD, direction).normalized()
 
-	var delta_time: float = GameManager.get_current_delta_time()
+	var delta_time: float = GameUtility.get_current_delta_time()
 
 	var new_rotation: Quaternion = current_rotation.slerp(target_rotation, rot_speed * delta_time)
 	node3D.global_transform.basis = Basis(new_rotation)
@@ -24,7 +24,7 @@ func point_to_transform_raycast(point_start: Vector3, node_target: Node3D, bitma
 
 
 func lerp_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) -> void:
-	var delta: float = GameManager.get_current_delta_time()
+	var delta: float = GameUtility.get_current_delta_time()
 	node3D.global_transform.origin = node3D.global_transform.origin.lerp(point, speed * delta)
 	return
 
@@ -33,6 +33,6 @@ func move_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) 
 	var distance_to_target: float = (point - node3D.global_transform.origin).length()
 
 	if distance_to_target > 0.001:
-		var distance_to_move: float = min(speed * GameManager.get_current_delta_time(), distance_to_target)
+		var distance_to_move: float = min(speed * GameUtility.get_current_delta_time(), distance_to_target)
 		node3D.global_transform.origin += direction * distance_to_move
 

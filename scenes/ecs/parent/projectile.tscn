@@ -43,11 +43,11 @@ one_shot = true
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_yjg4k")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="DetectionArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 4294967295
+collision_mask = 4294901760
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
 shape = SubResource("SphereShape3D_4byjp")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

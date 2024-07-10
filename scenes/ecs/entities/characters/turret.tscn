@@ -51,10 +51,16 @@ mesh = SubResource("SphereMesh_ytifd")
 skeleton = NodePath("../DetectionArea/DetectionVisual")
 surface_material_override/0 = ExtResource("2_23m6c")
 
+[node name="FirePoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("SphereMesh_ytifd")
+skeleton = NodePath("../DetectionArea/DetectionVisual")
+surface_material_override/0 = ExtResource("2_23m6c")
+
 [node name="DetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 0
-collision_mask = 65535
+collision_mask = 0
 
 [node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
 shape = SubResource("SphereShape3D_wf02l")

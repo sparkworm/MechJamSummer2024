@@ -16,6 +16,8 @@ class_name PlayerCharacter
 
 func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
+	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
+	_detection_area.collision_mask = detect_layers
 
 func _physics_process(delta: float) -> void:
 

@@ -1,27 +1,27 @@
-class_name Turret
-extends Unit
+class_name ProximitySwitch
+extends Switch
 
 @onready var _detection_area: Area3D = $DetectionArea
 @onready var _vision_point: Node3D = $VisionPoint
-@onready var _fire_point: Node3D = $FirePoint
 
 @export_subgroup("Detection Layers")
-@export var _target_layers: Array[LayerUtility.Layer] #Targets the turret will attack
-@export var _target_obstructions: Array[LayerUtility.Layer] #Targets that block the turret's vision
+@export var _target_layers: Array[LayerUtility.Layer] #Targets the switch will activate upon
+@export var _target_obstructions: Array[LayerUtility.Layer] #Targets that block the switch's vision
 
 var _targets_mask: int = 0
 var _target_obstructions_mask: int = 0
 
 func _ready() -> void:
+	super()
 	_targets_mask = LayerUtility.get_bitmask_from_bits(_target_layers)
 	_target_obstructions_mask = LayerUtility.get_bitmask_from_bits(_target_obstructions)
 	_detection_area.collision_mask = _targets_mask
-
 
 func _physics_process(delta: float) -> void:
 
 	for node3D: CollisionObject3D in _detection_area.get_overlapping_bodies():
 		if (node3D is CollisionObject3D && _on_overlapping_body(node3D)):
+			activate_switch()
 			break
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
@@ -38,7 +38,7 @@ func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 
 	var collision_shape: CollisionShape3D = body.primary_collider
 	if(_is_body_in_line_of_sight(body, collision_shape)):
-		#fire at target
+		activate_switch()
 		return true
 	else:
 		return false

@@ -23,7 +23,7 @@ var _collisional_layers_mask: int = 0
 var _hit_layers_mask: int = 0
 var _source : Node3D = null #Source would be that who emitted the projectile
 
-@onready var _detection_area: Area3D = $Area3D
+@onready var _detection_area: Area3D = $DetectionArea
 @onready var _timer: Timer = $Timer
 
 var hasCollided: bool = false
@@ -55,6 +55,7 @@ func look_at_dir(dir: Vector3) -> void:
 func _ready() -> void:
 	_collisional_layers_mask = LayerUtility.get_bitmask_from_bits(_collisional_layers)
 	_hit_layers_mask = LayerUtility.get_bitmask_from_bits(_hit_layers)
+	_detection_area.collision_mask = LayerUtility.get_bitmask_from_bits([_hit_layers_mask, _collisional_layers_mask])
 
 	_change_to_active_state()
 

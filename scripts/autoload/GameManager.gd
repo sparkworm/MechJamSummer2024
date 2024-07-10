@@ -82,10 +82,4 @@ func _on_change_level_deffered(next_level: PackedScene) -> void:
 	_current_scene.add_child(_current_level_scene)
 	#Change player position and stuff here according to the Level data
 
-func get_current_delta_time() -> float:
-	if(Engine.is_in_physics_frame):
-		return get_physics_process_delta_time()
-	else:
-		return get_process_delta_time()
-
 #TODO: Add some tweening logic for cross fading between scenes

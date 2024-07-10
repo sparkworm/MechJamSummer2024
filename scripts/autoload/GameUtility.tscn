@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://butagn7y8my1m"]
+
+[ext_resource type="Script" path="res://scripts/autoload/GameUtility.gd" id="1_7g0vw"]
+
+[node name="GameUtility" type="Node"]
+script = ExtResource("1_7g0vw")
