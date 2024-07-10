@@ -121,19 +121,13 @@ func _chase_target() -> void:
 func _sweep_area() -> void:
 	if(_nav_agent.is_navigation_finished()):
 		for i: int in range(RANDOM_SAMPLES):
-			var random_point: Vector3 = _get_random_point_in_radius(_sweep_radius)
+			var random_point: Vector3 = GameUtility.get_random_point_in_radius(_sweep_radius)
 			_set_movement_target(_last_detection_point + random_point)
 			if(_nav_agent.is_target_reachable()):
 				break
 
 	if(_sweep_time_remaining < 0):
 		_nav_state_to_patrolling()
-
-func _get_random_point_in_radius(radius: Vector3 = Vector3.ZERO) -> Vector3:
-	return Vector3(
-			randf_range(-radius.x, radius.x),
-			randf_range(-radius.y, radius.y),
-			randf_range(-radius.z, radius.z))
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 	var collisionLayer: int = collision_body.get_collision_layer()

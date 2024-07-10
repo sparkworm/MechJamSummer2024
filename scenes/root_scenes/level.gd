@@ -1,5 +1,5 @@
 class_name Level
-extends Node
+extends Node3D
 
 #Each game level will incoporate an instance of Level which specifies spawn points and other level specifics
 
