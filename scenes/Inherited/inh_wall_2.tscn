@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj45a5myar7d4"]
+[gd_scene load_steps=3 format=3 uid="uid://dj45a5myar7d4"]
 
 [ext_resource type="PackedScene" uid="uid://ce36mcgta8tka" path="res://visuals/models/level/wall.glb" id="1_ydugj"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j6cn2"]
+points = PackedVector3Array(0.499995, 0.999995, 0.15, 0.499995, 0.999995, -0.15, -0.5, 0.999995, 0.15, 0.499995, 0, 0.15, 0.499995, 0, -0.15, -0.5, 0.999995, -0.15, -0.5, 0, 0.15, -0.5, 0, -0.15)
+
 [node name="wall2" instance=ExtResource("1_ydugj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_j6cn2")

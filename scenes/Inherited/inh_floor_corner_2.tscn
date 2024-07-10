@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqwt8k5f8kyj4"]
+[gd_scene load_steps=3 format=3 uid="uid://dqwt8k5f8kyj4"]
 
 [ext_resource type="PackedScene" uid="uid://b66psbw1j1lmy" path="res://visuals/models/level/floor-corner.glb" id="1_0orhf"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xowlv"]
+points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, -2.65241e-06, -0.5, 0.3, -0.5, 0.499995, 0, -0.5, -2.65241e-06, 0, 0.499995, -0.5, 0.3, -2.65241e-06, 0.499995, 0.3, -0.5, 0.499995, 0, 0.499995, -2.65241e-06, 0.3, 0.499995, 0.499995, 0.3, 0.499995)
+
 [node name="floor-corner2" instance=ExtResource("1_0orhf")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor-corner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor-corner/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xowlv")
