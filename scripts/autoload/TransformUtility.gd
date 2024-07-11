@@ -28,6 +28,7 @@ func lerp_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) 
 	node3D.global_transform.origin = node3D.global_transform.origin.lerp(point, speed * delta)
 	return
 
+#just testing different lerpings
 func move_transform_towards_point(node3D: Node3D, point: Vector3, speed: float) -> void:
 	var direction: Vector3 = (point - node3D.global_transform.origin).normalized()
 	var distance_to_target: float = (point - node3D.global_transform.origin).length()

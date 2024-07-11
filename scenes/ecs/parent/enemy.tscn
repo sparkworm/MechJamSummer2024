@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://c24uux7pvmbng"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/enemy.gd" id="1_454w4"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
+[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
+[ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
+[ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="4_ae3hl"]
+[ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="5_xg2n3"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://dyyn0nbob5upy" path="res://resources/blend_trees/basic_enemy_blend_tree.tres" id="6_ujplw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dksx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_drfhg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yfg4t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_brd60"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jgbnc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf3pd"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.896635, 0, 0.0937623, 0.317647)
+albedo_texture = ExtResource("3_6e1wk")
+uv1_scale = Vector3(10, 10, 10)
+uv2_scale = Vector3(10, 10, 10)
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 8192
+collision_mask = 30847
+script = ExtResource("1_454w4")
+_chase_targets = Array[int]([4096])
+_target_obstructions = Array[int]([1, 2, 4, 8, 32, 128, 512, 2048])
+_detection_radius_patrolling = 16.0
+_chasing_movement_speed = 4.0
+_sweeping_rotation_speed = 4.0
+_detection_radius_sweeping = 18.0
+_sweep_radius = Vector3(8, 0, 8)
+_movement_speed = 10.0
+
+[node name="Components" type="Node" parent="."]
+
+[node name="HealthComponent" parent="Components" instance=ExtResource("3_jrb6v")]
+
+[node name="KnockbackComponent" parent="Components" instance=ExtResource("4_ae3hl")]
+
+[node name="AttackComponent" parent="Components" instance=ExtResource("5_xg2n3")]
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0403, 0)
+shape = SubResource("CapsuleShape3D_2dksx")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="VisionPoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.55523, -0.519085)
+mesh = SubResource("SphereMesh_drfhg")
+
+[node name="FirePoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -1.08947)
+mesh = SubResource("SphereMesh_yfg4t")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_8uji8")
+
+[node name="EnemyVisuals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="EnemyVisuals"]
+tree_root = ExtResource("6_ujplw")
+parameters/Attack_1/active = false
+parameters/Attack_1/internal_active = false
+parameters/Attack_1/request = 0
+parameters/Attack_1_TimeScale/scale = 1.0
+parameters/Attack_2/active = false
+parameters/Attack_2/internal_active = false
+parameters/Attack_2/request = 0
+parameters/Attack_2_TimeScale/scale = 1.0
+parameters/Transition/current_state = ""
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = -1
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2348, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_brd60")
+
+[node name="DetectionVisual" type="MeshInstance3D" parent="DetectionArea"]
+mesh = SubResource("SphereMesh_jgbnc")
+surface_material_override/0 = SubResource("StandardMaterial3D_uf3pd")
