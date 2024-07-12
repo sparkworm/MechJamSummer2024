@@ -1,0 +1,2 @@
+class_name PatrolPoint
+extends MeshInstance3D

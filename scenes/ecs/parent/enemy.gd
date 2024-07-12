@@ -35,28 +35,35 @@ enum NavState
 @export var _target_obstructions: Array[LayerUtility.Layer] #Targets that block the enemy's vision
 
 @export_subgroup("Patrolling Attributes")
+@export var _patrol_route: PatrolRoute = null
+@export var _current_patrol_point: PatrolPoint = null
+@export var _random_patrol_points: bool = false
 @export var _patrolling_movement_speed: float = 2
 @export var _patrolling_rotation_speed: float = 3
-@export var _detection_radius_patrolling: float = 12
-@export var _detection_cone_degrees_patrolling: float = 160
+@export var _patrolling_idle_duration: float = 1
+@export var _patrolling_radius_detection: float = 12
+@export var _patrolling_cone_degrees_detection: float = 160
+@export var _patrolling_area_variance: Vector3 = Vector3(1, 0, 1)
+
 
 @export_subgroup("Chasing Attributes")
 @export var _chasing_movement_speed: float = 5
 @export var _chasing_rotation_speed: float = 10
-@export var _detection_radius_chasing: float = 20
-@export var _detection_cone_degrees_chasing: float = 280
+@export var _chase_radius_detection: float = 20
+@export var _chasing_detection_cone_degrees: float = 280
 @export var _chase_duration: float = 2
 
 @export_subgroup("Attacking Attributes")
-@export var _detection_cone_degrees_attacking: float = 35
+@export var _attacking_detection_cone_degrees: float = 35
 
 @export_subgroup("Sweeping Attributes")
 @export var _sweeping_movement_speed: float = 3
 @export var _sweeping_rotation_speed: float = 5
-@export var _detection_radius_sweeping: float = 16
-@export var _detection_cone_degrees_sweeping: float = 200
-@export var _sweep_duration: float = 20
-@export var _sweep_radius: Vector3 = Vector3(1, 0, 1)
+@export var _sweeping_detection_radius: float = 16
+@export var _sweeping_detection_cone_degrees: float = 200
+@export var _sweeping_state_duration: float = 20
+@export var _sweeping_idle_duration: float = 1
+@export var _sweeping_area_variance: Vector3 = Vector3(10, 0, 10)
 
 @onready var _nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var _vision_point: Node3D = $VisionPoint
@@ -70,8 +77,8 @@ var _target_obstructions_mask: int = 0
 
 var _agent_nav_state: NavState = NavState.Patrolling
 var _current_target: Body = null
-var _chase_time_remaining: float = 0
-var _sweep_time_remaining: float = 0
+var _state_time_remaining: float = 0
+var _idle_time_remaining: float = 0
 var _last_detection_point: Vector3 = Vector3.ZERO
 
 var _current_attack_animation_time: float = 0
@@ -85,10 +92,10 @@ var _disables_transition:String = "Disables"
 
 #Movements Animations
 var _movements_FSM: AnimationNodeStateMachinePlayback
-var _walking_1_animation: String = "Walking_1"
-var _walking_2_animation: String = "Walking_2"
-var _running_1_animation: String = "Running_1"
-var _running_2_animation: String = "Running_2"
+var _walking_animation: String = "Walking"
+var _chasing_animation: String = "Chasing"
+var _sweeping_animation: String = "Sweeping"
+var _idle_animation: String = "Idle"
 
 #Disables Animations
 var _disables_FSM: AnimationNodeStateMachinePlayback
@@ -102,14 +109,20 @@ var _attack_2_animation: String = "parameters/Attack_2/request"
 var _attack_2_time_scale: String = "parameters/Attack_2_TimeScale/scale"
 
 func _ready() -> void:
+	set_physics_process(false)
+	call_deferred("_deffered_ready")
+
+func _deffered_ready():
+	await get_tree().physics_frame
+	set_physics_process(true)
 	_movements_FSM = _animation_tree.get("parameters/Movements_FSM/playback")
 	_disables_FSM = _animation_tree.get("parameters/Disables_FSM/playback")
 
 	detection_cone_degrees = {
-		NavState.Patrolling: _detection_cone_degrees_patrolling,
-		NavState.Chasing: _detection_cone_degrees_chasing,
-		NavState.Attacking: _detection_cone_degrees_attacking,
-		NavState.Sweeping: _detection_cone_degrees_sweeping,
+		NavState.Patrolling: _patrolling_cone_degrees_detection,
+		NavState.Chasing: _chasing_detection_cone_degrees,
+		NavState.Attacking: _attacking_detection_cone_degrees,
+		NavState.Sweeping: _sweeping_detection_cone_degrees,
 	}
 
 	_chase_targets_mask = LayerUtility.get_bitmask_from_bits(_chase_targets)
@@ -118,8 +131,21 @@ func _ready() -> void:
 	_nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	_nav_agent.target_desired_distance = 1
 	_health_component.connect("hit", _is_hit)
-	_nav_state_to_patrolling()
+	_init_patrol_route()
 
+func _init_patrol_route() -> void:
+	if(_patrol_route == null):
+		_patrol_route = GameManager.current_level_scene.get_random_level_patrol_route()
+
+	if(_current_patrol_point == null):
+		if(_random_patrol_points):
+			_current_patrol_point = _patrol_route.get_random_patrol_point()
+		else:
+			_current_patrol_point = _patrol_route.get_closest_patrol_point_from_point(self)
+
+	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
+		_set_movement_target(_current_patrol_point.global_position)
+	_nav_state_to_patrolling()
 
 func _is_hit(source: Node3D) -> void:
 	if(_agent_nav_state != NavState.Attacking && source is Body):
@@ -132,10 +158,10 @@ func _die() -> void:
 func _set_movement_target(movement_target: Vector3) -> void:
 	_nav_agent.set_target_position(movement_target)
 
+#func get
+
 func _physics_process(delta: float) -> void:
-	#Will change this to time-stamp comparisons later
-	_chase_time_remaining -= delta
-	_sweep_time_remaining -= delta
+	_state_time_remaining -= delta
 
 	if _agent_nav_state == NavState.Attacking:
 		_attack_target()
@@ -145,8 +171,10 @@ func _physics_process(delta: float) -> void:
 			if (node3D is CollisionObject3D && _on_overlapping_body(node3D)):
 				break
 
+		_animation_tree[_animation_transition] = _movements_transition
+
 		if _agent_nav_state == NavState.Patrolling:
-			pass
+			_patrol_area()
 
 		elif _agent_nav_state == NavState.Chasing:
 			_chase_target()
@@ -157,6 +185,10 @@ func _physics_process(delta: float) -> void:
 		if !_nav_agent.is_navigation_finished():
 			_move_agent()
 
+		else:
+			_movements_FSM.travel(_idle_animation)
+
+
 func _move_agent() -> void:
 	_movement_delta = _movement_speed * GameUtility.get_current_delta_time()
 	var next_path_position: Vector3 = _nav_agent.get_next_path_position()
@@ -166,13 +198,33 @@ func _move_agent() -> void:
 	else:
 		_on_velocity_computed(new_velocity)
 
+func _patrol_area() -> void:
+	if(_nav_agent.is_navigation_finished()):
+		_idle_time_remaining -= GameUtility.get_current_delta_time()
+		if(_idle_time_remaining < 0):
+			_get_next_patrol_point()
+
+	else:
+		if(_movements_FSM.get_current_node() != _walking_animation):
+			_movements_FSM.travel(_walking_animation)
+
+func _get_next_patrol_point() -> void:
+	if(_random_patrol_points):
+		_current_patrol_point = _patrol_route.get_next_point_from_route(_current_patrol_point)
+	else:
+		_current_patrol_point = _patrol_route.get_random_patrol_point()
+
+	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
+		_set_movement_target(_current_patrol_point.global_position)
+		_idle_time_remaining = _patrolling_idle_duration
+
+
 func _chase_target() -> void:
 	if(_current_target == null):
 		_nav_state_to_patrolling()
 
 	var target_position = _current_target.global_position
 	if(global_position.distance_to(target_position) < _weapon_1_range):
-		print(global_position.distance_to(target_position))
 		var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
 		var collision_shape: CollisionShape3D = _current_target.primary_collider
 		if(_is_collider_in_vision_cone(collision_shape, detection_cone_degrees[NavState.Attacking])
@@ -180,9 +232,10 @@ func _chase_target() -> void:
 			_nav_state_to_attacking(_current_target)
 			return
 
+	_movements_FSM.travel(_chasing_animation)
 	#probably add a delay to this later
 	_set_movement_target(target_position)
-	if(_chase_time_remaining < 0):
+	if(_state_time_remaining < 0):
 		_nav_state_to_sweeping(target_position)
 	pass
 
@@ -190,8 +243,8 @@ func _attack_target() -> void:
 	if(_current_target == null):
 		_nav_state_to_patrolling()
 
+	_animation_tree[_animation_transition] = _attacks_transition
 	if(!_has_started_attack):
-	#_attack_component.use_primary_attack(self, _weapon_1_fire_point)
 		_animation_tree[_attack_1_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		_current_attack_animation_time = 1 + Time.get_unix_time_from_system()
 		_has_started_attack = true
@@ -201,14 +254,25 @@ func _attack_target() -> void:
 
 func _sweep_area() -> void:
 	if(_nav_agent.is_navigation_finished()):
-		for i: int in range(RANDOM_SAMPLES):
-			var random_point: Vector3 = GameUtility.get_random_point_in_radius(_sweep_radius)
-			_set_movement_target(_last_detection_point + random_point)
-			if(_nav_agent.is_target_reachable()):
-				break
+		_idle_time_remaining -= GameUtility.get_current_delta_time()
+		if(_idle_time_remaining < 0
+		&& _try_set_nav_point_in_area(_last_detection_point, _sweeping_area_variance)):
+			_idle_time_remaining = _sweeping_idle_duration
 
-	if(_sweep_time_remaining < 0):
+	_movements_FSM.travel(_sweeping_animation)
+	if(_state_time_remaining < 0):
 		_nav_state_to_patrolling()
+
+func _try_set_nav_point_in_area(point: Vector3, area_variance: Vector3) -> bool:
+	var current_pos: Vector3 = global_position
+	for i: int in range(RANDOM_SAMPLES):
+		var variance: Vector3 = GameUtility.get_random_point_in_radius(area_variance)
+		_set_movement_target(point + variance)
+		if(_nav_agent.is_target_reachable()):
+			return true
+	_set_movement_target(current_pos)
+	return false
+
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 	var collisionLayer: int = collision_body.get_collision_layer()
@@ -224,7 +288,6 @@ func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 
 	var collision_shape: CollisionShape3D = body.primary_collider
 	if(!_is_collider_in_vision_cone(collision_shape, detection_cone_degrees[_agent_nav_state])):
-
 		return false
 
 	var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
@@ -261,34 +324,31 @@ func _is_collider_in_vision_cone(collider: CollisionShape3D, degrees: float) -> 
 
 
 func _on_before_state_change() -> void:
+	_state_time_remaining = 0
 	pass
 
 func _nav_state_to_patrolling() -> void:
 	_on_before_state_change()
-	_animation_tree[_animation_transition] = _movements_transition
-	#_movements_FSM.travel("Idle")
+	_idle_time_remaining = _patrolling_idle_duration
 	_movement_speed = _patrolling_movement_speed
 	_rotation_speed = _patrolling_rotation_speed
-	var radius: float = _detection_radius_patrolling
+	var radius: float = _patrolling_radius_detection
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Patrolling
 
 func _nav_state_to_chasing(collision_body: Body) -> void:
 	_on_before_state_change()
-	_animation_tree[_animation_transition] = _movements_transition
-	_movements_FSM.travel(_running_1_animation)
 	_movement_speed = _chasing_movement_speed
 	_rotation_speed = _chasing_rotation_speed
 	_current_target = collision_body
-	_chase_time_remaining = _chase_duration
-	var radius: float = _detection_radius_chasing
+	_state_time_remaining = _chase_duration
+	var radius: float = _chase_radius_detection
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Chasing
 
 func _nav_state_to_attacking(collision_body: Body) -> void:
 	_on_before_state_change()
 	_animation_tree[_animation_transition] = _attacks_transition
-	_movements_FSM.travel(_running_1_animation)
 	_nav_agent.target_position = global_position
 	_current_target = collision_body
 	_agent_nav_state = NavState.Attacking
@@ -296,13 +356,12 @@ func _nav_state_to_attacking(collision_body: Body) -> void:
 
 func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 	_on_before_state_change()
-	_animation_tree[_animation_transition] = _movements_transition
-	_movements_FSM.travel(_running_2_animation)
+	_idle_time_remaining = _sweeping_idle_duration
 	_movement_speed = _sweeping_movement_speed
 	_rotation_speed = _sweeping_rotation_speed
 	_last_detection_point = last_detection_point
-	_sweep_time_remaining = _sweep_duration
-	var radius: float = _detection_radius_sweeping
+	_state_time_remaining = _sweeping_state_duration
+	var radius: float = _sweeping_detection_radius
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Sweeping
 

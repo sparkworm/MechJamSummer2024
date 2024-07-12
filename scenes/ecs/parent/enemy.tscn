@@ -32,11 +32,8 @@ collision_mask = 30847
 script = ExtResource("1_454w4")
 _chase_targets = Array[int]([4096])
 _target_obstructions = Array[int]([1, 2, 4, 8, 32, 128, 512, 2048])
-_detection_radius_patrolling = 16.0
 _chasing_movement_speed = 4.0
 _sweeping_rotation_speed = 4.0
-_detection_radius_sweeping = 18.0
-_sweep_radius = Vector3(8, 0, 8)
 _movement_speed = 10.0
 
 [node name="Components" type="Node" parent="."]

@@ -14,7 +14,7 @@ enum GameState {
 @export var _game_scene: PackedScene
 @export var _levels: Array[PackedScene] = []
 
-var _game_state: GameState = GameState.Load
+var _game_state: GameState = GameState.Game
 var _current_scene: Node
 
 var _current_level_index: int = -1
@@ -24,8 +24,9 @@ var current_level_scene: Level:
 		return _current_level_scene
 
 func _ready() -> void:
-	#should start in loading scene via project settings
-	pass
+	_current_scene = get_tree().current_scene
+	change_state(GameState.Game)
+	change_to_next_level()
 
 func change_state(state: GameState) -> void:
 	call_deferred("_change_state_deffered", state)
@@ -41,11 +42,13 @@ func _state_clean_up() -> void:
 	elif(_game_state == GameState.Intro):
 		pass
 	else: #(_game_state == GameState.Game):
-		_current_level_scene.free()
-		_current_level_index = -1
+		if(_current_level_scene != null):
+			_current_level_scene.free()
+			_current_level_index = -1
 		pass
 
-	_current_scene.free()
+	if(_current_scene != null):
+		_current_scene.free()
 
 func _state_initialization() -> void:
 	if(_game_state == GameState.Load):
@@ -80,6 +83,8 @@ func _on_change_level_deffered(next_level: PackedScene) -> void:
 
 	_current_level_scene = next_level.instantiate()
 	_current_scene.add_child(_current_level_scene)
+	var start_pos: Vector3 = _current_level_scene.get_level_start_position()
+	PlayerManager.change_player_global_position(start_pos)
 	#Change player position and stuff here according to the Level data
 
 #TODO: Add some tweening logic for cross fading between scenes

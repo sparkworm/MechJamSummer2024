@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=31 format=3 uid="uid://dyyn0nbob5upy"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=28 format=3 uid="uid://dyyn0nbob5upy"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_v6qtb"]
 fadein_time = 0.1
@@ -50,11 +50,11 @@ graph_offset = Vector2(-247, -285)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rmrtu"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p57dg"]
-animation = &"Idle"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02tld"]
 animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p57dg"]
+animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_exqka"]
 animation = &"Running_B"
@@ -62,51 +62,41 @@ animation = &"Running_B"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sqc7b"]
 animation = &"Walking_A"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_khflc"]
-animation = &"Walking_B"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3xivy"]
 xfade_time = 0.1
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vwuvp"]
-xfade_time = 0.1
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tgi6s"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e67g8"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e4r6k"]
-xfade_time = 0.1
+xfade_time = 0.3
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6hah1"]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbc2k"]
-xfade_time = 0.1
+xfade_time = 0.3
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3x0f1"]
-xfade_time = 0.1
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5uvuq"]
+xfade_time = 0.3
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5at3q"]
+states/Chasing/node = SubResource("AnimationNodeAnimation_02tld")
+states/Chasing/position = Vector2(88, 5)
 states/End/position = Vector2(1088, 88)
 states/Idle/node = SubResource("AnimationNodeAnimation_p57dg")
 states/Idle/position = Vector2(505, 88)
-states/Running_1/node = SubResource("AnimationNodeAnimation_02tld")
-states/Running_1/position = Vector2(88, -134)
-states/Running_2/node = SubResource("AnimationNodeAnimation_exqka")
-states/Running_2/position = Vector2(93, -224)
 states/Start/position = Vector2(-63, 274)
-states/Walking_1/node = SubResource("AnimationNodeAnimation_sqc7b")
-states/Walking_1/position = Vector2(88, 100)
-states/Walking_2/node = SubResource("AnimationNodeAnimation_khflc")
-states/Walking_2/position = Vector2(88, -18)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3xivy"), "Idle", "Running_1", SubResource("AnimationNodeStateMachineTransition_vwuvp"), "Running_1", "Idle", SubResource("AnimationNodeStateMachineTransition_tgi6s"), "Idle", "Walking_2", SubResource("AnimationNodeStateMachineTransition_e67g8"), "Walking_2", "Idle", SubResource("AnimationNodeStateMachineTransition_e4r6k"), "Idle", "Running_2", SubResource("AnimationNodeStateMachineTransition_6hah1"), "Running_2", "Idle", SubResource("AnimationNodeStateMachineTransition_qbc2k"), "Idle", "Walking_1", SubResource("AnimationNodeStateMachineTransition_3x0f1"), "Walking_1", "Idle", SubResource("AnimationNodeStateMachineTransition_5uvuq")]
-graph_offset = Vector2(-295, -307)
+states/Sweeping/node = SubResource("AnimationNodeAnimation_exqka")
+states/Sweeping/position = Vector2(93, -85)
+states/Walking/node = SubResource("AnimationNodeAnimation_sqc7b")
+states/Walking/position = Vector2(88, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3xivy"), "Idle", "Chasing", SubResource("AnimationNodeStateMachineTransition_vwuvp"), "Chasing", "Idle", SubResource("AnimationNodeStateMachineTransition_tgi6s"), "Idle", "Sweeping", SubResource("AnimationNodeStateMachineTransition_6hah1"), "Sweeping", "Idle", SubResource("AnimationNodeStateMachineTransition_qbc2k"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_3x0f1"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_5uvuq")]
+graph_offset = Vector2(-250, -97)
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_81s2d"]
 xfade_time = 0.2
@@ -121,7 +111,7 @@ input_2/auto_advance = false
 input_2/reset = true
 
 [resource]
-graph_offset = Vector2(-196.656, -143.241)
+graph_offset = Vector2(-238.421, -129.197)
 nodes/Attack_1/node = SubResource("AnimationNodeOneShot_v6qtb")
 nodes/Attack_1/position = Vector2(360, -20)
 nodes/Attack_1_Animation/node = SubResource("AnimationNodeAnimation_wfvcg")

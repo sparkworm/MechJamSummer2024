@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://t4dgmau4jnxv"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/patrol_point.gd" id="1_520rr"]
+[ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="1_nf6g1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dglia"]
+
+[node name="PatrolPoint" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_dglia")
+surface_material_override/0 = ExtResource("1_nf6g1")
+script = ExtResource("1_520rr")
