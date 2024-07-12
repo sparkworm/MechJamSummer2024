@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://2t773f1lsw25"
-path="res://.godot/imported/Pico_Core2.glb-2fe813e22750d09a631c182636a6f5a9.scn"
+uid="uid://cnfjktkavch0l"
+path="res://.godot/imported/Pico_MiniGunAmmo.glb-1ae37f6c644601d0c914e4d4db95864e.scn"
 
 [deps]
 
-source_file="res://visuals/models/Pico_Core2.glb"
-dest_files=["res://.godot/imported/Pico_Core2.glb-2fe813e22750d09a631c182636a6f5a9.scn"]
+source_file="res://visuals/models/pickups/Pico_MiniGunAmmo.glb"
+dest_files=["res://.godot/imported/Pico_MiniGunAmmo.glb-1ae37f6c644601d0c914e4d4db95864e.scn"]
 
 [params]
 

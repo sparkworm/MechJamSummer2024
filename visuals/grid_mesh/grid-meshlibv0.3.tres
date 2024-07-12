@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" load_steps=78 format=3 uid="uid://c4r4l11sb6wt7"]
 
 [ext_resource type="Texture2D" uid="uid://dds2mrmy5kij4" path="res://visuals/models/level/textures/colormap.png" id="1_2k2nc"]
-[ext_resource type="Texture2D" uid="uid://dc7okoay41byw" path="res://visuals/models/Pico_Core2_Pico_Core2.png" id="2_hp4f5"]
+[ext_resource type="Texture2D" uid="uid://dc7okoay41byw" path="res://visuals/models/pickups/Pico_Core2_Pico_Core2.png" id="2_hp4f5"]
 [ext_resource type="Texture2D" uid="uid://cmn11fcvptqg" path="res://visuals/models/structures/engineer_turret/engineer_texture.png" id="3_c2jfo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kvhw"]

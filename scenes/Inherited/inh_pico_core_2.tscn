@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqu0c7m7b87kl"]
 
-[ext_resource type="PackedScene" uid="uid://2t773f1lsw25" path="res://visuals/models/Pico_Core2.glb" id="1_5n277"]
+[ext_resource type="PackedScene" uid="uid://2t773f1lsw25" path="res://visuals/models/pickups/Pico_Core2.glb" id="1_5n277"]
 
 [node name="Pico_Core2" instance=ExtResource("1_5n277")]
