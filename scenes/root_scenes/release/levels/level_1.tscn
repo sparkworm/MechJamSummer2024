@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bew1trcfy3nct"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_5hgy8"]
-[ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_qmgxq"]
+[ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_rycog"]
 [ext_resource type="PackedScene" uid="uid://t4dgmau4jnxv" path="res://scenes/ecs/parent/patrol_point.tscn" id="3_6bq2y"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="4_rbjs0"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="5_7sdeu"]
@@ -58,30 +58,30 @@ _level_patrol_routes = [NodePath("LevelPatrolRoutes/PatrolRoute1"), NodePath("Le
 [node name="LevelPatrolRoutes" type="Node" parent="."]
 
 [node name="PatrolRoute1" type="Node" parent="LevelPatrolRoutes" node_paths=PackedStringArray("_patrol_points")]
-script = ExtResource("2_qmgxq")
-_patrol_points = [NodePath("../../LevelPatrolPoints/PatrolPoint1"), NodePath("../../LevelPatrolPoints/PatrolPoint3"), NodePath("../../LevelPatrolPoints/PatrolPoint2")]
+script = ExtResource("2_rycog")
+_patrol_points = [NodePath("../../LevelPatrolPoints/PatrolPoint1"), NodePath("../../LevelPatrolPoints/PatrolPoint2"), NodePath("../../LevelPatrolPoints/PatrolPoint3")]
 
 [node name="PatrolRoute2" type="Node" parent="LevelPatrolRoutes" node_paths=PackedStringArray("_patrol_points")]
-script = ExtResource("2_qmgxq")
-_patrol_points = [NodePath("../../LevelPatrolPoints/PatrolPoint1"), NodePath("../../LevelPatrolPoints/PatrolPoint3"), NodePath("../../LevelPatrolPoints/PatrolPoint4")]
+script = ExtResource("2_rycog")
+_patrol_points = [NodePath("../../LevelPatrolPoints/PatrolPoint2"), NodePath("../../LevelPatrolPoints/PatrolPoint1"), NodePath("../../LevelPatrolPoints/PatrolPoint4")]
 
 [node name="LevelPatrolPoints" type="Node" parent="."]
 
 [node name="PatrolPoint1" parent="LevelPatrolPoints" instance=ExtResource("3_6bq2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.772, 1, 20.532)
-skeleton = NodePath("../../LevelPatrolRoutes/PatrolRoute1")
+skeleton = NodePath("")
 
 [node name="PatrolPoint2" parent="LevelPatrolPoints" instance=ExtResource("3_6bq2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.918, 1, -31.987)
-skeleton = NodePath("../../LevelPatrolRoutes/PatrolRoute1")
+skeleton = NodePath("")
 
 [node name="PatrolPoint3" parent="LevelPatrolPoints" instance=ExtResource("3_6bq2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8147, 1, -31.987)
-skeleton = NodePath("../../LevelPatrolRoutes/PatrolRoute1")
+skeleton = NodePath("")
 
 [node name="PatrolPoint4" parent="LevelPatrolPoints" instance=ExtResource("3_6bq2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8147, 1, 23.3982)
-skeleton = NodePath("../../LevelPatrolRoutes/PatrolRoute1")
+skeleton = NodePath("")
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.134)

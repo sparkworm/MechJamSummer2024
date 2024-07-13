@@ -4,6 +4,9 @@ extends Node
 
 @onready var pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
+var camera: Camera3D:
+	get: return _camera
+
 var _player_target: PlayerCharacter = null
 
 @export_group("Camera scroll distances")

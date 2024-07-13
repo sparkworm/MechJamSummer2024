@@ -4,8 +4,6 @@ extends Node
 
 #Usually I keep track the player references through other means, but this should be fine
 
-@export var debug_start_position: Vector3 = Vector3.ZERO
-
 @export var _player_scene: PackedScene = null
 var _player: PlayerCharacter = null
 var player: PlayerCharacter:
@@ -23,7 +21,6 @@ func instantiate_new_player_character() -> PlayerCharacter:
 	var player_character: PlayerCharacter = _player_scene.instantiate() as PlayerCharacter
 	add_child(player_character)
 	_player = player_character
-	_player.global_position = debug_start_position
 	return _player
 
 func change_player_global_position(position: Vector3) -> void:
