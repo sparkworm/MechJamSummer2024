@@ -27,7 +27,9 @@ func deactivate_switch() -> void:
 	_is_active = false
 
 func _process(delta: float) -> void:
-	if(!_is_active):
+	if(!_is_active
+	|| _switch_trigger == null
+	|| !is_instance_valid(_switch_trigger)):
 		return
 
 	var currentTime: float = Time.get_unix_time_from_system()

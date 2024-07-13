@@ -28,14 +28,21 @@ uv2_scale = Vector3(10, 10, 10)
 collision_layer = 1024
 collision_mask = 0
 script = ExtResource("1_cbkj7")
-
-[node name="Components" type="Node" parent="."]
+_target_layers = Array[int]([4096])
 
 [node name="PrimaryCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_qwyyr")
 
+[node name="Components" type="Node" parent="."]
+
 [node name="SwitchMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_dl6g7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_80a68")
+
+[node name="VisionPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_dl6g7")
 skeleton = NodePath("")
