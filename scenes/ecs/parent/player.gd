@@ -53,26 +53,27 @@ func _ready() -> void:
 	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
 	_detection_area.collision_mask = detect_layers
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
 	_fire_cursor.global_position = _mouse_pos_this_frame
 
-	if(_player_state == PlayerState.Active):
-		_handle_movement_input()
-		_update_blend_position(delta)
-		_handle_look_rotation_input()
+	if(_player_state != PlayerState.Busy):
 
-		if Input.is_action_pressed("Dash"):
-			_prepare_dash()
-		elif Input.is_action_pressed("Primary"):
+		if(_player_state == PlayerState.Active):
+			_handle_movement_input()
+			_update_blend_position(delta)
+			_handle_look_rotation_input()
+
+		elif(_player_state == PlayerState.Dashing):
+			_handle_dashing()
+
+		if Input.is_action_pressed("Primary"):
 			use_primary_attack()
 		elif Input.is_action_pressed("Secondary"):
 			pass
 		elif Input.is_action_pressed("Interact"):
 			pass
 
-	elif(_player_state == PlayerState.Dashing):
-		_handle_dashing()
 
 	for node3D: Node3D in _detection_area.get_overlapping_bodies():
 		if(node3D is CollisionObject3D):
@@ -105,6 +106,9 @@ func _handle_movement_input() -> void:
 	_set_target_blend_position(Vector2(new_right, new_forward))
 
 	velocity = _velocity
+
+	if Input.is_action_pressed("Dash"):
+		_prepare_dash(velocity.normalized())
 
 	move_and_slide()
 
@@ -147,17 +151,18 @@ func _handle_pickup(pickup: Pickup) -> void:
 			var ammo_data: AmmoData = pickup_data as AmmoData
 			_ammo_component.add_ammo(ammo_data)
 
-func _prepare_dash():
-	look_at(_mouse_pos_this_frame)
-	_player_state == PlayerState.Dashing
+func _prepare_dash(direction: Vector3):
+	if(direction == Vector3.ZERO):
+		direction = -global_transform.basis.z.normalized()
+
+	_player_state = PlayerState.Dashing
 	_current_dash_time = _dash_duration
 	#_animation_tree[_dash_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-	velocity = -global_transform.basis.z.normalized() * _dash_speed
-	move_and_slide()
+	velocity = direction * _dash_speed
 
 func _handle_dashing():
 	_current_dash_time -= GameUtility.get_current_delta_time()
-
 	if(_current_dash_time < 0):
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
+	move_and_slide()

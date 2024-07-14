@@ -45,6 +45,7 @@ gdscript/warnings/unsafe_call_argument=1
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/vsync/vsync_mode=2
 
 [input]
 
