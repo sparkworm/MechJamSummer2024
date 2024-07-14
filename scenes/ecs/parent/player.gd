@@ -27,12 +27,14 @@ enum PlayerState
 @export_group("Dash")
 @export var _dash_speed: float = 5
 @export var _dash_duration: float = 1
+@export var _dash_blend_speed: float = 100
 
 var _player_state: PlayerState = PlayerState.Active
 var _mouse_pos_this_frame: Vector3
 var _current_blend_position: Vector2 = Vector2()
 
 var _current_dash_time: float = 0
+var _last_iso_input_dir: Vector2
 
 @export var _primary_attack_scene: PackedScene
 var _primary_attack_current_cooldown: float = 0
@@ -48,6 +50,11 @@ var _movement_transition: String = "Movement"
 var _movement_blend_position: String = "parameters/Run_Animation/blend_position"
 var _run_attack_animation: String = "parameters/Run_Attack/request"
 
+#Dash Animation State
+var _dash_transition: String = "Dash"
+var _dash_blend_position: String = "parameters/Dash_Animation/blend_position"
+var _dash_attack_animation: String = "parameters/Dash_Attack/request"
+
 func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
 	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
@@ -61,11 +68,23 @@ func _process(delta: float) -> void:
 
 		if(_player_state == PlayerState.Active):
 			_handle_movement_input()
-			_update_blend_position(delta)
-			_handle_look_rotation_input()
+			_update_blend_position(_movement_blend_position, _blend_speed)
+
+			if Input.is_action_pressed("Dash"):
+				_prepare_dash(velocity.normalized())
+				_animation_tree[_animation_transition] = _dash_transition
+
+			else:
+				_animation_tree[_animation_transition] = _movement_transition
+
+			_set_target_blend_position(_last_iso_input_dir)
 
 		elif(_player_state == PlayerState.Dashing):
 			_handle_dashing()
+			_update_blend_position(_dash_blend_position, _dash_blend_speed)
+
+		_handle_look_rotation_input()
+		move_and_slide()
 
 		if Input.is_action_pressed("Primary"):
 			use_primary_attack()
@@ -102,24 +121,19 @@ func _handle_movement_input() -> void:
 	var new_forward: float = isometric_dir.dot(forward)
 	var new_right: float = isometric_dir.dot(right)
 
-	_animation_tree[_animation_transition] = _movement_transition
-	_set_target_blend_position(Vector2(new_right, new_forward))
+	_last_iso_input_dir = Vector2(new_right, new_forward)
 
 	velocity = _velocity
-
-	if Input.is_action_pressed("Dash"):
-		_prepare_dash(velocity.normalized())
-
-	move_and_slide()
 
 
 func _set_target_blend_position(target: Vector2) -> void:
 	_current_blend_position = target
 
-func _update_blend_position(delta: float) -> void:
-	var current_pos: Vector2 = _animation_tree.get(_movement_blend_position)
-	var new_pos: Vector2 = current_pos.lerp(_current_blend_position, _blend_speed * delta)
-	_animation_tree.set(_movement_blend_position, new_pos)
+func _update_blend_position(blend_animation: String, blend_speed: float) -> void:
+	var current_pos: Vector2 = _animation_tree.get(blend_animation)
+	var new_pos: Vector2 = current_pos.lerp(_current_blend_position, _blend_speed
+	* GameUtility.get_current_delta_time())
+	_animation_tree.set(blend_animation, new_pos)
 
 func _handle_look_rotation_input() -> void:
 	TransformUtility.smooth_look_at(self, _mouse_pos_this_frame, _rotation_speed)
@@ -154,7 +168,9 @@ func _handle_pickup(pickup: Pickup) -> void:
 func _prepare_dash(direction: Vector3):
 	if(direction == Vector3.ZERO):
 		direction = -global_transform.basis.z.normalized()
+		_last_iso_input_dir = Vector2(0, 1)
 
+	CameraManager.activate_frame_buffers(true)
 	_player_state = PlayerState.Dashing
 	_current_dash_time = _dash_duration
 	#_animation_tree[_dash_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
@@ -163,6 +179,7 @@ func _prepare_dash(direction: Vector3):
 func _handle_dashing():
 	_current_dash_time -= GameUtility.get_current_delta_time()
 	if(_current_dash_time < 0):
+		CameraManager.activate_frame_buffers(false)
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
 	move_and_slide()

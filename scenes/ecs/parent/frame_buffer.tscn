@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://goangsqw6m7j"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/frame_buffer.gd" id="1_g5kub"]
+[ext_resource type="PackedScene" uid="uid://bmiglcr4rjyfv" path="res://resources/frame_buffer_texture.tscn" id="2_or86w"]
+
+[node name="FrameBuffer" type="CanvasLayer"]
+script = ExtResource("1_g5kub")
+_texture_rect_scene = ExtResource("2_or86w")

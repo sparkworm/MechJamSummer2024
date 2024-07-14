@@ -2,8 +2,9 @@
 #Autoload
 extends Node
 
-@onready var pivot: Node3D = $CameraPivot
+@onready var _pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
+@onready var _frame_buffer: FrameBuffer = $CameraPivot/FrameBuffer
 var camera: Camera3D:
 	get: return _camera
 
@@ -24,10 +25,13 @@ func _ready() -> void:
 func assign_player_target(player: PlayerCharacter) -> void:
 	_player_target = player
 
+func activate_frame_buffers(activate: bool):
+	_frame_buffer.activate_player_frame_buffer(activate)
+
 #Can try different time-steps if movement seems janky
 func _process(delta: float) -> void:
 	var mouse_pos: Vector3 = MouseUtility.get_mouse_pos_3d()
-	var direction_to_cursor: Vector3 = (mouse_pos - pivot.global_position)
+	var direction_to_cursor: Vector3 = (mouse_pos - _pivot.global_position)
 
 	#slerp is usually the better idea but was having trouble with it
 	var target_position: Vector3 = _player_target.global_position + direction_to_cursor.limit_length(_max_camera_look_distance)
@@ -38,7 +42,7 @@ func _process(delta: float) -> void:
 	#print("~~~~~~")
 
 	var target_distance_from_player: float = target_position.distance_to(_player_target.global_position)
-	var current_distance_from_player: float = pivot.global_position.distance_to(target_position)
+	var current_distance_from_player: float = _pivot.global_position.distance_to(target_position)
 
 	if target_distance_from_player > _dead_zone_distance || current_distance_from_player > _dead_zone_distance:
 		var distance_from_target: float = min(_player_target.global_position.distance_to(target_position), _max_camera_look_distance)
@@ -47,4 +51,4 @@ func _process(delta: float) -> void:
 			var distance_ratio: float = distance_from_target / _max_camera_look_distance
 			var variable_speed: float = speed_range * distance_ratio
 			var current_move_speed: float = _min_camera_speed + variable_speed
-			pivot.global_position = pivot.transform.origin.lerp(target_position, current_move_speed * delta)
+			_pivot.global_position = _pivot.transform.origin.lerp(target_position, current_move_speed * delta)

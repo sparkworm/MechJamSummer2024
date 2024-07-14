@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bmiglcr4rjyfv"]
+
+[node name="FrameBufferTexture" type="TextureRect"]
+stretch_mode = 5

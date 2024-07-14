@@ -58,6 +58,7 @@ surface_material_override/0 = ExtResource("7_8bdnm")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
+layers = 2048
 mesh = SubResource("CapsuleMesh_t7n0x")
 surface_material_override/0 = ExtResource("7_8bdnm")
 

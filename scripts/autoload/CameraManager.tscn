@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://61t6mlbx6hae"]
+[gd_scene load_steps=4 format=3 uid="uid://61t6mlbx6hae"]
 
 [ext_resource type="Script" path="res://scripts/autoload/CameraManager.gd" id="1_rswln"]
+[ext_resource type="PackedScene" uid="uid://bqyxmd3fk8d0a" path="res://resources/game_camera.tscn" id="2_00u05"]
+[ext_resource type="PackedScene" uid="uid://goangsqw6m7j" path="res://scenes/ecs/parent/frame_buffer.tscn" id="3_nbo2r"]
 
 [node name="CameraManager" type="Node"]
 script = ExtResource("1_rswln")
@@ -8,13 +10,12 @@ script = ExtResource("1_rswln")
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0.122788, 0.696364, 0, 0.984808, -0.173648, -0.707107, 0.122788, 0.696364, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707106, 0, -0.707107, 0.707107, 0, 75, 75)
-keep_aspect = 0
-doppler_tracking = 2
-projection = 1
-current = true
-fov = 5.3
-size = 60.0
-near = 0.001
-far = 150.0
+[node name="GameCamera" parent="CameraPivot" instance=ExtResource("2_00u05")]
+
+[node name="FrameBuffer" parent="CameraPivot" node_paths=PackedStringArray("_target_viewport") instance=ExtResource("3_nbo2r")]
+_target_viewport = NodePath("../FrameBufferViewport")
+
+[node name="FrameBufferViewport" type="SubViewport" parent="CameraPivot"]
+
+[node name="FrameBufferCamera" parent="CameraPivot/FrameBufferViewport" instance=ExtResource("2_00u05")]
+cull_mask = 2048
