@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tupgaoqjqolp"]
+
+[ext_resource type="PackedScene" uid="uid://dnfi00h4u0oqy" path="res://visuals/models/pickups/Pico_RocketAmmo.glb" id="1_ae1hl"]
+
+[node name="Pico_RocketAmmo" instance=ExtResource("1_ae1hl")]
