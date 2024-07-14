@@ -26,10 +26,11 @@ albedo_texture = ExtResource("8_e3yvi")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_fire_point")]
 collision_layer = 4096
 collision_mask = 2175
 script = ExtResource("1_8dtkr")
+_fire_point = NodePath("FirePoint")
 _rotation_speed = 30.0
 
 [node name="Components" type="Node" parent="."]

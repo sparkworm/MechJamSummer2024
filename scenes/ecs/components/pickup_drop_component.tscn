@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxrg2y44scbte"]
+
+[ext_resource type="Script" path="res://scenes/ecs/components/pickup_drop_component.gd" id="1_acow2"]
+[ext_resource type="Resource" uid="uid://dhrg4i4f6vmqh" path="res://resources/items/light_ammo_basic_pickup.tres" id="2_caku8"]
+
+[node name="PickupDropComponent" type="Node"]
+script = ExtResource("1_acow2")
+_random_drop_offset = Vector3(1, 0, 1)
+_guaranteed_pickup_drops = Array[Resource("res://resources/pickup_data.gd")]([ExtResource("2_caku8")])

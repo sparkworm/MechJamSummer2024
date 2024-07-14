@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d24nujhnd8khp"]
+
+[ext_resource type="Script" path="res://scripts/autoload/PrefabManager.gd" id="1_akvbd"]
+[ext_resource type="PackedScene" uid="uid://d4mu6oeflp1t0" path="res://scenes/ecs/parent/pickup.tscn" id="2_2rawj"]
+
+[node name="PrefabManager" type="Node"]
+script = ExtResource("1_akvbd")
+_pickup_prefab = ExtResource("2_2rawj")

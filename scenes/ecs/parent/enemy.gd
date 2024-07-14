@@ -17,6 +17,7 @@ enum NavState
 	Chasing,
 	Attacking,
 	Sweeping,
+	Disabled,
 }
 
 @export_subgroup("Enemy Animation")
@@ -69,6 +70,7 @@ enum NavState
 @onready var _vision_point: Node3D = $VisionPoint
 @onready var _detection_area: Area3D = $DetectionArea
 @onready var _health_component: HealthComponent = $Components/HealthComponent
+@onready var _pickup_drop_component: PickupDropComponent = $Components/PickupDropComponent
 
 var detection_cone_degrees: Dictionary
 
@@ -99,8 +101,7 @@ var _idle_animation: String = "Idle"
 
 #Disables Animations
 var _disables_FSM: AnimationNodeStateMachinePlayback
-var _death_1_animation: String = "Death_1"
-var _death_2_animation: String = "Death_2"
+var _death_animation: String = "Death"
 
 #Attacks Animations
 var _attack_1_animation: String = "parameters/Attack_1/request"
@@ -131,6 +132,7 @@ func _deffered_ready():
 	_nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	_nav_agent.target_desired_distance = 1
 	_health_component.connect("hit", _is_hit)
+	_health_component.connect("killed", _die)
 	_init_patrol_route()
 
 func _init_patrol_route() -> void:
@@ -148,11 +150,24 @@ func _init_patrol_route() -> void:
 	_nav_state_to_patrolling()
 
 func _is_hit(source: Node3D) -> void:
+	if _agent_nav_state == NavState.Disabled:
+		return
 	if(_agent_nav_state != NavState.Attacking && source is Body):
 		_nav_state_to_chasing(source as Body)
 	pass
 
 func _die() -> void:
+	if _agent_nav_state == NavState.Disabled:
+		return
+	_agent_nav_state = NavState.Disabled
+	_set_movement_target(global_position)
+	_move_agent()
+	_pickup_drop_component.disperse_pickup_drops_at_point(global_position)
+	collision_mask = LayerUtility.get_bit_from_layer_name("Hidden")
+	collision_layer = LayerUtility.get_bit_from_layer_name("Hidden")
+	_detection_area.collision_mask = LayerUtility.get_bit_from_layer_name("Hidden")
+	_animation_tree[_animation_transition] = _disables_transition
+	_disables_FSM.travel(_death_animation)
 	pass
 
 func _set_movement_target(movement_target: Vector3) -> void:
@@ -161,6 +176,9 @@ func _set_movement_target(movement_target: Vector3) -> void:
 #func get
 
 func _physics_process(delta: float) -> void:
+	if _agent_nav_state == NavState.Disabled:
+		return
+
 	_state_time_remaining -= delta
 
 	if _agent_nav_state == NavState.Attacking:

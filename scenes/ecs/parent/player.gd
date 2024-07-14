@@ -1,6 +1,13 @@
 extends Body
 class_name PlayerCharacter
 
+enum PlayerState
+{
+	Active,
+	Dashing,
+	Busy,
+}
+
 #Currently used just for pickups but could be used for other features
 @onready var _detection_area: Area3D = $DetectionArea
 
@@ -17,8 +24,15 @@ class_name PlayerCharacter
 @export var _detection_area_radius: float = 10
 @export var _obtain_radius: float = 1
 
-var mouse_pos_this_frame: Vector3
+@export_group("Dash")
+@export var _dash_speed: float = 5
+@export var _dash_duration: float = 1
+
+var _player_state: PlayerState = PlayerState.Active
+var _mouse_pos_this_frame: Vector3
 var _current_blend_position: Vector2 = Vector2()
+
+var _current_dash_time: float = 0
 
 @export var _primary_attack_scene: PackedScene
 var _primary_attack_current_cooldown: float = 0
@@ -40,15 +54,25 @@ func _ready() -> void:
 	_detection_area.collision_mask = detect_layers
 
 func _physics_process(delta: float) -> void:
-	mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
-	_fire_cursor.global_position = mouse_pos_this_frame
+	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
+	_fire_cursor.global_position = _mouse_pos_this_frame
 
-	_handle_movement_input()
-	_update_blend_position(delta)
-	_handle_look_rotation_input()
+	if(_player_state == PlayerState.Active):
+		_handle_movement_input()
+		_update_blend_position(delta)
+		_handle_look_rotation_input()
 
-	if Input.is_action_pressed("Fire"):
-		use_primary_attack()
+		if Input.is_action_pressed("Dash"):
+			_prepare_dash()
+		elif Input.is_action_pressed("Primary"):
+			use_primary_attack()
+		elif Input.is_action_pressed("Secondary"):
+			pass
+		elif Input.is_action_pressed("Interact"):
+			pass
+
+	elif(_player_state == PlayerState.Dashing):
+		_handle_dashing()
 
 	for node3D: Node3D in _detection_area.get_overlapping_bodies():
 		if(node3D is CollisionObject3D):
@@ -84,6 +108,7 @@ func _handle_movement_input() -> void:
 
 	move_and_slide()
 
+
 func _set_target_blend_position(target: Vector2) -> void:
 	_current_blend_position = target
 
@@ -93,7 +118,7 @@ func _update_blend_position(delta: float) -> void:
 	_animation_tree.set(_movement_blend_position, new_pos)
 
 func _handle_look_rotation_input() -> void:
-	TransformUtility.smooth_look_at(self, mouse_pos_this_frame, _rotation_speed)
+	TransformUtility.smooth_look_at(self, _mouse_pos_this_frame, _rotation_speed)
 
 func use_primary_attack() -> void:
 	if _primary_attack_current_cooldown > Time.get_unix_time_from_system():
@@ -103,7 +128,7 @@ func use_primary_attack() -> void:
 	_animation_tree[_run_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	var attack_projectile: Projectile = _primary_attack_scene.instantiate() as Projectile
 	get_tree().root.get_child(0).add_child(attack_projectile)
-	var dir: Vector3 = (mouse_pos_this_frame - primary_collider.global_position).normalized()
+	var dir: Vector3 = (_mouse_pos_this_frame - primary_collider.global_position).normalized()
 	dir.y = 0
 	attack_projectile.init_with_world_direction(self, _fire_point.global_position, dir)
 	_primary_attack_current_cooldown = attack_projectile.cooldown_time + Time.get_unix_time_from_system()
@@ -121,3 +146,18 @@ func _handle_pickup(pickup: Pickup) -> void:
 		elif(pickup_data is AmmoData):
 			var ammo_data: AmmoData = pickup_data as AmmoData
 			_ammo_component.add_ammo(ammo_data)
+
+func _prepare_dash():
+	look_at(_mouse_pos_this_frame)
+	_player_state == PlayerState.Dashing
+	_current_dash_time = _dash_duration
+	#_animation_tree[_dash_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	velocity = -global_transform.basis.z.normalized() * _dash_speed
+	move_and_slide()
+
+func _handle_dashing():
+	_current_dash_time -= GameUtility.get_current_delta_time()
+
+	if(_current_dash_time < 0):
+		_player_state = PlayerState.Active
+		velocity = Vector3(0,0,0)
