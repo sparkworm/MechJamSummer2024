@@ -13,9 +13,24 @@ transform = Transform3D(0.707107, 0.122788, 0.696364, 0, 0.984808, -0.173648, -0
 [node name="GameCamera" parent="CameraPivot" instance=ExtResource("2_00u05")]
 
 [node name="FrameBuffer" parent="CameraPivot" node_paths=PackedStringArray("_target_viewport") instance=ExtResource("3_nbo2r")]
+layer = -1
+follow_viewport_enabled = true
 _target_viewport = NodePath("../FrameBufferViewport")
+_buffer_frames = 12
+_buffer_frame_per_frames = 15
+_start_opacity = 0.25
+_opacity_fade_per_second = 0.3
+_linger_duration = 0.2
 
 [node name="FrameBufferViewport" type="SubViewport" parent="CameraPivot"]
+transparent_bg = true
+canvas_cull_mask = 4293918720
+size = Vector2i(1366, 768)
+render_target_update_mode = 4
 
-[node name="FrameBufferCamera" parent="CameraPivot/FrameBufferViewport" instance=ExtResource("2_00u05")]
+[node name="FrameBufferPivot" type="Node3D" parent="CameraPivot/FrameBufferViewport"]
+top_level = true
+
+[node name="FrameBufferCamera" parent="CameraPivot/FrameBufferViewport/FrameBufferPivot" instance=ExtResource("2_00u05")]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 61.4364, 60.837, 61.4364)
 cull_mask = 2048

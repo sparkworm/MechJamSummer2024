@@ -3,8 +3,10 @@
 extends Node
 
 @onready var _pivot: Node3D = $CameraPivot
-@onready var _camera: Camera3D = $CameraPivot/Camera3D
+@onready var _camera: Camera3D = $CameraPivot/GameCamera
 @onready var _frame_buffer: FrameBuffer = $CameraPivot/FrameBuffer
+@onready var _frame_buffer_pivot: Node3D = $CameraPivot/FrameBufferViewport/FrameBufferPivot
+@onready var _frame_buffer_camera: Camera3D = $CameraPivot/FrameBufferViewport/FrameBufferPivot/FrameBufferCamera
 var camera: Camera3D:
 	get: return _camera
 
@@ -25,8 +27,8 @@ func _ready() -> void:
 func assign_player_target(player: PlayerCharacter) -> void:
 	_player_target = player
 
-func activate_frame_buffers(activate: bool):
-	_frame_buffer.activate_player_frame_buffer(activate)
+func activate_frame_buffers(duration: float):
+	_frame_buffer.activate_player_frame_buffer(duration)
 
 #Can try different time-steps if movement seems janky
 func _process(delta: float) -> void:
@@ -52,3 +54,4 @@ func _process(delta: float) -> void:
 			var variable_speed: float = speed_range * distance_ratio
 			var current_move_speed: float = _min_camera_speed + variable_speed
 			_pivot.global_position = _pivot.transform.origin.lerp(target_position, current_move_speed * delta)
+			_frame_buffer_pivot.global_position = _pivot.global_position

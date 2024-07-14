@@ -28,6 +28,7 @@ enum PlayerState
 @export var _dash_speed: float = 5
 @export var _dash_duration: float = 1
 @export var _dash_blend_speed: float = 100
+@export var _dash_deadzone: float = 2
 
 var _player_state: PlayerState = PlayerState.Active
 var _mouse_pos_this_frame: Vector3
@@ -62,20 +63,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
+	var _mouse_distance_to_player: float = _mouse_pos_this_frame.distance_to(global_position)
 	_fire_cursor.global_position = _mouse_pos_this_frame
 
 	if(_player_state != PlayerState.Busy):
 
 		if(_player_state == PlayerState.Active):
 			_handle_movement_input()
-			_update_blend_position(_movement_blend_position, _blend_speed)
 
-			if Input.is_action_pressed("Dash"):
+			if Input.is_action_pressed("Dash") && _mouse_distance_to_player > _dash_deadzone:
 				_prepare_dash(velocity.normalized())
 				_animation_tree[_animation_transition] = _dash_transition
 
 			else:
 				_animation_tree[_animation_transition] = _movement_transition
+				_update_blend_position(_movement_blend_position, _blend_speed)
+
 
 			_set_target_blend_position(_last_iso_input_dir)
 
@@ -170,7 +173,7 @@ func _prepare_dash(direction: Vector3):
 		direction = -global_transform.basis.z.normalized()
 		_last_iso_input_dir = Vector2(0, 1)
 
-	CameraManager.activate_frame_buffers(true)
+	CameraManager.activate_frame_buffers(_dash_duration)
 	_player_state = PlayerState.Dashing
 	_current_dash_time = _dash_duration
 	#_animation_tree[_dash_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
@@ -179,7 +182,6 @@ func _prepare_dash(direction: Vector3):
 func _handle_dashing():
 	_current_dash_time -= GameUtility.get_current_delta_time()
 	if(_current_dash_time < 0):
-		CameraManager.activate_frame_buffers(false)
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
 	move_and_slide()
