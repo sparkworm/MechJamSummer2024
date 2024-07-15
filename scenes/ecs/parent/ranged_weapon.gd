@@ -27,9 +27,14 @@ func spawn_projectile() -> void:
 	# add the projectile to the designated node up the SceneTree
 	var projectile_parent: Node3D = \
 			get_tree().get_nodes_in_group("projectile_parent")[0]
-	projectile_parent.add_child(projectile.instantiate())
-	# make the projectile face the same way as the weapon
-	projectile.global_rotation = get_weapon_direction()
+	var proj = projectile.instantiate() as Projectile
+	get_tree().root.get_child(0).add_child(proj)
+	#projectile_parent.add_child(proj)
+	# CAUTION: untested functionality
+	proj.init_with_world_direction(self, get_global_spawn_position(), \
+			get_weapon_direction())
+	
+	
 
 ## The function responsible for getting the global rotation of the weapon
 func get_weapon_direction() -> Vector3:
