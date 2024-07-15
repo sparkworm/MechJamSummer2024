@@ -1,6 +1,8 @@
 extends Body
 class_name EnemyCharacter
 
+#region variables
+
 const RANDOM_SAMPLES: float = 10
 
 #TODO: AI Variance
@@ -109,6 +111,8 @@ var _attack_1_time_scale: String = "parameters/Attack_1_TimeScale/scale"
 var _attack_2_animation: String = "parameters/Attack_2/request"
 var _attack_2_time_scale: String = "parameters/Attack_2_TimeScale/scale"
 
+#endregion
+
 func _ready() -> void:
 	set_physics_process(false)
 	call_deferred("_deffered_ready")
@@ -135,20 +139,6 @@ func _deffered_ready():
 	_health_component.connect("killed", _die)
 	_init_patrol_route()
 
-func _init_patrol_route() -> void:
-	if(_patrol_route == null):
-		_patrol_route = GameManager.current_level_scene.get_random_level_patrol_route()
-
-	if(_current_patrol_point == null):
-		if(_random_patrol_points):
-			_current_patrol_point = _patrol_route.get_random_patrol_point()
-		else:
-			_current_patrol_point = _patrol_route.get_closest_patrol_point_from_point(self)
-
-	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
-		_set_movement_target(_current_patrol_point.global_position)
-	_nav_state_to_patrolling()
-
 func _is_hit(source: Node3D) -> void:
 	if _agent_nav_state == NavState.Disabled:
 		return
@@ -169,11 +159,6 @@ func _die() -> void:
 	_animation_tree[_animation_transition] = _disables_transition
 	_disables_FSM.travel(_death_animation)
 	pass
-
-func _set_movement_target(movement_target: Vector3) -> void:
-	_nav_agent.set_target_position(movement_target)
-
-#func get
 
 func _physics_process(delta: float) -> void:
 	if _agent_nav_state == NavState.Disabled:
@@ -206,6 +191,26 @@ func _physics_process(delta: float) -> void:
 		else:
 			_movements_FSM.travel(_idle_animation)
 
+#region AI behavior
+
+func _init_patrol_route() -> void:
+	if(_patrol_route == null):
+		_patrol_route = GameManager.current_level_scene.get_random_level_patrol_route()
+
+	if(_current_patrol_point == null):
+		if(_random_patrol_points):
+			_current_patrol_point = _patrol_route.get_random_patrol_point()
+		else:
+			_current_patrol_point = _patrol_route.get_closest_patrol_point_from_point(self)
+
+	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
+		_set_movement_target(_current_patrol_point.global_position)
+	_nav_state_to_patrolling()
+
+func _set_movement_target(movement_target: Vector3) -> void:
+	_nav_agent.set_target_position(movement_target)
+
+#func get
 
 func _move_agent() -> void:
 	_movement_delta = _movement_speed * GameUtility.get_current_delta_time()
@@ -235,7 +240,6 @@ func _get_next_patrol_point() -> void:
 	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
 		_set_movement_target(_current_patrol_point.global_position)
 		_idle_time_remaining = _patrolling_idle_duration
-
 
 func _chase_target() -> void:
 	if(_current_target == null):
@@ -269,7 +273,6 @@ func _attack_target() -> void:
 	elif(Time.get_unix_time_from_system() > _current_attack_animation_time):
 		_nav_state_to_chasing(_current_target)
 
-
 func _sweep_area() -> void:
 	if(_nav_agent.is_navigation_finished()):
 		_idle_time_remaining -= GameUtility.get_current_delta_time()
@@ -291,6 +294,7 @@ func _try_set_nav_point_in_area(point: Vector3, area_variance: Vector3) -> bool:
 	_set_movement_target(current_pos)
 	return false
 
+#endregion
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 	var collisionLayer: int = collision_body.get_collision_layer()
@@ -324,6 +328,8 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 	move_and_slide()
 
+#region detection
+
 func _is_body_in_line_of_sight(collision_body: Body, mask: int) -> bool:
 	var collider: CollisionShape3D = collision_body.primary_collider
 	var result: Dictionary = TransformUtility.point_to_transform_raycast(_vision_point.global_position, collider, mask)
@@ -340,6 +346,9 @@ func _is_collider_in_vision_cone(collider: CollisionShape3D, degrees: float) -> 
 
 	return angle <= (degrees / 2)
 
+#endregion
+
+#region state machine
 
 func _on_before_state_change() -> void:
 	_state_time_remaining = 0
@@ -383,6 +392,7 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Sweeping
 
+#endregion
 
 func use_primary_attack() -> void:
 	var attack_projectile: Projectile = _weapon_1_projectile.instantiate() as Projectile

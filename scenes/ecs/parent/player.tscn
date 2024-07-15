@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/player.gd" id="1_8dtkr"]
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="2_jdd58"]
-[ext_resource type="PackedScene" uid="uid://cjekxrcf7ros0" path="res://scenes/ecs/components/player_controller.tscn" id="2_prjhr"]
+[ext_resource type="PackedScene" uid="uid://cj87se26ctvqp" path="res://scenes/ecs/components/player_controller.tscn" id="2_prjhr"]
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="3_txjwt"]
 [ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="4_kihhm"]
 [ext_resource type="PackedScene" uid="uid://dl2pd45xbhiap" path="res://scenes/ecs/components/energy_component.tscn" id="5_ol0v8"]
@@ -27,13 +27,14 @@ albedo_texture = ExtResource("8_e3yvi")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_fire_point")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_fire_point", "character_controller")]
 collision_layer = 4096
 collision_mask = 2175
 script = ExtResource("1_8dtkr")
 _fire_point = NodePath("FirePoint")
 _dash_speed = 20.0
 _dash_duration = 0.5
+character_controller = NodePath("Components/PlayerController")
 
 [node name="Components" type="Node" parent="."]
 
