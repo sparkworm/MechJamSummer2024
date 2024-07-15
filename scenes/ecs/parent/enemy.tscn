@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ecs/parent/enemy.gd" id="1_454w4"]
 [ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
-[ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
+[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
 [ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="4_ae3hl"]
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="5_xg2n3"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://dyyn0nbob5upy" path="res://resources/blend_trees/basic_enemy_blend_tree.tres" id="6_ujplw"]
@@ -33,6 +33,7 @@ script = ExtResource("1_454w4")
 _chase_targets = Array[int]([4096])
 _target_obstructions = Array[int]([1, 2, 4, 8, 32, 128, 512, 2048])
 _chasing_movement_speed = 4.0
+_chase_alert_duration = 50000.0
 _sweeping_rotation_speed = 4.0
 _movement_speed = 10.0
 
@@ -66,14 +67,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01197, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="EnemyVisuals"]
 tree_root = ExtResource("6_ujplw")
-parameters/Attack_1/active = false
-parameters/Attack_1/internal_active = false
-parameters/Attack_1/request = 0
-parameters/Attack_1_TimeScale/scale = 1.0
-parameters/Attack_2/active = false
-parameters/Attack_2/internal_active = false
-parameters/Attack_2/request = 0
-parameters/Attack_2_TimeScale/scale = 1.0
+parameters/Attack/active = false
+parameters/Attack/internal_active = false
+parameters/Attack/request = 0
+parameters/Attack_TimeScale/scale = 1.0
 parameters/Transition/current_state = ""
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = -1

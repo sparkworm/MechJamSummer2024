@@ -18,7 +18,7 @@ follow_viewport_enabled = true
 _target_viewport = NodePath("../FrameBufferViewport")
 _buffer_frames = 12
 _buffer_frame_per_frames = 15
-_start_opacity = 0.25
+_start_opacity = 0.2
 _opacity_fade_per_second = 0.3
 _linger_duration = 0.2
 

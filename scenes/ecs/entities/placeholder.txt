@@ -1,4 +1,4 @@
-"entities" directory is for holding specific scenes that will actually be used 
-in-game.  For instance, "Minigun" would go in the "entities/weapons" folder; 
-however, "Ranged weapon" would instead go into "parent" as it only meant to be 
+"entities" directory is for holding specific scenes that will actually be used
+in-game.  For instance, "Minigun" would go in the "entities/weapons" folder;
+however, "Ranged weapon" would instead go into "parent" as it only meant to be
 inherited from.

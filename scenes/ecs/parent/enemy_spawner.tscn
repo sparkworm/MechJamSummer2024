@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhelsoi5lm2ko"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/enemy_spawner.gd" id="1_kfwqd"]
+[ext_resource type="Script" path="res://scenes/ecs/components/trigger_component.gd" id="2_56l4l"]
+[ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="2_ixme7"]
+[ext_resource type="PackedScene" uid="uid://bgxe64kv5rjch" path="res://visuals/models/characters/robots_S4/Robot_ChargingStation.gltf" id="3_fk5qr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uok2n"]
+size = Vector3(0.13147, 1, 1.10522)
+
+[node name="Spawner" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_kfwqd")
+_enem_to_spawn = ExtResource("2_ixme7")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="TriggerComponent" type="Node" parent="Components"]
+script = ExtResource("2_56l4l")
+
+[node name="CollisionShape1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507793, 0.56937, 0)
+shape = SubResource("BoxShape3D_uok2n")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507917, 0.56937, 0)
+shape = SubResource("BoxShape3D_uok2n")
+
+[node name="CollisionShape3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0195439, 0.574164, -0.510238)
+shape = SubResource("BoxShape3D_uok2n")
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451004, 0)
+
+[node name="Robot_ChargingStation2" parent="." instance=ExtResource("3_fk5qr")]
+
+[editable path="Robot_ChargingStation2"]

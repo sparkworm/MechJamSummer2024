@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bew1trcfy3nct"]
+[gd_scene load_steps=24 format=3 uid="uid://bew1trcfy3nct"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_5hgy8"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_rycog"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="10_54q3t"]
 [ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/parent/proximity_switch.tscn" id="11_cbr7o"]
 [ext_resource type="PackedScene" uid="uid://b33s7qdff0i5" path="res://scenes/ecs/parent/door.tscn" id="12_1cosn"]
+[ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="12_rmd4h"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_78lo3"]
 
@@ -31,10 +32,12 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gw6ot"]
-vertices = PackedVector3Array(-18.75, 0.1, -9.75, -17.25, 0.1, -10, -17.25, 0.1, -20.5, -35.5, 0.1, -20.5, -35.5, 0.1, -9.75, -17.25, 0.1, -20.5, -17.25, 0.1, -10, -16, 0.1, -9.75, 0.75, 0.1, -9.75, 0.75, 0.1, -20.5, 4.5, 0.1, -14, 4.5, 0.1, 14, 14, 0.1, 14, 14, 0.1, -14, -18.25, 0.1, -2.5, -17.5, 0.1, -2.5, -17.5, 0.1, -3, -18.5, 0.1, -3, -19.25, 0.1, -9.25, -18.75, 0.1, -9.75, -35.5, 0.1, -9.75, -19, 0.1, -1.75, -18.25, 0.1, -2.5, -18.5, 0.1, -3, -19.25, 0.1, -3.75, -19.25, 0.1, -3.75, -19.25, 0.1, -9.25, -35.5, 0.1, -9.75, -35.5, 0.1, 1.5, -19, 0.1, 1.5, -19, 0.1, -1.75, -19.25, 0.1, -3.75, -35.5, 0.1, 1.5, -17.5, 0.1, -3, -17.5, 0.1, -2.5, -16.75, 0.1, -2.5, -16.25, 0.1, -3, 0.75, 0.1, -9.75, -15.5, 0.1, -9.25, -15.5, 0.1, -3.75, 0.75, 0.1, 0.5, -16.25, 0.1, -3, -16.75, 0.1, -2.5, -16, 0.1, -1.75, -15.5, 0.1, -3.75, -16.25, 0.1, -3, -16, 0.1, -1.75, -15.5, 0.1, -3.75, -16, 0.1, -1.75, -16, 0.1, 0.25, 0.75, 0.1, 0.5, 0.75, 0.1, -9.75, -16, 0.1, -9.75, -15.5, 0.1, -9.25, -16.75, 0.1, 2.5, -17.5, 0.1, 2.5, -17.5, 0.1, 15.75, -16, 0.1, 1.75, -16.75, 0.1, 2.5, -17.5, 0.1, 15.75, 0.75, 0.1, 15.75, 0.75, 0.1, 0.5, 0.75, 0.1, 0.5, -16, 0.1, 0.25, -16, 0.1, 1.75, -17.5, 0.1, 15.75, -17.5, 0.1, 2.5, -18.25, 0.1, 2.5, -17.5, 0.1, 15.75, -18.25, 0.1, 2.5, -19, 0.1, 1.5, -35.5, 0.1, 1.5, -35.5, 0.1, 15.75)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(8, 5, 9), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(20, 19, 18), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(43, 42, 41), PackedInt32Array(46, 45, 44), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 50), PackedInt32Array(53, 52, 51), PackedInt32Array(56, 55, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(60, 57, 61), PackedInt32Array(64, 63, 62), PackedInt32Array(67, 66, 65), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(71, 68, 72)]
-cell_height = 0.05
-agent_radius = 1.0
+vertices = PackedVector3Array(-37.25, 4.51, -22, -37.75, 4.51, -22.5, -37.75, 4.51, 17.5, -37, 4.51, 17.25, -37.75, 4.51, -22.5, -37.25, 4.51, -22, 2, 4.51, -22.25, 2.75, 4.51, -22.5, -37, 4.51, 17.25, -37.75, 4.51, 17.5, 2.5, 4.51, 17.75, 2.25, 4.51, 17, 2.75, 4.51, 16.75, 2.75, 4.51, -22.5, 2, 4.51, -22.25, 2.25, 4.51, 17, 2.5, 4.51, 17.75, -18.25, 0.02, -9.5, -17.25, 0.02, -9.5, -17.25, 0.02, -21, -36, 0.02, -21, -36, 0.02, -9.75, -17.25, 0.02, -21, -17.25, 0.02, -9.5, -16, 0.02, -9.25, 1.25, 0.02, -8, 1.25, 0.02, -21, -16, 0.02, -9.25, -16, 0.02, -7.75, 1.25, 0.02, -8, 4, 0.02, -14.5, 4, 0.02, 14.5, 14.5, 0.02, 14.5, 14.5, 0.02, -14.5, -18.5, 0.02, -1.75, -17.5, 0.02, -2, -17.5, 0.02, -3.5, -18.75, 0.02, -3.75, -18.75, 0.02, -3.75, -18.75, 0.02, -9.25, -36, 0.02, -9.75, -36, 0.02, 1.5, -18.75, 0.02, 1.5, -18.5, 0.02, 1.5, -18.5, 0.02, -1.75, -18.75, 0.02, 1.5, -18.5, 0.02, -1.75, -18.75, 0.02, -3.75, -36, 0.02, 1.5, -18.75, 0.02, -9.25, -18.25, 0.02, -9.5, -36, 0.02, -9.75, -16.5, 0.02, -1.75, -16.5, 0.02, 0, -16, 0.02, 0, -15, 0.02, -1.25, -13.25, 0.02, -1.25, -13, 0.02, 0, 1.25, 0.02, 0, -17.5, 0.02, -3.5, -17.5, 0.02, -2, -16.5, 0.02, -1.75, -16, 0.02, -3.75, -17.5, 0.02, -3.5, -16.5, 0.02, -1.75, -15, 0.02, -1.25, -13.25, 0.02, -1.25, -16, 0.02, -7.75, -16, 0.02, -3.75, -13.25, 0.02, -1.25, 1.25, 0.02, 0, 1.25, 0.02, -8, -18.25, 0.02, 2, -18.5, 0.02, 1.5, -18.75, 0.02, 1.5, -18.75, 0.02, 16.25, -15.25, 0.02, 1.25, -16, 0.02, 0, -16.5, 0.02, 0, -16.75, 0.02, 2, -15.25, 0.02, 16.25, -18.75, 0.02, 16.25, -15.25, 0.02, 16.25, -16.75, 0.02, 2, -18.25, 0.02, 2, 1.25, 0.02, 0, -13, 0.02, 0, -13.25, 0.02, 1.25, -15.25, 0.02, 16.25, 1.25, 0.02, 16.25, -13.25, 0.02, 1.25, -15.25, 0.02, 1.25, -15.25, 0.02, 16.25, -18.75, 0.02, 16.25, -18.75, 0.02, 1.5, -36, 0.02, 1.5, -36, 0.02, 16.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(16, 15, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 26), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 27), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(44, 43, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(51, 50, 49), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 52), PackedInt32Array(56, 58, 57), PackedInt32Array(61, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(65, 62, 66), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 71), PackedInt32Array(69, 71, 70), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(79, 76, 80), PackedInt32Array(84, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 89), PackedInt32Array(87, 89, 88), PackedInt32Array(92, 91, 90), PackedInt32Array(96, 95, 93), PackedInt32Array(93, 95, 94)]
+cell_height = 0.01
+agent_height = 2.0
+agent_radius = 0.3
+agent_max_climb = 0.2
 region_min_size = 9.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl1gf"]
@@ -84,6 +87,32 @@ skeleton = NodePath("")
 [node name="PatrolPoint4" parent="LevelPatrolPoints" instance=ExtResource("3_6bq2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8147, 1, 23.3982)
 skeleton = NodePath("")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="BasicRangeBotEnemy" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6225, 7.66499, 15.3811)
+
+[node name="BasicRangeBotEnemy2" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81837, 6.67572e-06, 1.91488)
+
+[node name="BasicRangeBotEnemy3" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8555, 6.67572e-06, -4.64895)
+
+[node name="BasicRangeBotEnemy4" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3661, 6.67572e-06, 14.876)
+
+[node name="BasicRangeBotEnemy5" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16379, 1.14441e-05, -30.44)
+
+[node name="BasicRangeBotEnemy6" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5881, 6.67572e-06, -31.487)
+
+[node name="BasicRangeBotEnemy7" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0436, 6.67572e-06, 13.63)
+
+[node name="BasicRangeBotEnemy8" parent="." instance=ExtResource("10_54q3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0191, 0.0732412, -16.4173)
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.134)
@@ -147,34 +176,11 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -2, 0)
 
+[node name="Spawner" parent="NavigationRegion3D" instance=ExtResource("12_rmd4h")]
+transform = Transform3D(-0.000698252, 0, 1, 0, 1, 0, -1, 0, -0.000698252, -14.1781, 0, 0)
+
 [node name="marsvalley" parent="." instance=ExtResource("9_fsly7")]
 transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 100, -5, 250)
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="BasicRangeBotEnemy" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8147, 1, 23.3982)
-
-[node name="BasicRangeBotEnemy2" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81837, 6.67572e-06, 1.91488)
-
-[node name="BasicRangeBotEnemy3" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8555, 6.67572e-06, -4.64895)
-
-[node name="BasicRangeBotEnemy4" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3661, 6.67572e-06, 14.876)
-
-[node name="BasicRangeBotEnemy5" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16379, 1.14441e-05, -30.44)
-
-[node name="BasicRangeBotEnemy6" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5881, 6.67572e-06, -31.487)
-
-[node name="BasicRangeBotEnemy7" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0436, 6.67572e-06, 13.63)
-
-[node name="BasicRangeBotEnemy8" parent="Enemies" instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0191, 0.0732412, -16.4173)
 
 [node name="ProximitySwitch" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_cbr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02549, 0, 11.1376)
@@ -197,6 +203,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 16.919
 [node name="Door3" parent="." instance=ExtResource("12_1cosn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 5.38401)
 
+[editable path="NavigationRegion3D/Spawner"]
+[editable path="NavigationRegion3D/Spawner/Robot_ChargingStation2"]
 [editable path="ProximitySwitch"]
 [editable path="ProximitySwitch2"]
 [editable path="ProximitySwitch3"]

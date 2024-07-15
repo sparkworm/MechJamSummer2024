@@ -26,10 +26,10 @@ enum NavState
 
 @export_subgroup("Enemy Weapons") #This should be replaced by Weapon class scripts later
 @onready var _attack_component: AttackComponent = $Components/AttackComponent
-@export var _weapon_1_fire_point: Marker3D = null
-@export var _weapon_1_range: float = 10
+@export var _weapon_fire_point: Marker3D = null
+@export var _weapon_range: float = 10
 @export var _weapon_cooldown_time: float = 3
-@export var _weapon_1_projectile: PackedScene = null
+@export var _weapon_projectile: PackedScene = null
 
 @export_subgroup("Detection Layers")
 @export var _chase_targets: Array[LayerUtility.Layer] #Targets the enemy will chase
@@ -52,7 +52,8 @@ enum NavState
 @export var _chasing_rotation_speed: float = 10
 @export var _chase_radius_detection: float = 20
 @export var _chasing_detection_cone_degrees: float = 280
-@export var _chase_duration: float = 2
+@export var _chase_duration: float = 8
+@export var _chase_alert_duration = 1e6
 
 @export_subgroup("Attacking Attributes")
 @export var _attacking_detection_cone_degrees: float = 35
@@ -84,7 +85,8 @@ var _idle_time_remaining: float = 0
 var _last_detection_point: Vector3 = Vector3.ZERO
 
 var _current_attack_animation_time: float = 0
-var _has_started_attack = false;
+var _has_started_attack = false
+var _is_alerted: bool = false
 
 #Animation garbage
 var _animation_transition:String = "parameters/Transition/transition_request"
@@ -104,13 +106,12 @@ var _disables_FSM: AnimationNodeStateMachinePlayback
 var _death_animation: String = "Death"
 
 #Attacks Animations
-var _attack_1_animation: String = "parameters/Attack_1/request"
-var _attack_1_time_scale: String = "parameters/Attack_1_TimeScale/scale"
-var _attack_2_animation: String = "parameters/Attack_2/request"
-var _attack_2_time_scale: String = "parameters/Attack_2_TimeScale/scale"
+var _attack_animation: String = "parameters/Attack/request"
+var _attack_time_scale: String = "parameters/Attack_1_TimeScale/scale"
 
 func _ready() -> void:
 	set_physics_process(false)
+	_nav_state_to_patrolling()
 	call_deferred("_deffered_ready")
 
 func _deffered_ready():
@@ -147,7 +148,6 @@ func _init_patrol_route() -> void:
 
 	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
 		_set_movement_target(_current_patrol_point.global_position)
-	_nav_state_to_patrolling()
 
 func _is_hit(source: Node3D) -> void:
 	if _agent_nav_state == NavState.Disabled:
@@ -183,29 +183,32 @@ func _physics_process(delta: float) -> void:
 
 	if _agent_nav_state == NavState.Attacking:
 		_attack_target()
+		return
 
 	else:
 		for node3D: CollisionObject3D in _detection_area.get_overlapping_bodies():
 			if (node3D is CollisionObject3D && _on_overlapping_body(node3D)):
 				break
 
-		_animation_tree[_animation_transition] = _movements_transition
+	_animation_tree[_animation_transition] = _movements_transition
 
-		if _agent_nav_state == NavState.Patrolling:
-			_patrol_area()
+	if _agent_nav_state == NavState.Chasing:
+		_chase_target()
 
-		elif _agent_nav_state == NavState.Chasing:
-			_chase_target()
+	elif _agent_nav_state == NavState.Patrolling:
+		_patrol_area()
 
-		else: #_agent_nav_state == NavState.Sweeping:
-			_sweep_area()
+	else: #_agent_nav_state == NavState.Sweeping:
+		_sweep_area()
 
-		if !_nav_agent.is_navigation_finished():
-			_move_agent()
+	if !_nav_agent.is_navigation_finished():
+		_move_agent()
 
-		else:
-			_movements_FSM.travel(_idle_animation)
+	else:
+		_movements_FSM.travel(_idle_animation)
 
+	#velocity.y -= GameUtility.get_current_delta_time() *  9.81
+	#move_and_slide()
 
 func _move_agent() -> void:
 	_movement_delta = _movement_speed * GameUtility.get_current_delta_time()
@@ -242,7 +245,7 @@ func _chase_target() -> void:
 		_nav_state_to_patrolling()
 
 	var target_position = _current_target.global_position
-	if(global_position.distance_to(target_position) < _weapon_1_range):
+	if(global_position.distance_to(target_position) < _weapon_range):
 		var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
 		var collision_shape: CollisionShape3D = _current_target.primary_collider
 		if(_is_collider_in_vision_cone(collision_shape, detection_cone_degrees[NavState.Attacking])
@@ -263,7 +266,7 @@ func _attack_target() -> void:
 
 	_animation_tree[_animation_transition] = _attacks_transition
 	if(!_has_started_attack):
-		_animation_tree[_attack_1_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		_animation_tree[_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		_current_attack_animation_time = 1 + Time.get_unix_time_from_system()
 		_has_started_attack = true
 	elif(Time.get_unix_time_from_system() > _current_attack_animation_time):
@@ -359,7 +362,11 @@ func _nav_state_to_chasing(collision_body: Body) -> void:
 	_movement_speed = _chasing_movement_speed
 	_rotation_speed = _chasing_rotation_speed
 	_current_target = collision_body
-	_state_time_remaining = _chase_duration
+
+	if(_is_alerted):
+		_state_time_remaining = _chase_alert_duration
+	else: _state_time_remaining = _chase_duration
+
 	var radius: float = _chase_radius_detection
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Chasing
@@ -385,9 +392,18 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 
 
 func use_primary_attack() -> void:
-	var attack_projectile: Projectile = _weapon_1_projectile.instantiate() as Projectile
+	var attack_projectile: Projectile = _weapon_projectile.instantiate() as Projectile
 	get_tree().root.get_child(0).add_child(attack_projectile)
-	var fire_point_pos: Vector3 = _weapon_1_fire_point.global_position
+	var fire_point_pos: Vector3 = _weapon_fire_point.global_position
 	var dir: Vector3 = (_current_target.primary_collider.global_position - fire_point_pos).normalized()
 	dir.y = 0
 	attack_projectile.init_with_world_direction(self, fire_point_pos, dir)
+
+func alert_enemy_to_player() -> void:
+	_is_alerted = true
+	_nav_state_to_chasing(PlayerManager.player)
+
+
+func force_patrol_nav_state() -> void:
+	_is_alerted = false
+	_nav_state_to_patrolling()

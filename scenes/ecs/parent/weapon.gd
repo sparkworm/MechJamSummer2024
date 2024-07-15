@@ -1,4 +1,4 @@
-## Weapon is a parent class to contain most of the functionality for 
+## Weapon is a parent class to contain most of the functionality for
 ## RangedWeapon and MeleeWeapon.
 class_name Weapon
 extends Node3D
@@ -23,7 +23,7 @@ func fire() -> void:
 		_use_weapon()
 
 ## Function to handle SPECIFIC weapon attacks.
-## [br] This function is called by fire() and can vary in functionality based 
+## [br] This function is called by fire() and can vary in functionality based
 ## on whether the weapon is melee or ranged.
 ## [br] This function should be overwritten by child classes.
 func _use_weapon() -> void:

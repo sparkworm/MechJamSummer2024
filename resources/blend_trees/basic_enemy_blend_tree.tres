@@ -1,20 +1,11 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=26 format=3 uid="uid://dyyn0nbob5upy"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_v6qtb"]
-fadein_time = 0.1
-fadeout_time = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfvcg"]
-animation = &"1H_Ranged_Shoot"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_juw1y"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=23 format=3 uid="uid://dyyn0nbob5upy"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_y67dq"]
 fadein_time = 0.1
 fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bw4rg"]
-animation = &"1H_Melee_Attack_Slice_Diagonal"
+animation = &"1H_Ranged_Shoot"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5cwkh"]
 
@@ -103,18 +94,13 @@ input_2/auto_advance = false
 input_2/reset = true
 
 [resource]
-nodes/Attack_1/node = SubResource("AnimationNodeOneShot_v6qtb")
-nodes/Attack_1/position = Vector2(360, -20)
-nodes/Attack_1_Animation/node = SubResource("AnimationNodeAnimation_wfvcg")
-nodes/Attack_1_Animation/position = Vector2(-160, 560)
-nodes/Attack_1_TimeScale/node = SubResource("AnimationNodeTimeScale_juw1y")
-nodes/Attack_1_TimeScale/position = Vector2(140, 380)
-nodes/Attack_2/node = SubResource("AnimationNodeOneShot_y67dq")
-nodes/Attack_2/position = Vector2(20, 60)
-nodes/Attack_2_Animation/node = SubResource("AnimationNodeAnimation_bw4rg")
-nodes/Attack_2_Animation/position = Vector2(-600, 460)
-nodes/Attack_2_TimeScale/node = SubResource("AnimationNodeTimeScale_5cwkh")
-nodes/Attack_2_TimeScale/position = Vector2(-240, 320)
+graph_offset = Vector2(-32.1741, -171.046)
+nodes/Attack/node = SubResource("AnimationNodeOneShot_y67dq")
+nodes/Attack/position = Vector2(20, 60)
+nodes/Attack_Animation/node = SubResource("AnimationNodeAnimation_bw4rg")
+nodes/Attack_Animation/position = Vector2(-600, 460)
+nodes/Attack_TimeScale/node = SubResource("AnimationNodeTimeScale_5cwkh")
+nodes/Attack_TimeScale/position = Vector2(-240, 320)
 nodes/Disables_FSM/node = SubResource("AnimationNodeStateMachine_s6cgy")
 nodes/Disables_FSM/position = Vector2(580, 460)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rmrtu")
@@ -124,4 +110,4 @@ nodes/Movements_FSM/position = Vector2(580, -160)
 nodes/Transition/node = SubResource("AnimationNodeTransition_81s2d")
 nodes/Transition/position = Vector2(820, 160)
 nodes/output/position = Vector2(1140, 300)
-node_connections = [&"Attack_1", 0, &"Attack_2", &"Attack_1", 1, &"Attack_1_TimeScale", &"Attack_1_TimeScale", 0, &"Attack_1_Animation", &"Attack_2", 0, &"Idle", &"Attack_2", 1, &"Attack_2_TimeScale", &"Attack_2_TimeScale", 0, &"Attack_2_Animation", &"Transition", 0, &"Movements_FSM", &"Transition", 1, &"Attack_1", &"Transition", 2, &"Disables_FSM", &"output", 0, &"Transition"]
+node_connections = [&"Attack", 0, &"Idle", &"Attack", 1, &"Attack_TimeScale", &"Attack_TimeScale", 0, &"Attack_Animation", &"Transition", 0, &"Movements_FSM", &"Transition", 1, &"Attack", &"Transition", 2, &"Disables_FSM", &"output", 0, &"Transition"]

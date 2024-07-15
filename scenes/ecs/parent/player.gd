@@ -56,6 +56,21 @@ var _dash_transition: String = "Dash"
 var _dash_blend_position: String = "parameters/Dash_Animation/blend_position"
 var _dash_attack_animation: String = "parameters/Dash_Attack/request"
 
+#Rifle Info
+@onready var _rifle_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Axe/FirePoint
+var _rifle_attack_animation = "2H_Ranged_Fire"
+var _rifle_idle_animation = "2H_Ranged_Idle"
+
+#Minigun Info
+@onready var _minigun_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Minigun/FirePoint
+var _minigun_attack_animation = "2H_Ranged_Fire"
+var _minigun_idle_animation = "2H_Ranged_Idle"
+
+#Axe Info
+@onready var _axe_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Rifle/FirePoint
+var _axe_attack_animation = "2H_Melee_Attack"
+var _axe_idle_animation = "2H_Melee_Idle"
+
 func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
 	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
@@ -73,18 +88,20 @@ func _process(delta: float) -> void:
 
 			if Input.is_action_pressed("Dash") && _mouse_distance_to_player > _dash_deadzone:
 				_prepare_dash(velocity.normalized())
-				_animation_tree[_animation_transition] = _dash_transition
 
 			else:
-				_animation_tree[_animation_transition] = _movement_transition
+				if(velocity == Vector3.ZERO):
+					_animation_tree[_animation_transition] = _idle_transition
+				else: _animation_tree[_animation_transition] = _movement_transition
 				_update_blend_position(_movement_blend_position, _blend_speed)
 
 
 			_set_target_blend_position(_last_iso_input_dir)
 
-		elif(_player_state == PlayerState.Dashing):
+		if(_player_state == PlayerState.Dashing):
 			_handle_dashing()
 			_update_blend_position(_dash_blend_position, _dash_blend_speed)
+			_animation_tree[_animation_transition] = _dash_transition
 
 		_handle_look_rotation_input()
 		move_and_slide()
@@ -92,8 +109,6 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("Primary"):
 			use_primary_attack()
 		elif Input.is_action_pressed("Secondary"):
-			pass
-		elif Input.is_action_pressed("Interact"):
 			pass
 
 
@@ -145,8 +160,17 @@ func use_primary_attack() -> void:
 	if _primary_attack_current_cooldown > Time.get_unix_time_from_system():
 		return
 
-	_animation_tree[_idle_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-	_animation_tree[_run_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	if(_animation_tree[_animation_transition] == _idle_transition):
+		_animation_tree[_idle_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+	elif (_animation_tree[_animation_transition] == _movement_transition):
+		_animation_tree[_run_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+	elif (_animation_tree[_animation_transition] == _dash_transition):
+		_animation_tree[_dash_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+	print(_animation_tree[_animation_transition])
+
 	var attack_projectile: Projectile = _primary_attack_scene.instantiate() as Projectile
 	get_tree().root.get_child(0).add_child(attack_projectile)
 	var dir: Vector3 = (_mouse_pos_this_frame - primary_collider.global_position).normalized()
@@ -176,7 +200,6 @@ func _prepare_dash(direction: Vector3):
 	CameraManager.activate_frame_buffers(_dash_duration)
 	_player_state = PlayerState.Dashing
 	_current_dash_time = _dash_duration
-	#_animation_tree[_dash_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	velocity = direction * _dash_speed
 
 func _handle_dashing():
