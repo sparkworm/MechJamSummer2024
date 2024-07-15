@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bson4yosmq6h7"]
+
+[ext_resource type="PackedScene" uid="uid://di7p2kp0eiq7a" path="res://scenes/ecs/parent/ranged_weapon.tscn" id="1_426go"]
+[ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="2_4e048"]
+[ext_resource type="PackedScene" uid="uid://kqhatrfx8aab" path="res://visuals/models/weapons/Pico_SideMiniGun.glb" id="2_6xift"]
+
+[node name="SideMiniGun" instance=ExtResource("1_426go")]
+projectile = ExtResource("2_4e048")
+projectile_speed = 20.0
+
+[node name="ProjectileSpawnLocation" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458466, 0.15986, -2.98242)
+
+[node name="Pico_SideMiniGun" parent="." index="3" instance=ExtResource("2_6xift")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0586736, -0.735869)

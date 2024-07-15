@@ -7,3 +7,5 @@
 script = ExtResource("2_eijgc")
 projectile = null
 projectile_speed = 0.0
+
+[node name="ProjectileSpawnLocations" type="Node3D" parent="." index="2"]
