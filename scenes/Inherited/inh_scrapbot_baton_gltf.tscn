@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl2godddwnjcp"]
+
+[ext_resource type="PackedScene" uid="uid://psrcqppppc0h" path="res://visuals/models/characters/scrapbot/scrapbot_baton.gltf.glb" id="1_3jkp5"]
+
+[node name="scrapbot_baton_gltf" instance=ExtResource("1_3jkp5")]

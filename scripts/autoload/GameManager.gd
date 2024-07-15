@@ -13,7 +13,9 @@ enum GameState {
 @export var _intro_scene: PackedScene
 @export var _game_scene: PackedScene
 @export var _levels: Array[PackedScene] = []
+@export var level_scene: PackedScene
 
+var new_level: Level = level_scene.instantiate() as Level
 var _game_state: GameState = GameState.Game
 var _current_scene: Node
 

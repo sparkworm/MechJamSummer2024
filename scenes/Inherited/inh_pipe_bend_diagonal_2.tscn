@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvmakvjx70pqf"]
+
+[ext_resource type="PackedScene" uid="uid://4jjpypmsy6un" path="res://visuals/models/level/pipe-bend-diagonal.glb" id="1_2xmxt"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_no4q1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pxose"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_30vgs"]
+points = PackedVector3Array(-0.123205, 0, -0.0711603, -0.123205, 0, 0.0711046, -0.123205, 0.253531, -0.0711603, -2.14577e-05, 0, -0.142265, -2.14577e-05, 0, 0.142265, -0.123205, 0.253531, 0.0711046, -0.0510701, 0.427782, -0.0711603, -2.14577e-05, 0.253531, -0.142265, 0.215383, 0.520018, -0.142265, 0.302478, 0.432893, -0.0711603, 0.123162, 0, -0.0711603, 0.123162, 0, 0.0711046, 0.302478, 0.432893, 0.0711046, 0.215383, 0.520018, 0.142265, -2.14577e-05, 0.253531, 0.142265, -0.0510701, 0.427782, 0.0711046, 0.128246, 0.607084, -0.0711603, 0.0360668, 0.340656, -0.142265, 0.128246, 0.607084, 0.0711046, 0.0360668, 0.340656, 0.142265)
+
+[node name="pipe-bend-diagonal2" instance=ExtResource("1_2xmxt")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.3, 0.6, 0)
+mesh = SubResource("SphereMesh_pxose")
+surface_material_override/0 = ExtResource("2_no4q1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_30vgs")

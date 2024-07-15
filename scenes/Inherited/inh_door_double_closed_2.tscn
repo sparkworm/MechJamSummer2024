@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d185lvh5eek1d"]
+
+[ext_resource type="PackedScene" uid="uid://b13i6feemj7bo" path="res://visuals/models/level/door-double-closed.glb" id="1_wn43p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kdetw"]
+points = PackedVector3Array(-0.3, 0, -0.05, 0.3, 0, -0.05, -0.3, 0, 0.05, -0.3, 0.699932, -0.05, 0.3, 0, 0.05, 0.3, 0.699932, -0.05, -0.3, 0.699932, 0.05, 0.3, 0.699932, 0.05)
+
+[node name="door-double-closed2" instance=ExtResource("1_wn43p")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="door-double-closed" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door-double-closed/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_kdetw")
