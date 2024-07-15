@@ -1,4 +1,4 @@
-extends Body
+extends Character
 class_name PlayerCharacter
 
 enum PlayerState
@@ -106,7 +106,9 @@ func _on_overlapping_body(node3D: Node3D) -> void:
 	if(node3D is Pickup):
 		_handle_pickup(node3D as Pickup)
 
-func _handle_movement_input() -> void:
+
+# TODO: move the functionality of getting input to the controller
+func _handle_movement_input(direction := Vector2(0,0)) -> void:
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 	var isometric_dir: Vector3 = Vector3(input_dir.x + input_dir.y, 0, input_dir.y - input_dir.x).normalized()
 
