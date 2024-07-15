@@ -15,7 +15,7 @@ enum GameState {
 @export var _levels: Array[PackedScene] = []
 @export var level_scene: PackedScene
 
-var new_level: Level = level_scene.instantiate() as Level
+var new_level: Level
 var _game_state: GameState = GameState.Game
 var _current_scene: Node
 
@@ -26,6 +26,8 @@ var current_level_scene: Level:
 		return _current_level_scene
 
 func _ready() -> void:
+	new_level = level_scene.instantiate() as Level
+	
 	_current_scene = get_tree().current_scene
 	change_state(GameState.Game)
 	change_to_next_level()
