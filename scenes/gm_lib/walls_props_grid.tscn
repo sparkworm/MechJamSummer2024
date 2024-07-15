@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbbdckeeurvvx"]
+[gd_scene load_steps=4 format=3 uid="uid://bbbdckeeurvvx"]
 
 [ext_resource type="PackedScene" uid="uid://c4pe87umwfs81" path="res://scenes/Inherited/inh_wall_window_2.tscn" id="1_wbska"]
 [ext_resource type="PackedScene" uid="uid://dj45a5myar7d4" path="res://scenes/Inherited/inh_wall_2.tscn" id="2_y1wjj"]
-[ext_resource type="PackedScene" uid="uid://dga82j8gux4dh" path="res://scenes/Inherited/inh_structure_barrier.tscn" id="3_uullt"]
-[ext_resource type="PackedScene" uid="uid://c8slg8v4u58nl" path="res://scenes/Inherited/inh_pico_repair_station.tscn" id="4_bxhjc"]
-[ext_resource type="PackedScene" uid="uid://tupgaoqjqolp" path="res://scenes/Inherited/inh_pico_rocket_ammo.tscn" id="5_d1gfh"]
+[ext_resource type="PackedScene" uid="uid://detv1sjw6nkj6" path="res://scenes/Inherited/inh_computer_system_2.tscn" id="5_2x62x"]
 
 [node name="WallsPropsGrid" type="Node3D"]
 
@@ -16,11 +14,5 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
-[node name="structure-barrier" parent="." instance=ExtResource("3_uullt")]
-visible = false
-
-[node name="Pico_RepairStation" parent="." instance=ExtResource("4_bxhjc")]
-visible = false
-
-[node name="Pico_RocketAmmo" parent="." instance=ExtResource("5_d1gfh")]
+[node name="computer-system2" parent="." instance=ExtResource("5_2x62x")]
 visible = false
