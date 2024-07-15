@@ -1,5 +1,7 @@
-extends Body
+extends Character
 class_name PlayerCharacter
+
+#region variables
 
 enum PlayerState
 {
@@ -55,6 +57,7 @@ var _run_attack_animation: String = "parameters/Run_Attack/request"
 var _dash_transition: String = "Dash"
 var _dash_blend_position: String = "parameters/Dash_Animation/blend_position"
 var _dash_attack_animation: String = "parameters/Dash_Attack/request"
+#endregion
 
 #Rifle Info
 @onready var _rifle_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Axe/FirePoint
@@ -121,7 +124,10 @@ func _on_overlapping_body(node3D: Node3D) -> void:
 	if(node3D is Pickup):
 		_handle_pickup(node3D as Pickup)
 
-func _handle_movement_input() -> void:
+#region movement
+
+# TODO: move the functionality of getting input to the controller
+func _handle_movement_input(direction := Vector2(0,0)) -> void:
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Up", "Down")
 	var isometric_dir: Vector3 = Vector3(input_dir.x + input_dir.y, 0, input_dir.y - input_dir.x).normalized()
 
@@ -143,6 +149,12 @@ func _handle_movement_input() -> void:
 
 	velocity = _velocity
 
+func _handle_look_rotation_input() -> void:
+	TransformUtility.smooth_look_at(self, _mouse_pos_this_frame, _rotation_speed)
+
+#endregion
+
+#region blend
 
 func _set_target_blend_position(target: Vector2) -> void:
 	_current_blend_position = target
@@ -153,8 +165,7 @@ func _update_blend_position(blend_animation: String, blend_speed: float) -> void
 	* GameUtility.get_current_delta_time())
 	_animation_tree.set(blend_animation, new_pos)
 
-func _handle_look_rotation_input() -> void:
-	TransformUtility.smooth_look_at(self, _mouse_pos_this_frame, _rotation_speed)
+#endregion
 
 func use_primary_attack() -> void:
 	if _primary_attack_current_cooldown > Time.get_unix_time_from_system():

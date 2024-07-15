@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://c24uux7pvmbng"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/enemy.gd" id="1_454w4"]
-[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
+[ext_resource type="Material" path="res://visuals/materials/red.tres" id="2_8uji8"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
 [ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
 [ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="4_ae3hl"]
