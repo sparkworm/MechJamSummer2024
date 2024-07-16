@@ -1,0 +1,139 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=24 format=3 uid="uid://c5rieiuqulnex"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u5ywg"]
+animation = &"Dodge_Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c1yej"]
+animation = &"Dodge_Backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y5icy"]
+animation = &"Dodge_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3r8cg"]
+animation = &"Dodge_Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_41223"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u5ywg")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_c1yej")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_y5icy")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_3r8cg")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_q61jd"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:elbowIK.l", "Rig/Skeleton3D:elbowIK.r", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handIK.l", "Rig/Skeleton3D:handIK.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r", "Rig/Skeleton3D:wrist.l", "Rig/Skeleton3D:wrist.r"]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vw2eb"]
+animation = &"2H_Melee_Attack"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ukn76"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:elbowIK.l", "Rig/Skeleton3D:elbowIK.r", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handIK.l", "Rig/Skeleton3D:handIK.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r", "Rig/Skeleton3D:wrist.l", "Rig/Skeleton3D:wrist.r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cfg06"]
+animation = &"2H_Melee_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_brome"]
+animation = &"2H_Melee_Idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3jg40"]
+fadein_time = 0.3
+autorestart_delay = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m8k8b"]
+animation = &"2H_Melee_Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yw4t"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3qqjw"]
+animation = &"Running_Strafe_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdukp"]
+animation = &"Running_Strafe_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_52dwh"]
+animation = &"Walking_Backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7myu"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_e08pt"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_2yw4t")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_3qqjw")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vdukp")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_52dwh")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_l7myu")
+blend_point_4/pos = Vector2(0, 0)
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nqeyj"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:elbowIK.l", "Rig/Skeleton3D:elbowIK.r", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handIK.l", "Rig/Skeleton3D:handIK.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r", "Rig/Skeleton3D:wrist.l", "Rig/Skeleton3D:wrist.r"]
+fadein_time = 0.2
+fadeout_time = 0.3
+autorestart_delay = 0.1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_60x4f"]
+animation = &"2H_Melee_Attack"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lyij6"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:elbowIK.l", "Rig/Skeleton3D:elbowIK.r", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handIK.l", "Rig/Skeleton3D:handIK.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r", "Rig/Skeleton3D:wrist.l", "Rig/Skeleton3D:wrist.r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vmfsx"]
+animation = &"2H_Melee_Idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_n7me5"]
+xfade_time = 0.3
+input_0/name = "Idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "Movement"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "Dash"
+input_2/auto_advance = false
+input_2/reset = true
+
+[resource]
+graph_offset = Vector2(-717.069, 43.5819)
+nodes/Dash_Animation/node = SubResource("AnimationNodeBlendSpace2D_41223")
+nodes/Dash_Animation/position = Vector2(-1140, 600)
+nodes/Dash_Attack/node = SubResource("AnimationNodeOneShot_q61jd")
+nodes/Dash_Attack/position = Vector2(-20, 560)
+nodes/Dash_Attack_Animation/node = SubResource("AnimationNodeAnimation_vw2eb")
+nodes/Dash_Attack_Animation/position = Vector2(-580, 940)
+nodes/Dash_Blend/node = SubResource("AnimationNodeBlend2_ukn76")
+nodes/Dash_Blend/position = Vector2(-780, 620)
+nodes/Dash_Idle_Animation/node = SubResource("AnimationNodeAnimation_cfg06")
+nodes/Dash_Idle_Animation/position = Vector2(-1120, 840)
+nodes/Idle_Animation/node = SubResource("AnimationNodeAnimation_brome")
+nodes/Idle_Animation/position = Vector2(-380, -200)
+nodes/Idle_Attack/node = SubResource("AnimationNodeOneShot_3jg40")
+nodes/Idle_Attack/position = Vector2(120, -140)
+nodes/Idle_Attack_Animation/node = SubResource("AnimationNodeAnimation_m8k8b")
+nodes/Idle_Attack_Animation/position = Vector2(-420, 0)
+nodes/Run_Animation/node = SubResource("AnimationNodeBlendSpace2D_e08pt")
+nodes/Run_Animation/position = Vector2(-920, 80)
+nodes/Run_Attack/node = SubResource("AnimationNodeOneShot_nqeyj")
+nodes/Run_Attack/position = Vector2(-20, 280)
+nodes/Run_Attack_Animation/node = SubResource("AnimationNodeAnimation_60x4f")
+nodes/Run_Attack_Animation/position = Vector2(-600, 480)
+nodes/Run_Blend/node = SubResource("AnimationNodeBlend2_lyij6")
+nodes/Run_Blend/position = Vector2(-540, 160)
+nodes/Run_Idle_Animation/node = SubResource("AnimationNodeAnimation_vmfsx")
+nodes/Run_Idle_Animation/position = Vector2(-940, 320)
+nodes/Transition/node = SubResource("AnimationNodeTransition_n7me5")
+nodes/Transition/position = Vector2(920, 140)
+nodes/output/position = Vector2(1200, 160)
+node_connections = [&"Dash_Attack", 0, &"Dash_Blend", &"Dash_Attack", 1, &"Dash_Attack_Animation", &"Dash_Blend", 0, &"Dash_Animation", &"Dash_Blend", 1, &"Dash_Idle_Animation", &"Idle_Attack", 0, &"Idle_Animation", &"Idle_Attack", 1, &"Idle_Attack_Animation", &"Run_Attack", 0, &"Run_Blend", &"Run_Attack", 1, &"Run_Attack_Animation", &"Run_Blend", 0, &"Run_Animation", &"Run_Blend", 1, &"Run_Idle_Animation", &"Transition", 0, &"Idle_Attack", &"Transition", 1, &"Run_Attack", &"Transition", 2, &"Dash_Attack", &"output", 0, &"Transition"]

@@ -19,7 +19,7 @@ var spawn_location_index: int = 0
 func _use_weapon() -> void:
 	spawn_projectile()
 
-## The function responsible for spawning the projectile and assigning it the correct 
+## The function responsible for spawning the projectile and assigning it the correct
 ## position and velocity.
 # WARNING: untested use of Projectile
 # NOTE: needs a node in group "projectile_parent" somewhere in the SceneTree
@@ -27,21 +27,21 @@ func spawn_projectile() -> void:
 	# add the projectile to the designated node up the SceneTree
 	var projectile_parent: Node3D = \
 			get_tree().get_nodes_in_group("projectile_parent")[0]
-	var proj = projectile.instantiate() as Projectile
-	get_tree().root.get_child(0).add_child(proj)
+	#var proj = projectile.instantiate() as Projectile
+	#get_tree().root.get_child(0).add_child(proj)
 	#projectile_parent.add_child(proj)
 	# CAUTION: untested functionality
-	proj.init_with_world_direction(self, get_global_spawn_position(), \
-			get_weapon_direction())
-	
-	
+	#proj.init_with_world_direction(self, get_global_spawn_position(), \
+			#get_weapon_direction())
+
+
 
 ## The function responsible for getting the global rotation of the weapon
 func get_weapon_direction() -> Vector3:
 	# WARNING: untested; may need to be tweaked to get the correct rotation
 	return global_rotation
 
-## returns the spawn position of one of the markers held in 
+## returns the spawn position of one of the markers held in
 ## ProjectileSpawnLocations, allowing for a sequential firing in multi-barrel
 ## weapons
 func get_global_spawn_position() -> Vector3:

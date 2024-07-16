@@ -9,7 +9,7 @@ signal move (direction: Vector2)
 ## This signal is used to provide the point at which the character should be
 ## looking at
 signal look_at (direction: Vector3)
-## This signal is used fire the weapons on a specific arm.  The arm is 
+## This signal is used fire the weapons on a specific arm.  The arm is
 ## specified by arm_idx
 signal activate_arm (arm_idx: int)
 ## This signal indicates when the button to fire a weapon has been released
@@ -17,7 +17,7 @@ signal deactivate_arm (arm_idx: int)
 
 #signal jump
 
-## This signal is used to take a special action.  The specific action is 
+## This signal is used to take a special action.  The specific action is
 ## specified by action_num
 signal special_action (action_num: int)
 

@@ -18,7 +18,6 @@ enum PlayerState
 @onready var _energy_component: EnergyComponent = $Components/EnergyComponent
 @onready var _ammo_component: AmmoComponent = $Components/AmmoComponent
 
-@export var _fire_point: Node3D = null
 @export var _fire_cursor: MeshInstance3D = null
 @export var _animation_player: AnimationPlayer = null
 @export var _animation_tree: AnimationTree = null
@@ -32,52 +31,58 @@ enum PlayerState
 @export var _dash_blend_speed: float = 100
 @export var _dash_deadzone: float = 2
 
+@export_group("Weapons")
+@export var _rifle: Weapon = null
+@export var _minigun: Weapon = null
+@export var _axe: Weapon = null
+@export var _weapon_swap_cooldown: float = 0.2
+
 var _player_state: PlayerState = PlayerState.Active
 var _mouse_pos_this_frame: Vector3
 var _current_blend_position: Vector2 = Vector2()
 
+var _current_weapon_swap_cooldown: float = 0
 var _current_dash_time: float = 0
 var _last_iso_input_dir: Vector2
 
-@export var _primary_attack_scene: PackedScene
-var _primary_attack_current_cooldown: float = 0
 
 var _animation_transition:String = "parameters/Transition/transition_request"
 
 #Idle Animation State
 var _idle_transition:String = "Idle"
-var _idle_attack_animation: String = "parameters/Idle_Attack/request"
+var _idle_attack_animation_request: String = "parameters/Idle_Attack/request"
+var _idle_attack_animation: String = "parameters/Idle_Attack_Animation"
+var _idle_animation: String = "parameters/Idle_Animation"
 
 #Movement Animation State
 var _movement_transition: String = "Movement"
 var _movement_blend_position: String = "parameters/Run_Animation/blend_position"
-var _run_attack_animation: String = "parameters/Run_Attack/request"
+var _run_attack_animation_request: String = "parameters/Run_Attack/request"
+var _run_attack_animation: String = "parameters/Run_Attack_Animation"
+var _run_idle_animation: String = "parameters/Run_Idle_Animation"
 
 #Dash Animation State
 var _dash_transition: String = "Dash"
 var _dash_blend_position: String = "parameters/Dash_Animation/blend_position"
-var _dash_attack_animation: String = "parameters/Dash_Attack/request"
+var _dash_attack_animation_request: String = "parameters/Dash_Attack/request"
+var _dash_attack_animation: String = "parameters/Dash_Attack_Animation"
+var _dash_idle_animation: String = "parameters/Dash_Idle_Animation"
 #endregion
 
-#Rifle Info
-@onready var _rifle_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Axe/FirePoint
-var _rifle_attack_animation = "2H_Ranged_Fire"
-var _rifle_idle_animation = "2H_Ranged_Idle"
-
-#Minigun Info
-@onready var _minigun_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Minigun/FirePoint
-var _minigun_attack_animation = "2H_Ranged_Fire"
-var _minigun_idle_animation = "2H_Ranged_Idle"
-
-#Axe Info
-@onready var _axe_firepoint:Marker3D = $CombatMech/Rig/Skeleton3D/FirePointAttachment/Rifle/FirePoint
-var _axe_attack_animation = "2H_Melee_Attack"
-var _axe_idle_animation = "2H_Melee_Idle"
+var _weapons_array: Array[Weapon] = [null, null, null]
+var _current_weapon_index = 0
 
 func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
 	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
 	_detection_area.collision_mask = detect_layers
+	_weapons_array[0] = _rifle
+	_weapons_array[1] = _minigun
+	_weapons_array[2] = _axe
+
+	_rifle.visible = true
+	_minigun.visible = false
+	_axe.visible = false
 
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
@@ -85,6 +90,9 @@ func _process(delta: float) -> void:
 	_fire_cursor.global_position = _mouse_pos_this_frame
 
 	if(_player_state != PlayerState.Busy):
+
+		if(Input.is_action_pressed("Cycle Weapon")):
+			_cycle_weapon()
 
 		if(_player_state == PlayerState.Active):
 			_handle_movement_input()
@@ -168,26 +176,20 @@ func _update_blend_position(blend_animation: String, blend_speed: float) -> void
 #endregion
 
 func use_primary_attack() -> void:
-	if _primary_attack_current_cooldown > Time.get_unix_time_from_system():
+	if !_weapons_array[_current_weapon_index].fire((_mouse_pos_this_frame - global_position).normalized()):
 		return
 
 	if(_animation_tree[_animation_transition] == _idle_transition):
-		_animation_tree[_idle_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		_animation_tree[_idle_attack_animation_request] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 	elif (_animation_tree[_animation_transition] == _movement_transition):
-		_animation_tree[_run_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		_animation_tree[_run_attack_animation_request] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 	elif (_animation_tree[_animation_transition] == _dash_transition):
-		_animation_tree[_dash_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		_animation_tree[_dash_attack_animation_request] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-	print(_animation_tree[_animation_transition])
-
-	var attack_projectile: Projectile = _primary_attack_scene.instantiate() as Projectile
-	get_tree().root.get_child(0).add_child(attack_projectile)
-	var dir: Vector3 = (_mouse_pos_this_frame - primary_collider.global_position).normalized()
-	dir.y = 0
-	attack_projectile.init_with_world_direction(self, _fire_point.global_position, dir)
-	_primary_attack_current_cooldown = attack_projectile.cooldown_time + Time.get_unix_time_from_system()
+	#var dir: Vector3 = (_mouse_pos_this_frame - primary_collider.global_position).normalized()
+	#dir.y = 0
 
 func _handle_pickup(pickup: Pickup) -> void:
 	pickup.assign_attract_target(primary_collider)
@@ -219,3 +221,38 @@ func _handle_dashing():
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
 	move_and_slide()
+
+func _cycle_weapon():
+	var i: int = _current_weapon_index
+
+	i += 1
+	if i >= _weapons_array.size():
+		i = 0
+
+	for weapon_index in range(_weapons_array.size() - 1):
+		if _weapons_array[i] != null:
+			change_weapon(i)
+			return
+
+func change_weapon(weapon_index: int):
+	if(_current_weapon_swap_cooldown > Time.get_unix_time_from_system()):
+		return;
+
+	if(weapon_index + 1 > _weapons_array.size()
+	|| _weapons_array[weapon_index] == null
+	|| _current_weapon_index == weapon_index):
+		return
+
+	var current_transition: String = _animation_tree[_animation_transition]
+	var current_weapon: Weapon = _weapons_array[_current_weapon_index]
+	var new_weapon: Weapon = _weapons_array[weapon_index]
+	_current_weapon_index = weapon_index
+
+	if(current_weapon.animation_root != new_weapon.animation_root):
+		_animation_tree.tree_root = new_weapon.animation_root
+	_animation_tree[_animation_transition] = current_transition
+
+	current_weapon.visible = false
+	new_weapon.visible = true
+
+	_current_weapon_swap_cooldown = _weapon_swap_cooldown + Time.get_unix_time_from_system()

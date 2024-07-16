@@ -29,7 +29,7 @@ enum NavState
 @export var _weapon_fire_point: Marker3D = null
 @export var _weapon_range: float = 10
 @export var _weapon_cooldown_time: float = 3
-@export var _weapon_projectile: PackedScene = null
+@export var _weapon_ability: PackedScene = null
 
 @export_subgroup("Detection Layers")
 @export var _chase_targets: Array[LayerUtility.Layer] #Targets the enemy will chase
@@ -392,12 +392,12 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 
 
 func use_primary_attack() -> void:
-	var attack_projectile: Projectile = _weapon_projectile.instantiate() as Projectile
-	get_tree().root.get_child(0).add_child(attack_projectile)
+	var ability: Ability = _weapon_ability.instantiate() as Ability
+	get_tree().root.get_child(0).add_child(ability)
 	var fire_point_pos: Vector3 = _weapon_fire_point.global_position
 	var dir: Vector3 = (_current_target.primary_collider.global_position - fire_point_pos).normalized()
 	dir.y = 0
-	attack_projectile.init_with_world_direction(self, fire_point_pos, dir)
+	ability.init_with_world_direction(self, fire_point_pos, dir)
 
 func alert_enemy_to_player() -> void:
 	_is_alerted = true

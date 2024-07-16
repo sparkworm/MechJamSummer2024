@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	move.emit(_calculate_movement_direction())
-	
+
 	if Input.is_action_just_pressed("Fire"):
 		activate_arm.emit(0)
 	if Input.is_action_just_released("Fire"):
