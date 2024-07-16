@@ -8,9 +8,6 @@
 projectile = ExtResource("2_4e048")
 projectile_speed = 20.0
 
-[node name="Pico_SideMiniGun" parent="." index="2" instance=ExtResource("2_6xift")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0586736, -0.735869)
-
 [node name="Marker3D" type="Marker3D" parent="ProjectileSpawnLocations" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26279, 0.190819, -2.75067)
 
@@ -22,3 +19,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.547363, -0.0965947, -2.7506
 
 [node name="Marker3D4" type="Marker3D" parent="ProjectileSpawnLocations" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275038, -0.0956339, -2.75067)
+
+[node name="Pico_SideMiniGun" parent="." index="1" instance=ExtResource("2_6xift")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0586736, -0.735869)

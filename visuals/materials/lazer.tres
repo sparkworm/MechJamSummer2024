@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6f1xvmnhl6ig"]
+
+[resource]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.993233, 0, 0.242948, 1)
+emission = Color(0.252245, 0, 0.101712, 1)
+rim_enabled = true
+rim = 0.65
+rim_tint = 1.0

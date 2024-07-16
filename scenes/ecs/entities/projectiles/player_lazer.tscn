@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwuf2sk56g0kj"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/projectile.gd" id="1_anvgw"]
+[ext_resource type="Material" uid="uid://6f1xvmnhl6ig" path="res://visuals/materials/lazer.tres" id="2_5gd2b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yjg4k"]
 
@@ -16,15 +17,8 @@ turbulence_noise_speed_random = 0.72
 turbulence_initial_displacement_min = 5.2
 turbulence_initial_displacement_max = 5.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56a5r"]
-albedo_color = Color(0.993233, 0, 0.242948, 1)
-emission = Color(0.252245, 0, 0.101712, 1)
-rim_enabled = true
-rim = 0.65
-rim_tint = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_krunk"]
-material = SubResource("StandardMaterial3D_56a5r")
+[sub_resource type="SphereMesh" id="SphereMesh_pcqs8"]
+material = ExtResource("2_5gd2b")
 radius = 0.35
 height = 0.75
 
@@ -56,4 +50,4 @@ lifetime = 0.15
 preprocess = 0.02
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_yhxg5")
-draw_pass_1 = SubResource("SphereMesh_krunk")
+draw_pass_1 = SubResource("SphereMesh_pcqs8")

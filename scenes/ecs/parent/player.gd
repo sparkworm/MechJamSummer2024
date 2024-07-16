@@ -83,6 +83,7 @@ func _ready() -> void:
 	_rifle.visible = true
 	_minigun.visible = false
 	_axe.visible = false
+	_animation_tree.tree_root = _weapons_array[0].animation_root
 
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()

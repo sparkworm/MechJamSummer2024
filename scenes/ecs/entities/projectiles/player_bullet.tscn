@@ -1,28 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtm6mkhqbluvs"]
+[gd_scene load_steps=11 format=3 uid="uid://dtm6mkhqbluvs"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/projectile.gd" id="1_o6sry"]
-[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="2_wqv6u"]
+[ext_resource type="Material" uid="uid://3hnh1hgb5j0a" path="res://visuals/materials/player_bullet.tres" id="2_57ity"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yjg4k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4byjp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmg6y"]
-albedo_color = Color(0.868419, 0.412585, 0, 1)
-albedo_texture = ExtResource("2_wqv6u")
-metallic = 0.12
-metallic_specular = 0.66
-roughness = 0.94
-emission_enabled = true
-emission = Color(0.549301, 0.173864, 0.0385589, 1)
-emission_energy_multiplier = 1.39
-rim_enabled = true
-rim_tint = 1.0
+[sub_resource type="Gradient" id="Gradient_2iyqb"]
+colors = PackedColorArray(0.801327, 0, 0.189111, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_be0bk"]
+gradient = SubResource("Gradient_2iyqb")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_0ar7b"]
+max_value = 2.0
+_data = [Vector2(0.0114679, 1.01993), 0.0, 0.0, 0, 0, Vector2(0.116972, 2), 0.0, 0.0, 0, 0, Vector2(0.245413, 0.9974), 0.0, 0.0, 0, 0, Vector2(0.380734, 2), 0.0, 0.0, 0, 0, Vector2(0.509174, 0.97487), 0.0, 0.0, 0, 0, Vector2(0.623853, 2), 0.0, 0.0, 0, 0, Vector2(0.747706, 0.9974), 0.0, 0.0, 0, 0, Vector2(0.892202, 1.98873), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_bw6w3"]
+curve = SubResource("Curve_0ar7b")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_utqde"]
-radial_velocity_min = 0.3
-radial_velocity_max = 0.3
 gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_bw6w3")
+color_ramp = SubResource("GradientTexture1D_be0bk")
 turbulence_noise_strength = 1.58
 turbulence_noise_speed = Vector3(0, 1, 0)
 turbulence_noise_speed_random = 0.72
@@ -58,11 +61,9 @@ shape = SubResource("SphereShape3D_4byjp")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_lmg6y")
-emitting = false
+material_override = ExtResource("2_57ity")
 amount = 1
-lifetime = 20.0
-one_shot = true
+lifetime = 5.0
 preprocess = 0.02
 fixed_fps = 60
 local_coords = true

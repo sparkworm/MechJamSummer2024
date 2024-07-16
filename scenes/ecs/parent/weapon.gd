@@ -5,9 +5,13 @@ extends Node3D
 
 @export var _owner: Node3D = null
 @export var _weapon_ability: PackedScene = null
-@export var _fire_point: Marker3D = null
 @export var _cooldown_time: float = 10
 @export var _num_abilities: int = 1
+@export var _spread_angle: float = 100
+
+@export_group("VFX")
+@export var _weapon_fire_vfx: GPUParticles3D = null
+@export var _weapon_casings_vfx: GPUParticles3D = null
 
 @export_group("Animaton")
 @export var _animation_root_node: AnimationRootNode
@@ -22,10 +26,31 @@ var attack_animation: AnimationRootNode:
 var idle_animation: AnimationRootNode:
 	get: return _idle_animation
 
+@onready var _fire_point: Marker3D = $FirePoint
+
 var _cooldown_timestamp: float = 0
+var _vfx_toggle_time: float = 0
 
 func init_weapon(owner: Node3D):
 	_owner = owner
+
+#Crappy bandaid because these systems suck
+func _process(delta: float):
+	_vfx_toggle_time -= delta
+	if(_vfx_toggle_time > 0):
+		if(_weapon_casings_vfx != null):
+			_weapon_casings_vfx.emitting = true
+
+		if(_weapon_fire_vfx != null):
+			_weapon_fire_vfx.emitting = true
+
+	else:
+		if(_weapon_casings_vfx != null):
+			_weapon_casings_vfx.emitting = false
+
+		if(_weapon_fire_vfx != null):
+			_weapon_fire_vfx.emitting = false
+
 
 ## function to handle weapon attacking
 ## [br] Do note that "fire" can mean "swing" for melee weapons.
@@ -34,8 +59,26 @@ func fire(direction: Vector3) -> bool:
 		return false
 
 	_cooldown_timestamp = _cooldown_time + Time.get_unix_time_from_system()
-	var weapon_ability: Ability = _weapon_ability.instantiate() as Ability
-	GameManager.current_level_scene.add_child(weapon_ability)
 	direction.y = 0
-	weapon_ability.init_with_world_direction(_owner, _fire_point.global_position, direction)
+
+
+	if _num_abilities <= 1:
+		var weapon_ability: Ability = _weapon_ability.instantiate() as Ability
+		GameManager.current_level_scene.add_child(weapon_ability)
+		weapon_ability.init_with_world_direction(_owner, _fire_point.global_position, direction)
+
+	else:
+		var angle_step: float = _spread_angle / (_num_abilities - 1)
+		var start_angle: float = -_spread_angle / 2.0
+
+		for i in range(_num_abilities):
+			var weapon_ability: Ability = _weapon_ability.instantiate() as Ability
+			GameManager.current_level_scene.add_child(weapon_ability)
+			weapon_ability.global_transform = global_transform
+			var rotation_angle: float = start_angle + i * angle_step
+			print(rotation_angle)
+			var new_dir = direction.rotated(Vector3.UP, rotation_angle).normalized()
+			weapon_ability.init_with_world_direction(_owner, _fire_point.global_position, new_dir)
+
+	_vfx_toggle_time = 0.2
 	return true
