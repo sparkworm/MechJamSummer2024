@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://5ll7mhw8j1py"]
+[gd_scene load_steps=10 format=3 uid="uid://5ll7mhw8j1py"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/weapon.gd" id="1_yclrk"]
-[ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="2_mi7wf"]
+[ext_resource type="PackedScene" uid="uid://cb3lk1h2khoo4" path="res://scenes/ecs/entities/projectiles/player_slash.tscn" id="2_lfi1i"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c5rieiuqulnex" path="res://resources/blend_trees/player_mech_melee_blend_tree.tres" id="3_idj8j"]
 [ext_resource type="Texture2D" uid="uid://p03yqpstliyf" path="res://visuals/models/mechs/combat_mech/combatmech_texture.png" id="4_0kyxy"]
+[ext_resource type="PackedScene" uid="uid://cek4ttkjwbkkc" path="res://resources/particle_systems/lazer_flash_particles.tscn" id="4_xmxt8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fnsr"]
 resource_name = "combatMech"
@@ -53,15 +54,17 @@ rim_enabled = true
 rim = 0.36
 rim_tint = 1.0
 
-[node name="Axe" type="Node3D"]
+[node name="Axe" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx")]
 transform = Transform3D(-0.0531265, -0.998448, 0.016674, 0.019192, 0.0156735, 0.999694, -0.998404, 0.0534301, 0.01833, -0.284229, 0.296009, 0.0605481)
-visible = false
 script = ExtResource("1_yclrk")
-_weapon_ability = ExtResource("2_mi7wf")
+_weapon_ability = ExtResource("2_lfi1i")
 _cooldown_time = 1.0
+_ability_fire_vfx = NodePath("axe_sparks")
 _animation_root_node = ExtResource("3_idj8j")
 _attack_animation = "2H_Melee_Chop"
 _idle_animation = "2H_Melee_Idle"
+
+[node name="axe_sparks" parent="." instance=ExtResource("4_xmxt8")]
 
 [node name="CombatMech_Axe" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_hi2dx")
@@ -69,5 +72,4 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_c068b")
 
 [node name="FirePoint" type="Marker3D" parent="."]
-transform = Transform3D(8.2422e-08, 0.25, -1.43424e-07, 1.50947e-07, 4.84288e-08, 0.25, 0.25, -1.02445e-07, -1.30167e-07, 0.054872, 0.712795, -1.30072)
 top_level = true

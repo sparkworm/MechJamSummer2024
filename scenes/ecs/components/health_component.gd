@@ -12,13 +12,14 @@ signal hit(source: Node3D)
 ## the actual amount of health
 var health: int
 
-func on_ready() -> void:
+func _ready() -> void:
 	# set the actual health to the max_health
 	health = max_health
 
 ## subtracts a specified number from health, and if health reaches 0, killed is
 ## emitted
 func damage(source: Node3D, amnt: int) -> void:
+	print("check")
 	health -= amnt
 	hit.emit(source)
 	if health <= 0:

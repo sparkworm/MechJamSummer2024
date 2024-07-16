@@ -10,8 +10,8 @@ extends Node3D
 @export var _spread_angle: float = 100
 
 @export_group("VFX")
-@export var _weapon_fire_vfx: GPUParticles3D = null
-@export var _weapon_casings_vfx: GPUParticles3D = null
+@export var _ability_fire_vfx: GPUParticles3D = null
+@export var _ability_casings_vfx: GPUParticles3D = null
 
 @export_group("Animaton")
 @export var _animation_root_node: AnimationRootNode
@@ -38,18 +38,18 @@ func init_weapon(owner: Node3D):
 func _process(delta: float):
 	_vfx_toggle_time -= delta
 	if(_vfx_toggle_time > 0):
-		if(_weapon_casings_vfx != null):
-			_weapon_casings_vfx.emitting = true
+		if(_ability_casings_vfx != null):
+			_ability_casings_vfx.emitting = true
 
-		if(_weapon_fire_vfx != null):
-			_weapon_fire_vfx.emitting = true
+		if(_ability_fire_vfx != null):
+			_ability_fire_vfx.emitting = true
 
 	else:
-		if(_weapon_casings_vfx != null):
-			_weapon_casings_vfx.emitting = false
+		if(_ability_casings_vfx != null):
+			_ability_casings_vfx.emitting = false
 
-		if(_weapon_fire_vfx != null):
-			_weapon_fire_vfx.emitting = false
+		if(_ability_fire_vfx != null):
+			_ability_fire_vfx.emitting = false
 
 
 ## function to handle weapon attacking

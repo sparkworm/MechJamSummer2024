@@ -80,14 +80,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hy8og")
 
-[node name="Minigun" type="Node3D" node_paths=PackedStringArray("_weapon_fire_vfx", "_weapon_casings_vfx")]
+[node name="Minigun" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx", "_ability_casings_vfx")]
 transform = Transform3D(-0.011775, -0.999903, 0.00752555, -0.0352161, 0.00793544, 0.999349, -0.999311, 0.0115007, -0.0353054, 0.0775998, 0.540943, -0.165942)
 script = ExtResource("1_ux24p")
 _weapon_ability = ExtResource("2_gopda")
 _cooldown_time = 0.1
 _num_abilities = 3
-_weapon_fire_vfx = NodePath("bullet_flash")
-_weapon_casings_vfx = NodePath("bullet_casings")
+_ability_fire_vfx = NodePath("bullet_flash")
+_ability_casings_vfx = NodePath("bullet_casings")
 _animation_root_node = ExtResource("3_8t4p1")
 
 [node name="bullet_casings" parent="." instance=ExtResource("4_cab0s")]

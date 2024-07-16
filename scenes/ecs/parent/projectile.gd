@@ -10,6 +10,7 @@ enum AbilityState
 }
 
 @export_subgroup("Basic Properties")
+@export var _damage: float = 2
 @export var _speed: float = 8
 @export var _life_time: float = 2
 @export var _linger_time: float = 0.25
@@ -46,7 +47,7 @@ func change_world_position(pos: Vector3) -> void:
 	global_position = pos
 
 func look_at_dir(dir: Vector3) -> void:
-	Basis.looking_at(dir)
+	basis = Basis.looking_at(dir)
 
 func _ready() -> void:
 	_collisional_layers_mask = LayerUtility.get_bitmask_from_bits(_collisional_layers)
@@ -61,6 +62,7 @@ func init_with_world_direction(source: Node3D, world_start_pos: Vector3, world_d
 	_source = source
 	change_world_position(world_start_pos)
 	change_velocity(world_direction, _speed)
+	look_at_dir(-world_direction)
 
 func _physics_process(_delta: float) -> void:
 	if(state == AbilityState.Active):
@@ -134,7 +136,7 @@ func _on_hit(collider: CollisionObject3D) -> void:
 	#If the target has health, do damage
 	var health_component: HealthComponent = collider.get_node_or_null("Components/HealthComponent") as HealthComponent
 	if(health_component != null):
-		health_component.damage(_source, 1)
+		health_component.damage(_source, _damage)
 
 	pass
 

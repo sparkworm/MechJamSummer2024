@@ -23,6 +23,7 @@ enum NavState
 @export_subgroup("Enemy Animation")
 @export var _animation_tree: AnimationTree = null
 @export var _animation_player: AnimationPlayer = null
+@export var _particles_when_hit: GPUParticles3D = null
 
 @export_subgroup("Enemy Weapons") #This should be replaced by Weapon class scripts later
 @onready var _attack_component: AttackComponent = $Components/AttackComponent
@@ -150,6 +151,8 @@ func _init_patrol_route() -> void:
 		_set_movement_target(_current_patrol_point.global_position)
 
 func _is_hit(source: Node3D) -> void:
+	_particles_when_hit.restart()
+	_particles_when_hit.emitting = true
 	if _agent_nav_state == NavState.Disabled:
 		return
 	if(_agent_nav_state != NavState.Attacking && source is Body):
@@ -168,7 +171,9 @@ func _die() -> void:
 	_detection_area.collision_mask = LayerUtility.get_bit_from_layer_name("Hidden")
 	_animation_tree[_animation_transition] = _disables_transition
 	_disables_FSM.travel(_death_animation)
-	pass
+	var level: Level = GameManager.current_level_scene as Level
+	await get_tree().create_timer(2).timeout
+	level.remove_and_free_enemy(self)
 
 func _set_movement_target(movement_target: Vector3) -> void:
 	_nav_agent.set_target_position(movement_target)

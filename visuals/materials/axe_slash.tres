@@ -1,8 +1,18 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cpyeauh1r5bk0"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cpyeauh1r5bk0"]
+
+[ext_resource type="Texture2D" uid="uid://dqkv2702wu8qo" path="res://visuals/textures/slash_02.png" id="1_2p71p"]
 
 [resource]
-albedo_color = Color(0.993233, 0, 0.242948, 1)
-emission = Color(0.252245, 0, 0.101712, 1)
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.807455, 0, 0.0477931, 1)
+albedo_texture = ExtResource("1_2p71p")
+albedo_texture_force_srgb = true
+albedo_texture_msdf = true
+metallic_specular = 0.21
+emission_enabled = true
+emission = Color(0.409036, 0, 0.0323491, 1)
+emission_energy_multiplier = 5.99
 rim_enabled = true
-rim = 0.65
+rim = 0.98
 rim_tint = 1.0

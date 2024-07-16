@@ -54,13 +54,13 @@ rim_enabled = true
 rim = 0.55
 rim_tint = 0.29
 
-[node name="Rifle" type="Node3D" node_paths=PackedStringArray("_weapon_casings_vfx")]
+[node name="Rifle" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx")]
 transform = Transform3D(-0.135109, -0.990831, -0.000661872, -0.0280878, 0.00316228, 0.9996, -0.990433, 0.135074, -0.0282575, 0.109442, 0.00223326, -0.221358)
 script = ExtResource("1_7ba75")
 _weapon_ability = ExtResource("2_ni35w")
 _cooldown_time = 0.4
 _spread_angle = 0.0
-_weapon_casings_vfx = NodePath("bullet_flash")
+_ability_fire_vfx = NodePath("bullet_flash")
 _animation_root_node = ExtResource("3_ndusd")
 
 [node name="Gun" type="MeshInstance3D" parent="."]
