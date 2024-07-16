@@ -1,6 +1,8 @@
 extends Body
 class_name EnemyCharacter
 
+#region variables
+
 const RANDOM_SAMPLES: float = 10
 
 #TODO: AI Variance
@@ -110,6 +112,8 @@ var _death_animation: String = "Death"
 var _attack_animation: String = "parameters/Attack/request"
 var _attack_time_scale: String = "parameters/Attack_1_TimeScale/scale"
 
+#endregion
+
 func _ready() -> void:
 	set_physics_process(false)
 	_nav_state_to_patrolling()
@@ -175,9 +179,6 @@ func _die() -> void:
 	await get_tree().create_timer(2).timeout
 	level.remove_and_free_enemy(self)
 
-func _set_movement_target(movement_target: Vector3) -> void:
-	_nav_agent.set_target_position(movement_target)
-
 #func get
 
 func _physics_process(delta: float) -> void:
@@ -215,6 +216,11 @@ func _physics_process(delta: float) -> void:
 	#velocity.y -= GameUtility.get_current_delta_time() *  9.81
 	#move_and_slide()
 
+#region navigation
+
+func _set_movement_target(movement_target: Vector3) -> void:
+	_nav_agent.set_target_position(movement_target)
+
 func _move_agent() -> void:
 	_movement_delta = _movement_speed * GameUtility.get_current_delta_time()
 	var next_path_position: Vector3 = _nav_agent.get_next_path_position()
@@ -243,7 +249,6 @@ func _get_next_patrol_point() -> void:
 	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
 		_set_movement_target(_current_patrol_point.global_position)
 		_idle_time_remaining = _patrolling_idle_duration
-
 
 func _chase_target() -> void:
 	if(_current_target == null):
@@ -277,7 +282,6 @@ func _attack_target() -> void:
 	elif(Time.get_unix_time_from_system() > _current_attack_animation_time):
 		_nav_state_to_chasing(_current_target)
 
-
 func _sweep_area() -> void:
 	if(_nav_agent.is_navigation_finished()):
 		_idle_time_remaining -= GameUtility.get_current_delta_time()
@@ -299,6 +303,7 @@ func _try_set_nav_point_in_area(point: Vector3, area_variance: Vector3) -> bool:
 	_set_movement_target(current_pos)
 	return false
 
+#endregion
 
 func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 	var collisionLayer: int = collision_body.get_collision_layer()
@@ -348,6 +353,7 @@ func _is_collider_in_vision_cone(collider: CollisionShape3D, degrees: float) -> 
 
 	return angle <= (degrees / 2)
 
+#region state machine
 
 func _on_before_state_change() -> void:
 	_state_time_remaining = 0
@@ -395,7 +401,6 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Sweeping
 
-
 func use_primary_attack() -> void:
 	var ability: Ability = _weapon_ability.instantiate() as Ability
 	get_tree().root.get_child(0).add_child(ability)
@@ -408,7 +413,8 @@ func alert_enemy_to_player() -> void:
 	_is_alerted = true
 	_nav_state_to_chasing(PlayerManager.player)
 
-
 func force_patrol_nav_state() -> void:
 	_is_alerted = false
 	_nav_state_to_patrolling()
+
+#endregion

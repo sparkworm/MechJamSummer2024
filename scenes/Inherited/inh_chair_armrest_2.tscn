@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://44lh8prt1s4e"]
+
+[ext_resource type="PackedScene" uid="uid://tmdoy7hgj5xt" path="res://visuals/models/level/chair-armrest.glb" id="1_tkl2q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kgw8f"]
+points = PackedVector3Array(-0.25, 0.199951, -0.125015, -0.100039, 0, -0.125015, -0.15001, 0, -0.0750295, -0.25, 0.199951, 0.174999, -0.25, 0.249966, -0.125015, -0.15001, 0.55, -0.175, 0.0999902, 0, -0.125015, -0.15001, 0, 0.12498, -0.25, 0.249966, 0.174999, -0.100039, 0, 0.174999, -0.15001, 0.55, -0.0750295, 0.149961, 0.55, -0.175, 0.149961, 0, -0.0750295, 0.25, 0.199951, -0.125015, -0.200029, 0.29998, 0.174999, 0.0999902, 0, 0.174999, 0.149961, 0.55, -0.0750295, 0.25, 0.249966, -0.125015, 0.149961, 0, 0.12498, 0.25, 0.199951, 0.174999, 0.19998, 0.29998, 0.174999, 0.25, 0.249966, 0.174999)
+
+[node name="chair-armrest2" instance=ExtResource("1_tkl2q")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="chair-armrest" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chair-armrest/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_kgw8f")

@@ -13,6 +13,9 @@ extends Node3D
 @export var _ability_fire_vfx: GPUParticles3D = null
 @export var _ability_casings_vfx: GPUParticles3D = null
 
+@export_group("SFX")
+@export var _ability_fire_sfx: AudioStreamPlayer3D = null
+
 @export_group("Animaton")
 @export var _animation_root_node: AnimationRootNode
 var animation_root: AnimationRootNode:
@@ -59,9 +62,13 @@ func fire(direction: Vector3) -> bool:
 		return false
 
 	set_cooldown(_cooldown_time)
+
+	# play the fire sound effect
+	_ability_fire_sfx.play()
+
 	direction.y = 0
 
-
+	
 	if _num_abilities <= 1:
 		var weapon_ability: Ability = _weapon_ability.instantiate() as Ability
 		GameManager.current_level_scene.add_child(weapon_ability)

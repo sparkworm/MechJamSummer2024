@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://g5sklegfrtla"]
+
+[ext_resource type="PackedScene" uid="uid://cxqie2q00uhlb" path="res://visuals/models/level/computer-screen.glb" id="1_m1ljt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_63sg5"]
+points = PackedVector3Array(0.349961, 0.660873, -0.0167888, 0.179248, 0.229779, 0.206571, 0.4, 0.611838, -0.0069675, 0.4, 0.592172, -0.105052, 0.349961, 0.641207, -0.11483, -0.350039, 0.660873, -0.0167888, 0.179248, 0.181455, 0.193618, 0.299922, 0, 0.0933898, 0.4, 0.268593, 0.0616529, -0.179327, 0.229779, 0.206571, 0.4, 0.248992, -0.0363885, 0.299922, 0, -0.20661, 0.32498, 0.349973, -0.20661, 0.32498, 0.449984, -0.20661, 0.299922, 0.449984, -0.231571, 0.299922, 0.579428, -0.20661, -0.350039, 0.641207, -0.11483, -0.4, 0.592172, -0.105052, -0.4, 0.611838, -0.0069675, -0.179327, 0.181455, 0.193618, -0.300078, 0, 0.0933898, -0.4, 0.268593, 0.0616529, 0.299922, 0.349973, -0.231571, -0.300078, 0, -0.20661, -0.300078, 0.449984, -0.231571, -0.300078, 0.579428, -0.20661, -0.4, 0.248992, -0.0363885, -0.325059, 0.449984, -0.20661, -0.325059, 0.349973, -0.20661, -0.300078, 0.349973, -0.231571)
+
+[node name="computer-screen2" instance=ExtResource("1_m1ljt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="computer-screen" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="computer-screen/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_63sg5")

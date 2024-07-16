@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0myt1w43fukl"]
+[gd_scene load_steps=13 format=3 uid="uid://c0myt1w43fukl"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/weapon.gd" id="1_ux24p"]
 [ext_resource type="PackedScene" uid="uid://dtm6mkhqbluvs" path="res://scenes/ecs/entities/projectiles/player_bullet.tscn" id="2_gopda"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0xuvvovkqpvy" path="res://resources/particle_systems/bullet_casing_particles.tscn" id="4_cab0s"]
 [ext_resource type="Texture2D" uid="uid://p03yqpstliyf" path="res://visuals/models/mechs/combat_mech/combatmech_texture.png" id="4_ndhhs"]
 [ext_resource type="PackedScene" uid="uid://dfmdcy5742q3" path="res://resources/particle_systems/bullet_flash_particles.tscn" id="5_rjr5g"]
+[ext_resource type="AudioStream" uid="uid://bqjwha1kwm0f5" path="res://sound/sfx/morganpurkis__simple-gunshot-reverb-test.wav" id="7_sbkxc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epiyk"]
 resource_name = "combatMech"
@@ -80,7 +81,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hy8og")
 
-[node name="Minigun" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx", "_ability_casings_vfx")]
+[node name="Minigun" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx", "_ability_casings_vfx", "_ability_fire_sfx")]
 transform = Transform3D(-0.011775, -0.999903, 0.00752555, -0.0352161, 0.00793544, 0.999349, -0.999311, 0.0115007, -0.0353054, 0.0775998, 0.540943, -0.165942)
 script = ExtResource("1_ux24p")
 _weapon_ability = ExtResource("2_gopda")
@@ -88,6 +89,7 @@ _cooldown_time = 0.1
 _num_abilities = 3
 _ability_fire_vfx = NodePath("bullet_flash")
 _ability_casings_vfx = NodePath("bullet_casings")
+_ability_fire_sfx = NodePath("FireSFX")
 _animation_root_node = ExtResource("3_8t4p1")
 
 [node name="bullet_casings" parent="." instance=ExtResource("4_cab0s")]
@@ -107,3 +109,6 @@ skeleton = NodePath("")
 
 [node name="FirePoint" type="Marker3D" parent="."]
 transform = Transform3D(-0.00294334, -0.00880378, -0.249827, -0.249975, 0.00198403, 0.00287557, 0.00188122, 0.249837, -0.00882654, -0.00894409, 0.027018, 0.863005)
+
+[node name="FireSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_sbkxc")
