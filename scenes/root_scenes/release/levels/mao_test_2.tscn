@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bew1trcfy3nct"]
+[gd_scene load_steps=26 format=3 uid="uid://bew1trcfy3nct"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_5hgy8"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_rycog"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b33s7qdff0i5" path="res://scenes/ecs/parent/door.tscn" id="12_1cosn"]
 [ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="12_rmd4h"]
 [ext_resource type="PackedScene" uid="uid://byolnvaa3tpvc" path="res://visuals/desert.tscn" id="13_ayp8d"]
+[ext_resource type="PackedScene" uid="uid://layulcd8e5uf" path="res://scenes/ecs/parent/crate.tscn" id="14_vn8po"]
+[ext_resource type="PackedScene" uid="uid://psredi24q2hu" path="res://scenes/ecs/entities/characters/pickups/energy_pickup.tscn" id="15_fq1gv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_78lo3"]
 
@@ -201,7 +203,71 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 16.919
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 5.38401)
 
 [node name="desert" parent="." instance=ExtResource("13_ayp8d")]
-transform = Transform3D(0.46679, 0.0187298, 0.178202, 0, 0.497261, -0.0522642, -0.179184, 0.0487929, 0.464233, -146.291, -9.68264, 170.917)
+transform = Transform3D(0.233395, 0.00936492, 0.0891012, 0, 0.24863, -0.0261321, -0.089592, 0.0243964, 0.232117, -187.04, -9.68264, 84.9587)
+
+[node name="EnergyCrate" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, -1.83395)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate2" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 7.74615)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate2/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate3" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 19.65)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate3/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate4" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 28.6591)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate4/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate5" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0446, -7.62939e-06, 24.056)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate5/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate6" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3379, -7.62939e-06, 11.4218)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate6/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate7" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3566, -7.62939e-06, -0.64121)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate7/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
+
+[node name="EnergyCrate8" parent="." instance=ExtResource("14_vn8po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2937, -7.62939e-06, -15.1502)
+collision_layer = 8448
+collision_mask = 8192
+
+[node name="PickupDropComponent" parent="EnergyCrate8/Components" index="1"]
+_guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [editable path="NavigationRegion3D/Spawner"]
 [editable path="NavigationRegion3D/Spawner/Robot_ChargingStation2"]
@@ -211,3 +277,11 @@ transform = Transform3D(0.46679, 0.0187298, 0.178202, 0, 0.497261, -0.0522642, -
 [editable path="Door"]
 [editable path="Door2"]
 [editable path="Door3"]
+[editable path="EnergyCrate"]
+[editable path="EnergyCrate2"]
+[editable path="EnergyCrate3"]
+[editable path="EnergyCrate4"]
+[editable path="EnergyCrate5"]
+[editable path="EnergyCrate6"]
+[editable path="EnergyCrate7"]
+[editable path="EnergyCrate8"]

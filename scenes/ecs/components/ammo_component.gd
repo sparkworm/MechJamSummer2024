@@ -36,7 +36,6 @@ func _ready() -> void:
 	pass
 
 var ammo_type_map: Dictionary = {
-	AmmoData.AmmoType.LightAmmo: "light_ammo",
 	AmmoData.AmmoType.HeavyAmmo: "heavy_ammo",
 	AmmoData.AmmoType.Missiles: "missiles",
 }

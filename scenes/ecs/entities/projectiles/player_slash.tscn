@@ -5,7 +5,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yjg4k"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_4byjp"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2haw6"]
 
 [sub_resource type="Curve" id="Curve_801wl"]
 _data = [Vector2(0.00229358, 0), 0.0, 0.0, 0, 0, Vector2(0.0848624, 1), 0.0, 0.0, 0, 0, Vector2(0.733945, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -65,10 +65,11 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("SphereShape3D_4byjp")
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0.526365)
+shape = SubResource("CapsuleShape3D_2haw6")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.483201)
 amount = 40
 lifetime = 0.13
 preprocess = 0.02

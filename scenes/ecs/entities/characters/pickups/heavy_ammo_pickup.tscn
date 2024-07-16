@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4mu6oeflp1t0"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/pickup.gd" id="1_gd5qm"]
+[ext_resource type="Resource" uid="uid://dhrg4i4f6vmqh" path="res://resources/items/heavy_ammo_basic_pickup.tres" id="2_okbxp"]
+[ext_resource type="PackedScene" uid="uid://cye7k0dixuig" path="res://visuals/models/pickups/Pico_CannonAmmo.glb" id="3_b7gpq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3fdfd"]
+
+[node name="HeavyAmmo" type="StaticBody3D"]
+collision_layer = 1024
+script = ExtResource("1_gd5qm")
+_pickup_data = ExtResource("2_okbxp")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Pico_CannonAmmo" parent="." instance=ExtResource("3_b7gpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414048, 0)
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3fdfd")

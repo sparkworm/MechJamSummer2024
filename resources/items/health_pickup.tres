@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HealthData" load_steps=2 format=3 uid="uid://hhjm08orleid"]
+
+[ext_resource type="Script" path="res://resources/health_data.gd" id="1_v5lds"]
+
+[resource]
+script = ExtResource("1_v5lds")
+_health_amount = 50
+_name = ""

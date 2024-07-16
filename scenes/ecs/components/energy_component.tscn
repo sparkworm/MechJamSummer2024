@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl2pd45xbhiap"]
+[gd_scene load_steps=2 format=3 uid="uid://cbfwy6vkb73qp"]
 
 [ext_resource type="Script" path="res://scenes/ecs/components/energy_component.gd" id="1_vjv56"]
 

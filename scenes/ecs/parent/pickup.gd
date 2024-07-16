@@ -2,9 +2,9 @@ class_name Pickup
 extends Unit
 
 #TODO: Pickup homing logic
-@export var _pickup_data: PickupData = null
+@export var _pickup_data: PickupData = PickupData.new()
 @export var _obtain_distance: float = 1
-@export var _attract_speed: float = 2
+@export var _attract_speed: float = 8
 #Do we want a duration?
 @export var _attract_duration: float = 2
 

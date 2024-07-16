@@ -256,4 +256,5 @@ func change_weapon(weapon_index: int):
 	current_weapon.visible = false
 	new_weapon.visible = true
 
+	new_weapon.set_cooldown(0.1)
 	_current_weapon_swap_cooldown = _weapon_swap_cooldown + Time.get_unix_time_from_system()

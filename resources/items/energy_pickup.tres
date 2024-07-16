@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnergyData" load_steps=2 format=3 uid="uid://bgdmbegq4h4i7"]
+
+[ext_resource type="Script" path="res://resources/energy_data.gd" id="1_wlx37"]
+
+[resource]
+script = ExtResource("1_wlx37")
+_energy_amount = 100
+_name = ""

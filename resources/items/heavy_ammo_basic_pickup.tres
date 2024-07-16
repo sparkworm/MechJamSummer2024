@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmmoData" load_steps=3 format=3 uid="uid://dhrg4i4f6vmqh"]
+
+[ext_resource type="PackedScene" uid="uid://cye7k0dixuig" path="res://visuals/models/pickups/Pico_CannonAmmo.glb" id="1_aa1nh"]
+[ext_resource type="Script" path="res://resources/ammo_data.gd" id="1_agmkl"]
+
+[resource]
+script = ExtResource("1_agmkl")
+_ammo_type = 1
+_ammo_amount = 100.0
+_name = ""
+_mesh = ExtResource("1_aa1nh")

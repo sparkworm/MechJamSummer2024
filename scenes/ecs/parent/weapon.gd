@@ -58,7 +58,7 @@ func fire(direction: Vector3) -> bool:
 	if Time.get_unix_time_from_system() < _cooldown_timestamp:
 		return false
 
-	_cooldown_timestamp = _cooldown_time + Time.get_unix_time_from_system()
+	set_cooldown(_cooldown_time)
 	direction.y = 0
 
 
@@ -82,3 +82,6 @@ func fire(direction: Vector3) -> bool:
 
 	_vfx_toggle_time = 0.2
 	return true
+
+func set_cooldown(cd: float):
+	_cooldown_timestamp = Time.get_unix_time_from_system() + cd
