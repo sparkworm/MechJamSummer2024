@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://eoluu2msjdrv"
+path="res://.godot/imported/4. Jupiter.ogg-cf822f879e215c116dc1dc6eb55ca470.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/4. Jupiter.ogg"
+dest_files=["res://.godot/imported/4. Jupiter.ogg-cf822f879e215c116dc1dc6eb55ca470.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
