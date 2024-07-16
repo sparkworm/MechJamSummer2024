@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c4pe87umwfs81" path="res://scenes/Inherited/inh_wall_window_2.tscn" id="6_mepp5"]
 [ext_resource type="MeshLibrary" uid="uid://d3ey8ed7030ay" path="res://visuals/grid_mesh/props_v0.4.tres" id="7_aigqy"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="8_he1vk"]
-[ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="9_fsly7"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="10_54q3t"]
 [ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/parent/proximity_switch.tscn" id="11_cbr7o"]
 [ext_resource type="PackedScene" uid="uid://b33s7qdff0i5" path="res://scenes/ecs/parent/door.tscn" id="12_1cosn"]
 [ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="12_rmd4h"]
+[ext_resource type="PackedScene" uid="uid://byolnvaa3tpvc" path="res://visuals/desert.tscn" id="13_ayp8d"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_78lo3"]
 
@@ -179,9 +179,6 @@ metadata/_editor_floor_ = Vector3(0, -2, 0)
 [node name="Spawner" parent="NavigationRegion3D" instance=ExtResource("12_rmd4h")]
 transform = Transform3D(-0.000698252, 0, 1, 0, 1, 0, -1, 0, -0.000698252, -14.1781, 0, 0)
 
-[node name="marsvalley" parent="." instance=ExtResource("9_fsly7")]
-transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 100, -5, 250)
-
 [node name="ProximitySwitch" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_cbr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02549, 0, 11.1376)
 _switch_trigger = NodePath("../Door/Components/TriggerComponent")
@@ -202,6 +199,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 16.919
 
 [node name="Door3" parent="." instance=ExtResource("12_1cosn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 5.38401)
+
+[node name="desert" parent="." instance=ExtResource("13_ayp8d")]
+transform = Transform3D(0.46679, 0.0187298, 0.178202, 0, 0.497261, -0.0522642, -0.179184, 0.0487929, 0.464233, -146.291, -9.68264, 170.917)
 
 [editable path="NavigationRegion3D/Spawner"]
 [editable path="NavigationRegion3D/Spawner/Robot_ChargingStation2"]

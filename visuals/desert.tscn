@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://byolnvaa3tpvc"]
+
+[ext_resource type="PackedScene" uid="uid://bt34j5vir022q" path="res://visuals/desert.glb" id="1_bi2rg"]
+[ext_resource type="Material" uid="uid://bx4e0flnwr7ry" path="res://visuals/materials/desert_m.tres" id="2_rblan"]
+
+[node name="desert" instance=ExtResource("1_bi2rg")]
+
+[node name="Plane-003" parent="." index="0"]
+transform = Transform3D(0.249967, 0.004053, -1.77162e-10, 0, -1.09278e-08, -0.25, -0.004053, 0.249967, -1.09264e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_rblan")
