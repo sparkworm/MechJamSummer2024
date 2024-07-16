@@ -196,64 +196,56 @@ transform = Transform3D(0.233395, 0.00936492, 0.0891012, 0, 0.24863, -0.0261321,
 
 [node name="EnergyCrate" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, -1.83395)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate2" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 7.74615)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate2/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate3" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 19.65)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate3/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate4" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 28.6591)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate4/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate5" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0446, -7.62939e-06, 24.056)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate5/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate6" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3379, -7.62939e-06, 11.4218)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate6/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate7" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3566, -7.62939e-06, -0.64121)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate7/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate8" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2937, -7.62939e-06, -15.1502)
-collision_layer = 8448
-collision_mask = 8192
+collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate8/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])

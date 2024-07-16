@@ -44,7 +44,7 @@ _damage = 1.0
 _speed = 30.0
 _life_time = 5.0
 _collisional_layers = Array[int]([8, 64, 256, 512, 2048, 8192, 16384])
-_hit_layers = Array[int]([8192])
+_hit_layers = Array[int]([8192, 2048])
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
