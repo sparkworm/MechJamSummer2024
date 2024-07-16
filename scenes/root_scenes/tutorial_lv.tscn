@@ -117,6 +117,22 @@ environment = SubResource("Environment_jl4jj")
 
 [node name="BasicRangeBotEnemy" parent="Enemies" instance=ExtResource("7_4w15b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4147, -0.4, -38.1018)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_chase_duration = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="SignificantObjects" type="Node3D" parent="."]
 
