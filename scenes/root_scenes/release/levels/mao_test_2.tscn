@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bew1trcfy3nct"]
+[gd_scene load_steps=27 format=3 uid="uid://bew1trcfy3nct"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_5hgy8"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_rycog"]
 [ext_resource type="PackedScene" uid="uid://t4dgmau4jnxv" path="res://scenes/ecs/parent/patrol_point.tscn" id="3_6bq2y"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="4_rbjs0"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="5_7sdeu"]
+[ext_resource type="PackedScene" uid="uid://dteep3g3rd4ok" path="res://scenes/ecs/entities/characters/enemies/basic_melee_bot_enemy.tscn" id="5_dnoiu"]
 [ext_resource type="PackedScene" uid="uid://c4pe87umwfs81" path="res://scenes/Inherited/inh_wall_window_2.tscn" id="6_mepp5"]
 [ext_resource type="MeshLibrary" uid="uid://d3ey8ed7030ay" path="res://visuals/grid_mesh/props_v0.4.tres" id="7_aigqy"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="8_he1vk"]
@@ -92,29 +93,17 @@ skeleton = NodePath("")
 
 [node name="Enemies" type="Node" parent="."]
 
+[node name="BasicMeleeBotEnemy2" parent="." instance=ExtResource("5_dnoiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53504, 0, 0)
+
 [node name="BasicRangeBotEnemy" parent="." instance=ExtResource("10_54q3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6225, 7.66499, 15.3811)
 
-[node name="BasicRangeBotEnemy2" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81837, 6.67572e-06, 1.91488)
+[node name="BasicMeleeBotEnemy" parent="." instance=ExtResource("5_dnoiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1048, 0, 0)
 
-[node name="BasicRangeBotEnemy3" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8555, 6.67572e-06, -4.64895)
-
-[node name="BasicRangeBotEnemy4" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3661, 6.67572e-06, 14.876)
-
-[node name="BasicRangeBotEnemy5" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16379, 1.14441e-05, -30.44)
-
-[node name="BasicRangeBotEnemy6" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5881, 6.67572e-06, -31.487)
-
-[node name="BasicRangeBotEnemy7" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0436, 6.67572e-06, 13.63)
-
-[node name="BasicRangeBotEnemy8" parent="." instance=ExtResource("10_54q3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0191, 0.0732412, -16.4173)
+[node name="BasicMeleeBotEnemy3" parent="." instance=ExtResource("5_dnoiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.0657)
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.134)

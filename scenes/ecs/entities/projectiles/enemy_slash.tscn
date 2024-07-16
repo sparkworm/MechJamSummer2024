@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddv1re31pfiga"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/projectile.gd" id="1_ndf54"]
+[ext_resource type="Material" uid="uid://cmojxjlm2c3c5" path="res://visuals/materials/enemy_slash.tres" id="2_qr13f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxb58"]
+height = 1.04797
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_esawp"]
+radius = 0.399356
+
+[sub_resource type="Curve" id="Curve_801wl"]
+_data = [Vector2(0.00229358, 0), 0.0, 0.0, 0, 0, Vector2(0.0848624, 1), 0.0, 0.0, 0, 0, Vector2(0.733945, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qya17"]
+curve = SubResource("Curve_801wl")
+
+[sub_resource type="Curve" id="Curve_72djd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.899083, 1), 0.0, 0.0, 0, 0, Vector2(0.988532, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7dqdu"]
+curve = SubResource("Curve_72djd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhxg5"]
+radial_velocity_min = 0.2
+radial_velocity_max = 0.2
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10.35
+radial_accel_max = 6.03
+scale_curve = SubResource("CurveTexture_7dqdu")
+alpha_curve = SubResource("CurveTexture_qya17")
+turbulence_noise_strength = 1.58
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_noise_speed_random = 0.72
+turbulence_initial_displacement_min = 5.2
+turbulence_initial_displacement_max = 5.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_fs2l3"]
+material = ExtResource("2_qr13f")
+size = Vector2(3.56, 7.14)
+orientation = 1
+
+[node name="EnemySlash" type="CharacterBody3D"]
+collision_layer = 32768
+collision_mask = 0
+slide_on_ceiling = false
+script = ExtResource("1_ndf54")
+_damage = 10.0
+_speed = 30.0
+_life_time = 0.15
+_linger_time = 0.05
+_collisional_layers = Array[int]([8, 64, 256, 512, 2048, 16384])
+_hit_layers = Array[int]([8192])
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0.564793)
+shape = SubResource("CapsuleShape3D_uxb58")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0.526365)
+shape = SubResource("SphereShape3D_esawp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.483201)
+amount = 40
+lifetime = 0.13
+preprocess = 0.02
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_yhxg5")
+draw_pass_1 = SubResource("QuadMesh_fs2l3")

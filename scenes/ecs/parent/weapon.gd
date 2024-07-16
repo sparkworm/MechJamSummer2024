@@ -64,11 +64,11 @@ func fire(direction: Vector3) -> bool:
 	set_cooldown(_cooldown_time)
 
 	# play the fire sound effect
-	_ability_fire_sfx.play()
+	#_ability_fire_sfx.play()
 
 	direction.y = 0
 
-	
+
 	if _num_abilities <= 1:
 		var weapon_ability: Ability = _weapon_ability.instantiate() as Ability
 		GameManager.current_level_scene.add_child(weapon_ability)

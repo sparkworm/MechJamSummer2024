@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://gl2yqorlw47u"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/enemy.gd" id="1_4ppfl"]
-[ext_resource type="PackedScene" uid="uid://bcn74yjmdii2d" path="res://scenes/ecs/components/health_component.tscn" id="2_oaa2o"]
+[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="2_oaa2o"]
 [ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="3_ae352"]
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="4_lf5lc"]
 [ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="5_84hcb"]
-[ext_resource type="AnimationNodeBlendTree" uid="uid://dyyn0nbob5upy" path="res://resources/blend_trees/basic_enemy_blend_tree.tres" id="6_8jhyb"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://dyyn0nbob5upy" path="res://resources/blend_trees/basic_range_enemy_blend_tree.tres" id="6_8jhyb"]
 [ext_resource type="PackedScene" uid="uid://b3lrkttrntyr5" path="res://visuals/models/characters/robots_S4/Robot_One.glb" id="6_yl42m"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="7_lqaki"]
 

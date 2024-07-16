@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://5ll7mhw8j1py"]
+[gd_scene load_steps=10 format=3 uid="uid://5ll7mhw8j1py"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/weapon.gd" id="1_yclrk"]
 [ext_resource type="PackedScene" uid="uid://cb3lk1h2khoo4" path="res://scenes/ecs/entities/projectiles/player_slash.tscn" id="2_lfi1i"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://c5rieiuqulnex" path="res://resources/blend_trees/player_mech_melee_blend_tree.tres" id="3_idj8j"]
 [ext_resource type="Texture2D" uid="uid://p03yqpstliyf" path="res://visuals/models/mechs/combat_mech/combatmech_texture.png" id="4_0kyxy"]
 [ext_resource type="PackedScene" uid="uid://cek4ttkjwbkkc" path="res://resources/particle_systems/lazer_flash_particles.tscn" id="4_xmxt8"]
-[ext_resource type="AudioStream" uid="uid://bitm6obdhmd3f" path="res://sound/sfx/MechSoundPack/MechAXESwing1.ogg" id="6_sxgwj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fnsr"]
 resource_name = "combatMech"
@@ -55,13 +54,12 @@ rim_enabled = true
 rim = 0.36
 rim_tint = 1.0
 
-[node name="Axe" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx", "_ability_fire_sfx")]
+[node name="Axe" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx")]
 transform = Transform3D(-0.0531265, -0.998448, 0.016674, 0.019192, 0.0156735, 0.999694, -0.998404, 0.0534301, 0.01833, -0.284229, 0.296009, 0.0605481)
 script = ExtResource("1_yclrk")
 _weapon_ability = ExtResource("2_lfi1i")
 _cooldown_time = 1.0
 _ability_fire_vfx = NodePath("axe_sparks")
-_ability_fire_sfx = NodePath("FireSFX")
 _animation_root_node = ExtResource("3_idj8j")
 _attack_animation = "2H_Melee_Chop"
 _idle_animation = "2H_Melee_Idle"
@@ -75,6 +73,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c068b")
 
 [node name="FirePoint" type="Marker3D" parent="."]
 top_level = true
-
-[node name="FireSFX" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_sxgwj")

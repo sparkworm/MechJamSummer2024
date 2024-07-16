@@ -88,6 +88,7 @@ var _idle_time_remaining: float = 0
 var _last_detection_point: Vector3 = Vector3.ZERO
 
 var _current_attack_animation_time: float = 0
+var _last_target_location: Vector3 = Vector3.ZERO
 var _has_started_attack = false
 var _is_alerted: bool = false
 
@@ -279,6 +280,7 @@ func _attack_target() -> void:
 		_animation_tree[_attack_animation] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		_current_attack_animation_time = 1 + Time.get_unix_time_from_system()
 		_has_started_attack = true
+		_last_target_location = _current_target.primary_collider.global_position
 	elif(Time.get_unix_time_from_system() > _current_attack_animation_time):
 		_nav_state_to_chasing(_current_target)
 
@@ -403,9 +405,10 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 
 func use_primary_attack() -> void:
 	var ability: Ability = _weapon_ability.instantiate() as Ability
-	get_tree().root.get_child(0).add_child(ability)
+	var level: Level = GameManager.current_level_scene as Level
+	level.add_child(ability)
 	var fire_point_pos: Vector3 = _weapon_fire_point.global_position
-	var dir: Vector3 = (_current_target.primary_collider.global_position - fire_point_pos).normalized()
+	var dir: Vector3 = (_last_target_location- fire_point_pos).normalized()
 	dir.y = 0
 	ability.init_with_world_direction(self, fire_point_pos, dir)
 

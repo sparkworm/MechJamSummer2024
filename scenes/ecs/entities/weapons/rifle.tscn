@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkvwflwwodt4x"]
+[gd_scene load_steps=10 format=3 uid="uid://bkvwflwwodt4x"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/weapon.gd" id="1_7ba75"]
 [ext_resource type="PackedScene" uid="uid://cwuf2sk56g0kj" path="res://scenes/ecs/entities/projectiles/player_lazer.tscn" id="2_ni35w"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://cb7klmx5l2p7e" path="res://resources/blend_trees/player_mech_range_blend_tree.tres" id="3_ndusd"]
 [ext_resource type="Texture2D" uid="uid://bq2ue0s4g7rdv" path="res://visuals/models/weapons/actionfigure_texture.png" id="4_cdh7b"]
 [ext_resource type="PackedScene" uid="uid://cek4ttkjwbkkc" path="res://resources/particle_systems/lazer_flash_particles.tscn" id="5_cch2b"]
-[ext_resource type="AudioStream" uid="uid://beac3k3btokwv" path="res://sound/sfx/LaserCannon.ogg" id="6_i4vit"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2nh1"]
 resource_name = "actionfigure"
@@ -55,14 +54,13 @@ rim_enabled = true
 rim = 0.55
 rim_tint = 0.29
 
-[node name="Rifle" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx", "_ability_fire_sfx")]
+[node name="Rifle" type="Node3D" node_paths=PackedStringArray("_ability_fire_vfx")]
 transform = Transform3D(-0.135109, -0.990831, -0.000661872, -0.0280878, 0.00316228, 0.9996, -0.990433, 0.135074, -0.0282575, 0.109442, 0.00223326, -0.221358)
 script = ExtResource("1_7ba75")
 _weapon_ability = ExtResource("2_ni35w")
 _cooldown_time = 0.4
 _spread_angle = 0.0
 _ability_fire_vfx = NodePath("bullet_flash")
-_ability_fire_sfx = NodePath("FireSFX")
 _animation_root_node = ExtResource("3_ndusd")
 
 [node name="Gun" type="MeshInstance3D" parent="."]
@@ -75,6 +73,3 @@ transform = Transform3D(1, -1.49012e-08, 7.45058e-09, -7.45058e-08, 1, -1.39698e
 
 [node name="FirePoint" type="Marker3D" parent="."]
 transform = Transform3D(0.25, -2.0169e-08, 6.51926e-09, 1.76078e-09, 0.25, -3.3062e-08, 9.31323e-10, -4.05125e-08, 0.25, 0.0156335, 0.0849817, 1.29806)
-
-[node name="FireSFX" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_i4vit")

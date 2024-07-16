@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_0flol"]
 [ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="1_qr7ln"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="2_pxu2h"]
-[ext_resource type="MeshLibrary" uid="uid://cgiya5hvwfwrd" path="res://visuals/grid_mesh/props_v0.8.tres" id="3_2rhnc"]
+[ext_resource type="MeshLibrary" uid="uid://cr7vqt2sblh42" path="res://visuals/grid_mesh/props_v0.8.tres" id="3_2rhnc"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="4_4etm2"]
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="5_6gtgk"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="6_ryogo"]
@@ -74,136 +74,31 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="BasicRangeBotEnemy" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(1.31134e-07, -0.0348995, -0.999391, 8.74604e-16, 0.999391, -0.0348995, 1, 4.57652e-09, 1.31054e-07, -451.863, 14.6499, 125.027)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy2" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(1.31134e-07, -0.0348995, -0.999391, 8.74604e-16, 0.999391, -0.0348995, 1, 4.57652e-09, 1.31054e-07, -451.863, 14.6499, 129.027)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy3" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(1.31134e-07, -0.0348995, -0.999391, 8.74604e-16, 0.999391, -0.0348995, 1, 4.57652e-09, 1.31054e-07, -451.863, 14.6499, 119.927)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy4" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(-1, -3.05101e-09, -8.73692e-08, 8.74604e-16, 0.999391, -0.0348995, 8.74226e-08, -0.0348995, -0.999391, -399.063, 14.6499, 85.727)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy5" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(-1, -3.05101e-09, -8.73692e-08, 8.74604e-16, 0.999391, -0.0348995, 8.74226e-08, -0.0348995, -0.999391, -393.363, 14.6499, 85.727)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy6" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(1, 6.10203e-09, 1.74739e-07, 8.74604e-16, 0.999391, -0.0348995, -1.74845e-07, 0.0348995, 0.999391, -393.363, 14.6499, 98.927)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="BasicRangeBotEnemy7" parent="Enemies" instance=ExtResource("6_ryogo")]
 transform = Transform3D(1, 6.10203e-09, 1.74739e-07, 8.74604e-16, 0.999391, -0.0348995, -1.74845e-07, 0.0348995, 0.999391, -399.363, 14.6499, 98.927)
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_chase_duration = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
-_sweeping_area_variance = null
-_rotation_speed = null
+_chase_duration = 8.0
 
 [node name="Tower_is_scrapbot_baton_gltf" parent="Enemies" instance=ExtResource("7_58nug")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -444, 16, 125.1)
