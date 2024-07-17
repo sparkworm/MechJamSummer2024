@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daeejc7vnuo1q"]
+[gd_scene load_steps=25 format=3 uid="uid://daeejc7vnuo1q"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_88p0q"]
 [ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="1_eykgh"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://dteep3g3rd4ok" path="res://scenes/ecs/entities/characters/enemies/basic_melee_bot_enemy.tscn" id="9_hrry7"]
 [ext_resource type="PackedScene" uid="uid://d185lvh5eek1d" path="res://scenes/Inherited/inh_door_double_closed_2.tscn" id="9_tun64"]
 [ext_resource type="PackedScene" uid="uid://dwqypd0fg5tah" path="res://visuals/models/level/table-large.glb" id="11_v03eo"]
+[ext_resource type="Script" path="res://scenes/ecs/components/trigger_component.gd" id="14_27w1f"]
 [ext_resource type="PackedScene" uid="uid://g5sklegfrtla" path="res://scenes/Inherited/inh_computer_screen_2.tscn" id="14_rfd0v"]
+[ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/parent/proximity_switch.tscn" id="15_cs4bs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugxnc"]
 
@@ -40,13 +42,13 @@ script = ExtResource("1_88p0q")
 [node name="marsvalley" parent="." instance=ExtResource("1_eykgh")]
 transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 100, -5, 250)
 
-[node name="TL-StartPoint" type="MeshInstance3D" parent="."]
+[node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204.6, 2, 23.9)
 
-[node name="TL-ExitPoint" type="StaticBody3D" parent="."]
+[node name="ExitPoint" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204.6, 2, 23.9)
 
-[node name="ExitPointCollider" type="CollisionShape3D" parent="TL-ExitPoint"]
+[node name="ExitPointCollider" type="CollisionShape3D" parent="ExitPoint"]
 shape = SubResource("BoxShape3D_ugxnc")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -190,10 +192,13 @@ _sweeping_area_variance = null
 _rotation_speed = null
 
 [node name="Spawner" parent="Enemies" instance=ExtResource("8_h3hwc")]
-transform = Transform3D(1.94707e-07, 0, 1, 0, 1, 0, -1, 0, 1.94707e-07, -136.673, 1.1, 35.2912)
+transform = Transform3D(-2.8213e-07, 0, -1, 0, 1, 0, 1, 0, -2.8213e-07, -89.073, 1.1, 27.1912)
 
 [node name="Spawner2" parent="Enemies" instance=ExtResource("8_h3hwc")]
-transform = Transform3D(1.94707e-07, 0, 1, 0, 1, 0, -1, 0, 1.94707e-07, -136.673, 1.1, 37.5912)
+transform = Transform3D(1.94707e-07, 0, 1, 0, 1, 0, -1, 0, 1.94707e-07, -136.673, 1.1, 36.5912)
+
+[node name="Spawner5" parent="Enemies" instance=ExtResource("8_h3hwc")]
+transform = Transform3D(1.94707e-07, 0, 1, 0, 1, 0, -1, 0, 1.94707e-07, -155.173, 1.1, 9.7912)
 
 [node name="Spawner3" parent="Enemies" instance=ExtResource("8_h3hwc")]
 transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, -114.073, 1.1, 11.8912)
@@ -201,33 +206,17 @@ transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, -114.073
 [node name="Spawner4" parent="Enemies" instance=ExtResource("8_h3hwc")]
 transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, -103.773, 1.1, 52.1912)
 
-[node name="BasicMeleeBotEnemy" parent="Enemies" node_paths=PackedStringArray("_animation_tree", "_animation_player", "_particles_when_hit", "_weapon_fire_point") instance=ExtResource("9_hrry7")]
+[node name="BasicMeleeBotEnemy" parent="Enemies" instance=ExtResource("9_hrry7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 71.4246)
-_animation_tree = NodePath("")
-_animation_player = NodePath("")
-_particles_when_hit = NodePath("")
-_weapon_fire_point = NodePath("")
 
-[node name="BasicMeleeBotEnemy2" parent="Enemies" node_paths=PackedStringArray("_animation_tree", "_animation_player", "_particles_when_hit", "_weapon_fire_point") instance=ExtResource("9_hrry7")]
+[node name="BasicMeleeBotEnemy2" parent="Enemies" instance=ExtResource("9_hrry7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 65.5246)
-_animation_tree = NodePath("")
-_animation_player = NodePath("")
-_particles_when_hit = NodePath("")
-_weapon_fire_point = NodePath("")
 
-[node name="BasicMeleeBotEnemy3" parent="Enemies" node_paths=PackedStringArray("_animation_tree", "_animation_player", "_particles_when_hit", "_weapon_fire_point") instance=ExtResource("9_hrry7")]
+[node name="BasicMeleeBotEnemy3" parent="Enemies" instance=ExtResource("9_hrry7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 59.3246)
-_animation_tree = NodePath("")
-_animation_player = NodePath("")
-_particles_when_hit = NodePath("")
-_weapon_fire_point = NodePath("")
 
-[node name="BasicMeleeBotEnemy4" parent="Enemies" node_paths=PackedStringArray("_animation_tree", "_animation_player", "_particles_when_hit", "_weapon_fire_point") instance=ExtResource("9_hrry7")]
+[node name="BasicMeleeBotEnemy4" parent="Enemies" instance=ExtResource("9_hrry7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 53.7246)
-_animation_tree = NodePath("")
-_animation_player = NodePath("")
-_particles_when_hit = NodePath("")
-_weapon_fire_point = NodePath("")
 
 [node name="InvisibleWalls" type="Node" parent="."]
 
@@ -248,29 +237,65 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -82.2, 2.2, 76.7)
 [node name="big_gate_switch" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -206.9, 1.1, 68.1)
 
+[node name="ProximitySwitch" parent="Interactive/big_gate_switch" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0.46666, -2.98023e-08, -0.0666656)
+_switch_trigger = NodePath("../../MainGate/Components/TriggerComponent")
+
 [node name="sideway_switch2" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -150.2, 1.1, 29.8)
 
+[node name="ProximitySwitch2" parent="Interactive/sideway_switch2" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+transform = Transform3D(-1.45704e-08, 0, -0.333333, 0, 0.333333, 0, 0.333333, 0, -1.45704e-08, 0.433333, -2.98023e-08, 0.033329)
+_switch_trigger = NodePath("../../MainGate/Components/TriggerComponent")
+
 [node name="safe_switch3" parent="Interactive" instance=ExtResource("8_6p47x")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -110.6, 1.5, 27.7)
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -110.6, 1, 27.7)
+
+[node name="ProximitySwitch3" parent="Interactive/safe_switch3" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+transform = Transform3D(-1.45704e-08, 0, -0.333333, 0, 0.333333, 0, 0.333333, 0, -1.45704e-08, 0.5, 0.0333333, -0.0333366)
+_switch_trigger = NodePath("../../FinalSwitchDoor/Components/TriggerComponent")
 
 [node name="seedpod_switch4" parent="Interactive" instance=ExtResource("8_6p47x")]
-transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, -88.5, 1.5, 28.7)
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, -88.5, 1.1, 28.7)
+
+[node name="ProximitySwitch4" parent="Interactive/seedpod_switch4" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+transform = Transform3D(-0.333333, 0, 2.91409e-08, 0, 0.333333, 0, -2.91409e-08, 0, -0.333333, 0.5, 0, 0)
+_switch_trigger = NodePath("../../SeedPodDoor/Components/TriggerComponent")
 
 [node name="Pico_RepairStation" parent="Interactive" instance=ExtResource("7_esfcn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -186.6, 2.9, 9.1)
 
-[node name="door-double-closed2" parent="Interactive" instance=ExtResource("9_tun64")]
+[node name="MainGate" parent="Interactive" instance=ExtResource("9_tun64")]
 transform = Transform3D(-1.09278e-06, 0, -25, 0, 25, 0, 25, 0, -1.09278e-06, -156.5, 1.1, 21.4)
 
-[node name="door-double-closed3" parent="Interactive" instance=ExtResource("9_tun64")]
+[node name="Components" type="Node" parent="Interactive/MainGate"]
+
+[node name="TriggerComponent" type="Node" parent="Interactive/MainGate/Components"]
+script = ExtResource("14_27w1f")
+
+[node name="FinalSwitchDoor" parent="Interactive" instance=ExtResource("9_tun64")]
 transform = Transform3D(-3.49691e-07, 0, -8, 0, 8, 0, 8, 0, -3.49691e-07, -97.5, 1.1, 28.4)
 
-[node name="door-double-closed5" parent="Interactive" instance=ExtResource("9_tun64")]
+[node name="Components" type="Node" parent="Interactive/FinalSwitchDoor"]
+
+[node name="TriggerComponent" type="Node" parent="Interactive/FinalSwitchDoor/Components"]
+script = ExtResource("14_27w1f")
+
+[node name="SideWayDoor" parent="Interactive" instance=ExtResource("9_tun64")]
 transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, -133.7, 1.1, 7.7)
 
-[node name="door-double-closed4" parent="Interactive" instance=ExtResource("9_tun64")]
+[node name="Components" type="Node" parent="Interactive/SideWayDoor"]
+
+[node name="TriggerComponent" type="Node" parent="Interactive/SideWayDoor/Components"]
+script = ExtResource("14_27w1f")
+
+[node name="SeedPodDoor" parent="Interactive" instance=ExtResource("9_tun64")]
 transform = Transform3D(-8, 0, 6.99382e-07, 0, 8, 0, -6.99382e-07, 0, -8, -77.9, 1.1, 55.1)
+
+[node name="Components" type="Node" parent="Interactive/SeedPodDoor"]
+
+[node name="TriggerComponent" type="Node" parent="Interactive/SeedPodDoor/Components"]
+script = ExtResource("14_27w1f")
 
 [node name="UniqueDecorate" type="Node" parent="."]
 
