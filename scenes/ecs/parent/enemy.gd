@@ -133,6 +133,7 @@ func _deffered_ready():
 		NavState.Sweeping: _sweeping_detection_cone_degrees,
 	}
 
+	_chase_targets.append(collision_layer)
 	_chase_targets_mask = LayerUtility.get_bitmask_from_bits(_chase_targets)
 	_target_obstructions_mask = LayerUtility.get_bitmask_from_bits(_target_obstructions)
 	_detection_area.collision_mask = _chase_targets_mask
@@ -325,10 +326,17 @@ func _on_overlapping_body(collision_body: CollisionObject3D) -> bool:
 
 	var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
 	if(_is_body_in_line_of_sight(body, combined_mask)):
-		_nav_state_to_chasing(body)
-		return true
-	else:
-		return false
+		if(_agent_nav_state == NavState.Chasing && body is EnemyCharacter):
+			var enemy: EnemyCharacter = body as EnemyCharacter
+			if(enemy._agent_nav_state == NavState.Patrolling):
+				enemy.force_sweep_nav_state(_current_target.global_position)
+			return false
+
+		elif(body is PlayerCharacter):
+			_nav_state_to_chasing(body)
+			return true
+
+	return false
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	var nextPos: Vector3 = global_position + safe_velocity
@@ -402,6 +410,7 @@ func _nav_state_to_sweeping(last_detection_point: Vector3) -> void:
 	var radius: float = _sweeping_detection_radius
 	_detection_area.scale = Vector3(radius, radius, radius)
 	_agent_nav_state = NavState.Sweeping
+	_set_movement_target(_last_detection_point)
 
 func use_primary_attack() -> void:
 	var ability: Ability = _weapon_ability.instantiate() as Ability
@@ -417,7 +426,12 @@ func alert_enemy_to_player() -> void:
 	_nav_state_to_chasing(PlayerManager.player)
 
 func force_patrol_nav_state() -> void:
-	_is_alerted = false
 	_nav_state_to_patrolling()
+
+func force_chase_nav_state(target: Body) -> void:
+	_nav_state_to_chasing(target)
+
+func force_sweep_nav_state(target: Vector3) -> void:
+	_nav_state_to_sweeping(target)
 
 #endregion

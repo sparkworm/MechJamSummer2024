@@ -20,14 +20,6 @@ _enem_to_spawn = ExtResource("2_ixme7")
 [node name="TriggerComponent" type="Node" parent="Components"]
 script = ExtResource("2_56l4l")
 
-[node name="CollisionShape1" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507793, 0.56937, 0)
-shape = SubResource("BoxShape3D_uok2n")
-
-[node name="CollisionShape2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507917, 0.56937, 0)
-shape = SubResource("BoxShape3D_uok2n")
-
 [node name="CollisionShape3" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0195439, 0.574164, -0.510238)
 shape = SubResource("BoxShape3D_uok2n")

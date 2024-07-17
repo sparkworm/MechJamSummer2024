@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c64b22cs5wny"]
+[gd_scene load_steps=4 format=3 uid="uid://ct5d2bpiu85xh"]
 
 [ext_resource type="PackedScene" uid="uid://degfux034o5ra" path="res://visuals/models/level/free_space_colony_3D_models/fbx/Farm_module.fbx" id="1_mj5sl"]
 [ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="2_54jth"]

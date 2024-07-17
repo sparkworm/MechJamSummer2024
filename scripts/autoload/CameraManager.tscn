@@ -11,6 +11,7 @@ script = ExtResource("1_rswln")
 transform = Transform3D(0.707107, 0.122788, 0.696364, 0, 0.984808, -0.173648, -0.707107, 0.122788, 0.696364, 0, 0, 0)
 
 [node name="GameCamera" parent="CameraPivot" instance=ExtResource("2_00u05")]
+far = 230.0
 
 [node name="FrameBuffer" parent="CameraPivot" node_paths=PackedStringArray("_target_viewport") instance=ExtResource("3_nbo2r")]
 layer = -1
@@ -34,3 +35,4 @@ top_level = true
 [node name="FrameBufferCamera" parent="CameraPivot/FrameBufferViewport/FrameBufferPivot" instance=ExtResource("2_00u05")]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 61.4364, 60.837, 61.4364)
 cull_mask = 2048
+far = 230.0

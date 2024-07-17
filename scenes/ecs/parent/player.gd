@@ -80,9 +80,14 @@ func _ready() -> void:
 	_weapons_array[1] = _minigun
 	_weapons_array[2] = _axe
 
+	_rifle.init_weapon(self)
+	_minigun.init_weapon(self)
+	_axe.init_weapon(self)
+
 	_rifle.visible = true
 	_minigun.visible = false
 	_axe.visible = false
+
 	_animation_tree.tree_root = _weapons_array[0].animation_root
 
 func _process(delta: float) -> void:
@@ -116,13 +121,14 @@ func _process(delta: float) -> void:
 			_animation_tree[_animation_transition] = _dash_transition
 
 		_handle_look_rotation_input()
-		move_and_slide()
 
 		if Input.is_action_pressed("Primary"):
 			use_primary_attack()
 		elif Input.is_action_pressed("Secondary"):
 			pass
 
+	velocity.y -= 9.81 * delta
+	move_and_slide()
 
 	for node3D: Node3D in _detection_area.get_overlapping_bodies():
 		if(node3D is CollisionObject3D):

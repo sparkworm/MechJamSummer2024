@@ -14,7 +14,7 @@ var _current_enemies: Array[EnemyCharacter]
 @export var _level_start_point: MeshInstance3D = null
 @export var _level_exit_point: StaticBody3D = null
 @export var _level_patrol_routes: Array[PatrolRoute]
-var _level_alert_status: AlertStatus = AlertStatus.Alerted
+var _level_alert_status: AlertStatus = AlertStatus.Passive
 
 func _ready() -> void:
 	call_deferred("_deferred_ready")
