@@ -1,5 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bek4a88y2vns7"]
+[gd_scene load_steps=4 format=3 uid="uid://bek4a88y2vns7"]
 
 [ext_resource type="PackedScene" uid="uid://c03xmg7ei0tys" path="res://visuals/models/level/floor-detail.glb" id="1_uuyhk"]
+[ext_resource type="Material" uid="uid://bx4e0flnwr7ry" path="res://visuals/materials/desert_m.tres" id="2_bkjr3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oapd8"]
+points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.499995, -0.5, 0.299995, -0.5, 0.499995, 0, -0.5, -0.5, 0.299995, 0.499995, 0.499995, 0, 0.499995, -0.35004, 0.325, -0.35004, 0.499995, 0.299995, -0.5, -0.35004, 0.325, -0.300021, 0.499995, 0.299995, 0.499995, 0.299917, 0.325, 0.349937, -0.300021, 0.325, -0.35004, 0.349937, 0.325, 0.299917, 0.349937, 0.325, 0.349937)
 
 [node name="floor-detail2" instance=ExtResource("1_uuyhk")]
+
+[node name="floor-detail" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bkjr3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_oapd8")
