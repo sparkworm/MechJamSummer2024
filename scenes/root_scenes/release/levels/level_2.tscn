@@ -40,7 +40,7 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ebf4"]
 size = Vector3(14.6373, 12.3984, 1.7641)
 
-[node name="Level2" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
+[node name="Level3" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
 script = ExtResource("1_0flol")
 _level_start_point = NodePath("TL-StartPoint")
 _level_exit_point = NodePath("ExitPoint")
@@ -230,209 +230,61 @@ skeleton = NodePath("")
 [node name="BasicMeleeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.348, -0.400002, -55.1761)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute6")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy2" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0162, -0.400002, -46.8396)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute4")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint8")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy3" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8118, -0.400002, -58.4721)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute5")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint9")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy4" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.92897, -0.400005, -27.0467)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint6")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicRangeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("14_56v4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6397, -0.400009, -27.3988)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint6")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_movement_speed = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_movement_speed = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicRangeBotEnemy2" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("14_56v4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7624, -0.400005, -27.4312)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint6")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_movement_speed = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_movement_speed = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy5" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2875, -0.400002, 12.112)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint4")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicRangeBotEnemy3" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("14_56v4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5841, -0.400002, 12.1756)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint4")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_movement_speed = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_movement_speed = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicRangeBotEnemy4" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("14_56v4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.9887, -0.400005, -4.76866)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint14")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_movement_speed = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_movement_speed = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy6" parent="." node_paths=PackedStringArray("_patrol_route", "_current_patrol_point") instance=ExtResource("13_wugqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6115, -0.400002, -0.556766)
 _patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
 _current_patrol_point = NodePath("../PatrolPoints/PatrolPoint14")
-_random_patrol_points = null
-_patrolling_rotation_speed = null
-_patrolling_idle_duration = null
-_patrolling_radius_detection = null
-_patrolling_cone_degrees_detection = null
-_chasing_rotation_speed = null
-_chase_radius_detection = null
-_chasing_detection_cone_degrees = null
-_attacking_detection_cone_degrees = null
-_sweeping_detection_radius = null
-_sweeping_detection_cone_degrees = null
-_sweeping_state_duration = null
-_sweeping_idle_duration = null
 _sweeping_area_variance = Vector3(1, 0, 1)
-_rotation_speed = null
 
 [node name="ArtifactPickup" parent="." instance=ExtResource("17_6fgqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0507, 0.551429, -30.5014)

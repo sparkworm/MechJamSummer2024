@@ -58,6 +58,7 @@ rim_tint = 1.0
 transform = Transform3D(-0.0531265, -0.998448, 0.016674, 0.019192, 0.0156735, 0.999694, -0.998404, 0.0534301, 0.01833, -0.284229, 0.296009, 0.0605481)
 script = ExtResource("1_yclrk")
 _weapon_ability = ExtResource("2_lfi1i")
+_ammo_requirement = 20.0
 _cooldown_time = 1.0
 _ability_fire_vfx = NodePath("axe_sparks")
 _animation_root_node = ExtResource("3_idj8j")

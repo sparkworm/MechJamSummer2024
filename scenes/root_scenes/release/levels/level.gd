@@ -9,7 +9,7 @@ enum AlertStatus
 	Alerted
 }
 
-var max_enemies = 50
+var _max_enemies = 20
 var _current_enemies: Array[EnemyCharacter]
 
 @export var _level_start_point: MeshInstance3D = null
@@ -36,7 +36,7 @@ func _deferred_ready():
 				enemy.alert_enemy_to_player()
 
 func add_enemy_to_level(enemy: EnemyCharacter):
-	if(_current_enemies.size() >= max_enemies || _current_enemies.has(enemy)):
+	if(_current_enemies.size() >= _max_enemies || _current_enemies.has(enemy)):
 		enemy.queue_free()
 		return
 	else:

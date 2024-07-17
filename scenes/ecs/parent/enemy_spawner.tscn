@@ -13,7 +13,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_kfwqd")
-_enem_to_spawn = ExtResource("2_ixme7")
+_enemy_to_spawn = ExtResource("2_ixme7")
 
 [node name="Components" type="Node" parent="."]
 

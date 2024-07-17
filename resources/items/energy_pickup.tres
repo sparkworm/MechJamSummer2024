@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EnergyData" load_steps=2 format=3 uid="uid://bgdmbegq4h4i7"]
+[gd_resource type="Resource" script_class="AmmoData" load_steps=2 format=3 uid="uid://dwf6lrcf833pr"]
 
-[ext_resource type="Script" path="res://resources/energy_data.gd" id="1_wlx37"]
+[ext_resource type="Script" path="res://resources/ammo_data.gd" id="1_nhyt1"]
 
 [resource]
-script = ExtResource("1_wlx37")
-_energy_amount = 100
+script = ExtResource("1_nhyt1")
+_ammo_type = 3
+_ammo_amount = 100.0
 _name = ""

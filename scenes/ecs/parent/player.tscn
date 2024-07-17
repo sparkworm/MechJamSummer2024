@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/player.gd" id="1_8dtkr"]
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="2_jdd58"]
-[ext_resource type="PackedScene" uid="uid://dc0j5tm5ue4rv" path="res://scenes/ecs/components/player_controller.tscn" id="2_prjhr"]
+[ext_resource type="PackedScene" uid="uid://c058jolbcbqxb" path="res://scenes/ecs/components/player_controller.tscn" id="2_prjhr"]
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="3_txjwt"]
 [ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="4_kihhm"]
 [ext_resource type="PackedScene" uid="uid://cbfwy6vkb73qp" path="res://scenes/ecs/components/energy_component.tscn" id="5_ol0v8"]

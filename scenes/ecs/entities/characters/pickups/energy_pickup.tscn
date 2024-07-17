@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://psredi24q2hu"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/pickup.gd" id="1_301pl"]
-[ext_resource type="Resource" uid="uid://bgdmbegq4h4i7" path="res://resources/items/energy_pickup.tres" id="2_58vop"]
+[ext_resource type="Resource" uid="uid://dwf6lrcf833pr" path="res://resources/items/energy_pickup.tres" id="2_58vop"]
 [ext_resource type="Texture2D" uid="uid://dc7okoay41byw" path="res://visuals/models/pickups/Pico_Core2_Pico_Core2.png" id="2_da11t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkaae"]

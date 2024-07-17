@@ -24,7 +24,8 @@ enum PlayerState
 @export var _blend_speed: float = 5
 @export var _detection_area_radius: float = 10
 @export var _obtain_radius: float = 1
-@export var _energy_per_second: float = 3
+@export var _energy_per_second: float = 4
+@export var _energy_pause_time: float = 2
 
 @export_group("Dash")
 @export var _dash_speed: float = 5
@@ -32,7 +33,7 @@ enum PlayerState
 @export var _dash_blend_speed: float = 100
 @export var _dash_deadzone: float = 2
 @export var _dash_energy_minimum: float = 5
-@export var _dash_energy_drain: float = 5
+@export var _dash_energy_drain: float = 4
 
 @export_group("Weapons")
 @export var _rifle: Weapon = null
@@ -40,6 +41,7 @@ enum PlayerState
 @export var _axe: Weapon = null
 @export var _weapon_swap_cooldown: float = 0.2
 
+var _energy_pause_timer: float = 0
 var _player_state: PlayerState = PlayerState.Active
 var _mouse_pos_this_frame: Vector3
 var _current_blend_position: Vector2 = Vector2()
@@ -108,7 +110,7 @@ func _die():
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
 	_mouse_distance_to_player = _mouse_pos_this_frame.distance_to(global_position)
-	_ammo_component.energy += _energy_per_second * delta
+	_energy_pause_timer -= delta
 
 	if(_player_state != PlayerState.Busy):
 
@@ -131,11 +133,13 @@ func _process(delta: float) -> void:
 			_set_target_blend_position(_last_iso_input_dir)
 
 		if(_player_state == PlayerState.Dashing):
+			_energy_pause_timer = _energy_pause_time
 			if(_handle_dashing()):
 				_update_blend_position(_dash_blend_position, _dash_blend_speed)
 				_animation_tree[_animation_transition] = _dash_transition
 				_ammo_component.energy -= _dash_energy_drain * delta
-
+		elif(_energy_pause_timer < 0):
+			_ammo_component.energy += _energy_per_second * delta
 		_handle_look_rotation_input()
 
 		if Input.is_action_pressed("Primary"):
@@ -153,7 +157,7 @@ func _process(delta: float) -> void:
 func _check_dash_requirements() -> bool:
 	if Input.is_action_pressed("Dash"):
 		if(_mouse_distance_to_player > _dash_deadzone
-		&& _ammo_component.energy >= _dash_energy_minimum):
+		&& _ammo_component.energy > _dash_energy_minimum):
 			return true
 	return false
 
@@ -232,6 +236,7 @@ func _handle_pickup(pickup: Pickup) -> void:
 		if(pickup_data is HealthData):
 			var health_data: HealthData = pickup_data as HealthData
 			_health_component.heal(health_data.health_amount)
+			_player_health_UI.change_health(_health_component.health)
 		elif(pickup_data is AmmoData):
 			var ammo_data: AmmoData = pickup_data as AmmoData
 			_ammo_component.add_ammo(ammo_data)
@@ -251,7 +256,7 @@ func _prepare_dash(direction: Vector3):
 
 func _handle_dashing() -> bool:
 	_current_dash_time -= GameUtility.get_current_delta_time()
-	if(_current_dash_time < 0 || _ammo_component.energy < _dash_energy_minimum):
+	if(_current_dash_time < 0):
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
 		return false

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_v5lds")
-_health_amount = 50
+_health_amount = 1
 _name = ""

@@ -23,7 +23,7 @@ var heavy_ammo: int:
 		if(_heavy_ammo > _max_heavy_ammo):
 			_heavy_ammo = _max_heavy_ammo
 		if(_ammo_UI != null):
-			pass
+			_ammo_UI.change_heavy_ammo(_heavy_ammo)
 
 @export var _max_missiles: int = 50
 var _missiles: int = 0;

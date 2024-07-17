@@ -3,6 +3,7 @@ extends Control
 
 var _max_energy: float =  100
 @export var energy: ProgressBar = null
+@export var heavy_ammo: Label = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,3 +12,6 @@ func _ready():
 
 func change_energy(amount: float):
 	energy.value = amount
+
+func change_heavy_ammo(amount: int):
+	heavy_ammo.text = str(amount)

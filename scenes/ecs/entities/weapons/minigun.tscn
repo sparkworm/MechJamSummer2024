@@ -84,6 +84,7 @@ shadow_mesh = SubResource("ArrayMesh_hy8og")
 transform = Transform3D(-0.011775, -0.999903, 0.00752555, -0.0352161, 0.00793544, 0.999349, -0.999311, 0.0115007, -0.0353054, 0.0775998, 0.540943, -0.165942)
 script = ExtResource("1_ux24p")
 _weapon_ability = ExtResource("2_gopda")
+_ammo_type = 1
 _ammo_requirement = 1.0
 _cooldown_time = 0.1
 _num_abilities = 3

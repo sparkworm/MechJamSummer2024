@@ -10,7 +10,7 @@ func _ready():
 	_health_component.connect("hit", _is_hit)
 	_health_component.connect("killed", _die)
 
-func _is_hit(source: Node3D) -> void:
+func _is_hit(source: Node3D, amount: int) -> void:
 	if _is_disabled:
 		return
 	_particles_when_hit.restart()
