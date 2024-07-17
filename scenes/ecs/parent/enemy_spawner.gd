@@ -11,6 +11,7 @@ var _current_spawn_cooldown: float = 0
 
 func _ready() -> void:
 	_trigger_component.connect("trigger", _trigger_spawn)
+	_current_spawn_cooldown = _spawn_cooldown
 	pass
 
 func _process(delta):

@@ -9,15 +9,23 @@ enum AlertStatus
 	Alerted
 }
 
+var max_enemies = 50
 var _current_enemies: Array[EnemyCharacter]
 
 @export var _level_start_point: MeshInstance3D = null
-@export var _level_exit_point: StaticBody3D = null
+@export var _level_exit_point: Area3D = null
 @export var _level_patrol_routes: Array[PatrolRoute]
 var _level_alert_status: AlertStatus = AlertStatus.Passive
+var level_objective_collected: bool = false
 
 func _ready() -> void:
 	call_deferred("_deferred_ready")
+
+func _physics_process(delta):
+	if(level_objective_collected):
+		for node3D: CollisionObject3D in _level_exit_point.get_overlapping_bodies():
+			if (node3D is PlayerCharacter):
+				GameManager.change_to_next_level()
 
 func _deferred_ready():
 	for node in get_children():
@@ -28,8 +36,8 @@ func _deferred_ready():
 				enemy.alert_enemy_to_player()
 
 func add_enemy_to_level(enemy: EnemyCharacter):
-	print(_current_enemies.size())
-	if(_current_enemies.has(enemy)):
+	if(_current_enemies.size() >= max_enemies || _current_enemies.has(enemy)):
+		enemy.queue_free()
 		return
 	else:
 		_current_enemies.append(enemy)

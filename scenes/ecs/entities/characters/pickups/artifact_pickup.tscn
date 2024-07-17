@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://2f4vjm2c6o2w"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/pickup.gd" id="1_uhojg"]
+[ext_resource type="Resource" uid="uid://dc13n3axlcecf" path="res://resources/items/artifact_pickup.tres" id="2_htylu"]
+[ext_resource type="PackedScene" uid="uid://by87igfsp7ijw" path="res://visuals/models/pickups/Pico_PowerCell.glb" id="3_j6s2w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3fdfd"]
+
+[node name="ArtifactPickup" type="StaticBody3D"]
+collision_layer = 1024
+script = ExtResource("1_uhojg")
+_pickup_data = ExtResource("2_htylu")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Pico_PowerCell" parent="." instance=ExtResource("3_j6s2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.629154, 0)
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3fdfd")

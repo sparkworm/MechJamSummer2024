@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj7q51c1g7bn3"]
+[gd_scene load_steps=3 format=3 uid="uid://cj7q51c1g7bn3"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_d0rrg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_6kl36"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3k4rc"]
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_d0rrg")
@@ -15,8 +13,3 @@ script = ExtResource("1_d0rrg")
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_6kl36")
-
-[node name="ExitPoint" type="StaticBody3D" parent="."]
-
-[node name="ExitPointCollider" type="CollisionShape3D" parent="ExitPoint"]
-shape = SubResource("BoxShape3D_3k4rc")

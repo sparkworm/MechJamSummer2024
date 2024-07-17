@@ -211,6 +211,9 @@ func _handle_pickup(pickup: Pickup) -> void:
 		elif(pickup_data is AmmoData):
 			var ammo_data: AmmoData = pickup_data as AmmoData
 			_ammo_component.add_ammo(ammo_data)
+		elif(pickup_data is ArtifactData):
+			var level: Level = GameManager.current_level_scene as Level
+			level.level_objective_collected = true
 
 func _prepare_dash(direction: Vector3):
 	if(direction == Vector3.ZERO):

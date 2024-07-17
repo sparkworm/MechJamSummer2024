@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="1_31xci"]
 
 [resource]
-albedo_color = Color(1, 0.452416, 0.383959, 1)
+transparency = 1
+albedo_color = Color(1, 0.45098, 0.384314, 0.45098)
 albedo_texture = ExtResource("1_31xci")
 uv1_triplanar = true
 uv1_world_triplanar = true

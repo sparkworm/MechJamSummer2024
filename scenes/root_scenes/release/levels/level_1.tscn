@@ -1,15 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://dcd80c7ah0c75"]
+[gd_scene load_steps=34 format=3 uid="uid://dcd80c7ah0c75"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_cycng"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_6yqbh"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_28wwc"]
 [ext_resource type="PackedScene" uid="uid://t4dgmau4jnxv" path="res://scenes/ecs/parent/patrol_point.tscn" id="3_3uuae"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="4_ghwg1"]
-[ext_resource type="NavigationMesh" uid="uid://bnxa3i6xveki1" path="res://resources/navMesh.tres" id="4_i5ufc"]
+[ext_resource type="NavigationMesh" uid="uid://bnxa3i6xveki1" path="res://resources/navMesh_1.tres" id="4_i5ufc"]
 [ext_resource type="MeshLibrary" uid="uid://crplexxunkfb4" path="res://visuals/grid_mesh/props_v0.5.tres" id="5_i520p"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="6_4pi3q"]
 [ext_resource type="MeshLibrary" uid="uid://cgiya5hvwfwrd" path="res://visuals/grid_mesh/props_v0.8.tres" id="7_aduge"]
 [ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="8_l8qif"]
-[ext_resource type="PackedScene" uid="uid://p8ny4rydqdqk" path="res://visuals/models/pickups/Pico_PowerCore.glb" id="9_8jf2r"]
 [ext_resource type="PackedScene" uid="uid://t8u3frl4qt0b" path="res://visuals/models/level/table-display.glb" id="10_qh4rh"]
 [ext_resource type="PackedScene" uid="uid://c75e6tl0surgk" path="res://visuals/models/level/table-inset-small.glb" id="11_agxww"]
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="12_u2kae"]
@@ -25,10 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://uk4ivfbnnfpr" path="res://scenes/ecs/entities/characters/pickups/missiles_ammo_pickup.tscn" id="22_ltion"]
 [ext_resource type="PackedScene" uid="uid://gihk3t1yjgof" path="res://resources/particle_systems/hit_particles.tscn" id="23_cyxax"]
 [ext_resource type="PackedScene" uid="uid://cs0ff02ffre6w" path="res://visuals/models/pickups/Pico_D8Crate.glb" id="24_eidxt"]
+[ext_resource type="PackedScene" uid="uid://2f4vjm2c6o2w" path="res://scenes/ecs/entities/characters/pickups/artifact_pickup.tscn" id="26_3ndge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b77w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lvweb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_u5hug"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_akjdg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_poyci"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,20 +52,26 @@ glow_enabled = true
 [node name="GameScene" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
 script = ExtResource("1_cycng")
 _level_start_point = NodePath("TL-StartPoint")
-_level_exit_point = NodePath("TL-ExitPoint")
+_level_exit_point = NodePath("ExitPoint")
 _level_patrol_routes = [NodePath("PatrolRoutes/PatrolRoute1"), NodePath("PatrolRoutes/PatrolRoute2"), NodePath("PatrolRoutes/PatrolRoute3"), NodePath("PatrolRoutes/PatrolRoute4")]
+
+[node name="ExitPoint" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 66.8022, -1.88689, 0.267245)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPoint"]
+shape = SubResource("BoxShape3D_6b77w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitPoint"]
+mesh = SubResource("BoxMesh_lvweb")
+surface_material_override/0 = ExtResource("2_28wwc")
 
 [node name="TutorialLv" type="Node" parent="."]
 
 [node name="TL-StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.7393, -0.362019, 0)
 mesh = SubResource("QuadMesh_u5hug")
-
-[node name="TL-ExitPoint" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 0, -17.5)
-
-[node name="ExitPointCollider" type="CollisionShape3D" parent="TL-ExitPoint"]
-shape = SubResource("BoxShape3D_akjdg")
 
 [node name="PatrolRoutes" type="Node" parent="."]
 
@@ -197,9 +206,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Spawner4" parent="NavigationRegion3D" instance=ExtResource("8_l8qif")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -10.582, -0.05, -2.35416)
-
-[node name="Pico_PowerCore" parent="NavigationRegion3D" instance=ExtResource("9_8jf2r")]
-transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -18.4521, 0.128931, 0.0192217)
 
 [node name="table-display2" parent="NavigationRegion3D" instance=ExtResource("10_qh4rh")]
 transform = Transform3D(-0.00861727, 0, 0.624941, 0, 0.625, 0, -0.624941, 0, -0.00861727, -17.1847, 0.141886, 0.0481044)
@@ -579,3 +585,6 @@ shape = SubResource("CapsuleShape3D_0bjiq")
 
 [node name="Pico_D8Crate" parent="RainbowCrate14" instance=ExtResource("24_eidxt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
+
+[node name="ArtifactPickup" parent="." instance=ExtResource("26_3ndge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.722, 0.379131, 0.0875389)
