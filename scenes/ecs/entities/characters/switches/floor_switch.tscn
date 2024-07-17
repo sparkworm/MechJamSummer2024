@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://daeyjyahyh45u"]
+
+[ext_resource type="Script" path="res://scenes/ecs/parent/proximity_switch.gd" id="1_cbkj7"]
+[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_80a68"]
+[ext_resource type="Texture2D" uid="uid://dds2mrmy5kij4" path="res://visuals/models/level/textures/colormap.png" id="3_p4hor"]
+[ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_ya10a"]
+[ext_resource type="Material" uid="uid://2mgmv5chcdfq" path="res://visuals/materials/deactive_switch_material_3d.tres" id="4_3vs02"]
+[ext_resource type="Material" uid="uid://clxq040puhd2" path="res://visuals/materials/active_switch_material.tres" id="5_0ayxo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwyyr"]
+margin = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fp8b"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("3_p4hor")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8bdjk"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.0125, 0.1, 0.2, 0.025),
+"format": 34896613377,
+"index_count": 54,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 1, 0, 3, 0, 2, 0, 6, 0, 4, 0, 5, 0, 5, 0, 7, 0, 6, 0, 4, 0, 6, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 0, 0, 0, 0, 2, 0, 7, 0, 7, 0, 2, 0, 8, 0, 8, 0, 6, 0, 7, 0, 9, 0, 8, 0, 2, 0, 8, 0, 10, 0, 6, 0, 2, 0, 3, 0, 9, 0, 10, 0, 11, 0, 6, 0, 3, 0, 11, 0, 9, 0, 3, 0, 6, 0, 11, 0, 14, 0, 12, 0, 13, 0, 13, 0, 15, 0, 14, 0),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 31, 254, 255, 0, 0, 0, 0, 255, 223, 254, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 223, 254, 255, 0, 0, 255, 255, 255, 31, 254, 255, 0, 0, 255, 191, 255, 63, 254, 255, 0, 0, 255, 63, 255, 63, 254, 255, 0, 0, 255, 191, 255, 191, 254, 255, 0, 0, 255, 63, 255, 191, 254, 255, 0, 0, 255, 63, 255, 63, 255, 255, 0, 0, 255, 63, 255, 191, 254, 255, 0, 0, 255, 191, 255, 63, 255, 255, 0, 0, 255, 191, 255, 191, 254, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_45s8i"]
+resource_name = "wall-switch_wall-switch"
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.0125, 0.1, 0.2, 0.025),
+"attribute_data": PackedByteArray(255, 87, 152, 249, 255, 87, 101, 198, 255, 87, 50, 243, 255, 87, 204, 204, 255, 87, 101, 198, 255, 87, 152, 249, 255, 87, 204, 204, 255, 87, 50, 243, 255, 87, 204, 204, 255, 87, 204, 204, 255, 87, 101, 198, 255, 87, 101, 198, 255, 87, 152, 249, 255, 87, 152, 249, 255, 87, 50, 243, 255, 87, 50, 243, 255, 87, 50, 243, 255, 87, 203, 236, 255, 87, 50, 243, 255, 87, 204, 204, 255, 87, 203, 236, 255, 87, 50, 211, 255, 87, 204, 204, 255, 87, 50, 211, 255, 55, 152, 249, 255, 55, 152, 249, 255, 55, 152, 249, 255, 55, 152, 249),
+"format": 34896613399,
+"index_count": 54,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 1, 0, 3, 0, 2, 0, 6, 0, 4, 0, 5, 0, 5, 0, 7, 0, 6, 0, 10, 0, 8, 0, 9, 0, 9, 0, 11, 0, 10, 0, 14, 0, 12, 0, 13, 0, 13, 0, 15, 0, 14, 0, 18, 0, 16, 0, 17, 0, 17, 0, 19, 0, 18, 0, 20, 0, 17, 0, 16, 0, 17, 0, 21, 0, 19, 0, 16, 0, 22, 0, 20, 0, 21, 0, 23, 0, 19, 0, 22, 0, 23, 0, 20, 0, 22, 0, 19, 0, 23, 0, 26, 0, 24, 0, 25, 0, 25, 0, 27, 0, 26, 0),
+"material": SubResource("StandardMaterial3D_3fp8b"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 0, 0, 255, 31, 254, 255, 255, 191, 0, 0, 255, 223, 254, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 223, 254, 255, 255, 191, 255, 255, 255, 31, 254, 255, 255, 191, 255, 255, 255, 223, 254, 255, 255, 143, 0, 0, 255, 223, 254, 255, 255, 143, 255, 255, 255, 255, 0, 0, 255, 159, 0, 0, 255, 255, 0, 0, 255, 159, 255, 255, 0, 0, 0, 0, 255, 159, 0, 0, 0, 0, 0, 0, 255, 159, 255, 255, 255, 31, 254, 255, 255, 143, 0, 0, 255, 31, 254, 255, 255, 143, 0, 0, 255, 31, 254, 255, 255, 143, 255, 191, 255, 63, 254, 255, 0, 128, 255, 255, 255, 31, 254, 255, 255, 143, 255, 255, 255, 223, 254, 255, 255, 143, 255, 63, 255, 63, 254, 255, 0, 128, 255, 191, 255, 191, 254, 255, 0, 128, 0, 0, 255, 223, 254, 255, 255, 143, 255, 63, 255, 191, 254, 255, 0, 128, 255, 63, 255, 63, 255, 255, 0, 128, 255, 63, 255, 191, 254, 255, 0, 128, 255, 191, 255, 63, 255, 255, 0, 128, 255, 191, 255, 191, 254, 255, 0, 128, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8bdjk")
+
+[sub_resource type="BoxMesh" id="BoxMesh_087m3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl6g7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sy1iw"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_35ky2"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6fg3"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.896635, 0, 0.0937623, 0.317647)
+albedo_texture = ExtResource("3_ya10a")
+uv1_scale = Vector3(10, 10, 10)
+uv2_scale = Vector3(10, 10, 10)
+
+[node name="FloorSwitch" type="StaticBody3D" node_paths=PackedStringArray("_active_switch_mesh", "_deactive_switch_mesh")]
+collision_layer = 1024
+collision_mask = 0
+script = ExtResource("1_cbkj7")
+_target_layers = Array[int]([4096])
+_active_switch_mesh = NodePath("SwitchMeshes/Active")
+_deactive_switch_mesh = NodePath("SwitchMeshes/Deactive")
+_switch_cooldown = 0.0
+
+[node name="PrimaryCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_qwyyr")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="SwitchMeshes" type="Node3D" parent="."]
+transform = Transform3D(-1, 0.000227046, 5.97609e-06, -3.97689e-09, -0.0263378, 0.999653, 0.000227125, 0.999653, 0.0263378, 0, 0, 0)
+
+[node name="wall-switch" type="MeshInstance3D" parent="SwitchMeshes"]
+transform = Transform3D(20, 2.79397e-09, -4.36557e-11, 0, 20, -3.57628e-07, 0, -2.38419e-07, 20, -0.000441232, -1.94201, -0.0511659)
+mesh = SubResource("ArrayMesh_45s8i")
+skeleton = NodePath("")
+
+[node name="Deactive" type="MeshInstance3D" parent="SwitchMeshes"]
+transform = Transform3D(1.055, 9.42964e-09, 0, -4.71482e-09, 2.095, -1.39698e-09, 0, 2.23517e-08, 0.115, 0.0206006, 0.0575929, 0.22112)
+mesh = SubResource("BoxMesh_087m3")
+surface_material_override/0 = ExtResource("4_3vs02")
+
+[node name="Active" type="MeshInstance3D" parent="SwitchMeshes"]
+transform = Transform3D(1.055, 9.42964e-09, 0, -4.71482e-09, 2.095, -1.39698e-09, 0, 2.23517e-08, 0.115, 0.0206006, 0.0575929, 0.22112)
+mesh = SubResource("BoxMesh_087m3")
+surface_material_override/0 = ExtResource("5_0ayxo")
+
+[node name="VisionPoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22787, 0)
+visible = false
+mesh = SubResource("BoxMesh_dl6g7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_80a68")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.620474, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="DetectionCollider" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_sy1iw")
+
+[node name="DetectionVisual" type="MeshInstance3D" parent="DetectionArea"]
+mesh = SubResource("SphereMesh_35ky2")
+surface_material_override/0 = SubResource("StandardMaterial3D_v6fg3")

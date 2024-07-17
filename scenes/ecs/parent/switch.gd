@@ -8,28 +8,40 @@ enum SwitchModeType
 	Constant
 }
 
-@export var _switch_trigger: TriggerComponent
-var switch_trigger: TriggerComponent:
+@export var _trigger_target: TriggerComponent
+var trigger_target: TriggerComponent:
 	get:
-		return _switch_trigger
+		return _trigger_target
 	set(value):
-		_switch_trigger = value
+		_trigger_target = value
 
+@export var _active_switch_mesh: MeshInstance3D = null
+@export var _deactive_switch_mesh: MeshInstance3D = null
+@export var _is_active: bool = false
 @export var _switch_mode_type: SwitchModeType = SwitchModeType.OneShot
 @export var _switch_cooldown: float = 5
 var _current_cooldown: float = 0
-var _is_active: bool = false
+
+func _ready():
+	if(_is_active):
+		activate_switch()
+	else:
+		deactivate_switch()
 
 func activate_switch() -> void:
+	_active_switch_mesh.visible = true
+	_deactive_switch_mesh.visible = false
 	_is_active = true
 
 func deactivate_switch() -> void:
 	_is_active = false
+	_active_switch_mesh.visible = false
+	_deactive_switch_mesh.visible = true
 
 func _process(delta: float) -> void:
 	if(!_is_active
-	|| _switch_trigger == null
-	|| !is_instance_valid(_switch_trigger)):
+	|| _trigger_target == null
+	|| !is_instance_valid(_trigger_target)):
 		return
 
 	var currentTime: float = Time.get_unix_time_from_system()
@@ -39,11 +51,11 @@ func _process(delta: float) -> void:
 	else: _current_cooldown = _switch_cooldown + currentTime
 
 	if(_switch_mode_type == SwitchModeType.OneShot):
-		_switch_trigger.emit_trigger()
+		_trigger_target.emit_trigger()
 		_is_active = false
 
 	else: #_switch_type == SwitchType.Constant
-		_switch_trigger.emit_trigger()
+		_trigger_target.emit_trigger()
 
 func _physics_process(delta: float) -> void:
 	pass

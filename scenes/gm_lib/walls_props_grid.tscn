@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dj45a5myar7d4" path="res://scenes/Inherited/inh_wall_2.tscn" id="2_y1wjj"]
 [ext_resource type="PackedScene" uid="uid://ct5d2bpiu85xh" path="res://scenes/Inherited/inh_farm_module.tscn" id="4_mkkws"]
 [ext_resource type="PackedScene" uid="uid://detv1sjw6nkj6" path="res://scenes/Inherited/inh_computer_system_2.tscn" id="5_2x62x"]
-[ext_resource type="PackedScene" path="res://scenes/Inherited/inh_chair_armrest_2.tscn" id="5_kvx7a"]
-[ext_resource type="PackedScene" path="res://scenes/Inherited/inh_table_large_2.tscn" id="6_d2a6d"]
+[ext_resource type="PackedScene" uid="uid://44lh8prt1s4e" path="res://scenes/Inherited/inh_chair_armrest_2.tscn" id="5_kvx7a"]
+[ext_resource type="PackedScene" uid="uid://cpagnlyhqm3ox" path="res://scenes/Inherited/inh_table_large_2.tscn" id="6_d2a6d"]
 
 [node name="WallsPropsGrid" type="Node3D"]
 

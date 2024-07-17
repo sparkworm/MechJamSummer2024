@@ -174,9 +174,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0436, 6.67572e-06, 13.63)
 [node name="BasicRangeBotEnemy8" parent="Enemies" instance=ExtResource("7_vm1nl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0191, 0.0732412, -16.4173)
 
-[node name="Switch" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_8mf37")]
+[node name="Switch" parent="." instance=ExtResource("11_8mf37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81565, 0, 24.9223)
-_switch_trigger = NodePath("../Door/Components/TriggerComponent")
 
 [node name="Door" parent="." instance=ExtResource("12_cnjsb")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 24.7246)

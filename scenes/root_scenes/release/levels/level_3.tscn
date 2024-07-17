@@ -10,15 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="6_043yh"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="6_u6iw7"]
 [ext_resource type="PackedScene" uid="uid://c8slg8v4u58nl" path="res://scenes/Inherited/inh_pico_repair_station.tscn" id="7_esfcn"]
-[ext_resource type="PackedScene" uid="uid://c64b22cs5wny" path="res://scenes/Inherited/inh_farm_module.tscn" id="8_2ux5a"]
+[ext_resource type="PackedScene" uid="uid://ct5d2bpiu85xh" path="res://scenes/Inherited/inh_farm_module.tscn" id="8_2ux5a"]
 [ext_resource type="PackedScene" uid="uid://cvmakvjx70pqf" path="res://scenes/Inherited/inh_pipe_bend_diagonal_2.tscn" id="8_6p47x"]
-[ext_resource type="PackedScene" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="8_h3hwc"]
+[ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="8_h3hwc"]
 [ext_resource type="PackedScene" uid="uid://dteep3g3rd4ok" path="res://scenes/ecs/entities/characters/enemies/basic_melee_bot_enemy.tscn" id="9_hrry7"]
 [ext_resource type="PackedScene" uid="uid://d185lvh5eek1d" path="res://scenes/Inherited/inh_door_double_closed_2.tscn" id="9_tun64"]
 [ext_resource type="PackedScene" uid="uid://dwqypd0fg5tah" path="res://visuals/models/level/table-large.glb" id="11_v03eo"]
 [ext_resource type="Script" path="res://scenes/ecs/components/trigger_component.gd" id="14_27w1f"]
 [ext_resource type="PackedScene" uid="uid://g5sklegfrtla" path="res://scenes/Inherited/inh_computer_screen_2.tscn" id="14_rfd0v"]
-[ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/parent/proximity_switch.tscn" id="15_cs4bs"]
+[ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/entities/characters/switches/floor_switch.tscn" id="15_cs4bs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugxnc"]
 
@@ -237,30 +237,26 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -82.2, 2.2, 76.7)
 [node name="big_gate_switch" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -206.9, 1.1, 68.1)
 
-[node name="ProximitySwitch" parent="Interactive/big_gate_switch" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+[node name="ProximitySwitch" parent="Interactive/big_gate_switch" instance=ExtResource("15_cs4bs")]
 transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0.46666, -2.98023e-08, -0.0666656)
-_switch_trigger = NodePath("../../MainGate/Components/TriggerComponent")
 
 [node name="sideway_switch2" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -150.2, 1.1, 29.8)
 
-[node name="ProximitySwitch2" parent="Interactive/sideway_switch2" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+[node name="ProximitySwitch2" parent="Interactive/sideway_switch2" instance=ExtResource("15_cs4bs")]
 transform = Transform3D(-1.45704e-08, 0, -0.333333, 0, 0.333333, 0, 0.333333, 0, -1.45704e-08, 0.433333, -2.98023e-08, 0.033329)
-_switch_trigger = NodePath("../../MainGate/Components/TriggerComponent")
 
 [node name="safe_switch3" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -110.6, 1, 27.7)
 
-[node name="ProximitySwitch3" parent="Interactive/safe_switch3" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+[node name="ProximitySwitch3" parent="Interactive/safe_switch3" instance=ExtResource("15_cs4bs")]
 transform = Transform3D(-1.45704e-08, 0, -0.333333, 0, 0.333333, 0, 0.333333, 0, -1.45704e-08, 0.5, 0.0333333, -0.0333366)
-_switch_trigger = NodePath("../../FinalSwitchDoor/Components/TriggerComponent")
 
 [node name="seedpod_switch4" parent="Interactive" instance=ExtResource("8_6p47x")]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, -88.5, 1.1, 28.7)
 
-[node name="ProximitySwitch4" parent="Interactive/seedpod_switch4" node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("15_cs4bs")]
+[node name="ProximitySwitch4" parent="Interactive/seedpod_switch4" instance=ExtResource("15_cs4bs")]
 transform = Transform3D(-0.333333, 0, 2.91409e-08, 0, 0.333333, 0, -2.91409e-08, 0, -0.333333, 0.5, 0, 0)
-_switch_trigger = NodePath("../../SeedPodDoor/Components/TriggerComponent")
 
 [node name="Pico_RepairStation" parent="Interactive" instance=ExtResource("7_esfcn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -186.6, 2.9, 9.1)

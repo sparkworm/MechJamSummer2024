@@ -10,7 +10,7 @@
 [ext_resource type="MeshLibrary" uid="uid://d3ey8ed7030ay" path="res://visuals/grid_mesh/props_v0.4.tres" id="7_aigqy"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="8_he1vk"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="10_54q3t"]
-[ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/parent/proximity_switch.tscn" id="11_cbr7o"]
+[ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/entities/characters/switches/floor_switch.tscn" id="11_cbr7o"]
 [ext_resource type="PackedScene" uid="uid://b33s7qdff0i5" path="res://scenes/ecs/parent/door.tscn" id="12_1cosn"]
 [ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="12_rmd4h"]
 [ext_resource type="PackedScene" uid="uid://byolnvaa3tpvc" path="res://visuals/desert.tscn" id="13_ayp8d"]
@@ -170,17 +170,14 @@ metadata/_editor_floor_ = Vector3(0, -2, 0)
 [node name="Spawner" parent="NavigationRegion3D" instance=ExtResource("12_rmd4h")]
 transform = Transform3D(-0.000698252, 0, 1, 0, 1, 0, -1, 0, -0.000698252, -14.1781, 0, 0)
 
-[node name="ProximitySwitch" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_cbr7o")]
+[node name="ProximitySwitch" parent="." instance=ExtResource("11_cbr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02549, 0, 11.1376)
-_switch_trigger = NodePath("../Door/Components/TriggerComponent")
 
-[node name="ProximitySwitch2" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_cbr7o")]
+[node name="ProximitySwitch2" parent="." instance=ExtResource("11_cbr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84736, 0, 17.3255)
-_switch_trigger = NodePath("../Door2/Components/TriggerComponent")
 
-[node name="ProximitySwitch3" parent="." node_paths=PackedStringArray("_switch_trigger") instance=ExtResource("11_cbr7o")]
+[node name="ProximitySwitch3" parent="." instance=ExtResource("11_cbr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52656, 0, 5.45004)
-_switch_trigger = NodePath("../Door3/Components/TriggerComponent")
 
 [node name="Door" parent="." instance=ExtResource("12_1cosn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.375, -4.76837e-07, 10.9285)
@@ -196,56 +193,48 @@ transform = Transform3D(0.233395, 0.00936492, 0.0891012, 0, 0.24863, -0.0261321,
 
 [node name="EnergyCrate" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, -1.83395)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate2" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 7.74615)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate2/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate3" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 19.65)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate3/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate4" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6666, -7.62939e-06, 28.6591)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate4/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate5" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0446, -7.62939e-06, 24.056)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate5/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate6" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3379, -7.62939e-06, 11.4218)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate6/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate7" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3566, -7.62939e-06, -0.64121)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate7/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])
 
 [node name="EnergyCrate8" parent="." instance=ExtResource("14_vn8po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2937, -7.62939e-06, -15.1502)
-collision_mask = 0
 
 [node name="PickupDropComponent" parent="EnergyCrate8/Components" index="1"]
 _guaranteed_pickup_drops = Array[PackedScene]([ExtResource("15_fq1gv")])

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://clxq040puhd2"]
+
+[resource]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.20384, 0.481594, 0.238175, 1)
+metallic = 0.46
+metallic_specular = 0.44
+emission_enabled = true
+emission = Color(6.85863e-07, 0.309804, 0.173293, 1)
+emission_energy_multiplier = 5.8
+rim_enabled = true
+rim = 0.64
+rim_tint = 0.34
