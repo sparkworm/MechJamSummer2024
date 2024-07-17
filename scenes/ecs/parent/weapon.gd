@@ -5,6 +5,8 @@ extends Node3D
 
 @export var _owner: Node3D = null
 @export var _weapon_ability: PackedScene = null
+@export  var _ammo_type: AmmoData.AmmoType = AmmoData.AmmoType.Energy
+@export var _ammo_requirement: float = 0
 @export var _cooldown_time: float = 10
 @export var _num_abilities: int = 1
 @export var _spread_angle: float = 100
@@ -57,8 +59,23 @@ func _process(delta: float):
 
 ## function to handle weapon attacking
 ## [br] Do note that "fire" can mean "swing" for melee weapons.
-func fire(direction: Vector3) -> bool:
+func fire(direction: Vector3, ammo: AmmoComponent) -> bool:
 	if Time.get_unix_time_from_system() < _cooldown_timestamp:
+		return false
+
+	if(_ammo_requirement == AmmoData.AmmoType.Energy):
+		if(ammo.energy >= _ammo_requirement):
+			ammo.energy -= _ammo_requirement
+		else:
+			return false
+
+	elif(_ammo_requirement == AmmoData.AmmoType.HeavyAmmo):
+		if(ammo.heavy_ammo >= _ammo_requirement):
+			ammo.heavy_ammo -= _ammo_requirement
+		else:
+			return false
+
+	else:
 		return false
 
 	set_cooldown(_cooldown_time)

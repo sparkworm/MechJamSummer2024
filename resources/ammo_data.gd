@@ -6,6 +6,7 @@ enum AmmoType
 	LightAmmo,
 	HeavyAmmo,
 	Missiles,
+	Energy,
 }
 
 func get_pickup_type() -> PickupType:

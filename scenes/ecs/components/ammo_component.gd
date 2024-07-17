@@ -31,6 +31,16 @@ var missiles: int:
 		if(_missiles > _max_missiles):
 			_missiles = _max_missiles
 
+@export var _max_energy: int = 100
+var _energy: int = 0;
+var energy: int:
+	get:
+		return _energy
+	set(value):
+		_energy = value
+		if(_energy > _max_energy):
+			_energy = _max_energy
+
 func _ready() -> void:
 	#Maybe instantiate some default ammo values
 	pass
@@ -38,6 +48,7 @@ func _ready() -> void:
 var ammo_type_map: Dictionary = {
 	AmmoData.AmmoType.HeavyAmmo: "heavy_ammo",
 	AmmoData.AmmoType.Missiles: "missiles",
+	AmmoData.AmmoType.Energy: "energy",
 }
 
 func add_ammo(ammo: AmmoData) -> void:

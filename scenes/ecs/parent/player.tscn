@@ -31,17 +31,8 @@ uv1_world_triplanar = true
 collision_layer = 4096
 collision_mask = 2175
 script = ExtResource("1_8dtkr")
-_blend_speed = null
-_detection_area_radius = null
-_obtain_radius = null
 _dash_speed = 20.0
 _dash_duration = 0.5
-_dash_blend_speed = null
-_dash_deadzone = null
-_weapon_swap_cooldown = null
-character_name = null
-_movement_speed = null
-_rotation_speed = null
 character_controller = NodePath("Components/PlayerController")
 
 [node name="Components" type="Node" parent="."]
@@ -56,6 +47,7 @@ max_health = 5
 _invincibility_time = 2.0
 
 [node name="EnergyComponent" parent="Components" instance=ExtResource("5_ol0v8")]
+max_energy = null
 
 [node name="AmmoComponent" parent="Components" instance=ExtResource("6_d1kdd")]
 

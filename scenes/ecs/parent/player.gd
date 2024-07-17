@@ -15,7 +15,6 @@ enum PlayerState
 
 @onready var _attack_component: AttackComponent = $Components/AttackComponent
 @onready var _health_component: HealthComponent = $Components/HealthComponent
-@onready var _energy_component: EnergyComponent = $Components/EnergyComponent
 @onready var _ammo_component: AmmoComponent = $Components/AmmoComponent
 @onready var _player_health_UI: PlayerHealthUI = $CanvasLayer/PlayerHealthUI
 @onready var _player_energy_UI: PlayerEnergyUI = $CanvasLayer/PlayerEnergyUI
@@ -197,7 +196,10 @@ func _update_blend_position(blend_animation: String, blend_speed: float) -> void
 #endregion
 
 func use_primary_attack() -> void:
-	if !_weapons_array[_current_weapon_index].fire((_mouse_pos_this_frame - global_position).normalized()):
+	var weapon: Weapon = _weapons_array[_current_weapon_index] as Weapon
+	var dir: Vector3 = (_mouse_pos_this_frame - global_position).normalized()
+
+	if !weapon.fire(dir, _ammo_component):
 		return
 
 	if(_animation_tree[_animation_transition] == _idle_transition):
@@ -209,6 +211,7 @@ func use_primary_attack() -> void:
 	elif (_animation_tree[_animation_transition] == _dash_transition):
 		_animation_tree[_dash_attack_animation_request] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
+
 	#var dir: Vector3 = (_mouse_pos_this_frame - primary_collider.global_position).normalized()
 	#dir.y = 0
 
@@ -219,9 +222,6 @@ func _handle_pickup(pickup: Pickup) -> void:
 		if(pickup_data is HealthData):
 			var health_data: HealthData = pickup_data as HealthData
 			_health_component.heal(health_data.health_amount)
-		elif(pickup_data is EnergyData):
-			var energy_data: EnergyData = pickup_data as EnergyData
-			_energy_component.energy = energy_data.energy_amount
 		elif(pickup_data is AmmoData):
 			var ammo_data: AmmoData = pickup_data as AmmoData
 			_ammo_component.add_ammo(ammo_data)
