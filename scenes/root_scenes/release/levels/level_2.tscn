@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://qfmc1caeas8x"]
+[gd_scene load_steps=21 format=3 uid="uid://qfmc1caeas8x"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_0flol"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="2_pxu2h"]
 [ext_resource type="MeshLibrary" uid="uid://cgiya5hvwfwrd" path="res://visuals/grid_mesh/props_v0.8.tres" id="3_2rhnc"]
-[ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="3_60nti"]
 [ext_resource type="NavigationMesh" uid="uid://c0jlu64k7hy2f" path="res://resources/navMesh_2.tres" id="3_ka8ul"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="4_4etm2"]
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="5_6gtgk"]
@@ -32,14 +31,11 @@ glow_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_inosc"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_8cwt7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxptd"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_uvrfl"]
-
-[node name="Level2" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
+[node name="Level2" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_patrol_routes")]
 script = ExtResource("1_0flol")
 _level_start_point = NodePath("TL-StartPoint")
-_level_exit_point = NodePath("ExitPoint")
 _level_patrol_routes = [NodePath("PatrolRoutes/PatrolRoute1"), NodePath("PatrolRoutes/PatrolRoute2"), NodePath("PatrolRoutes/PatrolRoute4"), NodePath("PatrolRoutes/PatrolRoute5"), NodePath("PatrolRoutes/PatrolRoute6")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -74,17 +70,11 @@ _trigger_target = NodePath("../NavigationRegion3D/Door3/Components/TriggerCompon
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.5786, -0.308303, 5.36008)
 mesh = SubResource("QuadMesh_inosc")
 
-[node name="ExitPoint" type="Area3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 38.4239, 0.308611, 6.79333)
-collision_layer = 0
-collision_mask = 4096
+[node name="TL-ExitPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 0, -17.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPoint"]
-shape = SubResource("SphereShape3D_8cwt7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitPoint"]
-mesh = SubResource("SphereMesh_uvrfl")
-surface_material_override/0 = ExtResource("3_60nti")
+[node name="ExitPointCollider" type="CollisionShape3D" parent="TL-ExitPoint"]
+shape = SubResource("BoxShape3D_wxptd")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
@@ -140,15 +130,15 @@ transform = Transform3D(-2.73196e-08, 0.0218121, 0.624619, 0, 0.624619, -0.02181
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -35.5499, -8.06515, -13.1775)
 
 [node name="Spawner" parent="." instance=ExtResource("10_opjih")]
-transform = Transform3D(0.0163011, 0, 1.99993, 0, 2, 0, -1.99993, 0, 0.0163011, -49.1175, -0.400005, -8.71039)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -49.9607, -0.400005, -10.5056)
 _spawn_cooldown = 30.0
 
 [node name="Spawner3" parent="." instance=ExtResource("10_opjih")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.356345, -0.400005, -8.96952)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.7154, -0.400005, -10.5119)
 _spawn_cooldown = 30.0
 
 [node name="Spawner2" parent="." instance=ExtResource("10_opjih")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.15037, -0.400005, -34.4213)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.15037, -0.400005, -36.9847)
 _spawn_cooldown = 30.0
 
 [node name="PatrolRoutes" type="Node" parent="."]
