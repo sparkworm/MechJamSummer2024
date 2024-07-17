@@ -17,20 +17,22 @@ enum PlayerState
 @onready var _health_component: HealthComponent = $Components/HealthComponent
 @onready var _ammo_component: AmmoComponent = $Components/AmmoComponent
 @onready var _player_health_UI: PlayerHealthUI = $CanvasLayer/PlayerHealthUI
-@onready var _player_energy_UI: PlayerEnergyUI = $CanvasLayer/PlayerEnergyUI
+@onready var _player_ammo_UI: PlayerAmmoUI = $CanvasLayer/PlayerAmmoUI
 
-@export var _fire_cursor: MeshInstance3D = null
 @export var _animation_player: AnimationPlayer = null
 @export var _animation_tree: AnimationTree = null
 @export var _blend_speed: float = 5
 @export var _detection_area_radius: float = 10
 @export var _obtain_radius: float = 1
+@export var _energy_per_second: float = 3
 
 @export_group("Dash")
 @export var _dash_speed: float = 5
 @export var _dash_duration: float = 1
 @export var _dash_blend_speed: float = 100
 @export var _dash_deadzone: float = 2
+@export var _dash_energy_minimum: float = 5
+@export var _dash_energy_drain: float = 5
 
 @export_group("Weapons")
 @export var _rifle: Weapon = null
@@ -45,7 +47,7 @@ var _current_blend_position: Vector2 = Vector2()
 var _current_weapon_swap_cooldown: float = 0
 var _current_dash_time: float = 0
 var _last_iso_input_dir: Vector2
-
+var _mouse_distance_to_player: float
 
 var _animation_transition:String = "parameters/Transition/transition_request"
 
@@ -105,8 +107,8 @@ func _die():
 
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
-	var _mouse_distance_to_player: float = _mouse_pos_this_frame.distance_to(global_position)
-	_fire_cursor.global_position = _mouse_pos_this_frame
+	_mouse_distance_to_player = _mouse_pos_this_frame.distance_to(global_position)
+	_ammo_component.energy += _energy_per_second * delta
 
 	if(_player_state != PlayerState.Busy):
 
@@ -116,7 +118,7 @@ func _process(delta: float) -> void:
 		if(_player_state == PlayerState.Active):
 			_handle_movement_input()
 
-			if Input.is_action_pressed("Dash") && _mouse_distance_to_player > _dash_deadzone:
+			if(_check_dash_requirements()):
 				_prepare_dash(velocity.normalized())
 
 			else:
@@ -129,9 +131,10 @@ func _process(delta: float) -> void:
 			_set_target_blend_position(_last_iso_input_dir)
 
 		if(_player_state == PlayerState.Dashing):
-			_handle_dashing()
-			_update_blend_position(_dash_blend_position, _dash_blend_speed)
-			_animation_tree[_animation_transition] = _dash_transition
+			if(_handle_dashing()):
+				_update_blend_position(_dash_blend_position, _dash_blend_speed)
+				_animation_tree[_animation_transition] = _dash_transition
+				_ammo_component.energy -= _dash_energy_drain * delta
 
 		_handle_look_rotation_input()
 
@@ -146,6 +149,13 @@ func _process(delta: float) -> void:
 	for node3D: Node3D in _detection_area.get_overlapping_bodies():
 		if(node3D is CollisionObject3D):
 			_on_overlapping_body(node3D)
+
+func _check_dash_requirements() -> bool:
+	if Input.is_action_pressed("Dash"):
+		if(_mouse_distance_to_player > _dash_deadzone
+		&& _ammo_component.energy >= _dash_energy_minimum):
+			return true
+	return false
 
 func _on_overlapping_body(node3D: Node3D) -> void:
 
@@ -239,12 +249,13 @@ func _prepare_dash(direction: Vector3):
 	_current_dash_time = _dash_duration
 	velocity = direction * _dash_speed
 
-func _handle_dashing():
+func _handle_dashing() -> bool:
 	_current_dash_time -= GameUtility.get_current_delta_time()
-	if(_current_dash_time < 0):
+	if(_current_dash_time < 0 || _ammo_component.energy < _dash_energy_minimum):
 		_player_state = PlayerState.Active
 		velocity = Vector3(0,0,0)
-	move_and_slide()
+		return false
+	return true
 
 func _cycle_weapon():
 	var i: int = _current_weapon_index

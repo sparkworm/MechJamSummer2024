@@ -63,13 +63,13 @@ func fire(direction: Vector3, ammo: AmmoComponent) -> bool:
 	if Time.get_unix_time_from_system() < _cooldown_timestamp:
 		return false
 
-	if(_ammo_requirement == AmmoData.AmmoType.Energy):
+	if(_ammo_type == AmmoData.AmmoType.Energy):
 		if(ammo.energy >= _ammo_requirement):
 			ammo.energy -= _ammo_requirement
 		else:
 			return false
 
-	elif(_ammo_requirement == AmmoData.AmmoType.HeavyAmmo):
+	elif(_ammo_type == AmmoData.AmmoType.HeavyAmmo):
 		if(ammo.heavy_ammo >= _ammo_requirement):
 			ammo.heavy_ammo -= _ammo_requirement
 		else:

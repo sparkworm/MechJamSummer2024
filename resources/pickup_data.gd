@@ -7,7 +7,6 @@ func get_pickup_type() -> PickupType:
 enum PickupType
 {
 	None,
-	Energy,
 	Health,
 	Ammo,
 	Powerup,

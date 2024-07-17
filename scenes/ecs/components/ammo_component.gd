@@ -1,6 +1,8 @@
 class_name AmmoComponent
 extends Node
 
+@export var _ammo_UI: PlayerAmmoUI = null
+
 @export var _max_light_ammo: int = 500
 var _light_ammo: int = 0;
 var light_ammo: int:
@@ -20,6 +22,8 @@ var heavy_ammo: int:
 		_heavy_ammo = value
 		if(_heavy_ammo > _max_heavy_ammo):
 			_heavy_ammo = _max_heavy_ammo
+		if(_ammo_UI != null):
+			pass
 
 @export var _max_missiles: int = 50
 var _missiles: int = 0;
@@ -31,19 +35,21 @@ var missiles: int:
 		if(_missiles > _max_missiles):
 			_missiles = _max_missiles
 
-@export var _max_energy: int = 100
-var _energy: int = 0;
-var energy: int:
+@export var _max_energy: float = 100
+var _energy: float = 0;
+var energy: float:
 	get:
 		return _energy
 	set(value):
 		_energy = value
 		if(_energy > _max_energy):
 			_energy = _max_energy
+		if(_ammo_UI != null):
+			_ammo_UI.change_energy(_energy)
 
 func _ready() -> void:
-	#Maybe instantiate some default ammo values
-	pass
+	energy = _max_energy
+	heavy_ammo = _max_heavy_ammo
 
 var ammo_type_map: Dictionary = {
 	AmmoData.AmmoType.HeavyAmmo: "heavy_ammo",
