@@ -156,7 +156,7 @@ func _init_patrol_route() -> void:
 	if(!_try_set_nav_point_in_area(_current_patrol_point.global_position, _patrolling_area_variance)):
 		_set_movement_target(_current_patrol_point.global_position)
 
-func _is_hit(source: Node3D) -> void:
+func _is_hit(source: Node3D, current_health: int):
 	_particles_when_hit.restart()
 	_particles_when_hit.emitting = true
 	if _agent_nav_state == NavState.Disabled:

@@ -32,6 +32,7 @@ height = 0.75
 collision_layer = 32768
 collision_mask = 0
 script = ExtResource("1_h64fl")
+_damage = 1.0
 _speed = 20.0
 _collisional_layers = Array[int]([8, 64, 256, 512, 2048, 16384, 4096])
 _hit_layers = Array[int]([4096, 2048])

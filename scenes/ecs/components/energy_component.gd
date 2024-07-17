@@ -11,3 +11,5 @@ var energy: int:
 
 func on_ready() -> void:
 	energy = max_energy
+
+func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dcd80c7ah0c75"]
+[gd_scene load_steps=35 format=3 uid="uid://dcd80c7ah0c75"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_cycng"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_6yqbh"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dteep3g3rd4ok" path="res://scenes/ecs/entities/characters/enemies/basic_melee_bot_enemy.tscn" id="14_480nq"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="15_nxf54"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/crate.gd" id="16_h5emu"]
-[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="17_u7mf5"]
+[ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="17_u7mf5"]
 [ext_resource type="PackedScene" uid="uid://dxrg2y44scbte" path="res://scenes/ecs/components/pickup_drop_component.tscn" id="18_u62ss"]
 [ext_resource type="PackedScene" uid="uid://psredi24q2hu" path="res://scenes/ecs/entities/characters/pickups/energy_pickup.tscn" id="19_38g1w"]
 [ext_resource type="PackedScene" uid="uid://dory0la01for3" path="res://scenes/ecs/entities/characters/pickups/health_pickup.tscn" id="20_yxtjp"]
@@ -49,6 +49,9 @@ glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gnph"]
+size = Vector3(18.0089, 15.6572, 1.7641)
+
 [node name="GameScene" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
 script = ExtResource("1_cycng")
 _level_start_point = NodePath("TL-StartPoint")
@@ -70,7 +73,7 @@ surface_material_override/0 = ExtResource("2_28wwc")
 [node name="TutorialLv" type="Node" parent="."]
 
 [node name="TL-StartPoint" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.7393, -0.362019, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 62.7393, -0.362019, 0)
 mesh = SubResource("QuadMesh_u5hug")
 
 [node name="PatrolRoutes" type="Node" parent="."]
@@ -228,27 +231,153 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -99.2695, -18.9386, 
 
 [node name="BasicMeleeBotEnemy" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5736, 0, 44.3246)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy2" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22526, -0.399998, 43.972)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicRangeBotEnemy" parent="." instance=ExtResource("15_nxf54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1567, -0.400009, -38.195)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_movement_speed = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_movement_speed = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicRangeBotEnemy2" parent="." instance=ExtResource("15_nxf54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.113, -0.400002, -38.2864)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_movement_speed = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_movement_speed = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicRangeBotEnemy3" parent="." instance=ExtResource("15_nxf54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5302, -0.400017, 5.0476)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_movement_speed = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_movement_speed = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy3" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8265, -0.400009, -2.09199)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy4" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3109, -0.400002, 12.2618)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy5" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5661, -0.399994, -30.2913)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="RainbowCrate" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01155, -0.400005, 32.2537)
@@ -588,3 +717,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
 
 [node name="ArtifactPickup" parent="." instance=ExtResource("26_3ndge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.722, 0.379131, 0.0875389)
+
+[node name="InvisibleWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.4383, 0, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.5179, 1.62941, 0.107287)
+shape = SubResource("BoxShape3D_1gnph")

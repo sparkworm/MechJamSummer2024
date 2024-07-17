@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ecs/parent/enemy.gd" id="1_454w4"]
 [ext_resource type="Material" uid="uid://doylh3qwywvdw" path="res://visuals/materials/red.tres" id="2_8uji8"]
 [ext_resource type="Texture2D" uid="uid://bupinxjkachkc" path="res://visuals/textures/grid_texture.png" id="3_6e1wk"]
-[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
+[ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="3_jrb6v"]
 [ext_resource type="PackedScene" uid="uid://butffx7k8o22r" path="res://scenes/ecs/components/knockback_component.tscn" id="4_ae3hl"]
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="5_xg2n3"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://dyyn0nbob5upy" path="res://resources/blend_trees/basic_range_enemy_blend_tree.tres" id="6_ujplw"]
@@ -30,12 +30,33 @@ uv2_scale = Vector3(10, 10, 10)
 collision_layer = 8192
 collision_mask = 30847
 script = ExtResource("1_454w4")
+_weapon_range = null
+_weapon_cooldown_time = null
 _chase_targets = Array[int]([4096])
 _target_obstructions = Array[int]([1, 2, 4, 8, 32, 128, 512, 2048])
+_random_patrol_points = null
+_patrolling_movement_speed = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_patrolling_area_variance = null
 _chasing_movement_speed = 4.0
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_chase_duration = null
 _chase_alert_duration = 50000.0
+_attacking_detection_cone_degrees = null
+_sweeping_movement_speed = null
 _sweeping_rotation_speed = 4.0
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
 _movement_speed = 10.0
+_rotation_speed = null
 
 [node name="Components" type="Node" parent="."]
 

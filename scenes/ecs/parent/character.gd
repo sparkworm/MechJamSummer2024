@@ -1,4 +1,4 @@
-## class for all characters in-game, which could be a player or enemy 
+## class for all characters in-game, which could be a player or enemy
 ## mech/other vehicle
 class_name Character
 extends Body
@@ -10,7 +10,7 @@ extends Body
 
 ## An array of all the arms that the character has.
 ## [br] An arm is simply a Node3D that is the parent of a weapon, which allows
-## for easy animation and containment of the weapon.  
+## for easy animation and containment of the weapon.
 ## [br] Technically an arm could have multiple weapons, the key is that the
 ## arms are controlled as units (for instance, lmb could activate the left arm
 ## which could contain any type of weapons)

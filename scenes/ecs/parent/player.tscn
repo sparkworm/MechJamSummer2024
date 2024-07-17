@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://du23o27jj4r7b" path="res://scenes/ecs/components/attack_component.tscn" id="2_jdd58"]
 [ext_resource type="PackedScene" uid="uid://dc0j5tm5ue4rv" path="res://scenes/ecs/components/player_controller.tscn" id="2_prjhr"]
 [ext_resource type="PackedScene" uid="uid://phsu6ymjua1f" path="res://scenes/ecs/parent/projectile.tscn" id="3_txjwt"]
-[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="4_kihhm"]
+[ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="4_kihhm"]
 [ext_resource type="PackedScene" uid="uid://cbfwy6vkb73qp" path="res://scenes/ecs/components/energy_component.tscn" id="5_ol0v8"]
 [ext_resource type="PackedScene" uid="uid://brmcbnglv7fkd" path="res://scenes/ecs/components/ammo_component.tscn" id="6_d1kdd"]
 [ext_resource type="Material" uid="uid://bo40hl0j5ntoj" path="res://visuals/materials/blue.tres" id="7_8bdnm"]
@@ -31,8 +31,17 @@ uv1_world_triplanar = true
 collision_layer = 4096
 collision_mask = 2175
 script = ExtResource("1_8dtkr")
+_blend_speed = null
+_detection_area_radius = null
+_obtain_radius = null
 _dash_speed = 20.0
 _dash_duration = 0.5
+_dash_blend_speed = null
+_dash_deadzone = null
+_weapon_swap_cooldown = null
+character_name = null
+_movement_speed = null
+_rotation_speed = null
 character_controller = NodePath("Components/PlayerController")
 
 [node name="Components" type="Node" parent="."]
@@ -43,6 +52,8 @@ character_controller = NodePath("Components/PlayerController")
 _primary_attack_scene = ExtResource("3_txjwt")
 
 [node name="HealthComponent" parent="Components" instance=ExtResource("4_kihhm")]
+max_health = 5
+_invincibility_time = 2.0
 
 [node name="EnergyComponent" parent="Components" instance=ExtResource("5_ol0v8")]
 

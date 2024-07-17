@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 #Virtual
-func _is_hit(source: Node3D) -> void:
+func _is_hit(source: Node3D, current_health: int):
 	pass
 
 #Virtual

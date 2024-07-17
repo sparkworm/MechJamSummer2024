@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://layulcd8e5uf"]
 
 [ext_resource type="Script" path="res://scenes/ecs/parent/crate.gd" id="1_uutri"]
-[ext_resource type="PackedScene" path="res://scenes/ecs/components/health_component.tscn" id="2_lf8s4"]
+[ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="2_lf8s4"]
 [ext_resource type="PackedScene" uid="uid://dxrg2y44scbte" path="res://scenes/ecs/components/pickup_drop_component.tscn" id="3_dt1xq"]
 [ext_resource type="PackedScene" uid="uid://gihk3t1yjgof" path="res://resources/particle_systems/hit_particles.tscn" id="4_fmdyp"]
 [ext_resource type="PackedScene" uid="uid://cs0ff02ffre6w" path="res://visuals/models/pickups/Pico_D8Crate.glb" id="5_t7tpu"]

@@ -17,6 +17,8 @@ enum PlayerState
 @onready var _health_component: HealthComponent = $Components/HealthComponent
 @onready var _energy_component: EnergyComponent = $Components/EnergyComponent
 @onready var _ammo_component: AmmoComponent = $Components/AmmoComponent
+@onready var _player_health_UI: PlayerHealthUI = $CanvasLayer/PlayerHealthUI
+@onready var _player_energy_UI: PlayerEnergyUI = $CanvasLayer/PlayerEnergyUI
 
 @export var _fire_cursor: MeshInstance3D = null
 @export var _animation_player: AnimationPlayer = null
@@ -76,6 +78,9 @@ func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
 	var detect_layers: int = LayerUtility.get_bit_from_layer_name("Accessible")
 	_detection_area.collision_mask = detect_layers
+	_health_component.connect("hit", _is_hit)
+	_health_component.connect("killed", _die)
+
 	_weapons_array[0] = _rifle
 	_weapons_array[1] = _minigun
 	_weapons_array[2] = _axe
@@ -89,6 +94,15 @@ func _ready() -> void:
 	_axe.visible = false
 
 	_animation_tree.tree_root = _weapons_array[0].animation_root
+
+func _is_hit(source: Node3D, current_health: int):
+	_player_health_UI.change_health(current_health)
+	#add flash/update UI
+	pass
+
+func _die():
+	#death
+	pass
 
 func _process(delta: float) -> void:
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()

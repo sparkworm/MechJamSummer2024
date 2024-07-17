@@ -95,15 +95,77 @@ skeleton = NodePath("")
 
 [node name="BasicMeleeBotEnemy2" parent="." instance=ExtResource("5_dnoiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53504, 0, 0)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicRangeBotEnemy" parent="." instance=ExtResource("10_54q3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6225, 7.66499, 15.3811)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_movement_speed = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_movement_speed = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy" parent="." instance=ExtResource("5_dnoiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1048, 0, 0)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="BasicMeleeBotEnemy3" parent="." instance=ExtResource("5_dnoiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.0657)
+_random_patrol_points = null
+_patrolling_rotation_speed = null
+_patrolling_idle_duration = null
+_patrolling_radius_detection = null
+_patrolling_cone_degrees_detection = null
+_chasing_rotation_speed = null
+_chase_radius_detection = null
+_chasing_detection_cone_degrees = null
+_attacking_detection_cone_degrees = null
+_sweeping_detection_radius = null
+_sweeping_detection_cone_degrees = null
+_sweeping_state_duration = null
+_sweeping_idle_duration = null
+_sweeping_area_variance = null
+_rotation_speed = null
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.134)
