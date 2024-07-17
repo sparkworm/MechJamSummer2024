@@ -174,10 +174,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0734, 0.999998, 8.32101)
 visible = false
 skeleton = NodePath("")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 30, 0, 0)
 navigation_mesh = ExtResource("4_i5ufc")
@@ -611,3 +607,16 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.5179, 1.62941, 0.107287)
 shape = SubResource("BoxShape3D_1gnph")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.273
+light_indirect_energy = 1.28
+light_volumetric_fog_energy = 1.615
+shadow_enabled = true
+directional_shadow_split_1 = 0.149
+directional_shadow_split_2 = 0.249
+directional_shadow_split_3 = 0.469
+directional_shadow_fade_start = 0.965
+directional_shadow_max_distance = 129.5
+directional_shadow_pancake_size = 22.0
