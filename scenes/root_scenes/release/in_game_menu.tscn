@@ -38,3 +38,26 @@ text = "Resume
 layout_mode = 2
 text = "Exit
 "
+
+[node name="ControlLabels" type="Label" parent="."]
+offset_left = -395.0
+offset_top = -136.0
+offset_right = -106.0
+offset_bottom = -9.0
+text = "Controls:
+Left Mouse Button: Fire
+Right Mouse Button: Switch Weapons
+w,a,s,d: Move
+Spacebar: Boost
+"
+
+[node name="ObjectiveLabel" type="Label" parent="."]
+offset_left = 117.0
+offset_top = -144.0
+offset_right = 405.0
+offset_bottom = -43.0
+text = "Objectives:
+Collet the Seed Pod somewhere deep
+inside the mars base, then go back to
+the airship you dropoff.
+"
