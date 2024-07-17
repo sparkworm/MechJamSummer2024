@@ -62,3 +62,7 @@ func add_ammo(ammo: AmmoData) -> void:
 	self[property_name] += ammo.ammo_amount
 	print("Ammo type: ", property_name)
 	print("Ammo amount: ", self[property_name])
+
+func refresh():
+	energy = _max_energy
+	heavy_ammo = _max_heavy_ammo

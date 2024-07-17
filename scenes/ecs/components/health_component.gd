@@ -17,7 +17,7 @@ var _invincibility_timer: float= 0
 
 func _ready() -> void:
 	# set the actual health to the max_health
-	health = max_health
+	refresh()
 
 ## subtracts a specified number from health, and if health reaches 0, killed is
 ## emitted
@@ -32,5 +32,9 @@ func damage(source: Node3D, amnt: int) -> void:
 		killed.emit()
 
 ## adds a specified amount of health, but not exceeding max_health
-func heal(amnt: int) -> void:
+func heal(source: Node3D, amnt: int) -> void:
 	health = min(max_health, health+amnt)
+	hit.emit(source, health)
+
+func refresh():
+	heal(null, max_health)

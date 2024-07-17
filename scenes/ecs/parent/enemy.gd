@@ -257,13 +257,14 @@ func _chase_target() -> void:
 		_nav_state_to_patrolling()
 
 	var target_position = _current_target.global_position
-	if(global_position.distance_to(target_position) < _weapon_range):
+	var dist: float = global_position.distance_to(target_position)
+	if(dist < _weapon_range):
 		var combined_mask: int = LayerUtility.get_bitmask_from_bits([_chase_targets_mask,_target_obstructions_mask])
 		var collision_shape: CollisionShape3D = _current_target.primary_collider
-		if(_is_collider_in_vision_cone(collision_shape, detection_cone_degrees[NavState.Attacking])
-			&& _is_body_in_line_of_sight(_current_target, combined_mask)):
-			_nav_state_to_attacking(_current_target)
-			return
+		if _is_collider_in_vision_cone(collision_shape, detection_cone_degrees[NavState.Attacking]):
+			if(_is_body_in_line_of_sight(_current_target, combined_mask)):
+				_nav_state_to_attacking(_current_target)
+				return
 
 	_movements_FSM.travel(_chasing_animation)
 	#probably add a delay to this later

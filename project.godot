@@ -21,11 +21,11 @@ GameUtility="*res://scripts/autoload/GameUtility.gd"
 LayerUtility="*res://scripts/autoload/LayerUtility.gd"
 MouseUtility="*res://scripts/autoload/MouseUtility.gd"
 TransformUtility="*res://scripts/autoload/TransformUtility.gd"
-GameManager="*res://scripts/autoload/GameManager.tscn"
 PlayerManager="*res://scripts/autoload/PlayerManager.tscn"
 AudioManager="*res://scripts/autoload/AudioManager.tscn"
 CameraManager="*res://scripts/autoload/CameraManager.tscn"
 PrefabManager="*res://scripts/autoload/PrefabManager.tscn"
+GameManager="*res://scripts/autoload/GameManager.tscn"
 
 [debug]
 

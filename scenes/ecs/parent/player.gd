@@ -98,13 +98,17 @@ func _ready() -> void:
 
 	_animation_tree.tree_root = _weapons_array[0].animation_root
 
+func refresh_player():
+	_health_component.refresh()
+	_ammo_component.refresh()
+
 func _is_hit(source: Node3D, current_health: int):
 	_player_health_UI.change_health(current_health)
 	#add flash/update UI
 	pass
 
 func _die():
-	#death
+	GameManager.restart_level()
 	pass
 
 func _process(delta: float) -> void:
@@ -235,7 +239,7 @@ func _handle_pickup(pickup: Pickup) -> void:
 		var pickup_data: PickupData = pickup.obtain_pickup_data_and_expire()
 		if(pickup_data is HealthData):
 			var health_data: HealthData = pickup_data as HealthData
-			_health_component.heal(health_data.health_amount)
+			_health_component.heal(null, health_data.health_amount)
 			_player_health_UI.change_health(_health_component.health)
 		elif(pickup_data is AmmoData):
 			var ammo_data: AmmoData = pickup_data as AmmoData

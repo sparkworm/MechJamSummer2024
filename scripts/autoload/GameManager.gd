@@ -70,6 +70,7 @@ func change_level(level_index: int) -> void:
 		print("GameManager: cannot change level with incorrect Level index")
 		return
 
+	PlayerManager.player.refresh_player()
 	var next_level: PackedScene = _levels[level_index]
 	call_deferred("_on_change_level_deffered", next_level)
 	_current_level_index = level_index
@@ -87,4 +88,6 @@ func _on_change_level_deffered(next_level: PackedScene) -> void:
 	PlayerManager.change_player_global_position(start_pos)
 	#Change player position and stuff here according to the Level data
 
+func restart_level():
+	change_level(_current_level_index)
 #TODO: Add some tweening logic for cross fading between scenes
