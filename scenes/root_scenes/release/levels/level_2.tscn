@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_0flol"]
 [ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="1_qr7ln"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="2_pxu2h"]
-[ext_resource type="MeshLibrary" uid="uid://cr7vqt2sblh42" path="res://visuals/grid_mesh/props_v0.8.tres" id="3_2rhnc"]
+[ext_resource type="MeshLibrary" uid="uid://cgiya5hvwfwrd" path="res://visuals/grid_mesh/props_v0.8.tres" id="3_2rhnc"]
 [ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="4_4etm2"]
 [ext_resource type="PackedScene" uid="uid://dni1ayv6wl75x" path="res://scenes/Inherited/inh_sci_fi_ship.tscn" id="5_6gtgk"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="6_ryogo"]
