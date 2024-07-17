@@ -12,6 +12,13 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -483.0
+offset_top = -256.0
+offset_right = 517.0
+offset_bottom = 244.0
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
