@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="2_swwmo"]
 [ext_resource type="PackedScene" uid="uid://t4dgmau4jnxv" path="res://scenes/ecs/parent/patrol_point.tscn" id="3_6g054"]
 [ext_resource type="PackedScene" uid="uid://c4pe87umwfs81" path="res://scenes/Inherited/inh_wall_window_2.tscn" id="3_pyy0p"]
-[ext_resource type="MeshLibrary" uid="uid://d3ey8ed7030ay" path="res://visuals/grid_mesh/props_v0.4.tres" id="4_gwu63"]
-[ext_resource type="MeshLibrary" uid="uid://bucdypf061v6h" path="res://visuals/grid_mesh/terrarin_v0.4.tres" id="5_618bo"]
 [ext_resource type="PackedScene" uid="uid://c37tymt6stv32" path="res://scenes/Inherited/Inh-marsvalley.tscn" id="6_x7y70"]
+[ext_resource type="MeshLibrary" uid="uid://cgiya5hvwfwrd" path="res://visuals/grid_mesh/props_v0.8.tres" id="7_i0cdu"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="7_vm1nl"]
+[ext_resource type="MeshLibrary" uid="uid://cxofbbsn7bqk2" path="res://visuals/grid_mesh/terrarin_v0.5.tres" id="8_fsks3"]
 [ext_resource type="PackedScene" uid="uid://dlff8h0pfr4j0" path="res://scenes/ecs/parent/switch.tscn" id="11_8mf37"]
 [ext_resource type="PackedScene" uid="uid://b33s7qdff0i5" path="res://scenes/ecs/parent/door.tscn" id="12_cnjsb"]
 
@@ -124,7 +124,7 @@ shape = SubResource("BoxShape3D_26wfo")
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, -17.5, -0.65, 0)
 
 [node name="props_gm" type="GridMap" parent="NavigationRegion3D"]
-mesh_library = ExtResource("4_gwu63")
+mesh_library = ExtResource("7_i0cdu")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 10
 cell_scale = 5.0
@@ -136,7 +136,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="terrain_gm" type="GridMap" parent="NavigationRegion3D"]
-mesh_library = ExtResource("5_618bo")
+mesh_library = ExtResource("8_fsks3")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 10
 cell_scale = 5.0

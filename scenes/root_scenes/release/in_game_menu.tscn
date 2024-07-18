@@ -47,6 +47,7 @@ text = "Exit
 "
 
 [node name="ControlLabels" type="Label" parent="."]
+layout_mode = 0
 offset_left = -395.0
 offset_top = -136.0
 offset_right = -106.0
@@ -59,6 +60,7 @@ Spacebar: Boost
 "
 
 [node name="ObjectiveLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 117.0
 offset_top = -144.0
 offset_right = 405.0
