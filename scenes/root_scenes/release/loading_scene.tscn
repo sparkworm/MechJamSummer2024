@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b636wqi0qwfhp"]
+[gd_scene load_steps=47 format=3 uid="uid://b636wqi0qwfhp"]
 
 [ext_resource type="Texture2D" uid="uid://cd0neo1v5bxcy" path="res://visuals/mech.jpeg" id="1_ri2xt"]
 [ext_resource type="Material" uid="uid://clxq040puhd2" path="res://visuals/materials/active_switch_material.tres" id="2_3uibl"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://0ifbji75j3g0" path="res://visuals/models/characters/robots_S4/Robot_One_robot_texture.png" id="16_esvna"]
 [ext_resource type="Texture2D" uid="uid://ctu1ac8hjcix3" path="res://visuals/models/characters/robots_S4/robot_texture.png" id="17_fm24o"]
 [ext_resource type="Texture2D" uid="uid://d1gra60xkdok2" path="res://visuals/models/mechs/combat_mech/combatmech_texture_alt.png" id="18_odio3"]
-[ext_resource type="Texture2D" uid="uid://cseclwu8a2jr2" path="res://visuals/models/level/free_space_colony_3D_models/texture/T_Spase.png" id="19_lnkk2"]
 [ext_resource type="Texture2D" uid="uid://cvpekgpu3ph4r" path="res://visuals/models/level/spacebits_texture.png" id="20_fbrxk"]
 [ext_resource type="Texture2D" uid="uid://pcn6alk3qlbj" path="res://visuals/models/level/free_space_colony_3D_models/texture/T_Spase_blue_white.png" id="21_ly3kr"]
 [ext_resource type="Texture2D" uid="uid://8h6rmeew8osr" path="res://visuals/models/level/free_space_colony_3D_models/texture/T_Spase_blue.png" id="22_4clpa"]
@@ -27,7 +26,16 @@
 [ext_resource type="PackedScene" uid="uid://d4mu6oeflp1t0" path="res://scenes/ecs/entities/characters/pickups/heavy_ammo_pickup.tscn" id="25_k7jpn"]
 [ext_resource type="PackedScene" uid="uid://uk4ivfbnnfpr" path="res://scenes/ecs/entities/characters/pickups/missiles_ammo_pickup.tscn" id="26_yr8xl"]
 [ext_resource type="PackedScene" uid="uid://dory0la01for3" path="res://scenes/ecs/entities/characters/pickups/health_pickup.tscn" id="27_f1ilt"]
+[ext_resource type="PackedScene" uid="uid://b5wrtdi4y1lqa" path="res://scenes/ecs/entities/projectiles/enemy_lazer.tscn" id="28_kqy4i"]
 [ext_resource type="PackedScene" uid="uid://dh33tgwsqh4dy" path="res://visuals/models/mechs/combat_mech/CombatMech_Axe.gltf" id="28_wdwjh"]
+[ext_resource type="PackedScene" uid="uid://cwuf2sk56g0kj" path="res://scenes/ecs/entities/projectiles/player_lazer.tscn" id="29_gccix"]
+[ext_resource type="PackedScene" uid="uid://cek4ttkjwbkkc" path="res://resources/particle_systems/lazer_flash_particles.tscn" id="30_wl28h"]
+[ext_resource type="PackedScene" uid="uid://dtm6mkhqbluvs" path="res://scenes/ecs/entities/projectiles/player_bullet.tscn" id="31_fc30m"]
+[ext_resource type="PackedScene" uid="uid://dfmdcy5742q3" path="res://resources/particle_systems/bullet_flash_particles.tscn" id="32_kv8pa"]
+[ext_resource type="PackedScene" uid="uid://ba7174y631rlv" path="res://resources/particle_systems/bullet_flash.tscn" id="33_j8raq"]
+[ext_resource type="PackedScene" uid="uid://0xuvvovkqpvy" path="res://resources/particle_systems/bullet_casing_particles.tscn" id="34_3srpm"]
+[ext_resource type="PackedScene" uid="uid://cb3lk1h2khoo4" path="res://scenes/ecs/entities/projectiles/player_slash.tscn" id="35_mxkbe"]
+[ext_resource type="PackedScene" uid="uid://ddv1re31pfiga" path="res://scenes/ecs/entities/projectiles/enemy_slash.tscn" id="36_0tvu2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0k7ew"]
 
@@ -48,9 +56,6 @@ albedo_texture = ExtResource("17_fm24o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qah8f"]
 albedo_texture = ExtResource("18_odio3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6wnl"]
-albedo_texture = ExtResource("19_lnkk2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p32m"]
 albedo_texture = ExtResource("20_fbrxk")
@@ -191,7 +196,7 @@ mesh = SubResource("QuadMesh_0k7ew")
 
 [node name="MeshInstance3D19" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80247, 5.8333, -15.9627)
-material_override = SubResource("StandardMaterial3D_w6wnl")
+material_override = ExtResource("10_c6u2v")
 mesh = SubResource("QuadMesh_0k7ew")
 
 [node name="MeshInstance3D20" type="MeshInstance3D" parent="."]
@@ -233,3 +238,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.122038, 0, -10.3707)
 
 [node name="CombatMech_Axe2" parent="." instance=ExtResource("28_wdwjh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23698, 0, -13.8443)
+
+[node name="Projectile" parent="." instance=ExtResource("28_kqy4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55039, 0, -14.0038)
+
+[node name="Projectile2" parent="." instance=ExtResource("29_gccix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3147, 0, -17.1104)
+
+[node name="bullet_flash" parent="." instance=ExtResource("30_wl28h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22602, 0, -16.7921)
+
+[node name="Projectile3" parent="." instance=ExtResource("31_fc30m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94216, 0, -15.6893)
+
+[node name="bullet_flash2" parent="." instance=ExtResource("32_kv8pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270512, 0, -20.3911)
+
+[node name="Projectile4" parent="." instance=ExtResource("33_j8raq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83478, 0, -19.8137)
+
+[node name="bullet_casings" parent="." instance=ExtResource("34_3srpm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05434, 0, -19.0421)
+
+[node name="Projectile5" parent="." instance=ExtResource("35_mxkbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.042, 0, -22.7129)
+
+[node name="EnemySlash" parent="." instance=ExtResource("36_0tvu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5526, 0, -22.0035)
