@@ -99,7 +99,7 @@ func fire(direction: Vector3, ammo: AmmoComponent) -> bool:
 			GameManager.current_level_scene.add_child(weapon_ability)
 			weapon_ability.global_transform = global_transform
 			var rotation_angle: float = start_angle + i * angle_step
-			print(rotation_angle)
+			#print(rotation_angle)
 			var new_dir = direction.rotated(Vector3.UP, rotation_angle).normalized()
 			weapon_ability.init_with_world_direction(_owner, _fire_point.global_position, new_dir)
 
