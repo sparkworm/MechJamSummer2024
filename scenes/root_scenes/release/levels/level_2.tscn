@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://qfmc1caeas8x"]
+[gd_scene load_steps=29 format=3 uid="uid://qfmc1caeas8x"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_0flol"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="2_pxu2h"]
@@ -11,20 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://daeyjyahyh45u" path="res://scenes/ecs/entities/characters/switches/floor_switch.tscn" id="6_ahly4"]
 [ext_resource type="PackedScene" uid="uid://byolnvaa3tpvc" path="res://visuals/desert.tscn" id="9_qx4oi"]
 [ext_resource type="PackedScene" uid="uid://d4cer02h8cjxd" path="res://scenes/Inherited/inh_table_display_planet_2.tscn" id="10_1sbh6"]
+[ext_resource type="PackedScene" uid="uid://layulcd8e5uf" path="res://scenes/ecs/parent/crate.tscn" id="10_ay0ck"]
 [ext_resource type="PackedScene" uid="uid://dhelsoi5lm2ko" path="res://scenes/ecs/parent/enemy_spawner.tscn" id="10_opjih"]
 [ext_resource type="Script" path="res://scenes/ecs/parent/patrol_route.gd" id="11_tsyid"]
 [ext_resource type="PackedScene" uid="uid://t4dgmau4jnxv" path="res://scenes/ecs/parent/patrol_point.tscn" id="12_j278f"]
 [ext_resource type="PackedScene" uid="uid://dteep3g3rd4ok" path="res://scenes/ecs/entities/characters/enemies/basic_melee_bot_enemy.tscn" id="13_wugqd"]
 [ext_resource type="PackedScene" uid="uid://cfbih18xufwhf" path="res://scenes/ecs/entities/characters/enemies/basic_range_bot_enemy.tscn" id="14_56v4x"]
 [ext_resource type="PackedScene" uid="uid://2f4vjm2c6o2w" path="res://scenes/ecs/entities/characters/pickups/artifact_pickup.tscn" id="17_6fgqc"]
-[ext_resource type="Script" path="res://scenes/ecs/parent/crate.gd" id="18_8x3dv"]
-[ext_resource type="PackedScene" uid="uid://mcwanb7c0jec" path="res://scenes/ecs/components/health_component.tscn" id="19_s0ebd"]
-[ext_resource type="PackedScene" uid="uid://dxrg2y44scbte" path="res://scenes/ecs/components/pickup_drop_component.tscn" id="20_h2nw7"]
 [ext_resource type="PackedScene" uid="uid://psredi24q2hu" path="res://scenes/ecs/entities/characters/pickups/energy_pickup.tscn" id="21_417an"]
 [ext_resource type="PackedScene" uid="uid://dory0la01for3" path="res://scenes/ecs/entities/characters/pickups/health_pickup.tscn" id="22_1nnhw"]
 [ext_resource type="PackedScene" uid="uid://d4mu6oeflp1t0" path="res://scenes/ecs/entities/characters/pickups/heavy_ammo_pickup.tscn" id="23_4auwo"]
-[ext_resource type="PackedScene" uid="uid://gihk3t1yjgof" path="res://resources/particle_systems/hit_particles.tscn" id="24_0e5y7"]
-[ext_resource type="PackedScene" uid="uid://cs0ff02ffre6w" path="res://visuals/models/pickups/Pico_D8Crate.glb" id="25_k616u"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_inosc"]
 
@@ -34,8 +30,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ebf4"]
 size = Vector3(14.6373, 12.3984, 1.7641)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cy57h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8wbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -127,6 +121,202 @@ transform = Transform3D(-2.73196e-08, 0.0218121, 0.624619, 0, 0.624619, -0.02181
 [node name="Interactive" type="Node" parent="NavigationRegion3D"]
 
 [node name="UniqueDecorate" type="Node" parent="NavigationRegion3D"]
+
+[node name="Crate25" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5116, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate25/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate26" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1507, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate26/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate49" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2357, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate49/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate50" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9438, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate50/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate43" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.101, -0.399996, 1.75075)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate43/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate44" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0652, -0.399997, -35.1712)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate44/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate45" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3389, -0.399997, -35.1712)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate45/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate46" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5709, -0.399997, -35.1712)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate46/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate47" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8592, -0.399997, -20.1771)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate47/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate48" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8592, -0.399997, -23.4469)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate48/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate27" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4884, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate27/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate28" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8493, -0.4, -9.85671)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate28/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate29" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7716, -0.4, -36.4885)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate29/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate30" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1325, -0.4, -36.4885)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate30/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate35" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, -32.6833, -0.4, -55.3412)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate35/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate36" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, -32.7018, -0.4, -51.7022)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate36/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate41" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, 43.631, -0.4, -62.7993)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate41/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate37" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, -50.5313, -0.4, -55.3412)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate37/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate38" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, -50.5498, -0.4, -51.7022)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate38/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate39" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, 7.88834, -0.4, -53.859)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate39/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate40" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(-0.00509639, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00509639, 7.86979, -0.4, -50.22)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate40/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate31" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.8964, -0.4, -36.4885)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate31/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate42" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5789, -0.4, -64.3995)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate42/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate32" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2573, -0.4, -36.4885)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate32/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate33" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(0.00582934, 0, -0.999983, 0, 1, 0, 0.999983, 0, 0.00582934, -75.5947, -0.282771, 5.19173)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate33/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate34" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(0.00582934, 0, -0.999983, 0, 1, 0, 0.999983, 0, 0.00582934, -75.5734, -0.282771, 8.83073)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate34/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate51" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(0.00582934, 0, -0.999983, 0, 1, 0, 0.999983, 0, 0.00582934, -50.4707, -0.282771, 5.19173)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate51/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
+
+[node name="Crate52" parent="NavigationRegion3D/UniqueDecorate" instance=ExtResource("10_ay0ck")]
+transform = Transform3D(0.00582934, 0, -0.999983, 0, 1, 0, 0.999983, 0, 0.00582934, -50.4495, -0.282771, 8.83073)
+
+[node name="PickupDropComponent" parent="NavigationRegion3D/UniqueDecorate/Crate52/Components" index="1"]
+_random_pickup_drop_table = Array[PackedScene]([ExtResource("22_1nnhw"), ExtResource("21_417an"), ExtResource("23_4auwo")])
+_drop_chance = 1.0
 
 [node name="desert" parent="." instance=ExtResource("9_qx4oi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -35.5499, -8.06515, -13.1775)
@@ -327,414 +517,6 @@ shape = SubResource("BoxShape3D_8ebf4")
 
 [node name="Node" type="Node" parent="."]
 
-[node name="RainbowCrate12" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.8057, -0.400005, -11.0208)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate12"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate12/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate12/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate12"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate12" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate12" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate14" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.349, -0.400005, 11.7652)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate14"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate14/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate14/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate14"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate14" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate14" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate15" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.349, -0.400005, -46.8732)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate15"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate15/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate15/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate15"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate15" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate15" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate16" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.3523, -0.400005, -62.7619)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate16"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate16/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate16/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate16"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate16" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate16" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate17" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8262, -0.400005, -62.7619)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate17"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate17/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate17/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate17"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate17" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate17" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate18" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5111, -0.400005, -4.05238)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate18"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate18/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate18/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate18"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate18" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate18" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate19" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4379, -0.400005, 1.76331)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate19"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate19/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate19/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate19"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate19" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate19" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate24" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3392, -0.400005, -23.174)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate24"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate24/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate24/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate24"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate24" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate24" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate25" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3392, -0.400005, -19.5839)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate25"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate25/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate25/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate25"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate25" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate25" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate26" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2564, -0.400005, -35.5083)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate26"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate26/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate26/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate26"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate26" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate26" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate27" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5078, -0.400005, -35.5083)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate27"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate27/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate27/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate27"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate27" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate27" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate20" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46825, -0.400001, -35.7445)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate20"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate20/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate20/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate20"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate20" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate20" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate21" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80323, -0.400001, -48.8513)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate21"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate21/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate21/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate21"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate21" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate21" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate22" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93341, -0.400001, -52.9638)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate22"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate22/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate22/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate22"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate22" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate22" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate23" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6664, -0.400001, -61.8498)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate23"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate23/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate23/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate23"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate23" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate23" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate29" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6587, -0.38763, -35.9364)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate29"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate29/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate29/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate29"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate29" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate29" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
-[node name="RainbowCrate30" type="StaticBody3D" parent="Node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15649, -0.38763, -8.74413)
-collision_layer = 2048
-collision_mask = 0
-script = ExtResource("18_8x3dv")
-
-[node name="Components" type="Node" parent="Node/RainbowCrate30"]
-
-[node name="HealthComponent" parent="Node/RainbowCrate30/Components" instance=ExtResource("19_s0ebd")]
-max_health = 8
-
-[node name="PickupDropComponent" parent="Node/RainbowCrate30/Components" instance=ExtResource("20_h2nw7")]
-_random_pickup_drop_table = Array[PackedScene]([ExtResource("21_417an"), ExtResource("22_1nnhw"), ExtResource("23_4auwo")])
-_drop_chance = 1.0
-_guaranteed_pickup_drops = Array[PackedScene]([])
-
-[node name="PrimaryCollider" type="CollisionShape3D" parent="Node/RainbowCrate30"]
-shape = SubResource("CapsuleShape3D_cy57h")
-
-[node name="HitParticles" parent="Node/RainbowCrate30" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate30" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_82k1a")
 
@@ -749,3 +531,32 @@ directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.566
 directional_shadow_max_distance = 433.9
 directional_shadow_pancake_size = 1.0
+
+[editable path="NavigationRegion3D/UniqueDecorate/Crate25"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate26"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate49"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate50"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate43"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate44"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate45"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate46"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate47"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate48"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate27"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate28"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate29"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate30"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate35"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate36"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate41"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate37"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate38"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate39"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate40"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate31"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate42"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate32"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate33"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate34"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate51"]
+[editable path="NavigationRegion3D/UniqueDecorate/Crate52"]
