@@ -15,7 +15,7 @@ enum GameState {
 @export var _end_scene: PackedScene
 @export var _levels: Array[PackedScene] = []
 
-var _game_state: GameState = GameState.Game
+var _game_state: GameState = GameState.Load
 var _current_scene: Node
 
 var _current_level_index: int = -1
@@ -26,22 +26,19 @@ var current_level_scene: Level:
 
 func _ready() -> void:
 	_current_scene = get_tree().current_scene
-	change_state(GameState.Game)
+	_on_load()
 
 func change_state(state: GameState) -> void:
 	call_deferred("_change_state_deffered", state)
 
 func _change_state_deffered(state: GameState) -> void:
-	await get_tree().create_timer(5).timeout
 	_state_clean_up()
 	_game_state = state
 	_state_initialization()
 
 func _state_clean_up() -> void:
 	PlayerManager.player.enabled = false
-	if(_game_state == GameState.Load):
-		pass
-	elif(_game_state == GameState.End):
+	if(_game_state == GameState.End):
 		pass
 	else: #(_game_state == GameState.Game):
 		if(_current_level_scene != null):
@@ -53,9 +50,7 @@ func _state_clean_up() -> void:
 		_current_scene.free()
 
 func _state_initialization() -> void:
-	if(_game_state == GameState.Load):
-		_current_scene = _load_scene.instantiate()
-	elif(_game_state == GameState.End):
+	if(_game_state == GameState.End):
 		_current_scene = _end_scene.instantiate()
 	else: #(_game_state == GameState.Game):
 		_current_scene = _game_scene.instantiate()
@@ -66,19 +61,27 @@ func _state_initialization() -> void:
 	get_tree().root.add_child(_current_scene)
 	get_tree().current_scene = _current_scene
 
+func _on_load():
+	await get_tree().create_timer(5).timeout
+	change_state(GameState.Game)
+
 func change_level(level_index: int) -> void:
 	if(_game_state != GameState.Game):
 		print("GameManager: cannot change level while in incorrect GameState")
 		return
 
 	if(level_index + 1 > _levels.size()):
-		print("GameManager: cannot change level with incorrect Level index")
+		#print("GameManager: cannot change level with incorrect Level index")
+		_end_game()
 		return
 
 	PlayerManager.player.refresh_player()
 	var next_level: PackedScene = _levels[level_index]
 	call_deferred("_on_change_level_deffered", next_level)
 	_current_level_index = level_index
+
+func _end_game() -> void:
+	change_state(GameState.End)
 
 func change_to_next_level() -> void:
 		change_level(_current_level_index + 1)

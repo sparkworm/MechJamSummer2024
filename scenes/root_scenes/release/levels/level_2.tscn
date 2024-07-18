@@ -656,7 +656,7 @@ shape = SubResource("CapsuleShape3D_cy57h")
 [node name="HitParticles" parent="Node/RainbowCrate24" instance=ExtResource("24_0e5y7")]
 
 [node name="Pico_D8Crate" parent="Node/RainbowCrate24" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.1771, 1.25185, -3.51468)
 
 [node name="RainbowCrate25" type="StaticBody3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6314, -0.400001, -32.4483)
@@ -678,9 +678,6 @@ _guaranteed_pickup_drops = Array[PackedScene]([])
 shape = SubResource("CapsuleShape3D_cy57h")
 
 [node name="HitParticles" parent="Node/RainbowCrate25" instance=ExtResource("24_0e5y7")]
-
-[node name="Pico_D8Crate" parent="Node/RainbowCrate25" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
 
 [node name="RainbowCrate26" type="StaticBody3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6314, -0.400001, -29.045)
@@ -704,7 +701,7 @@ shape = SubResource("CapsuleShape3D_cy57h")
 [node name="HitParticles" parent="Node/RainbowCrate26" instance=ExtResource("24_0e5y7")]
 
 [node name="Pico_D8Crate" parent="Node/RainbowCrate26" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.93927, 1.25185, -6.82661)
 
 [node name="RainbowCrate27" type="StaticBody3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6314, -0.400001, -25.4188)
@@ -728,7 +725,7 @@ shape = SubResource("CapsuleShape3D_cy57h")
 [node name="HitParticles" parent="Node/RainbowCrate27" instance=ExtResource("24_0e5y7")]
 
 [node name="Pico_D8Crate" parent="Node/RainbowCrate27" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.0761, 1.25185, 0)
 
 [node name="RainbowCrate28" type="StaticBody3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6314, -0.400001, -21.6372)
@@ -752,7 +749,7 @@ shape = SubResource("CapsuleShape3D_cy57h")
 [node name="HitParticles" parent="Node/RainbowCrate28" instance=ExtResource("24_0e5y7")]
 
 [node name="Pico_D8Crate" parent="Node/RainbowCrate28" instance=ExtResource("25_k616u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.25185, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.3682, 1.25185, 0)
 
 [node name="RainbowCrate29" type="StaticBody3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6739, -0.400005, -35.8955)

@@ -777,9 +777,6 @@ shape = SubResource("CapsuleShape3D_s7fni")
 
 [node name="HitParticles" parent="Crates/RainbowCrate20" instance=ExtResource("26_14uoy")]
 
-[node name="Pico_D8Crate" parent="Crates/RainbowCrate20" instance=ExtResource("27_8v4dw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.952783, 0)
-
 [node name="RainbowCrate21" type="StaticBody3D" parent="Crates"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2841, 1.59966, 43.5728)
 collision_layer = 2048
@@ -800,9 +797,6 @@ _guaranteed_pickup_drops = Array[PackedScene]([])
 shape = SubResource("CapsuleShape3D_s7fni")
 
 [node name="HitParticles" parent="Crates/RainbowCrate21" instance=ExtResource("26_14uoy")]
-
-[node name="Pico_D8Crate" parent="Crates/RainbowCrate21" instance=ExtResource("27_8v4dw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.952783, 0)
 
 [node name="RainbowCrate22" type="StaticBody3D" parent="Crates"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.5749, 1.59965, 17.9794)
