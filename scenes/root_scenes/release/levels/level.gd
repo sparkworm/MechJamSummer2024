@@ -26,7 +26,7 @@ func _ready() -> void:
 	call_deferred("_deferred_ready")
 
 func _physics_process(delta):
-	if(level_objective_collected):
+	if(_level_objective_collected):
 		for node3D: CollisionObject3D in _level_exit_point.get_overlapping_bodies():
 			if (node3D is PlayerCharacter):
 				GameManager.change_to_next_level()

@@ -117,8 +117,3 @@ Dash={
 [navigation]
 
 3d/default_cell_height=0.01
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
