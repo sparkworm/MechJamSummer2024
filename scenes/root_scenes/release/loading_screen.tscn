@@ -8,6 +8,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 128.0
+offset_right = 1184.0
+offset_bottom = 628.0
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8

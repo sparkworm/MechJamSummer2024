@@ -45,7 +45,6 @@ material = SubResource("StandardMaterial3D_ybods")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxff8"]
 resource_name = "Space_base_mat"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.707107
 
