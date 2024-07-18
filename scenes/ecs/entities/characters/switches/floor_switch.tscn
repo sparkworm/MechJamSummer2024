@@ -116,5 +116,6 @@ collision_mask = 0
 shape = SubResource("SphereShape3D_sy1iw")
 
 [node name="DetectionVisual" type="MeshInstance3D" parent="DetectionArea"]
+visible = false
 mesh = SubResource("SphereMesh_35ky2")
 surface_material_override/0 = SubResource("StandardMaterial3D_v6fg3")

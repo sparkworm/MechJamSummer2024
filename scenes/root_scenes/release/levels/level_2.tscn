@@ -109,7 +109,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Door" parent="NavigationRegion3D" instance=ExtResource("5_pkway")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 2.11127, -0.250562, -3.63622)
-visible = false
 
 [node name="Door2" parent="NavigationRegion3D" instance=ExtResource("5_pkway")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 2.84773, -0.250562, -3.63622)
@@ -138,15 +137,19 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -35.5499, -8.06515, -13
 
 [node name="Spawner" parent="." instance=ExtResource("10_opjih")]
 transform = Transform3D(0.0163011, 0, 1.99993, 0, 2, 0, -1.99993, 0, 0.0163011, -49.1175, -0.400005, -8.71039)
-_spawn_cooldown = 30.0
+_spawn_cooldown = 15.0
 
 [node name="Spawner3" parent="." instance=ExtResource("10_opjih")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.356345, -0.400005, -8.96952)
-_spawn_cooldown = 30.0
+_spawn_cooldown = 15.0
 
 [node name="Spawner2" parent="." instance=ExtResource("10_opjih")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.15037, -0.400005, -34.4213)
-_spawn_cooldown = 30.0
+_spawn_cooldown = 15.0
+
+[node name="Spawner4" parent="." instance=ExtResource("10_opjih")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 38.8518, -0.400005, -62.8476)
+_spawn_cooldown = 15.0
 
 [node name="PatrolRoutes" type="Node" parent="."]
 
@@ -310,6 +313,7 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52856)
 shape = SubResource("BoxShape3D_23flc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ExitPoint"]

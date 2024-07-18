@@ -9,7 +9,7 @@ enum AlertStatus
 	Alerted
 }
 
-var _max_enemies = 20
+var _max_enemies = 40
 var _current_enemies: Array[EnemyCharacter]
 
 @export var _level_start_point: MeshInstance3D = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://daeejc7vnuo1q"]
+[gd_scene load_steps=41 format=3 uid="uid://daeejc7vnuo1q"]
 
 [ext_resource type="Script" path="res://scenes/root_scenes/release/levels/level.gd" id="1_88p0q"]
 [ext_resource type="Script" path="res://scripts/NavigationRegion.gd" id="2_3raj5"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://psredi24q2hu" path="res://scenes/ecs/entities/characters/pickups/energy_pickup.tscn" id="18_htkvc"]
 [ext_resource type="PackedScene" uid="uid://cbjhcky3kddcu" path="res://scenes/ecs/entities/doors/space_door.tscn" id="18_qanre"]
 [ext_resource type="Script" path="res://visuals/models/mechs/combat_mech/weapon_pickup.gd" id="19_j05cc"]
+[ext_resource type="PackedScene" uid="uid://2f4vjm2c6o2w" path="res://scenes/ecs/entities/characters/pickups/artifact_pickup.tscn" id="19_jsya7"]
 [ext_resource type="Texture2D" uid="uid://p03yqpstliyf" path="res://visuals/models/mechs/combat_mech/combatmech_texture.png" id="20_ctdvl"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jt427"]
@@ -143,11 +144,81 @@ shadow_mesh = SubResource("ArrayMesh_4hufn")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_13ubf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ynlf"]
+size = Vector3(34.6664, 12.3984, 1.7641)
+
 [node name="Level3" type="Node3D" node_paths=PackedStringArray("_level_start_point", "_level_exit_point", "_level_patrol_routes")]
 script = ExtResource("1_88p0q")
 _level_start_point = NodePath("StartPoint")
 _level_exit_point = NodePath("ExitPoint")
 _level_patrol_routes = [NodePath("PatrolRoutes/PatrolRoute1"), NodePath("PatrolRoutes/PatrolRoute2"), NodePath("PatrolRoutes/PatrolRoute3"), NodePath("PatrolRoutes/PatrolRoute4"), NodePath("PatrolRoutes/PatrolRoute5"), NodePath("PatrolRoutes/PatrolRoute6")]
+
+[node name="ArenaBasicRangeBotEnemy6" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 4.55191e-15, -2.66454e-13, 7.63582e-16, 0.999391, -0.0348995, 1.88294e-13, 0.0348995, 0.999391, -52.563, 1.1499, 100.027)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+_chase_duration = null
+
+[node name="ArenaBasicRangeBotEnemy7" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 4.55191e-15, -2.66454e-13, 7.63582e-16, 0.999391, -0.0348995, 1.88294e-13, 0.0348995, 0.999391, -26.863, 1.1499, 100.027)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+_chase_duration = null
+
+[node name="BasicMeleeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -182.714, 1, 24.895)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
+
+[node name="BasicMeleeBotEnemy2" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -183.851, 1, 12.1348)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
+
+[node name="BasicMeleeBotEnemy3" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 25.8391)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
+
+[node name="BasicMeleeBotEnemy4" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 12.5151)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute1")
+
+[node name="ArenaBasicMeleeBotEnemy5" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2109, 1.1, 88.333)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+
+[node name="ArenaBasicMeleeBotEnemy6" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -57.0837, 1.1, 126.241)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+
+[node name="ArenaBasicMeleeBotEnemy7" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.7686, 1.1, 31.2697)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+
+[node name="ArenaBasicMeleeBotEnemy8" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.985, 1.1, 108.687)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+
+[node name="ArenaBasicMeleeBotEnemy9" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.5183, 1.1, 106.328)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute3")
+
+[node name="BasicRangeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.162, 1.1, 44.1287)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
+
+[node name="BasicRangeBotEnemy2" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.015, 1.1, 7.36487)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
+
+[node name="BasicRangeBotEnemy3" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.215, 1.10001, 45.5393)
+_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
+
+[node name="BasicRangeBotEnemy4" parent="." instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.26, 1.09999, 54.8696)
+
+[node name="BasicRangeBotEnemy5" parent="." instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.8958, 1.09999, 23.7166)
+
+[node name="BasicRangeBotEnemy6" parent="." instance=ExtResource("6_u6iw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.017, 1.09999, 73.3569)
 
 [node name="StartPoint" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -184.476, 1.1342, 68.1877)
@@ -183,52 +254,6 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="ArenaBasicRangeBotEnemy6" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 4.55191e-15, -2.66454e-13, 7.63582e-16, 0.999391, -0.0348995, 1.88294e-13, 0.0348995, 0.999391, -52.563, 1.1499, 100.027)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-_chase_duration = null
-
-[node name="ArenaBasicRangeBotEnemy7" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 4.55191e-15, -2.66454e-13, 7.63582e-16, 0.999391, -0.0348995, 1.88294e-13, 0.0348995, 0.999391, -26.863, 1.1499, 100.027)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-_chase_duration = null
-
-[node name="BasicMeleeBotEnemy" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -182.714, 1, 24.895)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute1")
-
-[node name="BasicMeleeBotEnemy2" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -183.851, 1, 12.1348)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute1")
-
-[node name="BasicMeleeBotEnemy3" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 25.8391)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute1")
-
-[node name="BasicMeleeBotEnemy4" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -164.974, 1, 12.5151)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute1")
-
-[node name="ArenaBasicMeleeBotEnemy5" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2109, 1.1, 88.333)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-
-[node name="ArenaBasicMeleeBotEnemy6" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -57.0837, 1.1, 126.241)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-
-[node name="ArenaBasicMeleeBotEnemy7" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.7686, 1.1, 31.2697)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-
-[node name="ArenaBasicMeleeBotEnemy8" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.985, 1.1, 108.687)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
-
-[node name="ArenaBasicMeleeBotEnemy9" parent="Enemies" node_paths=PackedStringArray("_patrol_route") instance=ExtResource("9_hrry7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.5183, 1.1, 106.328)
-_patrol_route = NodePath("../../PatrolRoutes/PatrolRoute3")
 
 [node name="InvisibleWalls" type="Node" parent="."]
 
@@ -351,62 +376,77 @@ _patrol_points = [NodePath("../../PatrolPoints/PatrolPoint10"), NodePath("../../
 
 [node name="PatrolPoint1" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.498, 2.24058, 12.8849)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint2" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.498, 2.24058, 28.5482)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint3" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.568, 2.24058, 28.5482)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint4" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.568, 2.24058, 13.6305)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint5" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.083, 2.24058, 13.6305)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint6" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.083, 2.24058, 29.4098)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint7" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.545, 2.24058, 29.4098)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint8" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.545, 2.24058, 15.8953)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint9" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.4578, 2.24058, 35.153)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint10" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1938, 2.24058, 79.9944)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint11" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5259, 2.24058, 114.938)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint12" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4447, 2.24058, 115.113)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint13" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4447, 2.24058, 115.113)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint14" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.4199, 2.24058, 79.8553)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint15" parent="PatrolPoints" instance=ExtResource("15_ryey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1807, 2.24057, 33.4901)
+visible = false
 skeleton = NodePath("")
 
 [node name="desert" parent="." instance=ExtResource("16_hcuf8")]
@@ -418,6 +458,7 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExitPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.503345)
 shape = SubResource("BoxShape3D_r7114")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ExitPoint"]
@@ -452,27 +493,6 @@ directional_shadow_split_3 = 0.469
 directional_shadow_fade_start = 0.965
 directional_shadow_max_distance = 129.5
 directional_shadow_pancake_size = 22.0
-
-[node name="BasicRangeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.162, 1.1, 44.1287)
-_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
-
-[node name="BasicRangeBotEnemy2" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.015, 1.1, 7.36487)
-_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
-
-[node name="BasicRangeBotEnemy3" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.215, 1.10001, 45.5393)
-_patrol_route = NodePath("../PatrolRoutes/PatrolRoute2")
-
-[node name="BasicRangeBotEnemy4" parent="." instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.26, 1.09999, 54.8696)
-
-[node name="BasicRangeBotEnemy5" parent="." instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.8958, 1.09999, 23.7166)
-
-[node name="BasicRangeBotEnemy6" parent="." instance=ExtResource("6_u6iw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.017, 1.09999, 73.3569)
 
 [node name="FloorSwitch" parent="." node_paths=PackedStringArray("_trigger_target") instance=ExtResource("15_cs4bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8667, 1.10001, 117.132)
@@ -511,6 +531,9 @@ transform = Transform3D(0.0114143, 0, 1.99997, 0, 2, 0, -1.99997, 0, 0.0114143, 
 [node name="Spawner6" parent="." instance=ExtResource("8_h3hwc")]
 transform = Transform3D(0.0114143, 0, 1.99997, 0, 2, 0, -1.99997, 0, 0.0114143, -68.4754, 1.10001, 47.7799)
 
+[node name="ArtifactPickup" parent="." instance=ExtResource("19_jsya7")]
+transform = Transform3D(0.997163, -0.0752745, -1.21022e-11, 0.0750134, 0.993703, -0.0832256, 0.00626477, 0.0829895, 0.996531, -39.7663, 2.15564, 117.065)
+
 [node name="CombatMech" type="Area3D" parent="."]
 transform = Transform3D(0.0335621, -2.99981, 0, 2.99981, 0.0335621, 0, 0, 0, 3, -38.5576, 3.59912, 88.3491)
 collision_layer = 0
@@ -525,6 +548,42 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CombatMech"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_13ubf")
+
+[node name="InvisibleWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.403, 0, 63.0289)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6618, 0, 12.2059)
+shape = SubResource("BoxShape3D_3ynlf")
+
+[node name="InvisibleWall2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.00940723, 0, -0.999956, 0, 1, 0, 0.999956, 0, 0.00940723, -47.1749, 7.62939e-06, 202.706)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0146, 0, 0)
+shape = SubResource("BoxShape3D_3ynlf")
+
+[node name="InvisibleWall3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.00940723, 0, -0.999956, 0, 1, 0, 0.999956, 0, 0.00940723, -34.7813, 7.62939e-06, 202.706)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0146, 0, 0)
+shape = SubResource("BoxShape3D_3ynlf")
+
+[node name="InvisibleWall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7261, 7.62939e-06, 219.112)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0146, 0, 0)
+shape = SubResource("BoxShape3D_3ynlf")
 
 [editable path="Interactive/EnergyCrate"]
 [editable path="Interactive/EnergyCrate5"]
