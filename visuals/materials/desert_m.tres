@@ -4,12 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dkvadelor4o1r" path="res://visuals/as_normal.png" id="2_6keuc"]
 
 [resource]
-albedo_color = Color(0.70085, 0.252845, 0.221523, 1)
-albedo_texture_force_srgb = true
-albedo_texture_msdf = true
-metallic = 0.26
-metallic_specular = 0.54
-roughness = 0.61
+albedo_color = Color(0.491663, 0.160871, 0.138967, 1)
+metallic = 0.61
+metallic_specular = 0.51
+roughness = 0.62
 normal_enabled = true
 normal_texture = ExtResource("2_6keuc")
 rim_enabled = true
