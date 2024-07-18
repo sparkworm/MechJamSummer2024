@@ -1,0 +1,14 @@
+extends Node
+
+enum AudioClips {
+	NONE,
+	DASH,
+	ENEMY_HIT,
+	LAZER_1,
+	LAZER_2,
+	MINIGUN,
+	PICKUP,
+	PLAYER_HIT,
+	WEAPON_OBTAINED,
+	AXE,
+}

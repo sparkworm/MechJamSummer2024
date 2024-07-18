@@ -1,15 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://i6t78coplqwm"]
+[gd_scene load_steps=12 format=3 uid="uid://i6t78coplqwm"]
 
 [ext_resource type="Script" path="res://scripts/autoload/AudioManager.gd" id="1_lw1mu"]
+[ext_resource type="AudioStream" uid="uid://eoluu2msjdrv" path="res://sound/music/4. Jupiter.ogg" id="2_lrapt"]
+[ext_resource type="AudioStream" uid="uid://clgk4sxlxgws6" path="res://sound/bit_sfx/dash.ogg" id="3_4tkgy"]
+[ext_resource type="AudioStream" uid="uid://ba0cgxcqqpcud" path="res://sound/bit_sfx/enemy_hit.ogg" id="4_337lg"]
+[ext_resource type="AudioStream" uid="uid://ci35il2ntvl2" path="res://sound/bit_sfx/lazer_1.ogg" id="5_obje5"]
+[ext_resource type="AudioStream" uid="uid://ber8xo6dml1nj" path="res://sound/bit_sfx/lazer_2.ogg" id="6_dggi6"]
+[ext_resource type="AudioStream" uid="uid://csvn2c1qfrdn" path="res://sound/bit_sfx/minigun.ogg" id="7_2uqbp"]
+[ext_resource type="AudioStream" uid="uid://s37rto7x6ddj" path="res://sound/bit_sfx/pickup.ogg" id="8_odnkf"]
+[ext_resource type="AudioStream" uid="uid://dxgisiwrjgke5" path="res://sound/bit_sfx/player_hit.ogg" id="9_hb0ri"]
+[ext_resource type="AudioStream" uid="uid://b2xg0g6550tbv" path="res://sound/bit_sfx/weapon_obtained.ogg" id="10_tkyjl"]
+[ext_resource type="AudioStream" uid="uid://17u4f0vol3f7" path="res://sound/bit_sfx/axe.ogg" id="11_x5oho"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("_music_1", "_hit1", "_hit2")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("_music_1", "_dash", "_enemy_hit", "_lazer_1", "_lazer_2", "_minigun", "_pickup", "_player_hit", "_weapon_obtained", "_axe")]
 script = ExtResource("1_lw1mu")
 _music_1 = NodePath("music_1")
-_hit1 = NodePath("hit_1")
-_hit2 = NodePath("hit_2")
+_dash = NodePath("dash")
+_enemy_hit = NodePath("enemy_hit")
+_lazer_1 = NodePath("lazer_1")
+_lazer_2 = NodePath("lazer_2")
+_minigun = NodePath("minigun")
+_pickup = NodePath("pickup")
+_player_hit = NodePath("player_hit")
+_weapon_obtained = NodePath("weapon_obtained")
+_axe = NodePath("axe")
 
 [node name="music_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lrapt")
+volume_db = -3.292
+autoplay = true
 
-[node name="hit_1" type="AudioStreamPlayer" parent="."]
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4tkgy")
+volume_db = -6.582
+pitch_scale = 0.45
 
-[node name="hit_2" type="AudioStreamPlayer" parent="."]
+[node name="enemy_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_337lg")
+volume_db = -15.139
+
+[node name="lazer_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_obje5")
+volume_db = -19.747
+
+[node name="lazer_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dggi6")
+volume_db = -19.747
+
+[node name="minigun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2uqbp")
+volume_db = -19.747
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_odnkf")
+volume_db = -15.139
+
+[node name="player_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hb0ri")
+volume_db = -18.43
+
+[node name="weapon_obtained" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tkyjl")
+volume_db = -16.455
+
+[node name="axe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_x5oho")
+volume_db = -15.139

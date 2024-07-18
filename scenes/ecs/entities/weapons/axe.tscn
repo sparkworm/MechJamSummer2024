@@ -61,6 +61,7 @@ _weapon_ability = ExtResource("2_lfi1i")
 _ammo_requirement = 20.0
 _cooldown_time = 1.0
 _ability_fire_vfx = NodePath("axe_sparks")
+_fire_sfx = 9
 _animation_root_node = ExtResource("3_idj8j")
 _attack_animation = "2H_Melee_Chop"
 _idle_animation = "2H_Melee_Idle"

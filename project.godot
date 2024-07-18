@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Mech Jam Summer 2024"
-run/main_scene="res://scenes/root_scenes/release/levels/level_1.tscn"
+run/main_scene="res://scenes/root_scenes/release/loading_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameUtility="*res://scripts/autoload/GameUtility.gd"
+EnumUtility="*res://scripts/autoload/EnumUtility.gd"
 LayerUtility="*res://scripts/autoload/LayerUtility.gd"
 MouseUtility="*res://scripts/autoload/MouseUtility.gd"
 TransformUtility="*res://scripts/autoload/TransformUtility.gd"

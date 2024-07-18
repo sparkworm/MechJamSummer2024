@@ -27,6 +27,10 @@ enum NavState
 @export var _animation_player: AnimationPlayer = null
 @export var _particles_when_hit: GPUParticles3D = null
 
+@export_subgroup("Enemy SFX")
+@export var _enemy_attack: EnumUtility.AudioClips = EnumUtility.AudioClips.LAZER_2
+@export var _enemy_hit: EnumUtility.AudioClips = EnumUtility.AudioClips.ENEMY_HIT
+
 @export_subgroup("Enemy Weapons") #This should be replaced by Weapon class scripts later
 @onready var _attack_component: AttackComponent = $Components/AttackComponent
 @export var _weapon_fire_point: Marker3D = null
@@ -122,6 +126,8 @@ func _ready() -> void:
 
 func _deffered_ready():
 	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	set_physics_process(true)
 	_movements_FSM = _animation_tree.get("parameters/Movements_FSM/playback")
 	_disables_FSM = _animation_tree.get("parameters/Disables_FSM/playback")
@@ -159,6 +165,7 @@ func _init_patrol_route() -> void:
 func _is_hit(source: Node3D, current_health: int):
 	_particles_when_hit.restart()
 	_particles_when_hit.emitting = true
+	AudioManager.play_audio(_enemy_hit)
 	if _agent_nav_state == NavState.Disabled:
 		return
 	if(_agent_nav_state != NavState.Attacking && source is Body):
@@ -421,6 +428,7 @@ func use_primary_attack() -> void:
 	var dir: Vector3 = (_last_target_location- fire_point_pos).normalized()
 	dir.y = 0
 	ability.init_with_world_direction(self, fire_point_pos, dir)
+	AudioManager.play_audio(_enemy_attack)
 
 func alert_enemy_to_player() -> void:
 	_is_alerted = true

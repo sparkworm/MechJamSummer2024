@@ -90,6 +90,7 @@ _cooldown_time = 0.1
 _num_abilities = 3
 _ability_fire_vfx = NodePath("bullet_flash")
 _ability_casings_vfx = NodePath("bullet_casings")
+_fire_sfx = 5
 _animation_root_node = ExtResource("3_8t4p1")
 
 [node name="bullet_casings" parent="." instance=ExtResource("4_cab0s")]

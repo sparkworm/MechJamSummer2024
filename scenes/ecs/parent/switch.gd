@@ -20,6 +20,7 @@ var trigger_target: TriggerComponent:
 @export var _is_active: bool = false
 @export var _switch_mode_type: SwitchModeType = SwitchModeType.OneShot
 @export var _switch_cooldown: float = 5
+@export var _switch_sfx: EnumUtility.AudioClips = EnumUtility.AudioClips.ENEMY_HIT
 var _current_cooldown: float = 0
 
 func _ready():
