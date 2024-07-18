@@ -7,6 +7,7 @@ extends Unit
 @export var _attract_speed: float = 8
 #Do we want a duration?
 @export var _attract_duration: float = 2
+@export var _pickup_sfx: EnumUtility.AudioClips = EnumUtility.AudioClips.PICKUP
 
 var _current_attract_target: Node3D = null
 var _current_attract_duration: float = 0
@@ -22,6 +23,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	rotate_y(2 * delta)
 	_current_attract_duration -= delta
 	if(_current_attract_duration > 0 && _current_attract_target != null):
 		_attract_towards_target(_current_attract_target)
@@ -35,6 +37,7 @@ func assign_attract_target(node: Node3D) -> void:
 		_current_attract_duration = _attract_duration
 
 func obtain_pickup_data_and_expire() -> PickupData:
+	AudioManager.play_audio(_pickup_sfx)
 	_expire_pickup()
 	return pickup_data
 

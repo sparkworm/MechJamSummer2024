@@ -62,6 +62,7 @@ _ammo_requirement = 2.0
 _cooldown_time = 0.4
 _spread_angle = 0.0
 _ability_fire_vfx = NodePath("bullet_flash")
+_fire_sfx = 3
 _animation_root_node = ExtResource("3_ndusd")
 
 [node name="Gun" type="MeshInstance3D" parent="."]

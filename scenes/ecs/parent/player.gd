@@ -26,6 +26,7 @@ enum PlayerState
 @export var _obtain_radius: float = 1
 @export var _energy_per_second: float = 4
 @export var _energy_pause_time: float = 2
+@export var _player_hit_sfx: EnumUtility.AudioClips = EnumUtility.AudioClips.PLAYER_HIT
 
 @export_group("Dash")
 @export var _dash_speed: float = 5
@@ -34,6 +35,7 @@ enum PlayerState
 @export var _dash_deadzone: float = 2
 @export var _dash_energy_minimum: float = 5
 @export var _dash_energy_drain: float = 4
+@export var _dash_sfx: EnumUtility.AudioClips = EnumUtility.AudioClips.DASH
 
 @export_group("Weapons")
 @export var _rifle: Weapon = null
@@ -107,6 +109,7 @@ func refresh_player():
 
 func _is_hit(source: Node3D, current_health: int):
 	_player_health_UI.change_health(current_health)
+	AudioManager.play_audio(_player_hit_sfx)
 	#add flash/update UI
 	pass
 
@@ -261,6 +264,7 @@ func _prepare_dash(direction: Vector3):
 	_player_state = PlayerState.Dashing
 	_current_dash_time = _dash_duration
 	velocity = direction * _dash_speed
+	AudioManager.play_audio(_dash_sfx)
 
 func _handle_dashing() -> bool:
 	_current_dash_time -= GameUtility.get_current_delta_time()

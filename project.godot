@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameUtility="*res://scripts/autoload/GameUtility.gd"
+EnumUtility="*res://scripts/autoload/EnumUtility.gd"
 LayerUtility="*res://scripts/autoload/LayerUtility.gd"
 MouseUtility="*res://scripts/autoload/MouseUtility.gd"
 TransformUtility="*res://scripts/autoload/TransformUtility.gd"
