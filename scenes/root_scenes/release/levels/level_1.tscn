@@ -30,16 +30,19 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_guaav"]
+[sub_resource type="Sky" id="Sky_p56o4"]
 sky_material = SubResource("ProceduralSkyMaterial_poyci")
 
 [sub_resource type="Environment" id="Environment_jl4jj"]
-background_color = Color(0.191371, 0.125696, 0.110754, 1)
-sky = SubResource("Sky_guaav")
+background_mode = 1
+background_color = Color(0.132285, 0.0821832, 0.0707872, 1)
+background_energy_multiplier = 1.11
+sky = SubResource("Sky_p56o4")
 sky_custom_fov = 0.1
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.27
-ambient_light_energy = 1.41
+ambient_light_source = 2
+ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 1.18
 tonemap_mode = 1
 tonemap_exposure = 2.24
 tonemap_white = 1.82
@@ -231,16 +234,23 @@ transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, -18.5051, -0.0499
 environment = SubResource("Environment_jl4jj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.510698, 0.148457, 0.846846, 0.699417, 0.644564, 0.308794, -0.500004, 0.749999, -0.433011, 0, 0, 0)
-light_energy = 0.053
+transform = Transform3D(-0.743714, -0.18663, 0.641918, 0.307911, 0.756681, 0.576736, -0.593363, 0.62658, -0.505289, 0, 0, 0)
+light_color = Color(0.923351, 0.512542, 0.527638, 1)
+light_energy = 0.695
+light_indirect_energy = 2.096
+light_volumetric_fog_energy = 2.425
 shadow_enabled = true
-directional_shadow_split_1 = 0.059
-directional_shadow_split_2 = 0.119
-directional_shadow_split_3 = 0.198
-directional_shadow_blend_splits = true
-directional_shadow_fade_start = 0.566
-directional_shadow_max_distance = 433.9
+shadow_bias = 0.237
+shadow_normal_bias = 1.918
+shadow_transmittance_bias = -9.594
+shadow_opacity = 0.95
+shadow_blur = 0.726
+directional_shadow_split_1 = 0.388
+directional_shadow_split_2 = 0.482
+directional_shadow_split_3 = 0.801
+directional_shadow_fade_start = 0.393
 directional_shadow_pancake_size = 1.0
+sky_mode = 1
 
 [node name="Enemies" type="Node" parent="."]
 
