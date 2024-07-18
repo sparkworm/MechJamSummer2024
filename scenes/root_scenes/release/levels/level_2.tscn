@@ -31,18 +31,18 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ebf4"]
 size = Vector3(14.6373, 12.3984, 1.7641)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gecpy"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ceus4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_wpixl"]
-sky_material = SubResource("ProceduralSkyMaterial_gecpy")
+[sub_resource type="Sky" id="Sky_coidm"]
+sky_material = SubResource("ProceduralSkyMaterial_ceus4")
 
-[sub_resource type="Environment" id="Environment_3ndkd"]
+[sub_resource type="Environment" id="Environment_11clt"]
 background_mode = 1
 background_color = Color(0.132285, 0.0821832, 0.0707872, 1)
 background_energy_multiplier = 0.88
-sky = SubResource("Sky_wpixl")
+sky = SubResource("Sky_coidm")
 sky_custom_fov = 0.1
 ambient_light_source = 2
 ambient_light_color = Color(0.317021, 0.0783182, 0.116624, 1)
@@ -521,10 +521,10 @@ shape = SubResource("BoxShape3D_8ebf4")
 [node name="Node" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.198331, -0.585876, -0.785757, -0.843007, -0.307002, 0.441688, -0.500003, 0.749999, -0.43301, 0, 1.07191, 0)
+transform = Transform3D(0.0525321, 0.919734, -0.389011, -0.971726, 0.136875, 0.192391, 0.230195, 0.367905, 0.90092, 0, 1.07191, 0)
 light_color = Color(0.937701, 0.456991, 0.393794, 1)
-light_energy = 0.158
-light_indirect_energy = 0.895
+light_energy = 0.377
+light_indirect_energy = 1.553
 light_volumetric_fog_energy = 1.526
 shadow_enabled = true
 shadow_bias = 0.237
@@ -535,7 +535,7 @@ directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 8192.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3ndkd")
+environment = SubResource("Environment_11clt")
 
 [editable path="NavigationRegion3D/UniqueDecorate/Crate25"]
 [editable path="NavigationRegion3D/UniqueDecorate/Crate26"]

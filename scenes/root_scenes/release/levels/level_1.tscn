@@ -30,14 +30,14 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_coidm"]
+[sub_resource type="Sky" id="Sky_robda"]
 sky_material = SubResource("ProceduralSkyMaterial_poyci")
 
 [sub_resource type="Environment" id="Environment_jl4jj"]
 background_mode = 1
 background_color = Color(0.132285, 0.0821832, 0.0707872, 1)
 background_energy_multiplier = 0.88
-sky = SubResource("Sky_coidm")
+sky = SubResource("Sky_robda")
 sky_custom_fov = 0.1
 ambient_light_source = 2
 ambient_light_color = Color(0.317021, 0.0783182, 0.116624, 1)
@@ -231,10 +231,10 @@ _spawn_cooldown = 15.0
 transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, -18.5051, -0.0499998, 0.0122225)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.198331, -0.585876, -0.785757, -0.843007, -0.307002, 0.441688, -0.500003, 0.749999, -0.43301, 0, 1.07191, 0)
+transform = Transform3D(0.0525321, 0.919734, -0.389011, -0.971726, 0.136875, 0.192391, 0.230195, 0.367905, 0.90092, 0, 1.07191, 0)
 light_color = Color(0.937701, 0.456991, 0.393794, 1)
-light_energy = 0.158
-light_indirect_energy = 0.895
+light_energy = 0.377
+light_indirect_energy = 1.553
 light_volumetric_fog_energy = 1.526
 shadow_enabled = true
 shadow_bias = 0.237

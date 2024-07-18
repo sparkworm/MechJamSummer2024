@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://dkvadelor4o1r" path="res://visuals/as_normal.png" id="2_6keuc"]
 
 [resource]
-albedo_color = Color(0.773784, 0.292748, 0.257405, 1)
-metallic = 0.68
-metallic_specular = 0.51
+albedo_color = Color(0.882802, 0.395916, 0.352332, 1)
+metallic = 0.69
+metallic_specular = 0.33
 roughness = 0.6
 normal_enabled = true
+normal_scale = 0.34
 normal_texture = ExtResource("2_6keuc")
 rim_enabled = true
 rim = 0.54
 rim_tint = 0.61
-anisotropy_enabled = true
 anisotropy = 0.22
 ao_enabled = true
-ao_light_affect = 1.0
+ao_light_affect = 0.55
 ao_texture = ExtResource("1_wu0jm")
+uv1_scale = Vector3(3.93, 3.93, 3.93)
