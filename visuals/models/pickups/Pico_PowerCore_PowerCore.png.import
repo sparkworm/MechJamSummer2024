@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtbnm44leebqs"
-path.s3tc="res://.godot/imported/Pico_PowerCore_PowerCore.png-63f5dfb9264809a50ee78020f1f6429b.s3tc.ctex"
+path="res://.godot/imported/Pico_PowerCore_PowerCore.png-63f5dfb9264809a50ee78020f1f6429b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "0749ea519639b456cf3f2a21f78f0c80"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/pickups/Pico_PowerCore_PowerCore.png"
-dest_files=["res://.godot/imported/Pico_PowerCore_PowerCore.png-63f5dfb9264809a50ee78020f1f6429b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_PowerCore_PowerCore.png-63f5dfb9264809a50ee78020f1f6429b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

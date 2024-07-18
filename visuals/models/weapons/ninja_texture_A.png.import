@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch3fnldsov5xt"
 path.s3tc="res://.godot/imported/ninja_texture_A.png-434a7f653060f730b5ee1166f29c6877.s3tc.ctex"
+path.etc2="res://.godot/imported/ninja_texture_A.png-434a7f653060f730b5ee1166f29c6877.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/weapons/ninja_texture_A.png"
-dest_files=["res://.godot/imported/ninja_texture_A.png-434a7f653060f730b5ee1166f29c6877.s3tc.ctex"]
+dest_files=["res://.godot/imported/ninja_texture_A.png-434a7f653060f730b5ee1166f29c6877.s3tc.ctex", "res://.godot/imported/ninja_texture_A.png-434a7f653060f730b5ee1166f29c6877.etc2.ctex"]
 
 [params]
 

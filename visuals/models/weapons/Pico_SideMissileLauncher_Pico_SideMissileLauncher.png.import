@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cshacctpteay1"
-path.s3tc="res://.godot/imported/Pico_SideMissileLauncher_Pico_SideMissileLauncher.png-a40a6abf5e7ee7da354ebf25877782ef.s3tc.ctex"
+path="res://.godot/imported/Pico_SideMissileLauncher_Pico_SideMissileLauncher.png-a40a6abf5e7ee7da354ebf25877782ef.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f9bf36217885b79437eb6d77aaf3b5c1"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/weapons/Pico_SideMissileLauncher_Pico_SideMissileLauncher.png"
-dest_files=["res://.godot/imported/Pico_SideMissileLauncher_Pico_SideMissileLauncher.png-a40a6abf5e7ee7da354ebf25877782ef.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_SideMissileLauncher_Pico_SideMissileLauncher.png-a40a6abf5e7ee7da354ebf25877782ef.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

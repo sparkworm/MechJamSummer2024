@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djk4h74jvaqhv"
 path.s3tc="res://.godot/imported/werewolf_A.png-578215e5e38c951298e4d0a3db0af797.s3tc.ctex"
+path.etc2="res://.godot/imported/werewolf_A.png-578215e5e38c951298e4d0a3db0af797.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/weapons/werewolf_A.png"
-dest_files=["res://.godot/imported/werewolf_A.png-578215e5e38c951298e4d0a3db0af797.s3tc.ctex"]
+dest_files=["res://.godot/imported/werewolf_A.png-578215e5e38c951298e4d0a3db0af797.s3tc.ctex", "res://.godot/imported/werewolf_A.png-578215e5e38c951298e4d0a3db0af797.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctu1ac8hjcix3"
 path.s3tc="res://.godot/imported/robot_texture.png-653c98473f17d1060b96e2f453bb87aa.s3tc.ctex"
+path.etc2="res://.godot/imported/robot_texture.png-653c98473f17d1060b96e2f453bb87aa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/characters/robots_S4/robot_texture.png"
-dest_files=["res://.godot/imported/robot_texture.png-653c98473f17d1060b96e2f453bb87aa.s3tc.ctex"]
+dest_files=["res://.godot/imported/robot_texture.png-653c98473f17d1060b96e2f453bb87aa.s3tc.ctex", "res://.godot/imported/robot_texture.png-653c98473f17d1060b96e2f453bb87aa.etc2.ctex"]
 
 [params]
 

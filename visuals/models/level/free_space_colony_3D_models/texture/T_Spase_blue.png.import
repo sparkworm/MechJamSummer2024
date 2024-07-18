@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://8h6rmeew8osr"
 path.s3tc="res://.godot/imported/T_Spase_blue.png-014b4d093b73a1daae99418d1f78cd46.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Spase_blue.png-014b4d093b73a1daae99418d1f78cd46.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/level/free_space_colony_3D_models/texture/T_Spase_blue.png"
-dest_files=["res://.godot/imported/T_Spase_blue.png-014b4d093b73a1daae99418d1f78cd46.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Spase_blue.png-014b4d093b73a1daae99418d1f78cd46.s3tc.ctex", "res://.godot/imported/T_Spase_blue.png-014b4d093b73a1daae99418d1f78cd46.etc2.ctex"]
 
 [params]
 

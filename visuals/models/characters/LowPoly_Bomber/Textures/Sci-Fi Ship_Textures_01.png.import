@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wp0yfhue13jh"
 path.s3tc="res://.godot/imported/Sci-Fi Ship_Textures_01.png-6afc238d4d68da44fdd2e5c754c39cc7.s3tc.ctex"
+path.etc2="res://.godot/imported/Sci-Fi Ship_Textures_01.png-6afc238d4d68da44fdd2e5c754c39cc7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/characters/LowPoly_Bomber/Textures/Sci-Fi Ship_Textures_01.png"
-dest_files=["res://.godot/imported/Sci-Fi Ship_Textures_01.png-6afc238d4d68da44fdd2e5c754c39cc7.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sci-Fi Ship_Textures_01.png-6afc238d4d68da44fdd2e5c754c39cc7.s3tc.ctex", "res://.godot/imported/Sci-Fi Ship_Textures_01.png-6afc238d4d68da44fdd2e5c754c39cc7.etc2.ctex"]
 
 [params]
 

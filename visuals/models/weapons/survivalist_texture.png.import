@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd1ji7dw4ya3r"
 path.s3tc="res://.godot/imported/survivalist_texture.png-01f4a3eeb5ed9e3c2331c595d9779b30.s3tc.ctex"
+path.etc2="res://.godot/imported/survivalist_texture.png-01f4a3eeb5ed9e3c2331c595d9779b30.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/weapons/survivalist_texture.png"
-dest_files=["res://.godot/imported/survivalist_texture.png-01f4a3eeb5ed9e3c2331c595d9779b30.s3tc.ctex"]
+dest_files=["res://.godot/imported/survivalist_texture.png-01f4a3eeb5ed9e3c2331c595d9779b30.s3tc.ctex", "res://.godot/imported/survivalist_texture.png-01f4a3eeb5ed9e3c2331c595d9779b30.etc2.ctex"]
 
 [params]
 

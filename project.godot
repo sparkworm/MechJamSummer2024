@@ -116,3 +116,7 @@ Dash={
 [navigation]
 
 3d/default_cell_height=0.01
+
+[rendering]
+
+textures/lossless_compression/force_png=true

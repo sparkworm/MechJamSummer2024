@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://r1cmxbtru185"
-path.s3tc="res://.godot/imported/Pico_D8Crate_D8Crate.png-96a8807e778550fa07c999f0aeb795a4.s3tc.ctex"
+path="res://.godot/imported/Pico_D8Crate_D8Crate.png-96a8807e778550fa07c999f0aeb795a4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "0749ea519639b456cf3f2a21f78f0c80"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/pickups/Pico_D8Crate_D8Crate.png"
-dest_files=["res://.godot/imported/Pico_D8Crate_D8Crate.png-96a8807e778550fa07c999f0aeb795a4.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_D8Crate_D8Crate.png-96a8807e778550fa07c999f0aeb795a4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

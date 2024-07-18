@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch81wpt7eqgrp"
-path.s3tc="res://.godot/imported/Pico_SingleMissile_Pico_SingleMissile.png-aad207cb79bdf7681ced1b0217312d43.s3tc.ctex"
+path="res://.godot/imported/Pico_SingleMissile_Pico_SingleMissile.png-aad207cb79bdf7681ced1b0217312d43.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f9bf36217885b79437eb6d77aaf3b5c1"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/weapons/Pico_SingleMissile_Pico_SingleMissile.png"
-dest_files=["res://.godot/imported/Pico_SingleMissile_Pico_SingleMissile.png-aad207cb79bdf7681ced1b0217312d43.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_SingleMissile_Pico_SingleMissile.png-aad207cb79bdf7681ced1b0217312d43.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

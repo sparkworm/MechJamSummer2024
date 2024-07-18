@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0ifbji75j3g0"
 path.s3tc="res://.godot/imported/Robot_One_robot_texture.png-9e17e14ece51a1466da12e3586611c3f.s3tc.ctex"
+path.etc2="res://.godot/imported/Robot_One_robot_texture.png-9e17e14ece51a1466da12e3586611c3f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/characters/robots_S4/Robot_One_robot_texture.png"
-dest_files=["res://.godot/imported/Robot_One_robot_texture.png-9e17e14ece51a1466da12e3586611c3f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Robot_One_robot_texture.png-9e17e14ece51a1466da12e3586611c3f.s3tc.ctex", "res://.godot/imported/Robot_One_robot_texture.png-9e17e14ece51a1466da12e3586611c3f.etc2.ctex"]
 
 [params]
 

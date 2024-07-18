@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctxgmostji3cv"
 path.s3tc="res://.godot/imported/Monster_monstercostume_texture_A.png-f7dfb87eeebafc7946bbf3dd32ada483.s3tc.ctex"
+path.etc2="res://.godot/imported/Monster_monstercostume_texture_A.png-f7dfb87eeebafc7946bbf3dd32ada483.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/characters/monster/Monster_monstercostume_texture_A.png"
-dest_files=["res://.godot/imported/Monster_monstercostume_texture_A.png-f7dfb87eeebafc7946bbf3dd32ada483.s3tc.ctex"]
+dest_files=["res://.godot/imported/Monster_monstercostume_texture_A.png-f7dfb87eeebafc7946bbf3dd32ada483.s3tc.ctex", "res://.godot/imported/Monster_monstercostume_texture_A.png-f7dfb87eeebafc7946bbf3dd32ada483.etc2.ctex"]
 
 [params]
 

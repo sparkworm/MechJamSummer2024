@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba3nyc26ti31k"
-path.s3tc="res://.godot/imported/Pico_PowerBattery_Battery.png-5d0d780cd2e6b660a9ef4ecf99f62c90.s3tc.ctex"
+path="res://.godot/imported/Pico_PowerBattery_Battery.png-5d0d780cd2e6b660a9ef4ecf99f62c90.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "0749ea519639b456cf3f2a21f78f0c80"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/pickups/Pico_PowerBattery_Battery.png"
-dest_files=["res://.godot/imported/Pico_PowerBattery_Battery.png-5d0d780cd2e6b660a9ef4ecf99f62c90.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_PowerBattery_Battery.png-5d0d780cd2e6b660a9ef4ecf99f62c90.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

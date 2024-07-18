@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc56khdrcolrp"
-path.s3tc="res://.godot/imported/Pico_SideCannon_Pico_Cannon.png-49c6c61bb11a55ceadf87982d7b9aadc.s3tc.ctex"
+path="res://.godot/imported/Pico_SideCannon_Pico_Cannon.png-49c6c61bb11a55ceadf87982d7b9aadc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f9bf36217885b79437eb6d77aaf3b5c1"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://visuals/models/weapons/Pico_SideCannon_Pico_Cannon.png"
-dest_files=["res://.godot/imported/Pico_SideCannon_Pico_Cannon.png-49c6c61bb11a55ceadf87982d7b9aadc.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pico_SideCannon_Pico_Cannon.png-49c6c61bb11a55ceadf87982d7b9aadc.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

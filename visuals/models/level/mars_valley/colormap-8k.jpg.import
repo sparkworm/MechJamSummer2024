@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwb3esv8sm6q7"
 path.s3tc="res://.godot/imported/colormap-8k.jpg-1f00d0ab61ccdf1998bcac187984ec4e.s3tc.ctex"
+path.etc2="res://.godot/imported/colormap-8k.jpg-1f00d0ab61ccdf1998bcac187984ec4e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://visuals/models/level/mars_valley/colormap-8k.jpg"
-dest_files=["res://.godot/imported/colormap-8k.jpg-1f00d0ab61ccdf1998bcac187984ec4e.s3tc.ctex"]
+dest_files=["res://.godot/imported/colormap-8k.jpg-1f00d0ab61ccdf1998bcac187984ec4e.s3tc.ctex", "res://.godot/imported/colormap-8k.jpg-1f00d0ab61ccdf1998bcac187984ec4e.etc2.ctex"]
 
 [params]
 
