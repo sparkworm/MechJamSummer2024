@@ -126,6 +126,8 @@ func _ready() -> void:
 
 func _deffered_ready():
 	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	set_physics_process(true)
 	_movements_FSM = _animation_tree.get("parameters/Movements_FSM/playback")
 	_disables_FSM = _animation_tree.get("parameters/Disables_FSM/playback")

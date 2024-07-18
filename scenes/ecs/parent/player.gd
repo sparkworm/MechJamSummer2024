@@ -78,6 +78,7 @@ var _dash_idle_animation: String = "parameters/Dash_Idle_Animation"
 
 var _weapons_array: Array[Weapon] = [null, null, null]
 var _current_weapon_index = 0
+var enabled: bool = false
 
 func _ready() -> void:
 	_detection_area.scale = Vector3(_detection_area_radius, _detection_area_radius, _detection_area_radius)
@@ -109,7 +110,7 @@ func refresh_player():
 
 func _is_hit(source: Node3D, current_health: int):
 	_player_health_UI.change_health(current_health)
-	AudioManager.play_audio(_player_hit_sfx)
+	#AudioManager.play_audio(_player_hit_sfx)
 	#add flash/update UI
 	pass
 
@@ -118,6 +119,9 @@ func _die():
 	pass
 
 func _process(delta: float) -> void:
+	if(!enabled):
+		return
+
 	_mouse_pos_this_frame = MouseUtility.get_mouse_pos_3d()
 	_mouse_distance_to_player = _mouse_pos_this_frame.distance_to(global_position)
 	_energy_pause_timer -= delta

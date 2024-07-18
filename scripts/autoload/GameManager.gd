@@ -7,11 +7,12 @@ enum GameState {
 	Load = 0,
 	Intro = 1,
 	Game = 2,
+	End = 3,
 }
 
 @export var _load_scene: PackedScene
-@export var _intro_scene: PackedScene
 @export var _game_scene: PackedScene
+@export var _end_scene: PackedScene
 @export var _levels: Array[PackedScene] = []
 
 var _game_state: GameState = GameState.Game
@@ -26,20 +27,21 @@ var current_level_scene: Level:
 func _ready() -> void:
 	_current_scene = get_tree().current_scene
 	change_state(GameState.Game)
-	change_to_next_level()
 
 func change_state(state: GameState) -> void:
 	call_deferred("_change_state_deffered", state)
 
 func _change_state_deffered(state: GameState) -> void:
+	await get_tree().create_timer(5).timeout
 	_state_clean_up()
 	_game_state = state
 	_state_initialization()
 
 func _state_clean_up() -> void:
+	PlayerManager.player.enabled = false
 	if(_game_state == GameState.Load):
 		pass
-	elif(_game_state == GameState.Intro):
+	elif(_game_state == GameState.End):
 		pass
 	else: #(_game_state == GameState.Game):
 		if(_current_level_scene != null):
@@ -53,10 +55,13 @@ func _state_clean_up() -> void:
 func _state_initialization() -> void:
 	if(_game_state == GameState.Load):
 		_current_scene = _load_scene.instantiate()
-	elif(_game_state == GameState.Intro):
-		_current_scene = _intro_scene.instantiate()
-	else:
+	elif(_game_state == GameState.End):
+		_current_scene = _end_scene.instantiate()
+	else: #(_game_state == GameState.Game):
 		_current_scene = _game_scene.instantiate()
+		change_to_next_level()
+		PlayerManager.player.enabled = true
+		pass
 
 	get_tree().root.add_child(_current_scene)
 	get_tree().current_scene = _current_scene

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b636wqi0qwfhp"]
+[gd_scene load_steps=2 format=3 uid="uid://moy6q7y53kr0"]
 
-[ext_resource type="Texture2D" uid="uid://cd0neo1v5bxcy" path="res://visuals/mech.jpeg" id="1_ri2xt"]
+[ext_resource type="Texture2D" uid="uid://cd0neo1v5bxcy" path="res://visuals/mech.jpeg" id="1_73kdw"]
 
-[node name="LoadingScene" type="Node3D"]
+[node name="EndScene" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ri2xt")
+texture = ExtResource("1_73kdw")
 expand_mode = 3
 stretch_mode = 4
 
@@ -35,6 +35,6 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 70
-text = "Loading"
+text = "You Did It! Good Job!"
 horizontal_alignment = 1
 vertical_alignment = 1
