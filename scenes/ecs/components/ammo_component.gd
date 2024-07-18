@@ -60,8 +60,8 @@ var ammo_type_map: Dictionary = {
 func add_ammo(ammo: AmmoData) -> void:
 	var property_name: String = ammo_type_map[ammo.ammo_type]
 	self[property_name] += ammo.ammo_amount
-	print("Ammo type: ", property_name)
-	print("Ammo amount: ", self[property_name])
+	#print("Ammo type: ", property_name)
+	#print("Ammo amount: ", self[property_name])
 
 func refresh():
 	energy = _max_energy

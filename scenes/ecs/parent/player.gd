@@ -84,10 +84,6 @@ func _ready() -> void:
 	_health_component.connect("hit", _is_hit)
 	_health_component.connect("killed", _die)
 
-	_weapons_array[0] = _rifle
-	_weapons_array[1] = _minigun
-	_weapons_array[2] = _axe
-
 	_rifle.init_weapon(self)
 	_minigun.init_weapon(self)
 	_axe.init_weapon(self)
@@ -95,12 +91,19 @@ func _ready() -> void:
 	_rifle.visible = true
 	_minigun.visible = false
 	_axe.visible = false
+	refresh_player()
 
 	_animation_tree.tree_root = _weapons_array[0].animation_root
 
 func refresh_player():
 	_health_component.refresh()
 	_ammo_component.refresh()
+
+	_weapons_array[0] = _rifle
+	change_weapon(0)
+
+	_weapons_array[1] = _minigun
+	_weapons_array[2] = null
 
 func _is_hit(source: Node3D, current_health: int):
 	_player_health_UI.change_health(current_health)
@@ -246,7 +249,8 @@ func _handle_pickup(pickup: Pickup) -> void:
 			_ammo_component.add_ammo(ammo_data)
 		elif(pickup_data is ArtifactData):
 			var level: Level = GameManager.current_level_scene as Level
-			level.level_objective_collected = true
+			level.level_objective_collected()
+
 
 func _prepare_dash(direction: Vector3):
 	if(direction == Vector3.ZERO):
@@ -266,25 +270,45 @@ func _handle_dashing() -> bool:
 		return false
 	return true
 
+
 func _cycle_weapon():
 	var i: int = _current_weapon_index
 
-	i += 1
-	if i >= _weapons_array.size():
-		i = 0
 
-	for weapon_index in range(_weapons_array.size() - 1):
+	while true:
+		if(i + 1 >= _weapons_array.size()):
+			i = 0
+		else: i = i + 1
+
 		if _weapons_array[i] != null:
 			change_weapon(i)
-			return
+			break
+
+
+func get_weapon(weapon_index: int):
+	if(weapon_index == 0):
+		_weapons_array[0] = _rifle
+
+	elif(weapon_index == 1):
+		_weapons_array[1] = _minigun
+
+	elif(weapon_index == 2):
+		_weapons_array[2] = _axe
+
+	else:
+		return
+
+	change_weapon(weapon_index)
 
 func change_weapon(weapon_index: int):
 	if(_current_weapon_swap_cooldown > Time.get_unix_time_from_system()):
 		return;
 
-	if(weapon_index + 1 > _weapons_array.size()
-	|| _weapons_array[weapon_index] == null
-	|| _current_weapon_index == weapon_index):
+	if weapon_index + 1 > _weapons_array.size():
+		return
+	if _weapons_array[weapon_index] == null:
+		return
+	if _current_weapon_index == weapon_index:
 		return
 
 	var current_transition: String = _animation_tree[_animation_transition]

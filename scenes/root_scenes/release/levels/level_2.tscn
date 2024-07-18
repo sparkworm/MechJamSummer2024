@@ -22,12 +22,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_8gyhj"]
+[sub_resource type="Sky" id="Sky_5wk1j"]
 sky_material = SubResource("ProceduralSkyMaterial_ilfp1")
 
 [sub_resource type="Environment" id="Environment_v74s7"]
 background_mode = 2
-sky = SubResource("Sky_8gyhj")
+sky = SubResource("Sky_5wk1j")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -109,6 +109,7 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Door" parent="NavigationRegion3D" instance=ExtResource("5_pkway")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 2.11127, -0.250562, -3.63622)
+visible = false
 
 [node name="Door2" parent="NavigationRegion3D" instance=ExtResource("5_pkway")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 2.84773, -0.250562, -3.63622)
@@ -173,58 +174,72 @@ _patrol_points = [NodePath("../../PatrolPoints/PatrolPoint12"), NodePath("../../
 
 [node name="PatrolPoint1" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5775, 0.532939, 3.81996)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint2" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8352, 0.532939, 3.81996)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint3" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8352, 0.532939, 12.2921)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint4" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6984, 0.532939, 12.2921)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint5" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5473, 0.532939, -26.6486)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint6" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60928, 0.532939, -26.6486)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint7" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83868, 0.532939, -52.4239)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint8" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83868, 0.532939, -43.0559)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint9" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.422, 0.532939, -53.6617)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint10" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.422, 0.532939, -62.5534)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint11" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.422, 0.532939, -62.5534)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint12" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5989, 0.532939, -61.6057)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint13" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5989, 0.532939, -49.4871)
+visible = false
 skeleton = NodePath("")
 
 [node name="PatrolPoint14" parent="PatrolPoints" instance=ExtResource("12_j278f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.4121, 0.532939, 9.6205)
+visible = false
 skeleton = NodePath("")
 
 [node name="BasicMeleeBotEnemy" parent="." node_paths=PackedStringArray("_patrol_route") instance=ExtResource("13_wugqd")]

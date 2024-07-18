@@ -16,7 +16,11 @@ var _current_enemies: Array[EnemyCharacter]
 @export var _level_exit_point: Area3D = null
 @export var _level_patrol_routes: Array[PatrolRoute]
 var _level_alert_status: AlertStatus = AlertStatus.Passive
-var level_objective_collected: bool = false
+var _level_objective_collected: bool = false
+
+func level_objective_collected():
+	_level_objective_collected = true
+	set_level_alert_status(AlertStatus.Alerted)
 
 func _ready() -> void:
 	call_deferred("_deferred_ready")
@@ -56,7 +60,6 @@ func get_random_level_patrol_route() -> PatrolRoute:
 	if _level_patrol_routes.size() == 0:
 		return null
 	var random_index = randi() % _level_patrol_routes.size()
-	print(_level_patrol_routes[random_index])
 	return _level_patrol_routes[random_index]
 
 func set_level_alert_status(status: AlertStatus):

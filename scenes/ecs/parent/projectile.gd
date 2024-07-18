@@ -131,7 +131,7 @@ func _on_hit(collider: CollisionObject3D) -> void:
 
 	#Debug
 	var collisionLayer: int = collider.get_collision_layer()
-	print("Ability has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+	#print("Ability has hit: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
 	#If the target has health, do damage
 	var health_component: HealthComponent = collider.get_node_or_null("Components/HealthComponent") as HealthComponent
@@ -144,6 +144,6 @@ func _on_collision(collider: Node3D) -> void:
 
 	#Debug
 	var collisionLayer: int = collider.get_collision_layer()
-	print("Ability has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
+	#print("Ability has collided with: " + LayerUtility.get_layer_name_from_bit(collisionLayer))
 
 	hasCollided = true
