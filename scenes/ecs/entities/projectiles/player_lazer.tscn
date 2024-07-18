@@ -26,6 +26,7 @@ height = 0.75
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_anvgw")
+_damage = 3.0
 _speed = 25.0
 _collisional_layers = Array[int]([8, 64, 256, 512, 2048, 8192, 16384, 2048])
 _hit_layers = Array[int]([8192, 2048])

@@ -6,13 +6,15 @@
 [resource]
 albedo_color = Color(0.70085, 0.252845, 0.221523, 1)
 albedo_texture_force_srgb = true
-metallic = 0.72
-metallic_specular = 0.49
-roughness = 0.79
+albedo_texture_msdf = true
+metallic = 0.26
+metallic_specular = 0.54
+roughness = 0.61
 normal_enabled = true
 normal_texture = ExtResource("2_6keuc")
 rim_enabled = true
-rim_tint = 0.11
+rim = 0.69
+rim_tint = 0.37
 anisotropy = 0.36
 ao_enabled = true
 ao_light_affect = 1.0

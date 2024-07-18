@@ -47,7 +47,6 @@ max_health = 5
 _invincibility_time = 2.0
 
 [node name="EnergyComponent" parent="Components" instance=ExtResource("5_ol0v8")]
-max_energy = null
 
 [node name="AmmoComponent" parent="Components" instance=ExtResource("6_d1kdd")]
 

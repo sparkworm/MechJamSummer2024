@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Mech Jam Summer 2024"
+config/name="Mars Mecha Attack"
 run/main_scene="res://scenes/root_scenes/release/loading_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -117,3 +117,8 @@ Dash={
 [navigation]
 
 3d/default_cell_height=0.01
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

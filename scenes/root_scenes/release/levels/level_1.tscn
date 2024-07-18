@@ -34,14 +34,19 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_gomta"]
+[sub_resource type="Sky" id="Sky_guaav"]
 sky_material = SubResource("ProceduralSkyMaterial_poyci")
 
 [sub_resource type="Environment" id="Environment_jl4jj"]
-background_mode = 2
-sky = SubResource("Sky_gomta")
-tonemap_mode = 2
-tonemap_white = 0.77
+background_color = Color(0.191371, 0.125696, 0.110754, 1)
+sky = SubResource("Sky_guaav")
+sky_custom_fov = 0.1
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.27
+ambient_light_energy = 1.41
+tonemap_mode = 1
+tonemap_exposure = 2.24
+tonemap_white = 1.82
 glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bjiq"]
@@ -231,6 +236,18 @@ transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, -18.5051, -0.0499
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jl4jj")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.510698, 0.148457, 0.846846, 0.699417, 0.644564, 0.308794, -0.500004, 0.749999, -0.433011, 0, 0, 0)
+light_energy = 0.053
+shadow_enabled = true
+directional_shadow_split_1 = 0.059
+directional_shadow_split_2 = 0.119
+directional_shadow_split_3 = 0.198
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.566
+directional_shadow_max_distance = 433.9
+directional_shadow_pancake_size = 1.0
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="SignificantObjects" type="Node3D" parent="."]
@@ -239,7 +256,7 @@ environment = SubResource("Environment_jl4jj")
 transform = Transform3D(-5, -1.52551e-08, -4.36848e-07, 5.55111e-16, 4.99695, -0.174497, 4.37114e-07, -0.174497, -4.99695, 79, 2.9, -0.999997)
 
 [node name="desert" parent="." instance=ExtResource("13_aby2d")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -99.2695, -18.9386, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -99.2469, -18.9386, -0.149647)
 
 [node name="BasicMeleeBotEnemy" parent="." instance=ExtResource("14_480nq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5736, 0, 44.3246)
@@ -613,15 +630,4 @@ collision_mask = 0
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.5179, 1.62941, 0.107287)
 shape = SubResource("BoxShape3D_1gnph")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.273
-light_indirect_energy = 1.28
-light_volumetric_fog_energy = 1.615
-shadow_enabled = true
-directional_shadow_split_1 = 0.149
-directional_shadow_split_2 = 0.249
-directional_shadow_split_3 = 0.469
-directional_shadow_fade_start = 0.965
-directional_shadow_max_distance = 129.5
-directional_shadow_pancake_size = 22.0
+[editable path="desert"]
