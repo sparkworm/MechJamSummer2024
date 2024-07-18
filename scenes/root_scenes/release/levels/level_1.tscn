@@ -30,14 +30,14 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_wpixl"]
+[sub_resource type="Sky" id="Sky_coidm"]
 sky_material = SubResource("ProceduralSkyMaterial_poyci")
 
 [sub_resource type="Environment" id="Environment_jl4jj"]
 background_mode = 1
 background_color = Color(0.132285, 0.0821832, 0.0707872, 1)
 background_energy_multiplier = 0.88
-sky = SubResource("Sky_wpixl")
+sky = SubResource("Sky_coidm")
 sky_custom_fov = 0.1
 ambient_light_source = 2
 ambient_light_color = Color(0.317021, 0.0783182, 0.116624, 1)
@@ -230,28 +230,22 @@ _spawn_cooldown = 15.0
 [node name="table-inset-small2" parent="NavigationRegion3D" instance=ExtResource("11_agxww")]
 transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, -18.5051, -0.0499998, 0.0122225)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.198331, -0.585876, -0.785757, -0.843007, -0.307002, 0.441688, -0.500003, 0.749999, -0.43301, 0, 1.07191, 0)
+light_color = Color(0.937701, 0.456991, 0.393794, 1)
+light_energy = 0.158
+light_indirect_energy = 0.895
+light_volumetric_fog_energy = 1.526
+shadow_enabled = true
+shadow_bias = 0.237
+shadow_normal_bias = 1.452
+directional_shadow_split_1 = 0.148
+directional_shadow_split_2 = 0.173
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 8192.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jl4jj")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.743714, -0.18663, 0.641918, 0.307911, 0.756681, 0.576736, -0.593363, 0.62658, -0.505289, 0, 0, 0)
-light_color = Color(0.88088, 0.405326, 0.434162, 1)
-light_energy = 0.998
-light_indirect_energy = 6.37
-light_volumetric_fog_energy = 2.973
-light_angular_distance = 0.62
-shadow_enabled = true
-shadow_normal_bias = 0.62
-shadow_transmittance_bias = -10.032
-shadow_opacity = 0.86
-shadow_blur = 0.794
-directional_shadow_split_1 = 0.343
-directional_shadow_split_2 = 0.712
-directional_shadow_split_3 = 0.407
-directional_shadow_fade_start = 0.487
-directional_shadow_max_distance = 8192.0
-directional_shadow_pancake_size = 327.7
-sky_mode = 1
 
 [node name="Enemies" type="Node" parent="."]
 
